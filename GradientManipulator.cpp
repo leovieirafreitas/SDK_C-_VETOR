@@ -240,13 +240,12 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler& suites) {
     js += "ue([gd.gsX,gd.gsY]);}catch(e2){}}    try{gfill.property('Ponto final').setValue([gd.geX,gd.geY]);}catch(e){try{gfill.pro";
     js += "perty('ADBE Vector Grad End').setValue([gd.geX,gd.geY]);}catch(e2){}}  }  var origTr=origLyr.property('ADBE Transform Gr";
     js += "oup');  var origPos=origTr.property('ADBE Position').value;  var origAnch=origTr.property('ADBE Anchor Point').value;  v";
-    js += "ar newTr=newLyr.property('ADBE Transform Group');  newTr.property('ADBE Anchor Point').setValue(origAnch);  newTr.proper";
-    js += "ty('ADBE Position').setValue(origPos);  try{    var rootVec2=newLyr.property('ADBE Root Vectors Group');    for(var rv=1";
+    js += "ar newTr=newLyr.property('ADBE Transform Group'); try{if(origLyr.parent) newLyr.parent=origLyr.parent;}catch(ep){} newTr.property('ADBE Anchor Point').setValue(origAnch); newTr.property('ADBE Position').setValue(origPos); try{ var rootVec2=newLyr.property('ADBE Root Vectors Group'); for(var rv=1";
     js += ";rv<=rootVec2.numProperties;rv++){      var rvp=rootVec2.property(rv);      if(rvp.matchName==='ADBE Vector Group'){    ";
     js += "    var vgt2=rvp.property('ADBE Vector Transform Group');        if(vgt2){          try{vgt2.property('ADBE Vector Ancho";
     js += "r').setValue([0,0]);}catch(ea){}          try{vgt2.property('ADBE Vector Position').setValue([0,0]);}catch(ep){}        ";
     js += "  try{vgt2.property('ADBE Vector Scale').setValue([100,100]);}catch(es){}          try{vgt2.property('ADBE Vector Rotati";
-    js += "on').setValue(0);}catch(er){}        }      }    }  }catch(evgt){}  try{origLyr.remove();}catch(e){}  applied++;  } else";
+    js += "on').setValue(0);}catch(er){}        }      }    }  }catch(evgt){}  try{newLyr.moveBefore(origLyr);}catch(em){} try{origLyr.remove();}catch(e){}  applied++;  } else";
     js += " {  try{newLyr.remove();}catch(e){}  }  try{gc.remove();}catch(e){} try{if(imp instanceof FolderItem)imp.remove();}catch";
     js += "(e){}}comp.openInViewer();alert('GRAD FIXER CONCLUIDO!\\n'+applied+' gradientes aplicados\\n'  +'Paths copiados das layers";
     js += " originais (zero reconstrucao!)');";

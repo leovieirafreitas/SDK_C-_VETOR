@@ -318,7 +318,8 @@ if (successGrad) {
 | v6 | GRAD FIXER: Zero reconstrução — copia Shape Value do Overlord + GCky via SDK |
 | v7 | Posição 1:1 com artboard Illustrator — nova comp correta + Vector Group Transform zerado |
 | v9 | Tentativa de "Smart Gradient Positioning" (Reconstrução 8-Point) ignorando path original. Gerou erro L1 "O objeto é inválido" no AE 2025 por bugs em índices e loops do AST Vector. |
-| **v10** ✅ | **Rollback + Recuperação Definitiva de v6/v7 diretamente de um payload `.aex` estável. Zero Reconstrução (clona a layer sólida original integralmente) + GCky XML Injection! Código validado no AE 2025 e 2026.** |
+| v10 | Rollback e Recuperação Definitiva de v6/v7 do payload `.aex` estável. Zero Reconstrução (clona a layer sólida original integralmente) + GCky XML Injection! |
+| **v11** ✅ | **Suporte completo a Hierarquia de Grupos Nativos via Nulls! Recria perfeitamente o visual em árvore do Illustrator no AE. Além disso, a injeção do C++ garante parentesco na ordem exata (`parent` ANTES de `Position`) para eliminar "saltos" visuais de coordenadas locais.** |
 
 ---
 

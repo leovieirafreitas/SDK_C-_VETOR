@@ -58,7 +58,7 @@
         return parseFloat(src.substring(start, end));
     }
 
-    function processGradientFill(fc, item, pathsToProcess, results, abLeft, abTop) {
+    function processGradientFill(fc, item, pathsToProcess, results, abLeft, abTop, parentID) {
         var grad = fc.gradient;
 
         // METODO 1: fc.matrix via .toSource() (parsing confiavel no ExtendScript)
@@ -134,7 +134,7 @@
         results.push({
             name: item.name || ("grad_" + results.length),
             fillType: "gradient",
-            _dbgAngle: panelAngle, _dbgRotation: shapeRotation, _dbgEffective: effectiveForExport,
+            parent: parentID, _dbgAngle: panelAngle, _dbgRotation: shapeRotation, _dbgEffective: effectiveForExport,
             // angle = effectiveAngle (world space) para C++ usar no gradByAngle()
             gradient: { angle: effectiveForExport, startX: ox, startY: oy, endX: ex, endY: ey, stops: stops },
             path: absPath
@@ -145,13 +145,23 @@
 
 
     // Coleta items individualmente (aprofundando grupos)
-    function collectAll(item, results, abLeft, abTop) {
+    var idCounter = 1;
+    function collectAll(item, results, abLeft, abTop, parentID) {
         var t = item.typename;
         try { if (item.hidden) return; } catch (e) { }
 
+        var currentID = (item.name || t) + "_idx" + idCounter;
+        idCounter++;
+
         if (t === "GroupItem") {
+            results.push({
+                fillType: "group",
+                name: currentID,
+                origName: item.name || "Grupo",
+                parent: parentID
+            });
             for (var i = 0; i < item.pageItems.length; i++)
-                collectAll(item.pageItems[i], results, abLeft, abTop);
+                collectAll(item.pageItems[i], results, abLeft, abTop, currentID);
             return;
         }
 
@@ -179,7 +189,7 @@
         }
 
         if (fillColor && fillColor.typename === "GradientColor") {
-            processGradientFill(fillColor, item, pathsToProcess, results, abLeft, abTop);
+            processGradientFill(fillColor, item, pathsToProcess, results, abLeft, abTop, parentID);
             return;  // Gradiente processado, nao duplica como solid
         }
 
@@ -193,7 +203,7 @@
 
         var data = {
             name: item.name || ((t === "CompoundPathItem") ? "comp_" : "path_") + results.length,
-            x: aeX, y: aeY, paths: paths, fillType: "solid"
+            x: aeX, y: aeY, paths: paths, fillType: "solid", parent: parentID
         };
 
         // Fill
@@ -241,7 +251,7 @@
     if (modoSelecao) {
         // Processa só os items selecionados (como overlord-lite faz)
         for (var s = 0; s < doc.selection.length; s++) {
-            collectAll(doc.selection[s], shapesData, abLeft, abTop);
+            collectAll(doc.selection[s], shapesData, abLeft, abTop, null);
         }
     } else {
         // CRITICO: doc.pageItems retorna TODOS os items incluindo aninhados!
@@ -250,7 +260,7 @@
             var topItem = doc.pageItems[s];
             try {
                 if (topItem.parent && topItem.parent.typename === "Layer") {
-                    collectAll(topItem, shapesData, abLeft, abTop);
+                    collectAll(topItem, shapesData, abLeft, abTop, null);
                 }
             } catch (e) { }
         }
@@ -280,9 +290,13 @@
         wr(jf, '    {');
         wr(jf, '      "name": "' + sd.name.replace(/"/g, "'") + '" ,');
         wr(jf, '      "fillType": "' + sd.fillType + '",');
+        if (sd.parent) wr(jf, '      "parent": "' + sd.parent + '",');
         wr(jf, '      "x":' + toFixed(sd.x) + ', "y":' + toFixed(sd.y) + ',');
 
-        if (sd.fillType === "gradient") {
+                if (sd.fillType === "group") {
+            if (sd.parent) wr(jf, '      "parent": "' + sd.parent + '",');
+            wr(jf, '      "origName": "' + (sd.origName||"").replace(/"/g, "'") + '"');
+        } else if (sd.fillType === "gradient") {
             // Formato legado (GRAD FIXER usa este — nao alterar!)
             wr(jf, '      "gradient": { "startX":' + toFixed(sd.gradient.startX) + ', "startY":' + toFixed(sd.gradient.startY) + ',');
             wr(jf, '        "endX":' + toFixed(sd.gradient.endX) + ', "endY":' + toFixed(sd.gradient.endY) + ',');
