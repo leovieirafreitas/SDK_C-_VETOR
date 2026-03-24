@@ -347,12 +347,33 @@
 
     }
 
-    alert("EXTRAIDO! (v11)\n" +
+    var summary = "EXTRAIDO! (v12 - Auto-Bridge)\n" +
         (modoSelecao ? "MODO: Somente selecionados (" + doc.selection.length + " item(s))" :
             "MODO: Documento completo") + "\n" +
         "Artboard: " + Math.round(abW) + "x" + Math.round(abH) + "\n" +
         "GRADIENTES: " + nGrad + " | SOLIDOS: " + nSolid + " | STROKES: " + nStroke + "\n" +
         "Total: " + shapesData.length + " shapes" +
-        (gradInfo ? "\n\nDiagnóstico Gradientes:" + gradInfo : "") +
-        "\n\nRode SimularOverlord.jsx no AE!");
+        (gradInfo ? "\n\nDiagnóstico Gradientes:" + gradInfo : "");
+
+    // ── ENVIAR PARA O AFTER EFFECTS VIA BRIDGETALK ──
+    if (BridgeTalk.isRunning("aftereffects")) {
+        var bt = new BridgeTalk();
+        bt.target = "aftereffects";
+        
+        var req = "app.beginUndoGroup('Importar e Aplicar Gradientes');\n";
+        req += "var f = new File('C:/AEGP/SimularOverlord.jsx');\n";
+        req += "if(f.exists){ f.open('r'); eval(f.read()); f.close(); } else { alert('SimularOverlord.jsx nao encontrado em C:/AEGP/'); }\n";
+        
+        // Em seguida, chama o C++ para processar gradientes se existirem
+        if (nGrad > 0) {
+            req += "var gCmd = app.findMenuCommandId('GRAD FIXER: Aplicar Gradientes');\n";
+            req += "if (gCmd > 0) { app.executeCommand(gCmd); } else { alert('Plugin GRAD FIXER nao encontrado no menu do AE!'); }\n";
+        }
+        req += "app.endUndoGroup();\n";
+        
+        bt.body = req;
+        bt.send();
+    } else {
+        alert(summary + "\n\nO After Effects precisa estar aberto para importar automaticamente!\nAbra o AE e rode o SimularOverlord manualmente.");
+    }
 })();
