@@ -239,8 +239,11 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler& suites) {
     js += "{gfill.property('Ponto inicial').setValue([gd.gsX,gd.gsY]);}catch(e){try{gfill.property('ADBE Vector Grad Start').setVal";
     js += "ue([gd.gsX,gd.gsY]);}catch(e2){}}    try{gfill.property('Ponto final').setValue([gd.geX,gd.geY]);}catch(e){try{gfill.pro";
     js += "perty('ADBE Vector Grad End').setValue([gd.geX,gd.geY]);}catch(e2){}}  }  var origTr=origLyr.property('ADBE Transform Gr";
-    js += "oup');  var origPos=origTr.property('ADBE Position').value;  var origAnch=origTr.property('ADBE Anchor Point').value;  v";
-    js += "ar newTr=newLyr.property('ADBE Transform Group'); try{if(origLyr.parent) newLyr.parent=origLyr.parent;}catch(ep){} newTr.property('ADBE Anchor Point').setValue(origAnch); newTr.property('ADBE Position').setValue(origPos); try{ var rootVec2=newLyr.property('ADBE Root Vectors Group'); for(var rv=1";
+    js += "oup');  var origPos=origTr.property('ADBE Position').value;  var origAnch=origTr.property('ADBE Anchor Point').value;";
+    js += "  var origOpac=origTr.property('ADBE Opacity').value; var newTr=newLyr.property('ADBE Transform Group'); try{if(origLy";
+    js += "r.parent) newLyr.parent=origLyr.parent;}catch(ep){} newTr.property('ADBE Anchor Point').setValue(origAnch); newTr.prop";
+    js += "erty('ADBE Position').setValue(origPos); try{newTr.property('ADBE Opacity').setValue(origOpac);}catch(eop){} try{ var r";
+    js += "ootVec2=newLyr.property('ADBE Root Vectors Group'); for(var rv=1";
     js += ";rv<=rootVec2.numProperties;rv++){      var rvp=rootVec2.property(rv);      if(rvp.matchName==='ADBE Vector Group'){    ";
     js += "    var vgt2=rvp.property('ADBE Vector Transform Group');        if(vgt2){          try{vgt2.property('ADBE Vector Ancho";
     js += "r').setValue([0,0]);}catch(ea){}          try{vgt2.property('ADBE Vector Position').setValue([0,0]);}catch(ep){}        ";

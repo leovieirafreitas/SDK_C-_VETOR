@@ -58,7 +58,7 @@
         return parseFloat(src.substring(start, end));
     }
 
-    function processGradientFill(fc, item, pathsToProcess, results, abLeft, abTop, parentID) {
+    function processGradientFill(fc, item, pathsToProcess, results, abLeft, abTop, parentID, itemOpacity) {
         var grad = fc.gradient;
 
         // METODO 1: fc.matrix via .toSource() (parsing confiavel no ExtendScript)
@@ -134,6 +134,7 @@
         results.push({
             name: item.name || ("grad_" + results.length),
             fillType: "gradient",
+            opacity: itemOpacity,
             parent: parentID, _dbgAngle: panelAngle, _dbgRotation: shapeRotation, _dbgEffective: effectiveForExport,
             // angle = effectiveAngle (world space) para C++ usar no gradByAngle()
             gradient: { angle: effectiveForExport, startX: ox, startY: oy, endX: ex, endY: ey, stops: stops },
@@ -146,9 +147,14 @@
 
     // Coleta items individualmente (aprofundando grupos)
     var idCounter = 1;
-    function collectAll(item, results, abLeft, abTop, parentID) {
+    function collectAll(item, results, abLeft, abTop, parentID, parentOpacity) {
+        if (parentOpacity === undefined) parentOpacity = 100;
         var t = item.typename;
         try { if (item.hidden) return; } catch (e) { }
+
+        var itemOpacity = 100;
+        try { itemOpacity = item.opacity; } catch (e) { }
+        var finalOpacity = (parentOpacity / 100.0) * itemOpacity;
 
         var currentID = (item.name || t) + "_idx" + idCounter;
         idCounter++;
@@ -161,7 +167,7 @@
                 parent: parentID
             });
             for (var i = 0; i < item.pageItems.length; i++)
-                collectAll(item.pageItems[i], results, abLeft, abTop, currentID);
+                collectAll(item.pageItems[i], results, abLeft, abTop, currentID, finalOpacity);
             return;
         }
 
@@ -189,7 +195,7 @@
         }
 
         if (fillColor && fillColor.typename === "GradientColor") {
-            processGradientFill(fillColor, item, pathsToProcess, results, abLeft, abTop, parentID);
+            processGradientFill(fillColor, item, pathsToProcess, results, abLeft, abTop, parentID, finalOpacity);
             return;  // Gradiente processado, nao duplica como solid
         }
 
@@ -203,7 +209,7 @@
 
         var data = {
             name: item.name || ((t === "CompoundPathItem") ? "comp_" : "path_") + results.length,
-            x: aeX, y: aeY, paths: paths, fillType: "solid", parent: parentID
+            x: aeX, y: aeY, paths: paths, fillType: "solid", parent: parentID, opacity: finalOpacity
         };
 
         // Fill
@@ -251,7 +257,7 @@
     if (modoSelecao) {
         // Processa só os items selecionados (como overlord-lite faz)
         for (var s = 0; s < doc.selection.length; s++) {
-            collectAll(doc.selection[s], shapesData, abLeft, abTop, null);
+            collectAll(doc.selection[s], shapesData, abLeft, abTop, null, 100);
         }
     } else {
         // CRITICO: doc.pageItems retorna TODOS os items incluindo aninhados!
@@ -260,7 +266,7 @@
             var topItem = doc.pageItems[s];
             try {
                 if (topItem.parent && topItem.parent.typename === "Layer") {
-                    collectAll(topItem, shapesData, abLeft, abTop, null);
+                    collectAll(topItem, shapesData, abLeft, abTop, null, 100);
                 }
             } catch (e) { }
         }
@@ -291,6 +297,8 @@
         wr(jf, '      "name": "' + sd.name.replace(/"/g, "'") + '" ,');
         wr(jf, '      "fillType": "' + sd.fillType + '",');
         if (sd.parent) wr(jf, '      "parent": "' + sd.parent + '",');
+        var opact = (sd.opacity !== undefined) ? sd.opacity : 100;
+        wr(jf, '      "opacity":' + toFixed(opact) + ',');
         wr(jf, '      "x":' + toFixed(sd.x) + ', "y":' + toFixed(sd.y) + ',');
 
                 if (sd.fillType === "group") {

@@ -86,6 +86,7 @@ try {
             }
             shLyr.property("ADBE Transform Group").property("ADBE Anchor Point").setValue([0,0]);
             shLyr.property("ADBE Transform Group").property("ADBE Position").setValue([0,0]);
+            if (sd.opacity !== undefined) { try { shLyr.property("ADBE Transform Group").property("ADBE Opacity").setValue(sd.opacity); } catch(eo){} }
             nGrad++;
 
         } else {
@@ -136,6 +137,7 @@ try {
             var tr = shLyr.property("ADBE Transform Group");
             tr.property("ADBE Anchor Point").setValue([0, 0]);
             tr.property("ADBE Position").setValue([sd.x || 0, sd.y || 0]);
+            if (sd.opacity !== undefined) { try { tr.property("ADBE Opacity").setValue(sd.opacity); } catch(eo){} }
         }
     }
 
