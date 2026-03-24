@@ -372,12 +372,14 @@
         req += "var f = new File('C:/AEGP/SimularOverlord.jsx');\n";
         req += "if(f.exists){ f.open('r'); eval(f.read()); f.close(); } else { alert('SimularOverlord.jsx nao encontrado em C:/AEGP/'); }\n";
         
-        // Em seguida, chama o C++ para processar gradientes se existirem
+        // MUST CLOSE JS UNDO GROUP BEFORE TRIGGERING C++ EXECUTE COMMAND!
         if (nGrad > 0) {
+            req += "app.endUndoGroup();\n";
             req += "var gCmd = app.findMenuCommandId('GRAD FIXER: Aplicar Gradientes');\n";
             req += "if (gCmd > 0) { app.executeCommand(gCmd); } else { alert('Plugin GRAD FIXER nao encontrado no menu do AE!'); }\n";
+        } else {
+            req += "app.endUndoGroup();\n";
         }
-        req += "app.endUndoGroup();\n";
         
         bt.body = req;
         bt.send();

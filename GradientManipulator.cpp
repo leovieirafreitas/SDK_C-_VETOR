@@ -191,6 +191,17 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler& suites) {
     }
     std::string aiPath; ParseAiPath(jsonStr, aiPath);
 
+    auto EscJS = [](const std::string& str) {
+        std::string r;
+        for (char c : str) {
+            if (c == '\'' || c == '\\') r += '\\';
+            if (c == '\n') { r += '\\'; r += 'n'; continue; }
+            if (c == '\r') continue;
+            r += c;
+        }
+        return r;
+    };
+
     for (int si = 0; si < (int)shapes.size(); si++) {
         std::string out = "C:\\AEGP\\grad_" + std::to_string(si) + ".aepx";
         if (!WriteAEPX(shapes[si].stops, out)) {
@@ -202,7 +213,7 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler& suites) {
     std::string gradJS = "[";
     for (int si = 0; si < (int)shapes.size(); si++) {
         if (si > 0) gradJS += ",";
-        gradJS += "{name:'" + shapes[si].name + "'";
+        gradJS += "{name:'" + EscJS(shapes[si].name) + "'";
         gradJS += ",aepx:'C:/AEGP/grad_" + std::to_string(si) + ".aepx'";
         gradJS += ",angle:" + F(shapes[si].angle);
         gradJS += ",gsX:" + F(shapes[si].gsX) + ",gsY:" + F(shapes[si].gsY);
@@ -215,7 +226,7 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler& suites) {
     std::string js;
     js += "(function(){try{";
     js += "var grads=" + gradJS + ";";
-    js += "var aiPath='" + aiPath + "';";
+    js += "var aiPath='" + EscJS(aiPath) + "';";
     js += "var comp=app.project.activeItem;if(!comp||!(comp instanceof CompItem)){alert('Abra uma comp!');return;}var applied=0;for";
     js += "(var gi=0;gi<grads.length;gi++){  var gd=grads[gi];  var origLyr=null;  for(var li=1;li<=comp.numLayers;li++){    if(com";
     js += "p.layer(li).name===gd.name){origLyr=comp.layer(li);break;}  }  if(!origLyr){continue;}  var shapeVal=null;  try{    var ";
