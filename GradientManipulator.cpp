@@ -1,4 +1,4 @@
-// GradientManipulator.cpp v9 — Smart Gradient Positioning
+// GradientManipulator.cpp v10 — RECUPERADO COM VETORES NATIVOS (Zero Reconstrucao)
 // CENTER+ANGLE: resolve o problema de fc.origin com offset do artboard.
 // Para angle!=0: calcula o start/end centrado na shape, na direcao do angulo.
 // Para angle==0 (gradient tool): usa native .ai import com conversao de coords.
@@ -216,219 +216,41 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler& suites) {
     js += "(function(){try{";
     js += "var grads=" + gradJS + ";";
     js += "var aiPath='" + aiPath + "';";
-    js += "var comp=app.project.activeItem;";
-    js += "if(!comp||!(comp instanceof CompItem)){alert('Abra uma comp!');return;}";
-
-    // Importar .ai nativo (para angle=0 → gradient tool)
-    js += "var tempComp=null,tempImpItem=null;";
-    js += "try{var aiFile=new File(aiPath);if(aiFile.exists){";
-    js += "  var aiOpts=new ImportOptions(aiFile);";
-    js += "  aiOpts.importAs=ImportAsType.COMP_CROPPED_LAYERS;";
-    js += "  tempImpItem=app.project.importFile(aiOpts);";
-    js += "  if(tempImpItem instanceof CompItem){tempComp=tempImpItem;}";
-    js += "  else if(tempImpItem instanceof FolderItem){";
-    js += "    for(var ti=1;ti<=tempImpItem.numItems;ti++){";
-    js += "      if(tempImpItem.item(ti) instanceof CompItem){tempComp=tempImpItem.item(ti);break;}";
-    js += "    }";
-    js += "  }";
-    js += "}}catch(eAI){}";
-
-    js += "function findGFill(lyr){try{";
-    js += "  var r=lyr.property('ADBE Root Vectors Group');";
-    js += "  for(var j=1;j<=r.numProperties;j++){";
-    js += "    var g=r.property(j);if(g.matchName!=='ADBE Vector Group')continue;";
-    js += "    var c=g.property('ADBE Vectors Group');";
-    js += "    for(var k=1;k<=c.numProperties;k++){";
-    js += "      if(c.property(k).matchName==='ADBE Vector Graphic - G-Fill')return c.property(k);";
-    js += "    }";
-    js += "  }";
-    js += "}catch(e){}return null;}";
-
-    // ─── CENTER+ANGLE helper ─────────────────────────────────────────────────
-    // Posiciona o gradiente CENTRADO na shape na direcao do angulo.
-    // Formula: dir = [cos(a), -sin(a)] em AE (Y flipado vs AI)
-    //   start = center - half*dir
-    //   end   = center + half*dir
-    // Funciona para QUALQUER angulo (-90, 45, 0, etc.) independente de fc.origin
-    js += "function gradByAngle(mnX,mxX,mnY,mxY,ang){";
-    js += "  var cx=(mnX+mxX)/2,cy=(mnY+mxY)/2;";
-    js += "  var half=Math.max(mxX-mnX,mxY-mnY)*0.55;";
-    js += "  var rad=ang*Math.PI/180;";
-    js += "  var dX=Math.cos(rad),dY=-Math.sin(rad);";  // Y flipado AI→AE
-    js += "  return[[cx-half*dX,cy-half*dY],[cx+half*dX,cy+half*dY]];";
-    js += "}";
-
-    js += "var applied=0,methodLog='';";
-    js += "for(var gi=0;gi<grads.length;gi++){";
-    js += "var gd=grads[gi];";
-
-    js += "var origLyr=null;";
-    js += "for(var li=1;li<=comp.numLayers;li++){";
-    js += "  if(comp.layer(li).name===gd.name){origLyr=comp.layer(li);break;}";
-    js += "}";
-
-    // ── STEP 1: Calcular bounds da shape (necessario para validacao e fallback) ──
-    js += "var mnX=0,mxX=100,mnY=0,mxY=100,gotBounds=false,sv_cached=null;";
-    js += "if(origLyr){try{";
-    js += "  var bR=origLyr.property('ADBE Root Vectors Group');";
-    js += "  for(var bj=1;bj<=bR.numProperties;bj++){";
-    js += "    if(bR.property(bj).matchName!=='ADBE Vector Group')continue;";
-    js += "    var bC=bR.property(bj).property('ADBE Vectors Group');";
-    js += "    for(var bk=1;bk<=bC.numProperties;bk++){";
-    js += "      if(bC.property(bk).matchName!=='ADBE Vector Shape - Group')continue;";
-    js += "      sv_cached=bC.property(bk).property('ADBE Vector Shape').value.vertices;";
-    js += "      mnX=sv_cached[0][0];mxX=sv_cached[0][0];mnY=sv_cached[0][1];mxY=sv_cached[0][1];";
-    js += "      for(var bvi=1;bvi<sv_cached.length;bvi++){";
-    js += "        if(sv_cached[bvi][0]<mnX)mnX=sv_cached[bvi][0];";
-    js += "        if(sv_cached[bvi][0]>mxX)mxX=sv_cached[bvi][0];";
-    js += "        if(sv_cached[bvi][1]<mnY)mnY=sv_cached[bvi][1];";
-    js += "        if(sv_cached[bvi][1]>mxY)mxY=sv_cached[bvi][1];";
-    js += "      }gotBounds=true;break;";
-    js += "    }if(gotBounds)break;";
-    js += "  }";
-    js += "}catch(eBnds){}}";
-
-    // ── STEP 2: Determinar posicoes do gradiente ──────────────────────────────
-    js += "var gradStart=null,gradEnd=null,posMethod='none';";
-
-    // METODO 1: angle != 0 (gradiente do painel)
-    //   Usa center+angle, mas valida primeiro se formula do fc.origin+fc.angle
-    //   esta dentro do range da shape (para aproveitar quando esta correto)
-    js += "if(Math.abs(gd.angle)>0.5&&gotBounds){";
-    js += "  var margin=Math.max(mxX-mnX,mxY-mnY)*3;";
-    js += "  var formulaOK=gd.gsX>=mnX-margin&&gd.gsX<=mxX+margin&&";
-    js += "                gd.gsY>=mnY-margin&&gd.gsY<=mxY+margin;";
-    js += "  if(formulaOK){";
-    // Formula fc.origin+fc.angle dentro do range: usa ela (mais precisa)
-    js += "    gradStart=[gd.gsX,gd.gsY];gradEnd=[gd.geX,gd.geY];";
-    js += "    posMethod='formula_panel';";
-    js += "  }else{";
-    // fc.origin fora do range (offset artboard): center+angle
-    js += "    var ca=gradByAngle(mnX,mxX,mnY,mxY,gd.angle);";
-    js += "    gradStart=ca[0];gradEnd=ca[1];";
-    js += "    posMethod='center+angle('+Math.round(gd.angle)+'deg)';";
-    js += "  }";
-    js += "}";
-
-    // METODO 2: angle==0 (gradient tool) → native .ai import + conversao coords
-    // comp = (local - anchor) * scale + position
-    // VALIDAR: coords devem estar razoavelmente perto dos bounds da shape
-    js += "if(!gradStart&&tempComp){";
-    js += "  for(var li=1;li<=tempComp.numLayers;li++){";
-    js += "    if(tempComp.layer(li).name===gd.name){";
-    js += "      var gf=findGFill(tempComp.layer(li));";
-    js += "      if(gf){try{";
-    js += "        var nTr=tempComp.layer(li).property('ADBE Transform Group');";
-    js += "        var nPos=nTr.property('ADBE Position').value;";
-    js += "        var nAnch=nTr.property('ADBE Anchor Point').value;";
-    js += "        var nScl=nTr.property('ADBE Scale').value;";
-    js += "        var sx=nScl[0]/100,sy=nScl[1]/100;";
-    js += "        var gfS=gf.property('ADBE Vector Grad Start').value;";
-    js += "        var gfE=gf.property('ADBE Vector Grad End').value;";
-    js += "        var csx=(gfS[0]-nAnch[0])*sx+nPos[0];";
-    js += "        var csy=(gfS[1]-nAnch[1])*sy+nPos[1];";
-    js += "        var cex=(gfE[0]-nAnch[0])*sx+nPos[0];";
-    js += "        var cey=(gfE[1]-nAnch[1])*sy+nPos[1];";
-    // VALIDAR coords dentro do alcance da shape (evita X=12800 para shape em X=300)
-    js += "        var natM=Math.max(mxX-mnX,mxY-mnY)*3;";
-    js += "        var natOK=isFinite(csx)&&isFinite(csy)&&";
-    js += "                   csx>=mnX-natM&&csx<=mxX+natM&&";
-    js += "                   csy>=mnY-natM&&csy<=mxY+natM;";
-    js += "        if(natOK){";
-    js += "          gradStart=[csx,csy];gradEnd=[cex,cey];posMethod='native_ai';";
-    js += "        }";
-    js += "      }catch(eN){}}break;";
-    js += "    }";
-    js += "  }";
-    js += "}";
-
-
-
-    // METODO 3: fallback final
-    js += "if(!gradStart&&gotBounds){";
-    js += "  if(Math.abs(gd.angle)>0.5){";
-    js += "    var fc=gradByAngle(mnX,mxX,mnY,mxY,gd.angle);";
-    js += "    gradStart=fc[0];gradEnd=fc[1];posMethod='fallback+angle';";
-    js += "  }else if((mxY-mnY)>(mxX-mnX)*1.2){";
-    js += "    var cx2=(mnX+mxX)/2;";
-    js += "    gradStart=[cx2,mnY];gradEnd=[cx2,mxY];posMethod='fallback_vertical';";
-    js += "  }else{";
-    js += "    gradStart=[mnX,mnY];gradEnd=[mxX,mxY];posMethod='fallback_diagonal';";
-    js += "  }";
-    js += "}";
-
-    // ── STEP 3: Importar AEPX (cores) e injetar path + posicoes ──────────────
-    js += "var f=new File(gd.aepx);if(!f.exists)continue;";
-    js += "var imp=app.project.importFile(new ImportOptions(f));";
-    js += "var gc=null;";
-    js += "if(imp instanceof FolderItem){for(var ii=1;ii<=imp.numItems;ii++){if(imp.item(ii) instanceof CompItem){gc=imp.item(ii);break;}}}";
-    js += "else if(imp instanceof CompItem){gc=imp;}";
-    js += "if(!gc||gc.numLayers<1){try{if(imp instanceof FolderItem)imp.remove();}catch(e){} continue;}";
-    js += "gc.layer(1).copyToComp(comp);";
-    js += "var newLyr=comp.layer(1);newLyr.name=gd.name+' (grad)';";
-    js += "var root=newLyr.property('ADBE Root Vectors Group'),grp=null;";
-    js += "for(var j=1;j<=root.numProperties;j++){";
-    js += "  if(root.property(j).matchName==='ADBE Vector Group'){grp=root.property(j).property('ADBE Vectors Group');break;}";
-    js += "}";
-    js += "if(!grp){try{newLyr.remove();}catch(e){} try{gc.remove();}catch(e){} continue;}";
-    js += "var toRm=[];";
-    js += "for(var k=1;k<=grp.numProperties;k++){var pm=grp.property(k);";
-    js += "  if(pm.matchName!=='ADBE Vector Graphic - G-Fill'&&pm.matchName!=='ADBE Vector Transform Group')toRm.push(pm);}";
-    js += "for(var ri=0;ri<toRm.length;ri++){try{toRm[ri].remove();}catch(er){}}";
-
-    // Injetar shape path (usa sv_cached se disponivel)
-    js += "var shapeVal=sv_cached?bC.property(bk-1).property('ADBE Vector Shape').value:null;";
-    js += "if(!shapeVal&&origLyr){try{";
-    js += "  var or2=origLyr.property('ADBE Root Vectors Group');";
-    js += "  for(var j=1;j<=or2.numProperties;j++){";
-    js += "    if(or2.property(j).matchName!=='ADBE Vector Group')continue;";
-    js += "    var oc=or2.property(j).property('ADBE Vectors Group');";
-    js += "    for(var k=1;k<=oc.numProperties;k++){";
-    js += "      if(oc.property(k).matchName==='ADBE Vector Shape - Group'){";
-    js += "        shapeVal=oc.property(k).property('ADBE Vector Shape').value;break;}";
-    js += "    }if(shapeVal)break;";
-    js += "  }";
-    js += "}catch(er){}}";
-    js += "var successGrad=false;";
-    js += "if(shapeVal&&shapeVal.vertices&&shapeVal.vertices.length>=2){try{";
-    js += "  var newP=grp.addProperty('ADBE Vector Shape - Group');";
-    js += "  newP.property('ADBE Vector Shape').setValue(shapeVal);";
-    js += "  newP.moveTo(1);successGrad=true;";
-    js += "}catch(eInj){}}";
-
-    js += "if(successGrad){";
-    js += "  var gfill=null;";
-    js += "  for(var k=1;k<=grp.numProperties;k++){if(grp.property(k).matchName==='ADBE Vector Graphic - G-Fill'){gfill=grp.property(k);break;}}";
-    js += "  if(gfill&&gradStart&&gradEnd){";
-    js += "    try{gfill.property('ADBE Vector Grad Start').setValue(gradStart);}catch(e){try{gfill.property('Ponto inicial').setValue(gradStart);}catch(e2){}}";
-    js += "    try{gfill.property('ADBE Vector Grad End').setValue(gradEnd);}catch(e){try{gfill.property('Ponto final').setValue(gradEnd);}catch(e2){}}";
-    js += "  }";
-    js += "  try{var otr=origLyr?origLyr.property('ADBE Transform Group'):null;";
-    js += "    if(otr){";
-    js += "      newLyr.property('ADBE Transform Group').property('ADBE Anchor Point').setValue(otr.property('ADBE Anchor Point').value);";
-    js += "      newLyr.property('ADBE Transform Group').property('ADBE Position').setValue(otr.property('ADBE Position').value);";
-    js += "    }}catch(etr){}";
-    js += "  try{var rv2=newLyr.property('ADBE Root Vectors Group');";
-    js += "    for(var rv=1;rv<=rv2.numProperties;rv++){";
-    js += "      if(rv2.property(rv).matchName==='ADBE Vector Group'){";
-    js += "        var vgt=rv2.property(rv).property('ADBE Vector Transform Group');";
-    js += "        if(vgt){try{vgt.property('ADBE Vector Anchor').setValue([0,0]);}catch(ea){}";
-    js += "          try{vgt.property('ADBE Vector Position').setValue([0,0]);}catch(ep){}";
-    js += "          try{vgt.property('ADBE Vector Scale').setValue([100,100]);}catch(es){}";
-    js += "          try{vgt.property('ADBE Vector Rotation').setValue(0);}catch(er){}}break;}";
-    js += "    }}catch(evgt){}";
-    js += "  try{origLyr.remove();}catch(e){}";
-    js += "  applied++;methodLog+='['+gd.name+':'+posMethod+'] ';";
-    js += "}else{try{newLyr.remove();}catch(e){}}";
-    js += "try{gc.remove();}catch(e){} try{if(imp instanceof FolderItem)imp.remove();}catch(e){}";
-    js += "}"; // fim for
-
-    js += "try{if(tempComp)tempComp.remove();}catch(e){}";
-    js += "try{if(tempImpItem instanceof FolderItem)tempImpItem.remove();}catch(e){}";
-    js += "comp.openInViewer();";
-    js += "alert('GRAD FIXER v9\\n'+applied+' gradientes\\n'+methodLog);";
-    js += "}catch(e){alert('ERRO: '+e.message+' (L'+e.line+')');}})();";
-
+    js += "var comp=app.project.activeItem;if(!comp||!(comp instanceof CompItem)){alert('Abra uma comp!');return;}var applied=0;for";
+    js += "(var gi=0;gi<grads.length;gi++){  var gd=grads[gi];  var origLyr=null;  for(var li=1;li<=comp.numLayers;li++){    if(com";
+    js += "p.layer(li).name===gd.name){origLyr=comp.layer(li);break;}  }  if(!origLyr){continue;}  var shapeVal=null;  try{    var ";
+    js += "origRoot=origLyr.property('ADBE Root Vectors Group');    for(var j=1;j<=origRoot.numProperties;j++){      var origGrp=or";
+    js += "igRoot.property(j);      if(origGrp.matchName!=='ADBE Vector Group')continue;      var origCont=origGrp.property('ADBE V";
+    js += "ectors Group');      for(var k=1;k<=origCont.numProperties;k++){        var origP=origCont.property(k);        if(origP.";
+    js += "matchName==='ADBE Vector Shape - Group'){          shapeVal=origP.property('ADBE Vector Shape').value;          break;  ";
+    js += "      }      }      if(shapeVal)break;    }  }catch(er){}  if(!shapeVal||shapeVal.vertices.length<2){continue;}  var f=n";
+    js += "ew File(gd.aepx);  if(!f.exists)continue;  var imp=app.project.importFile(new ImportOptions(f));  var gc=null;  if(imp i";
+    js += "nstanceof FolderItem){for(var ii=1;ii<=imp.numItems;ii++){if(imp.item(ii) instanceof CompItem){gc=imp.item(ii);break;}}}";
+    js += "  else if(imp instanceof CompItem){gc=imp;}  if(!gc||gc.numLayers<1){try{if(imp instanceof FolderItem)imp.remove();}catc";
+    js += "h(e){} continue;}  gc.layer(1).copyToComp(comp);  var newLyr=comp.layer(1); newLyr.name=gd.name+' (grad)';  var root=new";
+    js += "Lyr.property('ADBE Root Vectors Group'),grp=null;  for(var j=1;j<=root.numProperties;j++){    var pg=root.property(j);  ";
+    js += "  if(pg.matchName==='ADBE Vector Group'){grp=pg.property('ADBE Vectors Group');break;}  }  if(!grp){try{gc.remove();}cat";
+    js += "ch(e){} continue;}  var toRemove=[];  for(var k=1;k<=grp.numProperties;k++){    var pm=grp.property(k);    if(pm.matchNa";
+    js += "me!=='ADBE Vector Graphic - G-Fill'&&       pm.matchName!=='ADBE Vector Transform Group'){      toRemove.push(pm);    } ";
+    js += " }  for(var ri=0;ri<toRemove.length;ri++){try{toRemove[ri].remove();}catch(er){}}  var successGrad=false;  try{  var new";
+    js += "P=grp.addProperty('ADBE Vector Shape - Group');  newP.property('ADBE Vector Shape').setValue(shapeVal);  newP.moveTo(1);";
+    js += "  successGrad=true;  }catch(eInj){successGrad=false;}  if(successGrad){  var gfill=null;  for(var g=1;g<=grp.numProperti";
+    js += "es;g++){if(grp.property(g).matchName==='ADBE Vector Graphic - G-Fill'){gfill=grp.property(g);break;}}  if(gfill){    try";
+    js += "{gfill.property('Ponto inicial').setValue([gd.gsX,gd.gsY]);}catch(e){try{gfill.property('ADBE Vector Grad Start').setVal";
+    js += "ue([gd.gsX,gd.gsY]);}catch(e2){}}    try{gfill.property('Ponto final').setValue([gd.geX,gd.geY]);}catch(e){try{gfill.pro";
+    js += "perty('ADBE Vector Grad End').setValue([gd.geX,gd.geY]);}catch(e2){}}  }  var origTr=origLyr.property('ADBE Transform Gr";
+    js += "oup');  var origPos=origTr.property('ADBE Position').value;  var origAnch=origTr.property('ADBE Anchor Point').value;  v";
+    js += "ar newTr=newLyr.property('ADBE Transform Group');  newTr.property('ADBE Anchor Point').setValue(origAnch);  newTr.proper";
+    js += "ty('ADBE Position').setValue(origPos);  try{    var rootVec2=newLyr.property('ADBE Root Vectors Group');    for(var rv=1";
+    js += ";rv<=rootVec2.numProperties;rv++){      var rvp=rootVec2.property(rv);      if(rvp.matchName==='ADBE Vector Group'){    ";
+    js += "    var vgt2=rvp.property('ADBE Vector Transform Group');        if(vgt2){          try{vgt2.property('ADBE Vector Ancho";
+    js += "r').setValue([0,0]);}catch(ea){}          try{vgt2.property('ADBE Vector Position').setValue([0,0]);}catch(ep){}        ";
+    js += "  try{vgt2.property('ADBE Vector Scale').setValue([100,100]);}catch(es){}          try{vgt2.property('ADBE Vector Rotati";
+    js += "on').setValue(0);}catch(er){}        }      }    }  }catch(evgt){}  try{origLyr.remove();}catch(e){}  applied++;  } else";
+    js += " {  try{newLyr.remove();}catch(e){}  }  try{gc.remove();}catch(e){} try{if(imp instanceof FolderItem)imp.remove();}catch";
+    js += "(e){}}comp.openInViewer();alert('GRAD FIXER CONCLUIDO!\\n'+applied+' gradientes aplicados\\n'  +'Paths copiados das layers";
+    js += " originais (zero reconstrucao!)');";
+    js += "}catch(e){alert(\'ERRO: \'+e.message+\' (L\'+e.line+\')\');}})();";
     char* buf = (char*)malloc(js.length() + 1);
     if (buf) {
         strcpy_s(buf, js.length() + 1, js.c_str());
