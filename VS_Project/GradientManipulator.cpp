@@ -127,7 +127,8 @@ static bool WriteBatchAEPX(const std::vector<GradShape>& shapes, const std::stri
                 if (intPos != std::string::npos && intPos < gkyEnd) {
                     size_t gtPos = aepx.find("&gt;", intPos);
                     if (gtPos != std::string::npos && gtPos < gkyEnd) {
-                        try { originalSize = std::stoi(aepx.substr(gtPos+4, 10)); } catch(...) {}
+                        try { originalSize = std::stoi(aepx.substr(gtPos + 4, 10)); }
+                        catch (...) {}
                     }
                 }
             }

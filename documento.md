@@ -1,15 +1,15 @@
 # Pipeline GRAD FIXER: Illustrator → After Effects
-## Gradientes Perfeitos em Vetores Complexos via GCky SDK (v7 — PRODUÇÃO)
-**Status:** ✅ FUNCIONANDO — paths + gradientes + posição 1:1 com artboard do Illustrator
+## Gradientes Perfeitos em Vetores Complexos via GCky SDK (v8 — PRODUÇÃO AE 2025 BINARY SAFE)
+**Status:** ✅ FUNCIONANDO — paths + gradientes exatos + posição 1:1 com artboard do Illustrator
 
 ---
 
-## 1. Visão Geral (Arquitetura v6)
+## 1. Visão Geral (Arquitetura v8)
 
 ```
 [ILLUSTRATOR — Passo 1]
     ExtrairGradiente.jsx (roda no Illustrator)
-    Extrai: nome, gradient stops (R/G/B 0-1), startX/Y, endX/Y, path bezier
+    Extrai: nome, gradient stops (R/G/B já normalizadas entre 0.0-1.0), startX/Y, endX/Y
          ↓
     C:\AEGP\grad_data.json
 
@@ -145,10 +145,10 @@ GCky é o formato interno do AE para dados de gradiente. É XML proprietário da
 injetado dentro de `<GCky><string>...</string></GCky>` no AEPX:
 
 ```cpp
-// Cada tag deve usar entidades HTML (CRÍTICO):
+// Cada tag deve usar entidades HTML (CRÍTICO), exceto as aspas de atributos!
 const std::string lt = "&lt;";   // < → &lt;
 const std::string gt = "&gt;";   // > → &gt;
-const std::string ap = "&apos;"; // ' → &apos;
+const std::string ap = "'";      // ' → ' (Atenção: NÃO usar &apos;)
 const std::string nl = "&#xA;";  // newline → &#xA;
 
 // ERRADO (quebra o XML do AEPX):
@@ -158,7 +158,25 @@ x += "<prop.map version='4'>";
 x += lt + "prop.map version=" + ap + "4" + ap + gt + nl;
 ```
 
-### C. Template AEPX — AE 2025 usa `<GCst>` wrapper
+### C. Bypass de Segurança Binária (Padding do Stops Size)
+
+AE 2025 amarra o XML (`GCky`) a um cache binário fixo (`tdbs`). Se o template original possui `Stops Size = 20`, a engine em C++ *DEVE* injetar exatamente 20 stops no XML, mesmo que o JSON exportado possua apenas 3 cores. Caso contrário, o After Effects reverterá para 2 cores sólidas preto-e-branco genéricas.
+
+```cpp
+// Localizar 'Stops Size' original escondido no payload &lt;int&gt;
+size_t intPos = aepx.find("&lt;int ", sizeIndex);
+size_t gtPos = aepx.find("&gt;", intPos);
+int originalSize = std::stoi(aepx.substr(gtPos+4, 10)); // Extrai "20"
+
+// Injetar stops do Illustrator e PAD (repetir última cor) até dar os 20 originais
+for (int i=0; i < originalSize; i++) {
+    float pos, r, g, b;
+    if (i < (int)stops.size()) { pos = stops[i].pos; r = stops[i].r; ... }
+    else { pos = 1.0f; r = stops.back().r; ... } // Repete o final invisível
+}
+```
+
+### D. Template AEPX — AE 2025 usa `<GCst>` wrapper
 
 AE 2025+ salva gradientes em AEPX dentro de um `<GCst>` que contém `<GCky>`:
 
@@ -298,6 +316,8 @@ if (successGrad) {
 | Layer original apagada sem gradiente | `successGrad` não verificado | Guard de sucesso antes de `origLyr.remove()` ✅ |
 | Shapes deslocadas / em posição errada | Vector Group Transform do template tem offset | Zerar `ADBE Vector Position/Anchor` do grupo ✅ |
 | Comp com tamanho errado | SimularOverlord reutilizava comp ativa | SEMPRE criar nova comp com dimensões do artboard ✅ |
+| Gradientes Renderizando quase PRETO | C++ dividindo cores [0.0 - 1.0] novamente por 255 | Remover `/ 255.f` do C++. Cores do JSON já chegam entre 0-1 ✅ |
+| Apenas 2 cores são injetadas no AE (Ponta 1 e Ponta 2) | XML do C++ não encontrou `<int` para extrair tamanho pq estava formatado como `&lt;int` | Usar `aepx.find("&lt;int")` e forçar Preenchimento do vetor c/ a última cor (Padding) ✅ |
 | `"O objeto é inválido"` | `rect.remove()` após `addProperty()` | Remover ANTES de addProperty ✅ |
 | `"Gradientes: 0"` via BridgeTalk | `JSON.stringify` não existe em AI ES | Usar polyfill `toJSON()` ✅ |
 | Grad Start/End não muda | matchName falha no AE PT-BR | Usar `"Ponto inicial"` / `"Ponto final"` ✅ |

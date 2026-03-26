@@ -59,6 +59,37 @@ try {
             continue;
         }
 
+        if (sd.fillType === "text") {
+            var txtLyr = comp.layers.addText(sd.text);
+            txtLyr.name = sd.origName || sd.name;
+            var textProp = txtLyr.property("Source Text");
+            var textDoc = textProp.value;
+            textDoc.fontSize = sd.fontSize || 50;
+            textDoc.font = sd.fontName || "Arial";
+            textDoc.fillColor = sd.color || [1,1,1];
+            if (sd.justification === 1) textDoc.justification = ParagraphJustification.CENTER_JUSTIFY;
+            else if (sd.justification === 2) textDoc.justification = ParagraphJustification.RIGHT_JUSTIFY;
+            else textDoc.justification = ParagraphJustification.LEFT_JUSTIFY;
+            try { textProp.setValue(textDoc); } catch(et){}
+            try {
+                var tr = txtLyr.property("ADBE Transform Group");
+                if (sd.kind === 1) {
+                    tr.property("ADBE Anchor Point").setValue([0, 0]);
+                } else {
+                    var tb = txtLyr.sourceRectAtTime(0, false);
+                    var tcx = tb.left + (tb.width/2);
+                    var tcy = tb.top + (tb.height/2);
+                    tr.property("ADBE Anchor Point").setValue([tcx, tcy]);
+                }
+                tr.property("ADBE Position").setValue([sd.x, sd.y]);
+                if (sd.rotation) { tr.property("ADBE Rotation").setValue(sd.rotation); }
+                if (sd.opacity !== undefined) { tr.property("ADBE Opacity").setValue(sd.opacity); }
+            } catch(et){}
+            layerDict[sd.name] = txtLyr;
+            nullDict[sd.name] = txtLyr;
+            continue;
+        }
+
         var shLyr = comp.layers.addShape();
         layerDict[sd.name] = shLyr;
         shLyr.name = sd.name || ("shape_" + si);

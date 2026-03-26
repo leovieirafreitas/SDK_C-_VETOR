@@ -171,6 +171,79 @@
             return;
         }
 
+        if (t === "TextFrame") {
+            var txt = "";
+            try { txt = item.contents; } catch(e){}
+            if (!txt) return;
+            
+            var size = 50, font = "Arial", color = [1,1,1], just = 0, rot = 0;
+            var aeX = 0, aeY = 0, isPoint = 0;
+            try {
+                // Method 1: Absolute internal rotation tag
+                try { rot = parseFloat(item.tags.getByName("BBAccumRotation").value) * 180.0 / Math.PI; } catch(e){}
+                
+                if (!rot && item.matrix) {
+                    rot = -Math.atan2(item.matrix.mValueB, item.matrix.mValueA) * 180.0 / Math.PI;
+                    var parentWalk = item.parent;
+                    while (parentWalk && parentWalk.typename !== "Layer" && parentWalk.typename !== "Document") {
+                        try {
+                            if (parentWalk.matrix) rot += -Math.atan2(parentWalk.matrix.mValueB, parentWalk.matrix.mValueA) * 180.0 / Math.PI;
+                        } catch(e){}
+                        parentWalk = parentWalk.parent;
+                    }
+                }
+            } catch(e) {}
+
+            try {
+                if (item.kind && item.kind.toString().indexOf("POINT") > -1) {
+                    isPoint = 1;
+                    var anc = item.anchor;
+                    aeX = anc[0] - abLeft;
+                    aeY = abTop - anc[1];
+                } else {
+                    var b = item.geometricBounds;
+                    aeX = ((b[0] + b[2]) / 2) - abLeft;
+                    aeY = abTop - ((b[1] + b[3]) / 2);
+                }
+            } catch(e) {
+                var b2 = item.geometricBounds;
+                aeX = ((b2[0] + b2[2]) / 2) - abLeft;
+                aeY = abTop - ((b2[1] + b2[3]) / 2);
+            }
+
+            try {
+                var attrs = item.textRange.characterAttributes;
+                if (attrs.size) size = attrs.size;
+                if (attrs.textFont) font = attrs.textFont.name;
+                var rgb = colorToRGB(attrs.fillColor);
+                if (rgb) color = rgb;
+                var pAttrs = item.textRange.paragraphAttributes;
+                if (pAttrs.justification) {
+                    var jstr = pAttrs.justification.toString();
+                    if (jstr.indexOf("CENTER") > -1) just = 1;
+                    else if (jstr.indexOf("RIGHT") > -1) just = 2;
+                }
+            } catch(e){}
+            
+            results.push({
+                fillType: "text",
+                name: currentID,
+                origName: item.name || txt.substring(0, 15),
+                parent: parentID,
+                text: txt,
+                fontSize: size,
+                fontName: font,
+                color: color,
+                justification: just,
+                rotation: rot,
+                kind: isPoint,
+                x: aeX,
+                y: aeY,
+                opacity: finalOpacity
+            });
+            return;
+        }
+
         if (t !== "PathItem" && t !== "CompoundPathItem") return;
 
         try { if (t === "PathItem" && item.clipping) return; } catch (e) { }
@@ -294,16 +367,25 @@
     for (var k2 = 0; k2 < shapesData.length; k2++) {
         var sd = shapesData[k2];
         wr(jf, '    {');
-        wr(jf, '      "name": "' + sd.name.replace(/"/g, "'") + '" ,');
+        wr(jf, '      "name": "' + sd.name.replace(/"/g, "'").replace(/[\r\n]/g, " ") + '" ,');
         wr(jf, '      "fillType": "' + sd.fillType + '",');
-        if (sd.parent) wr(jf, '      "parent": "' + sd.parent + '",');
+        if (sd.parent) wr(jf, '      "parent": "' + sd.parent.replace(/"/g, "'").replace(/[\r\n]/g, " ") + '",');
         var opact = (sd.opacity !== undefined) ? sd.opacity : 100;
         wr(jf, '      "opacity":' + toFixed(opact) + ',');
         wr(jf, '      "x":' + toFixed(sd.x) + ', "y":' + toFixed(sd.y) + ',');
 
-                if (sd.fillType === "group") {
-            if (sd.parent) wr(jf, '      "parent": "' + sd.parent + '",');
-            wr(jf, '      "origName": "' + (sd.origName||"").replace(/"/g, "'") + '"');
+        if (sd.fillType === "group") {
+            wr(jf, '      "origName": "' + (sd.origName||"").replace(/"/g, "'").replace(/[\r\n]/g, " ") + '"');
+        } else if (sd.fillType === "text") {
+            var estr = (sd.text||"").replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, '\\n').replace(/\r/g, '\\r');
+            wr(jf, '      "text": "' + estr + '",');
+            wr(jf, '      "origName": "' + (sd.origName||"").replace(/"/g, "'").replace(/[\r\n]/g, " ") + '",');
+            wr(jf, '      "fontSize": ' + sd.fontSize + ',');
+            wr(jf, '      "fontName": "' + sd.fontName + '",');
+            wr(jf, '      "color": [' + toFixed(sd.color[0]) + ',' + toFixed(sd.color[1]) + ',' + toFixed(sd.color[2]) + '],');
+            wr(jf, '      "rotation": ' + toFixed(sd.rotation || 0) + ',');
+            wr(jf, '      "kind": ' + (sd.kind || 0) + ',');
+            wr(jf, '      "justification": ' + sd.justification + '');
         } else if (sd.fillType === "gradient") {
             // Formato legado (GRAD FIXER usa este — nao alterar!)
             wr(jf, '      "gradient": { "startX":' + toFixed(sd.gradient.startX) + ', "startY":' + toFixed(sd.gradient.startY) + ',');
@@ -368,17 +450,12 @@
         var bt = new BridgeTalk();
         bt.target = "aftereffects";
         
-        var req = "app.beginUndoGroup('Importar e Aplicar Gradientes');\n";
-        req += "var f = new File('C:/AEGP/SimularOverlord.jsx');\n";
-        req += "if(f.exists){ f.open('r'); eval(f.read()); f.close(); } else { alert('SimularOverlord.jsx nao encontrado em C:/AEGP/'); }\n";
+        var req = "var f = new File('C:/AEGP/SimularOverlord.jsx');\n";
+        req += "if(f.exists){ f.open('r'); eval(f.read()); f.close(); } else { alert('SimularOverlord.jsx nao encontrado!\\nCaminho: C:/AEGP/'); }\n";
         
-        // MUST CLOSE JS UNDO GROUP BEFORE TRIGGERING C++ EXECUTE COMMAND!
         if (nGrad > 0) {
-            req += "app.endUndoGroup();\n";
             req += "var gCmd = app.findMenuCommandId('GRAD FIXER: Aplicar Gradientes');\n";
             req += "if (gCmd > 0) { app.executeCommand(gCmd); } else { alert('Plugin GRAD FIXER nao encontrado no menu do AE!'); }\n";
-        } else {
-            req += "app.endUndoGroup();\n";
         }
         
         bt.body = req;
