@@ -24,21 +24,21 @@
     Menu: Camada → "GRAD FIXER: Aplicar Gradientes"
          ↓
     C++ lê grad_data.json
-    C++ gera AEPX individuais com GCky (modo binário, confiável)
-    ExtendScript para cada layer:
-      1. Encontra layer por nome na comp ativa
-      2. Lê Shape Value da layer (path do Overlord — ZERO reconstrução!)
-      3. Importa AEPX c/ GCky → obtém comp com G-Fill template
-      4. Remove TUDO do grupo exceto G-Fill (Rect + Stroke + etc)
-      5. Injeta shapeVal (path perfeito) no grupo limpo
-      6. Define Grad Start/End
-      7. Remove layer original (sólida), mantém layer gradiente
+    C++ lê o Template Lote (grad_batch_template.aepx)
+    C++ gera UM ÚNICO AEPX em Lote (ae_batch_temp.aepx) injetando todos os GCkys sequencialmente nele.
+    ExtendScript:
+      1. Importa ae_batch_temp.aepx → obtém a Nova Comp com Todas as Camadas de Template (Lote)
+      2. Loopa pelo JSON extraído do C++ e para cada layer do Comp template importado:
+      3. Lê o Shape Value da layer original nativa do Overlord
+      4. Remove Rect + Stroke da respectiva camada copiada e Injeta o Shape Value
+      5. Aplica a camada final na Comp Principal e a posiciona
+      6. Remove a camada original crua
          ↓
 [RESULTADO]
     layers "grad_1 (grad)", "grad_2 (grad)" com:
+    ✅ Importação Super Rápida (1 único AEPX ao invés de centenas)
     ✅ Paths IDÊNTICOS ao Illustrator (vindos do Overlord, zero reconstrução)
-    ✅ Gradientes NATIVOS editáveis (GCky injection via SDK C++)
-    ✅ Funciona com shapes COMPLEXAS (compound paths, curvas, letras)
+    ✅ Gradientes NATIVOS editáveis c/ limites dinâmicos de parada de cor (Stops Padding)
 ```
 
 ---
@@ -62,8 +62,8 @@
 |---|---|---|
 | `ExtrairGradiente.jsx` | `C:\AEGP\` | Extrai gradientes do Illustrator → JSON |
 | `grad_data.json` | `C:\AEGP\` | artboard + shapes com gradiente + paths |
-| `gradient_template.aepx` | `C:\AEGP\` | Template AE 2025 com G-Fill + `<GCky>` em `<GCst>` |
-| `grad_N.aepx` | `C:\AEGP\` | AEPX gerados pelo C++ (um por gradiente) |
+| `grad_batch_template.aepx` | `C:\AEGP\` | Template Mestre do AE 2025 contendo 50 cópias (layers) de um vetor com `<GCky>` nativo |
+| `ae_batch_temp.aepx` | `C:\AEGP\` | AEPX Exportado / Injetado pelo C++ (contém TODOS os Shapes alterados de uma vez) |
 | `SimularOverlord.jsx` | `C:\AEGP\` | Cria shape layers sólidas (teste/fallback) |
 | `GradientManipulator.cpp` | SDK/Examples | Plugin C++ AEGP — motor GCky + ExtendScript |
 | `GradientManipulator_PiPL.r` | SDK/Examples | Recursos do plugin (menu, ID) |
@@ -84,8 +84,10 @@
 
 **Passo 3 — After Effects (plugin C++):**
 - Menu `Camada → GRAD FIXER: Aplicar Gradientes`
-- O plugin lê o JSON, lê o Shape de cada layer existente, aplica GCky e remove a layer sólida
-- **Resultado:** layers `"grad_1 (grad)"`, `"grad_2 (grad)"` com gradientes perfeitos
+- O plugin lê o JSON e abre o template Mestre (`grad_batch_template.aepx`) que possui 50 vetores com `<GCky>`.
+- O C++ manipula o texto binário trocando o limitador XML de parada de cor e enxertando R/G/B, salvando apenas UM arquivo compilado `ae_batch_temp.aepx`.
+- O script automatizado copia as 50 camadas ajustadas desse AEPX, lê os contornos das camadas que o Overlord fez localmente, aplica em cima das novas, renomeia, esconde as antigas etc.
+- **Resultado:** Importação Relâmpago com layers `"grad_1 (grad)"` e curvas perfeitas.
 
 ---
 
