@@ -48,11 +48,14 @@ try {
         var sd = jd.shapes[si];
         
         if (sd.fillType === "group") {
-            var nLayer = comp.layers.addNull();
+            // Cria um shape vazio (invisivel na tela, sem o quadrado vermelho do NULL original!)
+            var nLayer = comp.layers.addShape();
             nLayer.name = sd.origName || sd.name;
             try { 
-                nLayer.property("ADBE Transform Group").property("ADBE Anchor Point").setValue([50, 50]); 
-                nLayer.property("ADBE Transform Group").property("ADBE Position").setValue([artW/2, artH/2]); 
+                nLayer.property("ADBE Transform Group").property("ADBE Anchor Point").setValue([0, 0]); 
+                var gX = (sd.x !== undefined && sd.x !== 0) ? sd.x : (artW/2);
+                var gY = (sd.y !== undefined && sd.y !== 0) ? sd.y : (artH/2);
+                nLayer.property("ADBE Transform Group").property("ADBE Position").setValue([gX, gY]); 
             } catch(e){}
             nullDict[sd.name] = nLayer;
             layerDict[sd.name] = nLayer;

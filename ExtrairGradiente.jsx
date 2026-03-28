@@ -160,11 +160,20 @@
         idCounter++;
 
         if (t === "GroupItem") {
+            var gX = 0, gY = 0;
+            try {
+                var b = item.geometricBounds;
+                gX = ((b[0] + b[2]) / 2) - abLeft;
+                gY = abTop - ((b[1] + b[3]) / 2);
+            } catch(e) {}
+
             results.push({
                 fillType: "group",
                 name: currentID,
                 origName: item.name || "Grupo",
-                parent: parentID
+                parent: parentID,
+                x: gX,
+                y: gY
             });
             for (var i = 0; i < item.pageItems.length; i++)
                 collectAll(item.pageItems[i], results, abLeft, abTop, currentID, finalOpacity);
