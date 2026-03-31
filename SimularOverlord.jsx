@@ -11,11 +11,16 @@ try {
     var artW = Math.round(jd.artboard.w);
     var artH = Math.round(jd.artboard.h);
 
-    var fps = 25, dur = 10;
-    var ac = app.project.activeItem;
-    if (ac && ac instanceof CompItem) { fps = ac.frameRate; dur = ac.duration; }
-    var comp = app.project.items.addComp("Vetores Grad", artW, artH, 1, dur, fps);
-    comp.bgColor = [0, 0, 0];
+    var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert("Nenhuma composicao aberta. Clique no botao COMP no Illustrator primeiro para criar a composicao baseada no artboard!");
+        return;
+    }
+
+    app.beginUndoGroup("Transfer Vectors");
+
+    // CRIA COMP TEMPORARIA PARA CONSTRUCAO INVISIVEL (Rápido)
+    var tempComp = app.project.items.addComp("TempBuild_GF", comp.width, comp.height, comp.pixelAspect, comp.duration, comp.frameRate);
 
     var nGrad=0, nSolid=0, nStroke=0;
 
@@ -48,14 +53,24 @@ try {
         var sd = jd.shapes[si];
         
         if (sd.fillType === "group") {
-            // Cria um shape vazio (invisivel na tela, sem o quadrado vermelho do NULL original!)
-            var nLayer = comp.layers.addShape();
+            var nLayer = tempComp.layers.addShape();
             nLayer.name = sd.origName || sd.name;
+            nLayer.comment = sd.name;
             try { 
-                nLayer.property("ADBE Transform Group").property("ADBE Anchor Point").setValue([0, 0]); 
+                var root = nLayer.property("ADBE Root Vectors Group");
+                var bx = root.addProperty("ADBE Vector Group");
+                bx.name = "Bounds";
+                var cont = bx.property("ADBE Vectors Group");
+                var rect = cont.addProperty("ADBE Vector Shape - Rect");
+                rect.property("ADBE Vector Rect Size").setValue([sd.w || 100, sd.h || 100]);
+                
                 var gX = (sd.x !== undefined && sd.x !== 0) ? sd.x : (artW/2);
                 var gY = (sd.y !== undefined && sd.y !== 0) ? sd.y : (artH/2);
-                nLayer.property("ADBE Transform Group").property("ADBE Position").setValue([gX, gY]); 
+                var tr = nLayer.property("ADBE Transform Group");
+                tr.property("ADBE Anchor Point").setValue([0, 0]); 
+                tr.property("ADBE Position").setValue([gX, gY]); 
+                nLayer.label = 0;       // Sem cor de rotulo
+                // Overlord layers usually do not have the guide layer flag since the user's screenshot lacks the cyan guide icon for group shape layers.
             } catch(e){}
             nullDict[sd.name] = nLayer;
             layerDict[sd.name] = nLayer;
@@ -63,8 +78,9 @@ try {
         }
 
         if (sd.fillType === "text") {
-            var txtLyr = comp.layers.addText(sd.text);
+            var txtLyr = tempComp.layers.addText(sd.text);
             txtLyr.name = sd.origName || sd.name;
+            txtLyr.comment = sd.name;
             var textProp = txtLyr.property("Source Text");
             var textDoc = textProp.value;
             textDoc.fontSize = sd.fontSize || 50;
@@ -93,8 +109,8 @@ try {
             continue;
         }
 
-        var shLyr = comp.layers.addShape();
-        layerDict[sd.name] = shLyr;
+        var shLyr = tempComp.layers.addShape();
+        shLyr.comment = sd.name || ("shape_" + si);
         shLyr.name = sd.name || ("shape_" + si);
         var root = shLyr.property("ADBE Root Vectors Group");
         var grp  = root.addProperty("ADBE Vector Group");
@@ -119,7 +135,7 @@ try {
                 gFill.property("ADBE Vector Fill Color").setValue([s0.r, s0.g, s0.b, 1]);
             }
             shLyr.property("ADBE Transform Group").property("ADBE Anchor Point").setValue([0,0]);
-            shLyr.property("ADBE Transform Group").property("ADBE Position").setValue([0,0]);
+            shLyr.property("ADBE Transform Group").property("ADBE Position").setValue([sd.x || 0, sd.y || 0]);
             if (sd.opacity !== undefined) { try { shLyr.property("ADBE Transform Group").property("ADBE Opacity").setValue(sd.opacity); } catch(eo){} }
             nGrad++;
 
@@ -175,6 +191,19 @@ try {
         }
     }
 
+    layerDict = {}; nullDict = {};
+    for (var i = tempComp.numLayers; i >= 1; i--) {
+        var oLyr = tempComp.layer(i);
+        var sdName = oLyr.comment;
+        oLyr.copyToComp(comp);
+        var nLyr = comp.layer(1);
+        if (sdName) {
+            layerDict[sdName] = nLyr;
+            nullDict[sdName] = nLyr;
+        }
+    }
+    tempComp.remove();
+
     // APLICAR PARENTESCO APOS TODAS AS LAYERS ESTAREM CRIADAS E POSICIONADAS
     // Isso garante que o After Effects faca a matematica de compensacao de parentesco (preservando posicao visual)
     for (var si = 0; si < jd.shapes.length; si++) {
@@ -185,7 +214,11 @@ try {
     }
 
     comp.openInViewer();
+    app.endUndoGroup();
     // alert removido para rodar 100% silencioso via BridgeTalk
 
-} catch(e) { alert("ERRO: "+e.message+" (L"+e.line+")"); }
+} catch(e) { 
+    try{ app.endUndoGroup(); } catch(err){}
+    alert("ERRO: "+e.message+" (L"+e.line+")"); 
+}
 })();

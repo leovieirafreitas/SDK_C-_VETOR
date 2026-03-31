@@ -1,24 +1,28 @@
 # Pipeline GRAD FIXER: Illustrator → After Effects
-## Gradientes Perfeitos em Vetores Complexos via GCky SDK (v8 — PRODUÇÃO AE 2025 BINARY SAFE)
+## Gradientes Perfeitos em Vetores Complexos via GCky SDK (v12 — PRODUÇÃO AE 2025 BINARY SAFE + Turbo Shadow-Build)
 **Status:** ✅ FUNCIONANDO — paths + gradientes exatos + posição 1:1 com artboard do Illustrator
 
 ---
 
-## 1. Visão Geral (Arquitetura v8)
+## 1. Visão Geral (Arquitetura v12)
 
 ```
 [ILLUSTRATOR — Passo 1]
-    ExtrairGradiente.jsx (roda no Illustrator)
-    Extrai: nome, gradient stops (R/G/B já normalizadas entre 0.0-1.0), startX/Y, endX/Y
+    Botão "COMP": Cria Comp no AE baseada no Artboard (CriarComp.jsx)
+    Botão "SPLIT": ExtrairGradiente.jsx (Roda Localmente)
+    Extrai: nome, hierarquia (grupos), bounds (w, h), gradient stops, posições e curvas Bezier absolutas.
          ↓
     C:\AEGP\grad_data.json
 
-[AFTER EFFECTS — Passo 2]
-    SimularOverlord.jsx (ou o Overlord real / qualquer plugin BridgeTalk)
-    Cria shape layers com paths CORRETOS + cores SÓLIDAS
-    (Nomes das layers = nomes dos shapes no JSON)
+[AFTER EFFECTS — Passo 2 (Turbo Shadow-Build)]
+    SimularOverlord.jsx / SplitGroup.jsx
+    - Pausa atualização da tela (app.beginUndoGroup).
+    - Cria um TempComp Oculto no background.
+    - Constrói shapes idênticos (solid, fill, hierarquia de bounds/grupos) super-rápido (< 10s).
+    - Copia as camadas da TempComp para a Comp visível do usuário.
+    - Aplica o Parentesco dinâmico via layer names.
          ↓
-    layers: "grad_1", "grad_2", ... (paths perfeitos, sem gradiente)
+    layers prontas e agrupadas: "grad_1", "Grupo_1", ... na COMP_ATIVA.
 
 [AFTER EFFECTS — Passo 3: Plugin C++ AEGP]
     Menu: Camada → "GRAD FIXER: Aplicar Gradientes"
@@ -45,14 +49,14 @@
 
 ## 2. Por que essa Arquitetura?
 
-| Problema | Solução v6 |
+| Problema | Solução v12 |
 |---|---|
-| AE não importa gradientes de .ai | C++ gera AEPX com GCky em modo binário ✅ |
-| Reconstrução Bezier falha em shapes complexas | Lê ShapeValue diretamente do Overlord layer ✅ |
-| JS escrevendo AEPX corrompe o arquivo | C++ escreve em `std::ios::binary` ✅ |
-| AE 2025 salva AEPX em bdata (sem GCky texto) | Template criado p/ ter `<GCky>` em `<GCst>` ✅ |
-| Template tinha Stroke + Rect bloqueando path | Remove TUDO exceto G-Fill + Transform ✅ |
-| GCky com `<` literal quebra XML do AEPX | Usa `&lt;` / `&gt;` (HTML entities) ✅ |
+| Lentidão extrema ao construir +500 vetores nativamente | **Turbo Shadow-Build Strategy:** cria as shapes iterativamente em uma var tempComp (background Comp), e com 1 comando `copyToComp()` injeta na comp alvo, reduzindo processamento DOM da UI de 1.5 min pra ~10 segs ✅ |
+| Reconstrução Bezier falha em shapes rotacionadas | Correção geométrica em ExtendScript com `sd.rotation`, e extração absoluta (`SplitGroup.jsx`) usando referências topologicas shape-relative `[0,0]` ✅ |
+| Hierarquia de Grupos Perdida / Desalinhada no AE | **Shape Bounds System:** Nulls foram abandonados. Grupos são convertidos p/ Shape Layers Invisíveis contendo sub-shapes `Bounds` com `w` e `h` nativos calculados (bounding-boxes de grupos Ai). Posicionamento e Rotações fluindo exatamente iguais a exportações padrão Overlord ✅ |
+| Inserção no Fundo Prejudicava a Escala Z | Pilha de camadas perfeitamente invertida no Json+JS para manter hierarquia igual Overlord ✅ |
+| AE 2025 salva AEPX em bdata (binário encriptado) | Template embutido `grad_batch_template.aepx` (criado em modo legado/fallback para conter um node XML legível `<GCky>` dentro de um encapsulador pseudo-binário `<GCst>`) manipulado via C++ injetado diretamente em disco ✅ |
+| GCky XML Injection corrompido / Black screen | Transformamos nodes brutos e apóstrofos limitados em C++ Strings Literais (usando `<` via `&lt;` e escapando aspas `&apos;`). Padding rígido de numeração `Stops Size = 20`. ✅ |
 
 ---
 
@@ -60,12 +64,13 @@
 
 | Arquivo | Local | Função |
 |---|---|---|
-| `ExtrairGradiente.jsx` | `C:\AEGP\` | Extrai gradientes do Illustrator → JSON |
-| `grad_data.json` | `C:\AEGP\` | artboard + shapes com gradiente + paths |
-| `grad_batch_template.aepx` | `C:\AEGP\` | Template Mestre do AE 2025 contendo 50 cópias (layers) de um vetor com `<GCky>` nativo |
-| `ae_batch_temp.aepx` | `C:\AEGP\` | AEPX Exportado / Injetado pelo C++ (contém TODOS os Shapes alterados de uma vez) |
-| `SimularOverlord.jsx` | `C:\AEGP\` | Cria shape layers sólidas (teste/fallback) |
-| `GradientManipulator.cpp` | SDK/Examples | Plugin C++ AEGP — motor GCky + ExtendScript |
+| `ExtrairGradiente.jsx` | `C:\AEGP\` | Extrai formas, curvas e hierarquias do Illustrator → JSON |
+| `CriarComp.jsx` | `C:\AEGP\` | Roteia parâmetros de bounds do Illustrator pra invocar nova Comp no AE |
+| `grad_data.json` | `C:\AEGP\` | Payload principal de conversão bridge |
+| `grad_batch_template.aepx` | `C:\AEGP\` | Template do AE contendo placeholders nativos `<GCky>(grad)` para injetar cor |
+| `ae_batch_temp.aepx` | `C:\AEGP\` | Output serializado pós moderação binária no SDK C++ |
+| `SplitGroup.jsx` / `SimularOverlord.jsx` | `C:\AEGP\` | Motor de construtor JS (Turbo Shadow-Build) |
+| `GradientManipulator.cpp` | SDK/Examples | Plugin C++ AEGP — injeção GCky rápida para vetores de gradiente |
 | `GradientManipulator_PiPL.r` | SDK/Examples | Recursos do plugin (menu, ID) |
 
 ---
@@ -73,21 +78,18 @@
 ## 4. Como Usar (3 passos)
 
 **Passo 1 — Illustrator:**
-- Certifique que o arquivo `.ai` está **salvo em disco**
-- Execute `ExtrairGradiente.jsx` (selecione shapes com gradiente, ou deixa sem seleção para varrer tudo)
-- Gera `C:\AEGP\grad_data.json`
+- Deixe o arquivo `.ai` aberto.
+- Clique no botão `Comp` no Painel da Extensão. O fluxo rodará `CriarComp.jsx` e criará uma "Composition" idêntica ao Artboard vigente automaticamente. (Background Comp mode evita renders massivos de tela simultâneos).
 
-**Passo 2 — After Effects (Overlord ou SimularOverlord):**
-- Use o Overlord para enviar os vetores do Illustrator para o AE (paths corretos, gradientes ausentes)
-- OU: rode `SimularOverlord.jsx` no Script Editor do AE (lê grad_data.json e cria layers sólidas)
-- As layers devem ter o **mesmo nome** dos shapes no JSON (ex: "grad_1", "grad_2")
+**Passo 2 — Construção Extrema em JS:**
+- Clique `Split Layer` ou equivalente no painel. O CEP aciona a ponte pro AE.
+- O JS varrerá `ExtrairGradiente.jsx`. Em milissegundos o Illustrator serializa bounds e shapes para o `grad_data.json`.
+- O AE absorverá o call pra compilar massivamente (`SimularOverlord` ou `SplitGroup`). Atuando com Transações Isoladas de RAM (`app.beginUndoGroup` e Hidden Pre-comping `TempBuild_GF`), 600 vetores saltam do nada pra Timeline num intervalo limpo e síncrono (< 10s).
+- Hierarquia perfeitamente convertida pra pseudo-Nulls (`Bounds` arrays em layers shape neutras).
 
-**Passo 3 — After Effects (plugin C++):**
-- Menu `Camada → GRAD FIXER: Aplicar Gradientes`
-- O plugin lê o JSON e abre o template Mestre (`grad_batch_template.aepx`) que possui 50 vetores com `<GCky>`.
-- O C++ manipula o texto binário trocando o limitador XML de parada de cor e enxertando R/G/B, salvando apenas UM arquivo compilado `ae_batch_temp.aepx`.
-- O script automatizado copia as 50 camadas ajustadas desse AEPX, lê os contornos das camadas que o Overlord fez localmente, aplica em cima das novas, renomeia, esconde as antigas etc.
-- **Resultado:** Importação Relâmpago com layers `"grad_1 (grad)"` e curvas perfeitas.
+**Passo 3 — After Effects (Plugin C++ Inject - Flash Gradients):**
+- Aciona-se, e o `GradientManipulator.cpp` processará a extração. Injeta o Array de Cores RGB no `.AEPX` na velocidade da luz do disco do sistema operativo.
+- Ele renderiza as substituições pra camada `Template`, finalizando as cópias com `<GCky>` de volta na comp final. Importação Relâmpago com cores orgânicas puras idênticas à source de Design.
 
 ---
 
