@@ -1,4 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #include "AEConfig.h"
 #ifdef AE_OS_WIN
 #include <windows.h>
@@ -168,8 +168,7 @@ static std::string GenerateGCky(const std::vector<ColorStop> &stops,
   return x;
 }
 static bool WriteBatchAEPX(const std::vector<GradShape> &shapes,
-                           const std::string &outPath,
-                           const std::string &templatePath) {
+                           const std::string &outPath, const std::string &templatePath) {
   std::ifstream tp(templatePath, std::ios::binary);
   if (!tp.is_open())
     return false;
@@ -224,8 +223,7 @@ static bool WriteBatchAEPX(const std::vector<GradShape> &shapes,
 
 // Same as WriteBatchAEPX but uses grad_group_template.aepx (1 layer, N groups)
 static bool WriteGroupAEPX(const std::vector<GradShape> &shapes,
-                           const std::string &outPath,
-                           const std::string &templatePath) {
+                           const std::string &outPath, const std::string &templatePath) {
   std::ifstream tp(templatePath, std::ios::binary);
   if (!tp.is_open())
     return false;
@@ -273,8 +271,7 @@ static bool WriteGroupAEPX(const std::vector<GradShape> &shapes,
 }
 
 static bool WriteVetoresAEPX(const std::vector<GradShape> &shapes,
-                             const std::string &outPath,
-                             const std::string &templatePath) {
+                             const std::string &outPath, const std::string &templatePath) {
   std::ifstream tp(templatePath, std::ios::binary);
   if (!tp.is_open())
     return false;
@@ -569,15 +566,14 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
 
   int gradCount = 0;
   for (size_t i = 0; i < shapes.size(); i++) {
-    if (shapes[i].type == "gradient")
-      gradCount++;
+    if (shapes[i].type == "gradient") gradCount++;
   }
 
   std::string batchTpl = "C:\\AEGP\\grad_batch_template.aepx";
   std::string groupTpl = "C:\\AEGP\\nested_group_template.aepx";
   if (gradCount > 50) {
-    batchTpl = "C:\\AEGP\\grad_batch_template_1000.aepx";
-    groupTpl = "C:\\AEGP\\nested_group_template_1000.aepx";
+      batchTpl = "C:\\AEGP\\grad_batch_template_1000.aepx";
+      groupTpl = "C:\\AEGP\\nested_group_template_1000.aepx";
   }
 
   std::string batchPath = "C:\\AEGP\\ae_batch_temp.aepx";
@@ -648,8 +644,7 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "var grads=" + gradJS + ";\n";
   js += "var groupNameMap=" + groupNameMapJS + ";\n";
   js += "var comp=app.project.activeItem;\n";
-  js += "if(!comp||!(comp instanceof CompItem)){alert('Abra uma "
-        "comp!');return;}\n";
+  js += "if(!comp||!(comp instanceof CompItem)){alert('Abra uma comp!');return;}\n";
 
   js += "var layerNamesMulti = {};\n";
   js += "for(var k=1; k<=comp.numLayers; k++){\n";
@@ -659,10 +654,8 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "}\n";
   js += "var hasFlatGradients = false;\n";
   js += "for(var g=0; g<grads.length; g++){\n";
-  js += "  var tgtNm = grads[g].name; if(groupNameMap[tgtNm]) "
-        "tgtNm=groupNameMap[tgtNm];\n";
-  js += "  if(layerNamesMulti[tgtNm] || layerNamesMulti[grads[g].name]) { "
-        "hasFlatGradients = true; break; }\n";
+  js += "  var tgtNm = grads[g].name; if(groupNameMap[tgtNm]) tgtNm=groupNameMap[tgtNm];\n";
+  js += "  if(layerNamesMulti[tgtNm] || layerNamesMulti[grads[g].name]) { hasFlatGradients = true; break; }\n";
   js += "}\n";
   js += "var isNested = !hasFlatGradients;\n";
 
@@ -681,47 +674,36 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "      try{conteudo.property(i).remove();}catch(e){}\n";
   js += "    }\n";
   js += "    for(var gi=0; gi<grads.length; gi++) {\n";
-  js += "      var gd = grads[gi]; var trgNm = gd.name; "
-        "if(groupNameMap[gd.name]) trgNm = groupNameMap[gd.name];\n";
+  js += "      var gd = grads[gi]; var trgNm = gd.name; if(groupNameMap[gd.name]) trgNm = groupNameMap[gd.name];\n";
   js += "      try{ \n";
   js += "        var grp = conteudo.property(gi+1);\n";
   js += "        grp.name = trgNm;\n";
   js += "        if(gd.type !== 'solid'){\n";
-  js += "          var fill = grp.property('ADBE Vectors "
-        "Group').property('ADBE Vector Graphic - G-Fill');\n";
+  js += "          var fill = grp.property('ADBE Vectors Group').property('ADBE Vector Graphic - G-Fill');\n";
   js += "          if(fill){\n";
-  js += "            try{fill.property('Ponto "
-        "inicial').setValue([gd.gsX,gd.gsY]);}catch(e){try{fill.property('ADBE "
-        "Vector Grad Start').setValue([gd.gsX,gd.gsY]);}catch(e2){}}\n";
-  js += "            try{fill.property('Ponto "
-        "final').setValue([gd.geX,gd.geY]);}catch(e){try{fill.property('ADBE "
-        "Vector Grad End').setValue([gd.geX,gd.geY]);}catch(e2){}}\n";
+  js += "            try{fill.property('Ponto inicial').setValue([gd.gsX,gd.gsY]);}catch(e){try{fill.property('ADBE Vector Grad Start').setValue([gd.gsX,gd.gsY]);}catch(e2){}}\n";
+  js += "            try{fill.property('Ponto final').setValue([gd.geX,gd.geY]);}catch(e){try{fill.property('ADBE Vector Grad End').setValue([gd.geX,gd.geY]);}catch(e2){}}\n";
   js += "          }\n";
   js += "        }\n";
   js += "      }catch(e){}\n";
   js += "    }\n";
   js += "    mestre.copyToComp(comp);\n";
-  js += "    try{if(typeof vImp !== 'undefined' && vImp) "
-        "vImp.remove();}catch(e){}\n";
+  js += "    try{if(typeof vImp !== 'undefined' && vImp) vImp.remove();}catch(e){}\n";
   js += "  }\n";
   js += "} else {\n";
   js += "  app.beginUndoGroup('Importar Split Layer/Group');\n";
   js += "  // Detect Split Group mode: a layer named 'Vetores' exists\n";
   js += "  var vetoresLyr=null;\n";
-  js += "  for(var vScan=1; vScan<=comp.numLayers; vScan++) { "
-        "if(comp.layer(vScan).name === 'Vetores'){ vetoresLyr = "
-        "comp.layer(vScan); break; } }\n";
+  js += "  for(var vScan=1; vScan<=comp.numLayers; vScan++) { if(comp.layer(vScan).name === 'Vetores'){ vetoresLyr = comp.layer(vScan); break; } }\n";
   js += "  var isSplitGroup=(vetoresLyr!==null);\n";
   js += "\n";
-  js += "  // bFile ALWAYS loads ae_batch_temp so each gradient gets its "
-        "distinct template layer\n";
+  js += "  // bFile ALWAYS loads ae_batch_temp so each gradient gets its distinct template layer\n";
   js += "  var bFile = new File('C:/AEGP/ae_batch_temp.aepx');\n";
   js += "  var bComp = null;\n";
   js += "  if(bFile.exists){\n";
   js += "    var bImp = app.project.importFile(new ImportOptions(bFile));\n";
   js += "    if(bImp instanceof FolderItem){\n";
-  js += "      for(var fI=1; fI<=bImp.numItems; fI++){ if(bImp.item(fI) "
-        "instanceof CompItem){ bComp=bImp.item(fI); break; } }\n";
+  js += "      for(var fI=1; fI<=bImp.numItems; fI++){ if(bImp.item(fI) instanceof CompItem){ bComp=bImp.item(fI); break; } }\n";
   js += "    } else { bComp = bImp; }\n";
   js += "  }\n";
   js += "  if(bComp){\n";
@@ -733,8 +715,7 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "      gradIndex++;\n";
   js += "      var trgNm = gd.name;\n";
   js += "      var origLyr=null;\n";
-  js += "      // Dynamically scan for the original layer to avoid index drift "
-        "upon additions/deletions\n";
+  js += "      // Dynamically scan for the original layer to avoid index drift upon additions/deletions\n";
   js += "      for(var scan=1; scan<=comp.numLayers; scan++) {\n";
   js += "        var scLyr = comp.layer(scan);\n";
   js += "        var scId = scLyr.id || (scan + '_' + scLyr.name);\n";
@@ -744,21 +725,18 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "           break;\n";
   js += "        }\n";
   js += "      }\n";
-  js += "      if(!origLyr){ alert('origLyr NULO para: ' + gd.name); continue; "
-        "}\n";
+  js += "      if(!origLyr){ alert('origLyr NULO para: ' + gd.name); continue; }\n";
   js += "\n";
   js += "      // Get shape path from original layer\n";
   js += "      var shapeVal=null;\n";
   js += "      try{\n";
   js += "        var origRoot=origLyr.property('ADBE Root Vectors Group');\n";
   js += "        for(var j=1;j<=origRoot.numProperties;j++){\n";
-  js += "          var origGrp=origRoot.property(j); "
-        "if(origGrp.matchName!=='ADBE Vector Group')continue;\n";
+  js += "          var origGrp=origRoot.property(j); if(origGrp.matchName!=='ADBE Vector Group')continue;\n";
   js += "          var origCont=origGrp.property('ADBE Vectors Group');\n";
   js += "          for(var k=1;k<=origCont.numProperties;k++){\n";
   js += "            var origP=origCont.property(k);\n";
-  js += "            if(origP.matchName==='ADBE Vector Shape - "
-        "Group'){shapeVal=origP.property('ADBE Vector Shape').value;break;}\n";
+  js += "            if(origP.matchName==='ADBE Vector Shape - Group'){shapeVal=origP.property('ADBE Vector Shape').value;break;}\n";
   js += "          } if(shapeVal)break;\n";
   js += "        }\n";
   js += "      }catch(er){}\n";
@@ -768,28 +746,22 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "\n";
   js += "      if(isSplitGroup && vetoresLyr){\n";
   js += "        if(!bComp) { alert('bComp ta nulo no laco!!'); continue; }\n";
-  js += "        if(bComp.numLayers < 1) { alert('BATALHA EPICA: O template ta "
-        "VAZIO! numLayers=0! Ele perdeu os shapes!'); continue; }\n";
+  js += "        if(bComp.numLayers < 1) { alert('BATALHA EPICA: O template ta VAZIO! numLayers=0! Ele perdeu os shapes!'); continue; }\n";
   js += "        var srcL = bComp.layer(bIdx);\n";
   js += "        if(!srcL) { alert('srcL nulo! bIdx=' + bIdx); continue; }\n";
-  js += "        for(var "
-        "lx=1;lx<=comp.numLayers;lx++){if(comp.layer(lx).selected){comp.layer("
-        "lx).selected=false;}}\n";
-  js += "        try { srcL.copyToComp(comp); } catch(ecpy) { alert('Falha no "
-        "copyToComp: ' + ecpy.message); continue; }\n";
+  js += "        for(var lx=1;lx<=comp.numLayers;lx++){if(comp.layer(lx).selected){comp.layer(lx).selected=false;}}\n";
+  js += "        try { srcL.copyToComp(comp); } catch(ecpy) { alert('Falha no copyToComp: ' + ecpy.message); continue; }\n";
   js += "        var newLyr = comp.layer(1);\n";
   js += "        if(!newLyr) { alert('newLyr falhou!'); continue; }\n";
   js += "        newLyr.name = gd.name+' (grad)';\n";
   js += "        var vRoot = vetoresLyr.property('ADBE Root Vectors Group');\n";
-  js += "        // Find parent group inside Vetores (by gd.parent -> display "
-        "name)\n";
+  js += "        // Find parent group inside Vetores (by gd.parent -> display name)\n";
   js += "        var parentCont = vRoot;\n";
   js += "        if(gd.parent){\n";
   js += "          var pName = gd.parent;\n";
   js += "          for(var vp=1;vp<=vRoot.numProperties;vp++){\n";
   js += "            var vg=vRoot.property(vp);\n";
-  js += "            if(vg.matchName==='ADBE Vector Group' && (vg.name===pName "
-        "|| vg.name.indexOf(pName)===0)){\n";
+  js += "            if(vg.matchName==='ADBE Vector Group' && (vg.name===pName || vg.name.indexOf(pName)===0)){\n";
   js += "              parentCont=vg.property('ADBE Vectors Group'); break;\n";
   js += "            }\n";
   js += "          }\n";
@@ -799,93 +771,57 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "        gradVG.name = trgNm || gd.name;\n";
   js += "        var gradCont = gradVG.property('ADBE Vectors Group');\n";
   js += "        // Add shape path\n";
-  js += "        if(!shapeVal||shapeVal.vertices.length<2){ alert('Skipping! "
-        "shapeVal invalid para: ' + gd.name); try{newLyr.remove();}catch(e){} "
-        "continue; }\n";
-  js +=
-      "        try{ var sp=gradCont.addProperty('ADBE Vector Shape - Group'); "
-      "sp.property('ADBE Vector Shape').setValue(shapeVal); }catch(ept){}\n";
-  js += "        // Get G-Fill from the batch template copy (has injected "
-        "colors)\n";
+  js += "        if(!shapeVal||shapeVal.vertices.length<2){ alert('Skipping! shapeVal invalid para: ' + gd.name); try{newLyr.remove();}catch(e){} continue; }\n";
+  js += "        try{ var sp=gradCont.addProperty('ADBE Vector Shape - Group'); sp.property('ADBE Vector Shape').setValue(shapeVal); }catch(ept){}\n";
+  js += "        // Get G-Fill from the batch template copy (has injected colors)\n";
   js += "        var srcGFill=null;\n";
   js += "        var nlRoot=newLyr.property('ADBE Root Vectors Group');\n";
   js += "        for(var nj=1;nj<=nlRoot.numProperties;nj++){\n";
-  js += "          var nlGrp=nlRoot.property(nj); if(nlGrp.matchName!=='ADBE "
-        "Vector Group')continue;\n";
+  js += "          var nlGrp=nlRoot.property(nj); if(nlGrp.matchName!=='ADBE Vector Group')continue;\n";
   js += "          var nlCont=nlGrp.property('ADBE Vectors Group');\n";
-  js +=
-      "          for(var "
-      "nk=1;nk<=nlCont.numProperties;nk++){if(nlCont.property(nk).matchName==='"
-      "ADBE Vector Graphic - G-Fill'){srcGFill=nlCont.property(nk);break;}}\n";
+  js += "          for(var nk=1;nk<=nlCont.numProperties;nk++){if(nlCont.property(nk).matchName==='ADBE Vector Graphic - G-Fill'){srcGFill=nlCont.property(nk);break;}}\n";
   js += "          if(srcGFill)break;\n";
   js += "        }\n";
-  js += "        // Use Copy/Paste to transfer the G-Fill (preserves GCky "
-        "colors accurately!)\n";
+  js += "        // Use Copy/Paste to transfer the G-Fill (preserves GCky colors accurately!)\n";
   js += "        if(srcGFill) {\n";
   js += "            try {\n";
-  js += "              for(var "
-        "lidx=1;lidx<=comp.numLayers;lidx++){if(comp.layer(lidx).selected){"
-        "comp.layer(lidx).selected=false;}}\n";
-  js += "              var selProps = comp.selectedProperties; for(var spi=0; "
-        "spi<selProps.length; spi++){ "
-        "try{selProps[spi].selected=false;}catch(ee){} }\n";
+  js += "              for(var lidx=1;lidx<=comp.numLayers;lidx++){if(comp.layer(lidx).selected){comp.layer(lidx).selected=false;}}\n";
+  js += "              var selProps = comp.selectedProperties; for(var spi=0; spi<selProps.length; spi++){ try{selProps[spi].selected=false;}catch(ee){} }\n";
   js += "              srcGFill.selected = true;\n";
   js += "              app.executeCommand(19); // Copy\n";
-  js += "              for(var "
-        "lidx=1;lidx<=comp.numLayers;lidx++){if(comp.layer(lidx).selected){"
-        "comp.layer(lidx).selected=false;}}\n";
-  js += "              selProps = comp.selectedProperties; for(var spi=0; "
-        "spi<selProps.length; spi++){ "
-        "try{selProps[spi].selected=false;}catch(ee){} }\n";
+  js += "              for(var lidx=1;lidx<=comp.numLayers;lidx++){if(comp.layer(lidx).selected){comp.layer(lidx).selected=false;}}\n";
+  js += "              selProps = comp.selectedProperties; for(var spi=0; spi<selProps.length; spi++){ try{selProps[spi].selected=false;}catch(ee){} }\n";
   js += "              gradVG.selected = true;\n";
   js += "              app.executeCommand(20); // Paste\n";
   js += "            } catch(eCP) { alert('Paste Error: '+eCP.message); }\n";
   js += "        }\n";
   js += "        // Find the freshly pasted G-Fill to adjust coordinates\n";
   js += "        var gradFill = null;\n";
-  js += "        for(var "
-        "ng=1;ng<=gradCont.numProperties;ng++){if(gradCont.property(ng)."
-        "matchName==='ADBE Vector Graphic - "
-        "G-Fill'){gradFill=gradCont.property(ng);break;}}\n";
-  js +=
-      "        var gradVGT = gradVG.property('ADBE Vector Transform Group');\n";
-  js += "        try{gradVGT.property('ADBE Vector Position').setValue([0, "
-        "0]);}catch(evt){}\n";
-  js += "        try{gradVGT.property('ADBE Vector "
-        "Anchor').setValue([0,0]);}catch(eva){}\n";
+  js += "        for(var ng=1;ng<=gradCont.numProperties;ng++){if(gradCont.property(ng).matchName==='ADBE Vector Graphic - G-Fill'){gradFill=gradCont.property(ng);break;}}\n";
+  js += "        var gradVGT = gradVG.property('ADBE Vector Transform Group');\n";
+  js += "        try{gradVGT.property('ADBE Vector Position').setValue([0, 0]);}catch(evt){}\n";
+  js += "        try{gradVGT.property('ADBE Vector Anchor').setValue([0,0]);}catch(eva){}\n";
   js += "        if(gradFill) {\n";
-  js += "            try{gradFill.property('Ponto inicial').setValue([gd.gsX + "
-        "(gd.x||0), gd.gsY + (gd.y||0)]);}catch(e){try{gradFill.property('ADBE "
-        "Vector Grad Start Pt').setValue([gd.gsX + (gd.x||0), gd.gsY + "
-        "(gd.y||0)]);}catch(e2){}}\n";
-  js += "            try{gradFill.property('Ponto final').setValue([gd.geX + "
-        "(gd.x||0), gd.geY + (gd.y||0)]);}catch(e){try{gradFill.property('ADBE "
-        "Vector Grad End Pt').setValue([gd.geX + (gd.x||0), gd.geY + "
-        "(gd.y||0)]);}catch(e2){}}\n";
+  js += "            try{gradFill.property('Ponto inicial').setValue([gd.gsX + (gd.x||0), gd.gsY + (gd.y||0)]);}catch(e){try{gradFill.property('ADBE Vector Grad Start Pt').setValue([gd.gsX + (gd.x||0), gd.gsY + (gd.y||0)]);}catch(e2){}}\n";
+  js += "            try{gradFill.property('Ponto final').setValue([gd.geX + (gd.x||0), gd.geY + (gd.y||0)]);}catch(e){try{gradFill.property('ADBE Vector Grad End Pt').setValue([gd.geX + (gd.x||0), gd.geY + (gd.y||0)]);}catch(e2){}}\n";
   js += "        }\n";
   js += "        // Remove the temp standalone layers\n";
   js += "        try{newLyr.remove();}catch(e){}\n";
-  js += "        try{origLyr.remove();}catch(e){}\n";
-  js += "\n";
+  js += "        try{origLyr.remove();}catch(e){}\n";  js += "\n";
   js += "      } else {\n";
   js += "        // SPLIT LAYER MODE (SWAP ROBUST SHADOW-BUILD)\n";
   js += "        var newLyr=bComp.layer(bIdx);\n";
   js += "        var newRoot2=newLyr.property('ADBE Root Vectors Group');\n";
   js += "        var newGrp=null;\n";
   js += "        for(var ng2=1;ng2<=newRoot2.numProperties;ng2++){\n";
-  js += "          if(newRoot2.property(ng2).matchName==='ADBE Vector "
-        "Group'){newGrp=newRoot2.property(ng2);break;}\n";
+  js += "          if(newRoot2.property(ng2).matchName==='ADBE Vector Group'){newGrp=newRoot2.property(ng2);break;}\n";
   js += "        }\n";
-  js += "        var newCont2=newGrp?newGrp.property('ADBE Vectors "
-        "Group'):newRoot2;\n";
+  js += "        var newCont2=newGrp?newGrp.property('ADBE Vectors Group'):newRoot2;\n";
   js += "        var toRem2=[];\n";
   js += "        for(var nk2=1;nk2<=newCont2.numProperties;nk2++){\n";
-  js += "          if(newCont2.property(nk2).matchName!=='ADBE Vector Graphic "
-        "- G-Fill'){toRem2.push(newCont2.property(nk2));}\n";
+  js += "          if(newCont2.property(nk2).matchName!=='ADBE Vector Graphic - G-Fill'){toRem2.push(newCont2.property(nk2));}\n";
   js += "        }\n";
-  js +=
-      "        for(var "
-      "ri2=0;ri2<toRem2.length;ri2++){try{toRem2[ri2].remove();}catch(e){}}\n";
+  js += "        for(var ri2=0;ri2<toRem2.length;ri2++){try{toRem2[ri2].remove();}catch(e){}}\n";
   js += "        var oRoot2=origLyr.property('ADBE Root Vectors Group');\n";
   js += "        var addedShapes=0;\n";
   js += "        for(var oj2=1;oj2<=oRoot2.numProperties;oj2++){\n";
@@ -898,100 +834,59 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "              try{\n";
   js += "                var sv2=oP2.property('ADBE Vector Shape').value;\n";
   js += "                if(sv2&&sv2.vertices&&sv2.vertices.length>=2){\n";
-  js += "                  var np2=newCont2.addProperty('ADBE Vector Shape - "
-        "Group');\n";
+  js += "                  var np2=newCont2.addProperty('ADBE Vector Shape - Group');\n";
   js += "                  np2.property('ADBE Vector Shape').setValue(sv2);\n";
   js += "                  np2.moveTo(1); addedShapes++;\n";
   js += "                }\n";
   js += "              }catch(eS){}\n";
-  js +=
-      "            } else if(oP2.matchName==='ADBE Vector Filter - Merge'){\n";
-  js += "              try{var mp2=newCont2.addProperty('ADBE Vector Filter - "
-        "Merge');mp2.property('ADBE Vector Merge "
-        "Type').setValue(oP2.property('ADBE Vector Merge "
-        "Type').value);}catch(eM){}\n";
+  js += "            } else if(oP2.matchName==='ADBE Vector Filter - Merge'){\n";
+  js += "              try{var mp2=newCont2.addProperty('ADBE Vector Filter - Merge');mp2.property('ADBE Vector Merge Type').setValue(oP2.property('ADBE Vector Merge Type').value);}catch(eM){}\n";
   js += "            }\n";
   js += "          }\n";
   js += "        }\n";
-  js += "        // Se nao achou shapes no origLyr, usa a rect do template "
-        "(mas ainda injeta o gradiente)\n";
-  js += "        if(addedShapes<1){\n";
-  js += "          try{newLyr.comment='FALLBACK_RECT';}catch(e){}\n";
-  js += "        }\n";
+  js += "        if(addedShapes<1){continue;}\n";
   js += "        if(newGrp){\n";
   js += "          newGrp.name=gd.name;\n";
   js += "          var vgt2=newGrp.property('ADBE Vector Transform Group');\n";
-  js += "          try{var pv=vgt2.property('ADBE Vector Position'); "
-        "if(pv)pv.setValue(pv.value.length===3?[0,0,0]:[0,0]);}catch(e){}\n";
-  js += "          try{var av=vgt2.property('ADBE Vector Anchor'); "
-        "if(av)av.setValue(av.value.length===3?[0,0,0]:[0,0]);}catch(e){}\n";
-  js += "          try{var sv=vgt2.property('ADBE Vector Scale'); "
-        "if(sv)sv.setValue(sv.value.length===3?[100,100,100]:[100,100]);}catch("
-        "e){}\n";
-  js += "          try{var rv=vgt2.property('ADBE Vector Rotation'); "
-        "if(rv)rv.setValue(0);}catch(e){}\n";
+  js += "          try{var pv=vgt2.property('ADBE Vector Position'); if(pv)pv.setValue(pv.value.length===3?[0,0,0]:[0,0]);}catch(e){}\n";
+  js += "          try{var av=vgt2.property('ADBE Vector Anchor'); if(av)av.setValue(av.value.length===3?[0,0,0]:[0,0]);}catch(e){}\n";
+  js += "          try{var sv=vgt2.property('ADBE Vector Scale'); if(sv)sv.setValue(sv.value.length===3?[100,100,100]:[100,100]);}catch(e){}\n";
+  js += "          try{var rv=vgt2.property('ADBE Vector Rotation'); if(rv)rv.setValue(0);}catch(e){}\n";
   js += "        }\n";
   js += "        var gFill2=null;\n";
   js += "        for(var gf2=1;gf2<=newCont2.numProperties;gf2++){\n";
-  js += "          if(newCont2.property(gf2).matchName==='ADBE Vector Graphic "
-        "- G-Fill'){gFill2=newCont2.property(gf2);break;}\n";
+  js += "          if(newCont2.property(gf2).matchName==='ADBE Vector Graphic - G-Fill'){gFill2=newCont2.property(gf2);break;}\n";
   js += "        }\n";
   js += "        if(gFill2){\n";
-  js += "          try{gFill2.property('Ponto "
-        "inicial').setValue([gd.gsX,gd.gsY]);}catch(e){try{gFill2.property('"
-        "ADBE Vector Grad Start Pt').setValue([gd.gsX,gd.gsY]);}catch(e2){}}\n";
-  js += "          try{gFill2.property('Ponto "
-        "final').setValue([gd.geX,gd.geY]);}catch(e){try{gFill2.property('ADBE "
-        "Vector Grad End Pt').setValue([gd.geX,gd.geY]);}catch(e2){}}\n";
-  js += "          try{gFill2.property('Fill "
-        "Rule').setValue(2);}catch(e){try{gFill2.property('ADBE Vector Fill "
-        "Rule').setValue(2);}catch(e2){}}\n";
+  js += "          try{gFill2.property('Ponto inicial').setValue([gd.gsX,gd.gsY]);}catch(e){try{gFill2.property('ADBE Vector Grad Start Pt').setValue([gd.gsX,gd.gsY]);}catch(e2){}}\n";
+  js += "          try{gFill2.property('Ponto final').setValue([gd.geX,gd.geY]);}catch(e){try{gFill2.property('ADBE Vector Grad End Pt').setValue([gd.geX,gd.geY]);}catch(e2){}}\n";
+  js += "          try{gFill2.property('Fill Rule').setValue(2);}catch(e){try{gFill2.property('ADBE Vector Fill Rule').setValue(2);}catch(e2){}}\n";
   js += "        }\n";
-  js += "        var oMask=origLyr.property('ADBE Mask Parade'); var "
-        "nMask=newLyr.property('ADBE Mask Parade');\n";
-  js += "        if(oMask&&nMask){for(var "
-        "mi=1;mi<=oMask.numProperties;mi++){try{var nm=nMask.addProperty('ADBE "
-        "Mask Atom');nm.property('ADBE Mask "
-        "Shape').setValue(oMask.property(mi).property('ADBE Mask "
-        "Shape').value);nm.property('ADBE Mask "
-        "Mode').setValue(oMask.property(mi).property('ADBE Mask "
-        "Mode').value);nm.property('ADBE Mask "
-        "Opacity').setValue(oMask.property(mi).property('ADBE Mask "
-        "Opacity').value);}catch(me){}}}\n";
+  js += "        var oMask=origLyr.property('ADBE Mask Parade'); var nMask=newLyr.property('ADBE Mask Parade');\n";
+  js += "        if(oMask&&nMask){for(var mi=1;mi<=oMask.numProperties;mi++){try{var nm=nMask.addProperty('ADBE Mask Atom');nm.property('ADBE Mask Shape').setValue(oMask.property(mi).property('ADBE Mask Shape').value);nm.property('ADBE Mask Mode').setValue(oMask.property(mi).property('ADBE Mask Mode').value);nm.property('ADBE Mask Opacity').setValue(oMask.property(mi).property('ADBE Mask Opacity').value);}catch(me){}}}\n";
   js += "        // --- ALL GEOMETRY DONE! COPY TO COMP NOW! ---\n";
   js += "        newLyr.copyToComp(comp);\n";
   js += "        var finalLyr=comp.layer(1);\n";
   js += "        var ot2=origLyr.property('ADBE Transform Group');\n";
   js += "        var nt2=finalLyr.property('ADBE Transform Group');\n";
   js += "        try{finalLyr.parent=origLyr.parent;}catch(e){}\n";
-  js += "        try{nt2.property('ADBE Position').setValue(ot2.property('ADBE "
-        "Position').value);}catch(e){}\n";
-  js +=
-      "        try{nt2.property('ADBE Anchor "
-      "Point').setValue(ot2.property('ADBE Anchor Point').value);}catch(e){}\n";
-  js += "        try{nt2.property('ADBE Scale').setValue(ot2.property('ADBE "
-        "Scale').value);}catch(e){}\n";
-  js += "        try{nt2.property('ADBE Rotation').setValue(ot2.property('ADBE "
-        "Rotation').value);}catch(e){}\n";
-  js += "        try{nt2.property('ADBE Opacity').setValue(ot2.property('ADBE "
-        "Opacity').value);}catch(e){}\n";
-  js += "        try{ if(origLyr.hasTrackMatte){ var "
-        "tmL=origLyr.trackMatteLayer; var tmT=origLyr.trackMatteType; if(tmL){ "
-        "finalLyr.setTrackMatte(tmL, tmT); } else { finalLyr.trackMatteType = "
-        "tmT; } } }catch(eTM){}\n";
+  js += "        try{nt2.property('ADBE Position').setValue(ot2.property('ADBE Position').value);}catch(e){}\n";
+  js += "        try{nt2.property('ADBE Anchor Point').setValue(ot2.property('ADBE Anchor Point').value);}catch(e){}\n";
+  js += "        try{nt2.property('ADBE Scale').setValue(ot2.property('ADBE Scale').value);}catch(e){}\n";
+  js += "        try{nt2.property('ADBE Rotation').setValue(ot2.property('ADBE Rotation').value);}catch(e){}\n";
+  js += "        try{nt2.property('ADBE Opacity').setValue(ot2.property('ADBE Opacity').value);}catch(e){}\n";
+  js += "        try{ if(origLyr.hasTrackMatte){ var tmL=origLyr.trackMatteLayer; var tmT=origLyr.trackMatteType; if(tmL){ finalLyr.setTrackMatte(tmL, tmT); } else { finalLyr.trackMatteType = tmT; } } }catch(eTM){}\n";
   js += "        finalLyr.name=origLyr.name;\n";
   js += "        try{finalLyr.moveBefore(origLyr);}catch(e){}\n";
   js += "        try{origLyr.remove();}catch(e){}\n";
   js += "      }\n";
   js += "    }\n";
-  js += "    try{ if(typeof bImp!=='undefined' && bImp) bImp.remove(); "
-        "}catch(e){}\n";
+  js += "    try{ if(typeof bImp!=='undefined' && bImp) bImp.remove(); }catch(e){}\n";
   js += "  }\n";
   js += "  app.endUndoGroup();\n";
   js += "}\n";
   js += "comp.openInViewer();\n";
-  js += "}catch(e){alert('GRAD FIXER ERRO: '+e.message+' "
-        "(L'+e.line+')');}})();\n";
+  js += "}catch(e){alert('GRAD FIXER ERRO: '+e.message+' (L'+e.line+')');}})();\n";
 
   char *buf = (char *)malloc(js.length() + 1);
   if (buf) {

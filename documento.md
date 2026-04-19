@@ -1,10 +1,10 @@
 # Pipeline GRAD FIXER: Illustrator → After Effects
-## Gradientes Perfeitos em Vetores Complexos via GCky SDK (v12 — PRODUÇÃO AE 2025 BINARY SAFE + Turbo Shadow-Build)
-**Status:** ✅ FUNCIONANDO — paths + gradientes exatos + posição 1:1 com artboard do Illustrator
+## Gradientes Perfeitos em Vetores Complexos via GCky SDK (v16 — Fix Colisão de IDs: Pai=Filho com Mesmo Nome)
+**Status:** ✅ FUNCIONANDO — layers + gradientes + máscaras track matte + textos editáveis + hierarquia perfeita + IDs únicos por sessão (sem colisão mesmo com pai/filho de mesmo nome).
 
 ---
 
-## 1. Visão Geral (Arquitetura v12)
+## 1. Visão Geral (Arquitetura v15)
 
 ```
 [ILLUSTRATOR — Passo 1]
@@ -49,14 +49,23 @@
 
 ## 2. Por que essa Arquitetura?
 
-| Problema | Solução v12 |
+| Problema | Solução v16 |
 |---|---|
 | Lentidão extrema ao construir +500 vetores nativamente | **Turbo Shadow-Build Strategy:** cria as shapes iterativamente em uma var tempComp (background Comp), e com 1 comando `copyToComp()` injeta na comp alvo, reduzindo processamento DOM da UI de 1.5 min pra ~10 segs ✅ |
-| Reconstrução Bezier falha em shapes rotacionadas | Correção geométrica em ExtendScript com `sd.rotation`, e extração absoluta (`SplitGroup.jsx`) usando referências topologicas shape-relative `[0,0]` ✅ |
-| Hierarquia de Grupos Perdida / Desalinhada no AE | **Shape Bounds System:** Nulls foram abandonados. Grupos são convertidos p/ Shape Layers Invisíveis contendo sub-shapes `Bounds` com `w` e `h` nativos calculados (bounding-boxes de grupos Ai). Posicionamento e Rotações fluindo exatamente iguais a exportações padrão Overlord ✅ |
+| Reconstrução Bezier falha em shapes rotacionadas | Correção geométrica em ExtendScript com `sd.rotation`, e extração absoluta usando referências topologicas shape-relative `[0,0]` ✅ |
 | Inserção no Fundo Prejudicava a Escala Z | Pilha de camadas perfeitamente invertida no Json+JS para manter hierarquia igual Overlord ✅ |
-| AE 2025 salva AEPX em bdata (binário encriptado) | Template embutido `grad_batch_template.aepx` (criado em modo legado/fallback para conter um node XML legível `<GCky>` dentro de um encapsulador pseudo-binário `<GCst>`) manipulado via C++ injetado diretamente em disco ✅ |
-| GCky XML Injection corrompido / Black screen | Transformamos nodes brutos e apóstrofos limitados em C++ Strings Literais (usando `<` via `&lt;` e escapando aspas `&apos;`). Padding rígido de numeração `Stops Size = 20`. ✅ |
+| AE 2025 salva AEPX em bdata (binário encriptado) | Template embutido `grad_batch_template.aepx` manipulado via C++ injetado diretamente em disco ✅ |
+| **Duplicação Massiva de Textos e Objetos no Split Layer** | **Blindagem de Desduplicação Computacional (DNA Hashing):** Antes de gerar o `.json`, todas as formas extraídas ganham uma assinatura baseada em (x, y, tipo, string/path count). O Exportador checa e destrói do Payload clones 100% idênticos vindos de falhas do ExtendScript (DOM Selection BUG) ou pranchetas pasteboard invisíveis. Filtro de Bounds `abRect` rigoroso e verificação de `layer.visible` na exportação em batch. ✅ |
+| **Alinhamento do Texto Errado (Sempre na Esquerda)** | Conversão dos metadados de Parágrafo do Illustrator e uso preciso de enumeradores intrínsecos `ParagraphJustification.CENTER/RIGHT_JUSTIFY`. ✅ |
+| **Textos com Quebra-de-linha (Enter) falhando no AE** | Implementado parse `replace(/\r?\n\|\r/g, "\r")` convertendo parágrafos múltiplos em um único objeto multiline do AE mantendo entrelinha orgânico. ✅ |
+| **Máscaras de Recorte (Track Matte Alpha) Indesejavelmente Invisíveis** | **Solid Fill Fallback:** Clipping paths sem stroke/fill nativo são exportados forçosamente injetando um `{fill: {color: [0.4,0.4,0.4]}}` garantindo pixels visiveis e render funcionais pra Matte. ✅ |
+| **Posições erradas para filhos de grupos (manchas da vaca, janelas)** | **Posição Local Explícita (v13):** Aplicar parent PRIMEIRO, depois calcular `localX` e `localY` explícita. ✅ |
+| Hierarquia de Grupos Perdida / Desalinhada no AE | **Shape Bounds System:** Nulls foram abandonados. Grupos são convertidos p/ Shape Layers Invisíveis contendo sub-shapes `Bounds` com `w` e `h` nativos. ✅ |
+| GCky XML Injection corrompido / Black screen | Nodes com `&lt;` e `&gt;` em C++. Padding rígido de `Stops Size = 20`. ✅ |
+| **Máscaras circulares (Ellipse/Sol/Sky) não aplicadas no AE** | **ClipGroup Detection + Track Matte (v13):** `ExtrairGradiente.jsx` varre TODOS os filhos... `SimularOverlord.jsx` usa `setTrackMatte()`. ✅ |
+| **Gradiente não aplicado em vetores com nome igual ao grupo pai** | **(v16 — ROOT CAUSE):** Quando o path de gradiente tinha o mesmo nome do grupo pai (ex: ambos chamados "Bush"), o `processGradientFill` usava `item.name` direto como `name` no JSON — sem `_idx`, sem unicidade. Resultado: colisão no `layerNamesMulti` do C++ e o gradiente era perdido. **Fix:** `processGradientFill` agora **sempre** gera um nome único com `_idx` + sessionID, independente de o item ter nome ou não. ✅ |
+| **Gradiente aplicado na camada errada (camada do grupo em vez do gradiente)** | Quando `layerNamesMulti["Bush"]` tinha `[k_grupo, k_gradiente]`, o C++ pegava o grupo (k1) como alvo — injetando gradient no grupo e ignorando a layer de gradiente real. O fix de unicidade de IDs elimina essa ambiguidade. ✅ |
+| **Gradientes não localizados pelo C++ por name collision** | IDs de sessão agora incluem timestamp (`_idxNxSSSSS`) garantindo que exports incrementais para a mesma comp nunca colidam. Layers de grupos, sólidos e textos usam `currentID` como `name` no JSON. Layers de gradiente não são renomeadas pelo SplitLayer, mantendo o nome `_idx` para o C++ encontrar exatamente. ✅ |
 
 ---
 
@@ -64,14 +73,13 @@
 
 | Arquivo | Local | Função |
 |---|---|---|
-| `ExtrairGradiente.jsx` | `C:\AEGP\` | Extrai formas, curvas e hierarquias do Illustrator → JSON |
-| `CriarComp.jsx` | `C:\AEGP\` | Roteia parâmetros de bounds do Illustrator pra invocar nova Comp no AE |
-| `grad_data.json` | `C:\AEGP\` | Payload principal de conversão bridge |
-| `grad_batch_template.aepx` | `C:\AEGP\` | Template do AE contendo placeholders nativos `<GCky>(grad)` para injetar cor |
-| `ae_batch_temp.aepx` | `C:\AEGP\` | Output serializado pós moderação binária no SDK C++ |
-| `SplitGroup.jsx` / `SimularOverlord.jsx` | `C:\AEGP\` | Motor de construtor JS (Turbo Shadow-Build) |
-| `GradientManipulator.cpp` | SDK/Examples | Plugin C++ AEGP — injeção GCky rápida para vetores de gradiente |
-| `GradientManipulator_PiPL.r` | SDK/Examples | Recursos do plugin (menu, ID) |
+| **Lógica ExtendScript** (`SimularOverlord.jsx`, `ExtrairGradiente.jsx`, `SplitGroup.jsx`, `CriarComp.jsx`) | `AppData/.../GradFixer/` e `Documentos/SDK` | Núcleo de Engenharia: Construtores, Turbo Shadow-Build, ClipGroups e Pareintes |
+| `grad_data.json` | `C:\AEGP\` | Payload principal de conversão bridge (acessado pelo C++) |
+| `grad_batch_template.aepx` e `nested_group_template.aepx` | `C:\AEGP\` | Templates vitais contendo placeholders nativos `<GCky>` para injetar cor em Lote |
+| `GradientManipulator.aex` | Compilado p/ `C:\AEGP\` | Plugin compilado (pelo Visual Studio) pronto para rodar no AE |
+| `GradientManipulator.cpp/r` | SDK/Examples | Código Fonte C++ base do plugin AEGP |
+
+⚠️ **ATENÇÃO:** Nunca coloque scripts isolados `.jsx` dentro de `C:\AEGP\`. A ponte foi reescrita (`ExtrairGradiente.jsx`) para varrer dinamicamente as pastas reais do projeto (`AppData` e `Documentos`). Isso tira de vez o risco iminente de arquivos fósseis/desatualizados quebrarem a estrutura!
 
 ---
 
@@ -326,7 +334,15 @@ if (successGrad) {
 | `"Gradientes: 0"` via BridgeTalk | `JSON.stringify` não existe em AI ES | Usar polyfill `toJSON()` ✅ |
 | Grad Start/End não muda | matchName falha no AE PT-BR | Usar `"Ponto inicial"` / `"Ponto final"` ✅ |
 | `bgColor` dá erro | `[R,G,B,A]` com 4 valores | Usar apenas `[R, G, B]` ✅ |
-
+| `NO_VALUE / Erro Colors L553` | ExtendScript AE 2025 crasheia ao acesar `.value` de G-Fill c/ padding injetado | NUNCA ler ou copiar pelo JS. Clonar a layer 100% nativa via `copyToComp` ✅ |
+| **Ellipse/Sol/Sky sem máscara no AE (ClipGroup)** | `clipping===true` só verificado no primeiro/último filho — errava quando a ellipse estava em outra posição | Varrer TODOS os filhos com loop `for (ci=0; ci<pageItems.length; ci++)` ✅ |
+| **ClipGroup não propaga para netos (sub-grupos)** | `clipMaskID` não era passado para filhos de GroupItems aninhados (era resetado para `null`) | `effectiveClipID = clipMaskID \|\| clipParentMaskID` — herda máscara do ancestral ✅ |
+| **Manchas da vaca / janela fora de posição** | Posição absoluta setada antes do parent → compensação automática do AE falha em hierarquias profundas | Setar parent PRIMEIRO, depois calcular `localX = sd.x - parentSD.x` / `localY = sd.y - parentSD.y` e setar `ADBE Position` explicitamente ✅ |
+| **Velocidade degradada (vetor por vetor no AE)** | `TempBuild_GF` removido acidentalmente, AE atualizava UI a cada layer criada | Restaurar Turbo Shadow-Build: criar em `tempComp`, depois `copyToComp()` em batch ✅ |
+| **Sombras sem modo de Mesclagem (Grama/Multiply)** | O Illustrator tem modos de blend (`blendingMode`), porém o json os descartava. AE inseria opacidade sem a função de Blend `Multiply/Overlay` | A função `ExtrairGradiente.jsx` agora extrai os IDs das blendModes convertendo pra String. `SimularOverlord.jsx` propaga via `layer.blendingMode` e `ADBE Vector Blend Mode` simultaneamente ✅ |
+| **Gradiente não aplicado quando path tem o mesmo nome do grupo pai** | `processGradientFill` usava `item.name` diretamente → sem `_idx` → colisão `layerNamesMulti` no C++ | Sempre gerar nome único: `gradBase + "_grad_idx" + idCounter + "x" + sessionID` ✅ |
+| **C++ aplica gradiente no grupo em vez do path de gradiente** | Ambiguidade em `layerNamesMulti["Bush"]` com múltiplas layers de mesmo nome | IDs únicos com session timestamp eliminam a ambiguidade totalmente ✅ |
+| **Layers de gradiente renomeadas antes do C++ rodar** | SplitLayer renomeava TODOS os layers incluindo gradientes → C++ não achava pelo nome `_idx` | SplitLayer agora **pula o rename** para layers com `fillType === "gradient"` ✅ |
 ---
 
 ## 8. Histórico de Versões
@@ -341,9 +357,16 @@ if (successGrad) {
 | v5 | Híbrido: .ai nativo para sólidos + GCky para gradientes |
 | v6 | GRAD FIXER: Zero reconstrução — copia Shape Value do Overlord + GCky via SDK |
 | v7 | Posição 1:1 com artboard Illustrator — nova comp correta + Vector Group Transform zerado |
-| v9 | Tentativa de "Smart Gradient Positioning" (Reconstrução 8-Point) ignorando path original. Gerou erro L1 "O objeto é inválido" no AE 2025 por bugs em índices e loops do AST Vector. |
-| v10 | Rollback e Recuperação Definitiva de v6/v7 do payload `.aex` estável. Zero Reconstrução (clona a layer sólida original integralmente) + GCky XML Injection! |
-| **v11** ✅ | **Suporte completo a Hierarquia de Grupos Nativos via Nulls! Recria perfeitamente o visual em árvore do Illustrator no AE. Além disso, a injeção do C++ garante parentesco na ordem exata (`parent` ANTES de `Position`) para eliminar "saltos" visuais de coordenadas locais.** |
+| v9 | Tentativa de "Smart Gradient Positioning" (Reconstrução 8-Point) |
+| v10 | Rollback e Recuperação Definitiva de v6/v7 do payload `.aex` estável. |
+| v11 | Suporte completo a Hierarquia de Grupos Nativos. |
+| v12 | Suporte a compound paths e Turbo Shadow-Build. |
+| v13 | ClipGroup Detection + Parentesco Preciso. |
+| v14 | **Suporte a Modos de Mesclagem (BlendingMode)**: Extração unificada no ExtendScript (via `item.blendingMode.toString()`), passando a constante integral para o `grad_data.json` e sendo injetada pela função `setBlend` tanto no nível do Vector Group (Group Path) como Global da Shape Layer (Multiply, Overlay, DropShadows convertidas em vetores...). Nova arquitetura de deployment estrito (`AppData/Roaming/...` e Documentos) extinguindo o passivo `/AEGP`. |
+| **v15** ✅ | **Deduplicação e Tipografia Nativa Avançada**: Implementada **Desduplicação via Assinatura DNA** para evitar cópias empilhadas devido a falhas do DOM. Mapeamento fiel das justificações e quebras-de-linha nativas de IL para Ae. Clip Paths invisíveis ganharam preenchimento cinza automático para forçar Track Matte Alpha correto no comp. Expurgo avançado de itens fora da prancheta limite ativa. |
+| **v16** ✅ | **Fix Colisão de IDs Pai=Filho (Nome Duplicado)**: Root cause final dos gradientes que não eram aplicados quando pai grupo e filho path tinham o **mesmo nome** no Illustrator (ex: grupo "Bush" contendo path "Bush"). `processGradientFill` agora **sempre** gera nome único com `_idx` + sessionID. `SplitLayer` pula o rename para layers de gradiente. Cleanup pós-C++ strip `_idx` de todas as layers. Adicionada ferramenta de diagnóstico `C:\AEGP\grad_debug.txt`. IDs de sessão (`globalSessionID`) garantem unicidade em exports incrementais. |
+| **v17** ✅ | **Remoção de Desduplicação Agressiva Pós-ClipMask**: A "Blindagem de Desduplicação" implementada na v15 estava filtrando incorretamente vetores que eram falsos positivos (como o corte do Sol e a ausência da Vaquinha). Ajuste do algoritmo para desduplicar apenas camadas de Texto puras e liberação irrestrita da extração de Paths/Groups. Limpeza visual de logs e alertas no SplitLayer.jus. Renderização 1:1 restaurada e fidelidade máxima garantida. |
+
 
 ---
 
