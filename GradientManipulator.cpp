@@ -1,4 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #include "AEConfig.h"
 #ifdef AE_OS_WIN
 #include <windows.h>
@@ -687,15 +687,12 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "        var grp = conteudo.property(gi+1);\n";
   js += "        grp.name = trgNm;\n";
   js += "        if(gd.type !== 'solid'){\n";
-  js += "          var fill = grp.property('ADBE Vectors "
-        "Group').property('ADBE Vector Graphic - G-Fill');\n";
+  js += "          var fill = grp.property('ADBE Vectors Group').property('ADBE Vector Graphic - G-Fill');\n";
+  js += "          var vgrpPaths = grp.property('ADBE Vectors Group');\n";
+  js += "          for(var vf=vgrpPaths.numProperties; vf>=1; vf--){ if(vgrpPaths.property(vf).matchName==='ADBE Vector Graphic - Fill') vgrpPaths.property(vf).remove(); }\n";
   js += "          if(fill){\n";
-  js += "            try{fill.property('Ponto "
-        "inicial').setValue([gd.gsX,gd.gsY]);}catch(e){try{fill.property('ADBE "
-        "Vector Grad Start').setValue([gd.gsX,gd.gsY]);}catch(e2){}}\n";
-  js += "            try{fill.property('Ponto "
-        "final').setValue([gd.geX,gd.geY]);}catch(e){try{fill.property('ADBE "
-        "Vector Grad End').setValue([gd.geX,gd.geY]);}catch(e2){}}\n";
+  js += "            try{fill.property('Ponto inicial').setValue([gd.gsX + (gd.x||0), gd.gsY + (gd.y||0)]);}catch(e){try{fill.property('ADBE Vector Grad Start Pt').setValue([gd.gsX + (gd.x||0), gd.gsY + (gd.y||0)]);}catch(e2){}}\n";
+  js += "            try{fill.property('Ponto final').setValue([gd.geX + (gd.x||0), gd.geY + (gd.y||0)]);}catch(e){try{fill.property('ADBE Vector Grad End Pt').setValue([gd.geX + (gd.x||0), gd.geY + (gd.y||0)]);}catch(e2){}}\n";
   js += "          }\n";
   js += "        }\n";
   js += "      }catch(e){}\n";
@@ -747,23 +744,7 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "      if(!origLyr){ alert('origLyr NULO para: ' + gd.name); continue; "
         "}\n";
   js += "\n";
-  js += "      // Get shape path from original layer\n";
-  js += "      var shapeVal=null;\n";
-  js += "      try{\n";
-  js += "        var origRoot=origLyr.property('ADBE Root Vectors Group');\n";
-  js += "        for(var j=1;j<=origRoot.numProperties;j++){\n";
-  js += "          var origGrp=origRoot.property(j); "
-        "if(origGrp.matchName!=='ADBE Vector Group')continue;\n";
-  js += "          var origCont=origGrp.property('ADBE Vectors Group');\n";
-  js += "          for(var k=1;k<=origCont.numProperties;k++){\n";
-  js += "            var origP=origCont.property(k);\n";
-  js += "            if(origP.matchName==='ADBE Vector Shape - "
-        "Group'){shapeVal=origP.property('ADBE Vector Shape').value;break;}\n";
-  js += "          } if(shapeVal)break;\n";
-  js += "        }\n";
-  js += "      }catch(er){}\n";
-  js += "      // shapeVal guard is inside Split Group block only\n";
-  js += "\n";
+      // No longer need to extract shapeVal as SplitGroup builds paths natively
   js += "      var bIdx=Math.min(gradIndex,bComp.numLayers);\n";
   js += "\n";
   js += "      if(isSplitGroup && vetoresLyr){\n";
@@ -786,27 +767,31 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "        var parentCont = vRoot;\n";
   js += "        if(gd.parent){\n";
   js += "          var pName = gd.parent;\n";
-  js += "          for(var vp=1;vp<=vRoot.numProperties;vp++){\n";
-  js += "            var vg=vRoot.property(vp);\n";
-  js += "            if(vg.matchName==='ADBE Vector Group' && (vg.name===pName "
-        "|| vg.name.indexOf(pName)===0)){\n";
-  js += "              parentCont=vg.property('ADBE Vectors Group'); break;\n";
+  js += "          var _findGrp = function(cont) {\n";
+  js += "            for(var vp=1; vp<=cont.numProperties; vp++){\n";
+  js += "              var p = cont.property(vp);\n";
+  js += "              if(p.matchName==='ADBE Vector Group'){\n";
+  js += "                if(p.name===pName || p.name.indexOf(pName)===0) "
+        "return p.property('ADBE Vectors Group');\n";
+  js += "                var found = _findGrp(p.property('ADBE Vectors "
+        "Group'));\n";
+  js += "                if(found) return found;\n";
+  js += "              }\n";
   js += "            }\n";
-  js += "          }\n";
+  js += "            return null;\n";
+  js += "          };\n";
+  js += "          var foundGrp = _findGrp(vRoot);\n";
+  js += "          if(foundGrp) parentCont = foundGrp;\n";
   js += "        }\n";
   js += "        // Create Vector Group for this gradient inside Vetores\n";
-  js += "        var gradVG = parentCont.addProperty('ADBE Vector Group');\n";
-  js += "        gradVG.name = trgNm || gd.name;\n";
+  js += "        // Find the existing Vector Group for this gradient inside Vetores (already created by SplitGroup native)\n";
+  js += "        var gradVG = null;\n";
+  js += "        for(var vf=1; vf<=parentCont.numProperties; vf++){ if(parentCont.property(vf).name === (trgNm||gd.name)){ gradVG = parentCont.property(vf); break; } }\n";
+  js += "        if(!gradVG){ try{newLyr.remove();}catch(e){} continue; }\n";
   js += "        var gradCont = gradVG.property('ADBE Vectors Group');\n";
-  js += "        // Add shape path\n";
-  js += "        if(!shapeVal||shapeVal.vertices.length<2){ alert('Skipping! "
-        "shapeVal invalid para: ' + gd.name); try{newLyr.remove();}catch(e){} "
-        "continue; }\n";
-  js +=
-      "        try{ var sp=gradCont.addProperty('ADBE Vector Shape - Group'); "
-      "sp.property('ADBE Vector Shape').setValue(shapeVal); }catch(ept){}\n";
-  js += "        // Get G-Fill from the batch template copy (has injected "
-        "colors)\n";
+  js += "        // Remove old native fallback fill placed by SplitGroup.jsx\n";
+  js += "        for(var vf=gradCont.numProperties; vf>=1; vf--){ if(gradCont.property(vf).matchName==='ADBE Vector Graphic - Fill') gradCont.property(vf).remove(); }\n";
+  js += "        // Get G-Fill from the batch template copy (has injected colors)\n";
   js += "        var srcGFill=null;\n";
   js += "        var nlRoot=newLyr.property('ADBE Root Vectors Group');\n";
   js += "        for(var nj=1;nj<=nlRoot.numProperties;nj++){\n";
@@ -854,14 +839,8 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "        try{gradVGT.property('ADBE Vector "
         "Anchor').setValue([0,0]);}catch(eva){}\n";
   js += "        if(gradFill) {\n";
-  js += "            try{gradFill.property('Ponto inicial').setValue([gd.gsX + "
-        "(gd.x||0), gd.gsY + (gd.y||0)]);}catch(e){try{gradFill.property('ADBE "
-        "Vector Grad Start Pt').setValue([gd.gsX + (gd.x||0), gd.gsY + "
-        "(gd.y||0)]);}catch(e2){}}\n";
-  js += "            try{gradFill.property('Ponto final').setValue([gd.geX + "
-        "(gd.x||0), gd.geY + (gd.y||0)]);}catch(e){try{gradFill.property('ADBE "
-        "Vector Grad End Pt').setValue([gd.geX + (gd.x||0), gd.geY + "
-        "(gd.y||0)]);}catch(e2){}}\n";
+  js += "            try{gradFill.property('Ponto inicial').setValue([gd.gsX + (gd.x||0), gd.gsY + (gd.y||0)]);}catch(e){try{gradFill.property('ADBE Vector Grad Start Pt').setValue([gd.gsX + (gd.x||0), gd.gsY + (gd.y||0)]);}catch(e2){}}\n";
+  js += "            try{gradFill.property('Ponto final').setValue([gd.geX + (gd.x||0), gd.geY + (gd.y||0)]);}catch(e){try{gradFill.property('ADBE Vector Grad End Pt').setValue([gd.geX + (gd.x||0), gd.geY + (gd.y||0)]);}catch(e2){}}\n";
   js += "        }\n";
   js += "        // Remove the temp standalone layers\n";
   js += "        try{newLyr.remove();}catch(e){}\n";

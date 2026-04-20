@@ -309,8 +309,9 @@
             var effectiveClipID = clipMaskID || clipParentMaskID;
             // Pass currentID so children have a unique, unambiguous parent reference
             var childParentID = currentID;
-            for (var i = 0; i < item.pageItems.length; i++)
+            for (var i = 0; i < item.pageItems.length; i++) {
                 collectAllWithClip(item.pageItems[i], results, abLeft, abTop, childParentID, 100, effectiveClipID);
+            }
             return;
         }
 
@@ -464,9 +465,11 @@
         } catch (e) { }
         
         if (isClipping) {
-            // Em caso de Clipping Mask puros sem cor, forÃ§amos um preenchimento 
-            // no After Effects para que o usuÃ¡rio veja a Ã¡rea para Alpha Matte
-            if (!hasFill && !hasStroke) {
+            // Em caso de Clipping Mask puros sem cor, forcamos um preenchimento 
+            // no After Effects para que o usuario veja a area para Alpha Matte
+            // IMPORTANTE: Apenas fazemos isso no modo LAYER. Em modo GROUP, deixamos sem fill 
+            // para nao desenhar um circulo cinza no meio dos filhos nativos.
+            if (!hasFill && !hasStroke && $.flashFillMode !== "group") {
                 data.fill = { type: "solid", color: [0.4, 0.4, 0.4] }; 
                 data.fillType = "solid"; 
                 hasFill = true;
@@ -536,7 +539,6 @@
         }
 
         // CRITICO: doc.pageItems retorna TODOS os items incluindo aninhados!
-        // Filtrar apenas os filhos diretos de cada Layer:
         for (var s = 0; s < doc.pageItems.length; s++) {
             var topItem = doc.pageItems[s];
             try {
@@ -715,15 +717,7 @@
             req += "  if(fg.exists){ fg.open('r'); eval(fg.read()); fg.close(); fgFound=true; break; }\n";
             req += "}\n";
             req += "if(!fgFound){ alert('SplitGroup.jsx nao encontrado nos caminhos padroes!'); }\n";
-            
-            if (nGrad > 0) {
-                // Use char codes to bypass ALL parsing and quote issues in Illustrator -> AE BridgeTalk transit!
-                req += "var str = String.fromCharCode(";
-                var s = "var gc=app.findMenuCommandId('GRAD FIXER: Aplicar Gradientes');if(gc>0){app.executeCommand(gc);}try{var cp=app.project.activeItem;if(cp){for(var k=1;k<=cp.numLayers;k++){var lr=cp.layer(k);if(lr.name==='Vetores'){var rt=lr.property('ADBE Root Vectors Group');var _strp=function(c){for(var i=1;i<=c.numProperties;i++){var _p=c.property(i);if(_p.matchName==='ADBE Vector Group'){var nm=_p.name;var ox=nm.indexOf('_idx');if(ox!==-1){_p.name=nm.substring(0,ox);}try{_strp(_p.property('ADBE Vectors Group'));}catch(e){}}}};_strp(rt);break;}}}}catch(e){}";
-                var hex = []; for(var i=0; i<s.length; i++) hex.push(s.charCodeAt(i));
-                req += hex.join(",") + ");\n";
-                req += "app.scheduleTask(str, 150, false);\n";
-            }
+            // The C++ execution and cleanup is now entirely handled by SplitGroup.jsx v10
         } else {
             // Modo Split Layer (padrao): envia SplitLayer
             req += "var paths = [\n";

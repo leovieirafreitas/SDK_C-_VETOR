@@ -78,7 +78,7 @@ try {
     // ── CONTADORES DE DIAGNÓSTICO ──
     var diagGrad = 0, diagFallback = 0, diagGroup = 0, diagSolid = 0, diagSkip = 0;
 
-    for (var si = jd.shapes.length - 1; si >= 0; si--) {
+    for (var si = 0; si < jd.shapes.length; si++) {
         var sd = jd.shapes[si];
 
         if (sd.fillType === "group") {
