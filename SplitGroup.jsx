@@ -16,7 +16,16 @@ try {
     app.beginUndoGroup("Transfer Vectors Native Build");
 
     var vetLayer = comp.layers.addShape();
-    vetLayer.name = "Vetores";
+    
+    // Robust naming with retry to prevent "Camada de forma" issues
+    var nameSuccess = false;
+    for (var n = 0; n < 3; n++) {
+        try { vetLayer.name = "Vetores"; nameSuccess = true; break; } catch(e) { $.sleep(50); }
+    }
+    if (!nameSuccess) {
+        try { vetLayer.name = "Vetores"; } catch(e) { alert("AE prevented renaming the layer! Current name: " + vetLayer.name); }
+    }
+    
     vetLayer.moveToBeginning();
     var tr = vetLayer.property("ADBE Transform Group");
     try{tr.property("ADBE Anchor Point").setValue([0, 0]);}catch(e){}
@@ -143,15 +152,16 @@ try {
             }
 
             if (addedGPaths > 0) {
+                // Dummy layer standalone para o C++ encontrar pelo sd.name
+                var dummyLyr = comp.layers.addShape();
+                dummyLyr.name = sd.name;
+
                 // Solid fill provisorio — C++ vai substituir pelo G-Fill
                 var fp = gCont.addProperty("ADBE Vector Graphic - Fill");
                 if (sd.gradient && sd.gradient.stops && sd.gradient.stops.length > 0) {
                     var s0 = sd.gradient.stops[0];
                     try { fp.property("ADBE Vector Fill Color").setValue([s0.r, s0.g, s0.b, 1]); } catch(e){}
                 }
-                // Dummy layer standalone para o C++ encontrar pelo sd.name
-                var dummyLyr = comp.layers.addShape();
-                dummyLyr.name = sd.name;
             } else {
                 try { gradVG.remove(); } catch(eg){}
             }
@@ -218,6 +228,12 @@ try {
         try { parentCont.property(sd.name).moveTo(1); } catch(em){}
     }
 
+    // Selecionar vetLayer para garantir que C++ e NATIVE pastas vao para o lugar certo
+    try {
+        for (var li = 1; li <= comp.numLayers; li++) { comp.layer(li).selected = false; }
+        vetLayer.selected = true;
+    } catch(e){}
+
     // ── 2. EXECUTA PLUGIN C++ ──
     app.endUndoGroup();
 
@@ -228,18 +244,26 @@ try {
         app.endUndoGroup();
     }
 
+    // ── EXTRA CLEANUP: Nuke any leftover dummy layers or failed C++ layers ──
+    try {
+        var lixoArr = [];
+        for (var lixo = 1; lixo <= comp.numLayers; lixo++) {
+            var lName = comp.layer(lixo).name;
+            if (lName !== "Vetores" && (lName.match(/^Camada de forma \d+$/) || lName.indexOf("_idx") !== -1 || lName.indexOf(" (grad)") !== -1)) {
+                lixoArr.push(comp.layer(lixo));
+            }
+        }
+        for (var lx = 0; lx < lixoArr.length; lx++) {
+            lixoArr[lx].remove();
+        }
+    } catch(e) {}
+
     // ── 3. MASCARAS — clip DENTRO do VG via Merge Paths (Intersect) ──
     // SplitGroup usa UMA layer "Vetores". NAO criamos layers standalone.
     // Para cada shape com clipMaskRef: adicionamos o path da mascara + 
     // Merge Paths Intersect DENTRO do VG do shape, mantendo tudo em Vetores.
     app.beginUndoGroup("Apply ClipMasks Native");
     var _dbgMask = [];
-
-    // Re-buscar vetLayer apos C++ (referencia fresca)
-    var vetLyr3 = null;
-    for (var vl3=1; vl3<=comp.numLayers; vl3++) {
-        if (comp.layer(vl3).name === "Vetores") { vetLyr3 = comp.layer(vl3); break; }
-    }
 
     // Busca recursiva de VG por nome
     var _findVGByName = function(cont, nm) {
@@ -252,8 +276,8 @@ try {
         return null;
     };
 
-    if (vetLyr3) {
-        var rootVet3 = vetLyr3.property("ADBE Root Vectors Group");
+    if (vetLayer) {
+        var rootVet3 = vetLayer.property("ADBE Root Vectors Group");
 
         for (var si3=0; si3<jd.shapes.length; si3++) {
             var sd3 = jd.shapes[si3];
@@ -352,13 +376,9 @@ try {
             }
         }
     };
-    // Rebuscar a layer Vetores para o cleanup
-    var vetLyrRef = null;
-    for (var li2 = 1; li2 <= comp.numLayers; li2++) {
-        if (comp.layer(li2).name === "Vetores") { vetLyrRef = comp.layer(li2); break; }
-    }
-    if (vetLyrRef) {
-        _cleanProps(vetLyrRef.property("ADBE Root Vectors Group"));
+    // Usar vetLayer diretamente para o cleanup (garante que limpamos a correta, mesmo se o nome falhar)
+    if (vetLayer) {
+        _cleanProps(vetLayer.property("ADBE Root Vectors Group"));
     }
     app.endUndoGroup();
 

@@ -705,9 +705,8 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "  app.beginUndoGroup('Importar Split Layer/Group');\n";
   js += "  // Detect Split Group mode: a layer named 'Vetores' exists\n";
   js += "  var vetoresLyr=null;\n";
-  js += "  for(var vScan=1; vScan<=comp.numLayers; vScan++) { "
-        "if(comp.layer(vScan).name === 'Vetores'){ vetoresLyr = "
-        "comp.layer(vScan); break; } }\n";
+  js += "  for(var vScan=1; vScan<=comp.numLayers; vScan++) { if(comp.layer(vScan).selected){ vetoresLyr = comp.layer(vScan); break; } }\n";
+  js += "  if(!vetoresLyr){ for(var vScan=1; vScan<=comp.numLayers; vScan++) { if(comp.layer(vScan).name === 'Vetores'){ vetoresLyr = comp.layer(vScan); break; } } }\n";
   js += "  var isSplitGroup=(vetoresLyr!==null);\n";
   js += "\n";
   js += "  // bFile ALWAYS loads ae_batch_temp so each gradient gets its "
@@ -741,8 +740,7 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "           break;\n";
   js += "        }\n";
   js += "      }\n";
-  js += "      if(!origLyr){ alert('origLyr NULO para: ' + gd.name); continue; "
-        "}\n";
+  js += "      if(!origLyr && !isSplitGroup){ alert('origLyr NULO para: ' + gd.name); continue; }\n";
   js += "\n";
       // No longer need to extract shapeVal as SplitGroup builds paths natively
   js += "      var bIdx=Math.min(gradIndex,bComp.numLayers);\n";
@@ -760,7 +758,7 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
         "copyToComp: ' + ecpy.message); continue; }\n";
   js += "        var newLyr = comp.layer(1);\n";
   js += "        if(!newLyr) { alert('newLyr falhou!'); continue; }\n";
-  js += "        newLyr.name = gd.name+' (grad)';\n";
+  js += "        try { newLyr.name = gd.name+' (grad)'; } catch(e){}\n";
   js += "        var vRoot = vetoresLyr.property('ADBE Root Vectors Group');\n";
   js += "        // Find parent group inside Vetores (by gd.parent -> display "
         "name)\n";
@@ -853,9 +851,8 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "            try{gradFill.property('Ponto inicial').setValue([gd.gsX + (gd.x||0), gd.gsY + (gd.y||0)]);}catch(e){try{gradFill.property('ADBE Vector Grad Start Pt').setValue([gd.gsX + (gd.x||0), gd.gsY + (gd.y||0)]);}catch(e2){}}\n";
   js += "            try{gradFill.property('Ponto final').setValue([gd.geX + (gd.x||0), gd.geY + (gd.y||0)]);}catch(e){try{gradFill.property('ADBE Vector Grad End Pt').setValue([gd.geX + (gd.x||0), gd.geY + (gd.y||0)]);}catch(e2){}}\n";
   js += "        }\n";
-  js += "        // Remove the temp standalone layers\n";
   js += "        try{newLyr.remove();}catch(e){}\n";
-  js += "        try{origLyr.remove();}catch(e){}\n";
+  js += "        if(origLyr){ try{origLyr.remove();}catch(e){} }\n";
   js += "\n";
   js += "      } else {\n";
   js += "        // SPLIT LAYER MODE (SWAP ROBUST SHADOW-BUILD)\n";

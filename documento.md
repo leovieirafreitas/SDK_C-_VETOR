@@ -409,3 +409,19 @@ if (successGrad) {
 - **Alpha Stops**: Exportar e injetar opacidade por stop
 - **Suporte a texto**: TextFrames do Illustrator como camadas de texto editáveis
 - **Múltiplos Artboards**: Exportar artboard específico por nome
+
+---
+
+## 11. Arquitetura SplitGroup (v13+)
+
+### Estabilização de Render e Fim das "Camadas de forma 50"
+
+A arquitetura do **SplitGroup** permite agrupar toda a arte importada do Illustrator dentro de uma única Shape Layer mestra chamada `Vetores`.
+Nas versões anteriores, a injeção do C++ dependia de **Dummy Layers** (`Camada de forma X`) como placeholders isolados na timeline. Isso causava resíduos (as famosas camadas vazias que o AE gerava se a execução do script fosse interrompida ou se a renomeação falhasse).
+
+Na versão estável atual:
+1. **Iscas Seguras (Dummy Layers)**: O SplitGroup.jsx continua gerando as Dummy Layers apenas para os shapes que contêm gradientes, para manter a compatibilidade com o C++ antigo e novo.
+2. **Extra Cleanup Automático (O Exterminador)**: Um loop de varredura roda imediatamente após o C++ finalizar. Ele deleta incondicionalmente qualquer camada nomeada como Camada de forma X, _idx ou (grad).
+3. **Fallback Name Seguro**: Se o AE impedir de renomear a camada para `Vetores` (causa raiz das Camadas de forma perdidas na timeline), o script tenta novamente e utiliza **referências diretas ao objeto da camada** em vez de buscas via string de nome. Isso garante que as máscaras e a limpeza final funcionem perfeitamente.
+4. **Z-Order de Máscaras**: Mantém o uso do `ADBE Vector Filter - Merge` (Intersect) com reordenação via `moveTo()`.
+
