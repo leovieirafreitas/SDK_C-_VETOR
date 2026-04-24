@@ -826,18 +826,29 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "              app.executeCommand(20); // Paste\n";
   js += "            } catch(eCP) { alert('Paste Error: '+eCP.message); }\n";
   js += "        }\n";
-  js += "        // Find the freshly pasted G-Fill to adjust coordinates\n";
+  js += "        // Find the freshly pasted G-Fill and move to BOTTOM\n";
+  js += "        // AE rule: fill BELOW paths (higher index) applies to paths above.\n";
+  js += "        // Paste puts G-Fill at index 1 (top) pushing paths down = invisible!\n";
   js += "        var gradFill = null;\n";
-  js += "        for(var "
-        "ng=1;ng<=gradCont.numProperties;ng++){if(gradCont.property(ng)."
-        "matchName==='ADBE Vector Graphic - "
-        "G-Fill'){gradFill=gradCont.property(ng);break;}}\n";
+  js += "        for(var ng=1;ng<=gradCont.numProperties;ng++){\n";
+  js += "          if(gradCont.property(ng).matchName==='ADBE Vector Graphic - G-Fill'){\n";
+  js += "            gradFill=gradCont.property(ng);\n";
+  js += "            try{ gradFill.moveTo(gradCont.numProperties); }catch(emv){}\n";
+  js += "            gradFill=gradCont.property(gradCont.numProperties);\n";
+  js += "            break;\n";
+  js += "          }\n";
+  js += "        }\n";
   js +=
       "        var gradVGT = gradVG.property('ADBE Vector Transform Group');\n";
   js += "        try{gradVGT.property('ADBE Vector Position').setValue([0, "
         "0]);}catch(evt){}\n";
   js += "        try{gradVGT.property('ADBE Vector "
         "Anchor').setValue([0,0]);}catch(eva){}\n";
+  js += "        // Aplicar opacidade do shape original (gd.opacity 0-1 -> 0-100)\n";
+  js += "        if(gd.opacity !== undefined && gd.opacity !== null){\n";
+  js += "          var opPct = (gd.opacity <= 1.0) ? gd.opacity * 100 : gd.opacity;\n";
+  js += "          try{gradVGT.property('ADBE Vector Opacity').setValue(opPct);}catch(eoVG){}\n";
+  js += "        }\n";
   js += "        if(gradFill) {\n";
   js += "            try{gradFill.property('Ponto inicial').setValue([gd.gsX + (gd.x||0), gd.gsY + (gd.y||0)]);}catch(e){try{gradFill.property('ADBE Vector Grad Start Pt').setValue([gd.gsX + (gd.x||0), gd.gsY + (gd.y||0)]);}catch(e2){}}\n";
   js += "            try{gradFill.property('Ponto final').setValue([gd.geX + (gd.x||0), gd.geY + (gd.y||0)]);}catch(e){try{gradFill.property('ADBE Vector Grad End Pt').setValue([gd.geX + (gd.x||0), gd.geY + (gd.y||0)]);}catch(e2){}}\n";
