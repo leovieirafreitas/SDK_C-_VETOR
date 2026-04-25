@@ -1,6 +1,7 @@
-// SplitGroup.jsx v13 — NATIVE BUILD ARCHITECTURE + MASKS
-// Resolve Hierarchy, Masks (ADBE Mask Atom), Ellipse/ClipGroup and Gradients.
-// Mascara interna identica ao SplitLayer.jsx porem dentro da layer "Vetores".
+// SplitGroup.jsx v14 — TURBO SHADOW-BUILD + NATIVE BUILD ARCHITECTURE + MASKS
+// TURBO: Constrói a layer "Vetores" numa TempComp INVISÍVEL (sem atualizar UI a cada shape)
+// Depois copyToComp(1 layer) → cai na comp ativa em ~1 batch. Mesma velocidade do SplitLayer.
+// Preserva: Hierarquia, Merge Paths (Clip), Blend Modes, Gradientes (Dummy Layers para C++).
 
 (function(){
 try {
@@ -13,19 +14,30 @@ try {
         alert("Nenhuma composicao ativa!"); return;
     }
 
-    app.beginUndoGroup("Transfer Vectors Native Build");
+    app.beginUndoGroup("Transfer Vectors Native Build (Turbo)");
 
-    var vetLayer = comp.layers.addShape();
-    
-    // Robust naming with retry to prevent "Camada de forma" issues
+    // ─────────────────────────────────────────────────────────────────────
+    // TURBO SHADOW-BUILD: Cria comp temporária invisible para construção
+    // O AE não atualiza a UI da timeline principal durante o build
+    // ─────────────────────────────────────────────────────────────────────
+    var tempComp = app.project.items.addComp(
+        "TempBuild_Group",
+        comp.width, comp.height, comp.pixelAspect,
+        comp.duration, comp.frameRate
+    );
+
+    // Cria a layer Vetores DENTRO da tempComp (invisível ao usuário)
+    var vetLayer = tempComp.layers.addShape();
+
+    // Robust naming com retry
     var nameSuccess = false;
     for (var n = 0; n < 3; n++) {
         try { vetLayer.name = "Vetores"; nameSuccess = true; break; } catch(e) { $.sleep(50); }
     }
     if (!nameSuccess) {
-        try { vetLayer.name = "Vetores"; } catch(e) { alert("AE prevented renaming the layer! Current name: " + vetLayer.name); }
+        try { vetLayer.name = "Vetores"; } catch(e) {}
     }
-    
+
     vetLayer.moveToBeginning();
     var tr = vetLayer.property("ADBE Transform Group");
     try{tr.property("ADBE Anchor Point").setValue([0, 0]);}catch(e){}
@@ -65,15 +77,16 @@ try {
         sdByName[jd.shapes[k].name] = jd.shapes[k];
     }
 
-    // IDENTICO ao SplitLayer setBlend — aplica blend mode no Vector Group Transform
-    // bm values: 1=Normal, 2=Multiply, 3=Screen, 4=Overlay, 5=Darken, 6=Lighten...
-    // ADBE Vector Blend Mode aceita o mesmo valor numerico direto do JSON
+    // Blend mode no Vector Group Transform
     function setBlendNative(vGroupTransform, bm) {
         if (!bm || bm === 1) return;
         try { vGroupTransform.property("ADBE Vector Blend Mode").setValue(bm); } catch(e){}
     }
 
-    // LER NA ORDEM DO JSON (0 ate length-1) PARA MANTER A HIERARQUIA
+    // ─────────────────────────────────────────────────────────────────────
+    // PASSO 1: Construir toda a árvore de shapes/grupos em tempComp.Vetores
+    // (UI não atualiza — sem lag visual)
+    // ─────────────────────────────────────────────────────────────────────
     for (var si = 0; si < jd.shapes.length; si++) {
         var sd = jd.shapes[si];
         if (sd.fillType === "text" || !sd.name) continue;
@@ -91,17 +104,13 @@ try {
                 if (ngt) {
                     ngt.property("ADBE Vector Anchor").setValue([0,0]);
                     ngt.property("ADBE Vector Position").setValue([0,0]);
-                    // Blend mode do grupo (Grass=Multiply, etc.)
                     setBlendNative(ngt, sd.blendMode);
-                    // Opacidade do grupo
                     if (sd.opacity !== undefined && sd.opacity !== null) {
                         var grpOp = (sd.opacity > 1.0) ? sd.opacity : sd.opacity * 100;
                         try { ngt.property("ADBE Vector Opacity").setValue(grpOp); } catch(ego){}
                     }
                 }
             } catch(e){}
-            try { nGrp.moveTo(1); } catch (em) {}
-            // Refresh: DOM index muda apos moveTo
             nGrp = parentCont.property(sd.name);
             groupContMap[sd.name] = nGrp.property("ADBE Vectors Group");
             continue;
@@ -119,9 +128,7 @@ try {
             var vgt = gradVG.property("ADBE Vector Transform Group");
             try { vgt.property("ADBE Vector Anchor").setValue([0,0]); } catch(ea){}
             try { vgt.property("ADBE Vector Position").setValue([0,0]); } catch(ep){}
-            // Blend mode do gradiente
             setBlendNative(vgt, sd.blendMode);
-            // Opacidade — try matchName, fallback index 7
             if (sd.opacity !== undefined && sd.opacity !== null) {
                 var gradOp = (sd.opacity > 1.0) ? sd.opacity : sd.opacity * 100;
                 var opSet = false;
@@ -152,8 +159,8 @@ try {
             }
 
             if (addedGPaths > 0) {
-                // Dummy layer standalone para o C++ encontrar pelo sd.name
-                var dummyLyr = comp.layers.addShape();
+                // Dummy layer no tempComp para C++ encontrar pelo sd.name
+                var dummyLyr = tempComp.layers.addShape();
                 dummyLyr.name = sd.name;
 
                 // Solid fill provisorio — C++ vai substituir pelo G-Fill
@@ -165,7 +172,6 @@ try {
             } else {
                 try { gradVG.remove(); } catch(eg){}
             }
-            try { parentCont.property(sd.name).moveTo(1); } catch(em){}
             continue;
         }
 
@@ -180,9 +186,7 @@ try {
         grp2.name = sd.name;
         var cont2 = grp2.property("ADBE Vectors Group");
         var vgt2 = grp2.property("ADBE Vector Transform Group");
-        // Blend mode do shape solido
         setBlendNative(vgt2, sd.blendMode);
-        // Opacidade — try matchName, fallback index 7
         if (sd.opacity !== undefined && sd.opacity !== null) {
             var solidOp = (sd.opacity > 1.0) ? sd.opacity : sd.opacity * 100;
             var opSet2 = false;
@@ -220,18 +224,35 @@ try {
 
         applyFillOrStrokeNative(cont2, sd.fill, false);
         applyFillOrStrokeNative(cont2, sd.stroke, true);
-
-        // NO SplitGroup NAO adicionar fill branco em isClipping!
-        // Isso cobria tudo. No SplitGroup o clipping e feito via
-        // Merge Paths internos — o shape fica invisivel (sem fill/stroke).
-
-        try { parentCont.property(sd.name).moveTo(1); } catch(em){}
     }
 
-    // Selecionar vetLayer para garantir que C++ e NATIVE pastas vao para o lugar certo
+    // ─────────────────────────────────────────────────────────────────────
+    // TURBO TRANSFER: Copia a ÚNICA layer "Vetores" da tempComp → comp ativa
+    // 1 copyToComp em vez de N addProperty calls na UI
+    // ─────────────────────────────────────────────────────────────────────
+    // Copia também as Dummy layers (gradientes) que o C++ vai usar
+    // Loop reverso: mantém Z-order correto
+    for (var ti = tempComp.numLayers; ti >= 1; ti--) {
+        try { tempComp.layer(ti).copyToComp(comp); } catch(ec){}
+    }
+
+    // Atualiza referência vetLayer para a layer copiada no comp real
+    var vetLayer = null;
+    for (var li = 1; li <= comp.numLayers; li++) {
+        if (comp.layer(li).name === "Vetores") {
+            vetLayer = comp.layer(li);
+            break;
+        }
+    }
+    if (vetLayer) { try { vetLayer.moveToEnd(); } catch(e){} } // Vetores vai para o fundo
+
+    // Remove a tempComp — já cumpriu o papel
+    try { tempComp.remove(); } catch(e){}
+
+    // Selecionar vetLayer para que C++ saiba qual layer é o Vetores
     try {
         for (var li = 1; li <= comp.numLayers; li++) { comp.layer(li).selected = false; }
-        vetLayer.selected = true;
+        if (vetLayer) vetLayer.selected = true;
     } catch(e){}
 
     // ── 2. EXECUTA PLUGIN C++ ──
@@ -244,7 +265,7 @@ try {
         app.endUndoGroup();
     }
 
-    // ── EXTRA CLEANUP: Nuke any leftover dummy layers or failed C++ layers ──
+    // ── EXTRA CLEANUP: Remove dummy layers ou falhas do C++ ──
     try {
         var lixoArr = [];
         for (var lixo = 1; lixo <= comp.numLayers; lixo++) {
@@ -259,9 +280,6 @@ try {
     } catch(e) {}
 
     // ── 3. MASCARAS — clip DENTRO do VG via Merge Paths (Intersect) ──
-    // SplitGroup usa UMA layer "Vetores". NAO criamos layers standalone.
-    // Para cada shape com clipMaskRef: adicionamos o path da mascara + 
-    // Merge Paths Intersect DENTRO do VG do shape, mantendo tudo em Vetores.
     app.beginUndoGroup("Apply ClipMasks Native");
     var _dbgMask = [];
 
@@ -290,15 +308,12 @@ try {
             var maskPaths3 = maskSD3.paths ? maskSD3.paths : (maskSD3.path ? [maskSD3.path] : null);
             if (!maskPaths3 || maskPaths3.length === 0) { _dbgMask.push("NO_MASKPATHS:"+sd3.name); continue; }
 
-            // Achar VG no DOM fresco pos-C++
             var vgRef3 = _findVGByName(rootVet3, sd3.name);
             if (!vgRef3) { _dbgMask.push("NO_VG:"+sd3.name); continue; }
             var vgCont3 = vgRef3.property("ADBE Vectors Group");
 
-            // Coordenadas absolutas da mask (mesmo sistema do passo 1: pt.a + centro)
             var mxOff3 = maskSD3.x || 0, myOff3 = maskSD3.y || 0;
 
-            // Adicionar path(s) da mascara dentro do VG
             var addedClip = 0;
             for (var mpi3=0; mpi3<maskPaths3.length; mpi3++) {
                 var mpD3 = maskPaths3[mpi3];
@@ -316,15 +331,12 @@ try {
                 try { clipPg.property("ADBE Vector Shape").setValue(clipSv); addedClip++; } catch(e){}
             }
 
-            // Merge Paths Intersect — clipa o shape ao circulo, dentro do VG
             if (addedClip > 0) {
                 try {
                     var mp3 = vgCont3.addProperty("ADBE Vector Filter - Merge");
-                    mp3.property("ADBE Vector Merge Type").setValue(4); // 4 = Intersect (clip ring to circle)
+                    mp3.property("ADBE Vector Merge Type").setValue(4); // 4 = Intersect
 
-                    // CRITICAL: AE exige que Fill/Stroke venha APOS o Merge Paths.
-                    // O passo 1 adicionou o Fill ANTES dos clip paths.
-                    // Coletamos as referencias de fill/stroke e movemos para o final.
+                    // CRITICAL: Fill/Stroke deve vir APÓS o Merge Paths
                     var fillRefs3 = [];
                     for (var fpi3=1; fpi3<=vgCont3.numProperties; fpi3++) {
                         try {
@@ -344,7 +356,6 @@ try {
                     _dbgMask.push("OK:"+sd3.name);
                 } catch(emp3){ _dbgMask.push("MERGE_ERR:"+sd3.name+":"+emp3.message); }
             }
-
         }
     } else {
         _dbgMask.push("NO_VETLYR");
@@ -355,13 +366,6 @@ try {
     }
 
     app.endUndoGroup();
-    app.endUndoGroup();
-
-
-
-
-
-
 
     // ── 4. CLEANUP DE NOMES _idx ──
     app.beginUndoGroup("Cleanup Native Vetores");
@@ -376,7 +380,6 @@ try {
             }
         }
     };
-    // Usar vetLayer diretamente para o cleanup (garante que limpamos a correta, mesmo se o nome falhar)
     if (vetLayer) {
         _cleanProps(vetLayer.property("ADBE Root Vectors Group"));
     }
@@ -386,6 +389,7 @@ try {
     "true";
 
 } catch (e) {
+    try { if (typeof tempComp !== "undefined") tempComp.remove(); } catch(ec){}
     alert("ERRO NATIVE BLD: " + e.message + " L:" + e.line);
 }
 })();

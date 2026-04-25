@@ -241,7 +241,7 @@ try {
         }
     }
     
-    for (var i = tempComp.numLayers; i >= 1; i--) { 
+    for (var i = 1; i <= tempComp.numLayers; i++) { 
         try {
             tempComp.layer(i).copyToComp(comp);
         } catch(ec){}
