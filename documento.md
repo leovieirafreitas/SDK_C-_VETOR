@@ -421,7 +421,10 @@ Nas versões anteriores, a injeção do C++ dependia de **Dummy Layers** (`Camad
 
 Na versão estável atual:
 1. **Iscas Seguras (Dummy Layers)**: O SplitGroup.jsx continua gerando as Dummy Layers apenas para os shapes que contêm gradientes, para manter a compatibilidade com o C++ antigo e novo.
-2. **Extra Cleanup Automático (O Exterminador)**: Um loop de varredura roda imediatamente após o C++ finalizar. Ele deleta incondicionalmente qualquer camada nomeada como Camada de forma X, _idx ou (grad).
-3. **Fallback Name Seguro**: Se o AE impedir de renomear a camada para `Vetores` (causa raiz das Camadas de forma perdidas na timeline), o script tenta novamente e utiliza **referências diretas ao objeto da camada** em vez de buscas via string de nome. Isso garante que as máscaras e a limpeza final funcionem perfeitamente.
-4. **Z-Order de Máscaras**: Mantém o uso do `ADBE Vector Filter - Merge` (Intersect) com reordenação via `moveTo()`.
+2. **Extra Cleanup Automático**: O script ignora qualquer tentativa de limpar os sufixos `_idx` dos grupos internos. Manter os sufixos `_idx` assegura que o C++ sempre encontrará os grupos corretos, mesmo quando a execução for assíncrona ou postergada pelo After Effects.
+3. **Resolução do Bug de Foco do Painel CEP (G-Fill Transparente)**: Quando ativado através da extensão do After Effects (painel CEP), comandos em nível de sistema operacional (como `app.executeCommand(19/20)` para Copiar/Colar o `G-Fill`) podiam falhar silenciosamente porque o painel da web "roubava" o foco, deixando o vetor transparente. Isso foi corrigido em definitivo por:
+   - Acionar o script usando `BridgeTalk` apontado para o próprio After Effects (`bt.target = "aftereffects"`), forçando a execução nativa na thread principal.
+   - Utilizar o comando `comp.openInViewer()` milissegundos antes da invocação do C++, o que transfere forçadamente o foco da interface do painel CEP de volta para o painel de Composição/Timeline, viabilizando o Copy/Paste.
+4. **Fallback Name Seguro**: Referências de variáveis isoladas garantem que se o sistema do After Effects bloquear renomeações sucessivas, o painel mantenha referências diretas do objeto da camada.
+5. **Z-Order de Máscaras**: Mantém o uso do `ADBE Vector Filter - Merge` (Intersect) com reordenação correta.
 
