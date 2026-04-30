@@ -367,23 +367,9 @@ try {
 
     app.endUndoGroup();
 
-    // ── 4. CLEANUP DE NOMES _idx ──
-    app.beginUndoGroup("Cleanup Native Vetores");
-    var _cleanProps = function(cont) {
-        for (var k=1; k<=cont.numProperties; k++) {
-            var p = cont.property(k);
-            if (p.matchName === "ADBE Vector Group") {
-                var nm = p.name;
-                var ox = nm.indexOf("_idx");
-                if (ox !== -1) p.name = nm.substring(0, ox);
-                try { _cleanProps(p.property("ADBE Vectors Group")); } catch(e){}
-            }
-        }
-    };
-    if (vetLayer) {
-        _cleanProps(vetLayer.property("ADBE Root Vectors Group"));
-    }
-    app.endUndoGroup();
+    // O Cleanup de nomes _idx foi removido.
+    // Manter o sufixo _idx garante que o plugin C++ sempre encontrará os grupos corretos
+    // mesmo se a execução do plugin for postergada pelo CEP do After Effects.
 
     comp.openInViewer();
     "true";
