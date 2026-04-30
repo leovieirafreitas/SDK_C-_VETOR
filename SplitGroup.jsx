@@ -260,6 +260,7 @@ try {
 
     var gCmd = app.findMenuCommandId("GRAD FIXER: Aplicar Gradientes");
     if (gCmd > 0) {
+        try { comp.openInViewer(); } catch(e){} // Força o foco para a timeline/composition
         app.beginUndoGroup("C++ Gradient Inject");
         app.executeCommand(gCmd);
         app.endUndoGroup();
