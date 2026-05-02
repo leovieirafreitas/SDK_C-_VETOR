@@ -495,6 +495,39 @@
         if (sel && sel.length > 0) modoSelecao = true;
     } catch (e) { }
 
+    var _modifiedGroups = [];
+    var _clipTagMap = []; // { grp, orig, exactClipMaskID }
+    function _tagGroups(items) {
+        if (!items) return;
+        for (var _i = 0; _i < items.length; _i++) {
+            var _item = items[_i];
+            var _tn = _item.typename;
+            if (_tn === "GroupItem") {
+                _tagGroups(_item.pageItems);
+            } else if (_tn === "RasterItem" || _tn === "PlacedItem" || _tn === "NonNativeItem" || _tn === "PluginItem") {
+                var _par = _item.parent;
+                while (_par && _par.typename !== "Document" && _par.typename !== "Layer") {
+                    if (_par.typename === "GroupItem" && _par.clipped) {
+                        var origName = _par.name;
+                        if (origName.indexOf("GFX_TARGET_") === -1) {
+                            var uniqueTag = "GFX_TARGET_" + (_clipTagMap.length);
+                            _par.name = uniqueTag;
+                            // collectAllWithClip builds: currentID = name + "_idx" + idCounter + "x" + globalSessionID
+                            // then: clipMaskID = currentID + "_clipmask"
+                            // We can't predict idCounter exactly, so we store the tag name
+                            // and match by comment containing the tag name.
+                            _modifiedGroups.push({ grp: _par, orig: origName });
+                            _clipTagMap.push({ grp: _par, tag: uniqueTag });
+                        }
+                        break;
+                    }
+                    _par = _par.parent;
+                }
+            }
+        }
+    }
+    if (modoSelecao) { _tagGroups(doc.selection); } else { _tagGroups(doc.pageItems); }
+
     if (modoSelecao) {
         // Remover duplicatas de selecoes profundas (Illustrator retorna Grupo e Filhos juntos)
         var topLevelSel = [];
@@ -700,7 +733,146 @@
         "Total: " + shapesData.length + " shapes" +
         (gradInfo ? "\n\nDiagnÃ³stico Gradientes:" + gradInfo : "");
 
-    // â”€â”€ ENVIAR PARA O AFTER EFFECTS VIA BRIDGETALK â”€â”€
+    // ── EXPORTAR IMAGENS (raster/placed) antes do BridgeTalk ──
+    var _imgExports = [];
+    try {
+        var _expRootFolder = new Folder("C:/AEGP/img_export");
+        if (!_expRootFolder.exists) _expRootFolder.create();
+
+        // Cria subpasta com timestamp para cada sessão — imagens de artes diferentes nunca se sobrescrevem
+        var _sessionID = new Date().getTime().toString();
+        var _expFolder = new Folder(_expRootFolder.fsName + "/" + _sessionID);
+        if (!_expFolder.exists) _expFolder.create();
+
+        // Helper: sobe a cadeia de pais até encontrar o GroupItem clipped mais próximo
+        // (para exportar a imagem com máscara aplicada como alpha)
+        function _getExportItem(img) {
+            var _par = img.parent;
+            while (_par && _par.typename !== "Document" && _par.typename !== "Layer") {
+                if (_par.typename === "GroupItem" && _par.clipped) return _par;
+                _par = _par.parent;
+            }
+            return img; // sem clipping mask — exporta a imagem diretamente
+        }
+
+        var _seenBounds = {};
+        var _imgItems = [];
+
+        // Helper: sobe a cadeia de pais até encontrar o GroupItem clipped mais próximo
+        // Retorna o TAG (GFX_TARGET_N) do grupo, que também será parte do comment no AE
+        function _getClipInfo(img) {
+            var _par = img.parent;
+            while (_par && _par.typename !== "Document" && _par.typename !== "Layer") {
+                if (_par.typename === "GroupItem" && _par.clipped) {
+                    var _tag = _par.name || null;
+                    if (_tag && _tag.indexOf("GFX_TARGET_") === 0) {
+                        return { tag: _tag };
+                    }
+                    return null;
+                }
+                _par = _par.parent;
+            }
+            return null;
+        }
+
+        // Busca imagens descendo a árvore. Pega Raster, Placed, NonNative, Plugin items.
+        function _traverseAndCollect(items) {
+            if (!items) return;
+            for (var _i = 0; _i < items.length; _i++) {
+                var _item = items[_i];
+                var _tn = _item.typename;
+                if (_tn === "GroupItem") {
+                    _traverseAndCollect(_item.pageItems);
+                } else if (_tn === "RasterItem" || _tn === "PlacedItem" || _tn === "NonNativeItem" || _tn === "PluginItem") {
+                    // APENAS itens de imagem real (excluindo PathItem, CompoundPathItem, TextFrame, SymbolItem, GroupItem)
+                    try {
+                        var _bk = _item.visibleBounds.join("|");
+                        if (!_seenBounds[_bk]) {
+                            _seenBounds[_bk] = true;
+                            var _ci = _getClipInfo(_item);
+                            _imgItems.push({ item: _item, clipLayerName: _ci ? _ci.tag : null });
+                        }
+                    } catch(e) {}
+                }
+            }
+        }
+
+        if (modoSelecao) {
+            _traverseAndCollect(doc.selection);
+        } else {
+            _traverseAndCollect(doc.pageItems);
+        }
+
+        for (var _ii = 0; _ii < _imgItems.length; _ii++) {
+            var _imgObj = _imgItems[_ii];
+            var _img = _imgObj.item;
+            var _td;
+            try {
+                // Usa os bounds da imagem bruta para posicionamento no AE
+                var _bounds = _img.visibleBounds;
+                var _iL = _bounds[0], _iT = _bounds[1], _iR = _bounds[2], _iB = _bounds[3];
+                var _iW = Math.abs(_iR - _iL), _iH = Math.abs(_iT - _iB);
+                if (_iW < 1 || _iH < 1) continue;
+
+                var _iCX = (_iL + _iR) / 2, _iCY = (_iT + _iB) / 2;
+                var _aeX = _iCX - abLeft;
+                var _aeY = abTop - _iCY;
+
+                var _fname = "img_" + _ii + "_" + (new Date()).getTime() + ".png";
+                var _fpath = _expFolder.fsName + "/" + _fname;
+                var _expFile = new File(_fpath);
+
+                // Deselecionar tudo com segurança
+                app.activeDocument.selection = null;
+                var _currSel = app.activeDocument.selection;
+                if (_currSel && _currSel.length > 0) {
+                    for (var _s = _currSel.length - 1; _s >= 0; _s--) {
+                        try { _currSel[_s].selected = false; } catch(e) {}
+                    }
+                }
+
+                // Seleciona e copia APENAS a imagem bruta (sem grupo de clipes)
+                _img.selected = true;
+                app.copy();
+                _img.selected = false;
+
+                _td = app.documents.add(DocumentColorSpace.RGB, _iW + 2, _iH + 2, 1,
+                    DocumentArtboardLayout.GridByRow, 1, 1);
+                app.paste();
+
+                var _pastedItem = _td.pageItems[0];
+                if (_pastedItem) {
+                    var _pb = _pastedItem.visibleBounds;
+                    _td.artboards[0].artboardRect = [_pb[0], _pb[1], _pb[2], _pb[3]];
+                }
+
+                var _pngOpts = new ExportOptionsPNG24();
+                _pngOpts.antiAliasing = true;
+                _pngOpts.transparency = true;
+                _pngOpts.artBoardClipping = true;
+                _pngOpts.horizontalScale = 100;
+                _pngOpts.verticalScale = 100;
+                _td.exportFile(_expFile, ExportType.PNG24, _pngOpts);
+                _td.close(SaveOptions.DONOTSAVECHANGES);
+                _td = null;
+
+                doc.selection = null;
+
+                if (_expFile.exists) {
+                    _imgExports.push({
+                        path: _fpath.replace(/\\/g, "/"),
+                        x: _aeX, y: _aeY, w: _iW, h: _iH,
+                        clipLayerName: _imgObj.clipLayerName
+                    });
+                }
+            } catch (_eImg) {
+                try { if (_td) _td.close(SaveOptions.DONOTSAVECHANGES); } catch(e) {}
+            }
+        }
+    } catch (_eImgBlock) {}
+    // Fim da exportação de imagens
+
+    // ── ENVIAR PARA O AFTER EFFECTS VIA BRIDGETALK ──
     if (BridgeTalk.isRunning("aftereffects")) {
         var bt = new BridgeTalk();
         bt.target = "aftereffects";
@@ -783,10 +955,74 @@
             }
         }
 
+        // ── IMPORTAR IMAGENS NO AE (append ao final do req) ──
+        if (_imgExports.length > 0) {
+            req += "try {\n";
+            req += "  var _imgComp = app.project.activeItem;\n";
+            req += "  if (_imgComp instanceof CompItem) {\n";
+            for (var _ij = 0; _ij < _imgExports.length; _ij++) {
+                var _ie = _imgExports[_ij];
+                req += "    try {\n";
+                req += "      var _imgF = new File('" + _ie.path + "');\n";
+                req += "      if (_imgF.exists) {\n";
+                req += "        var _imgIO = new ImportOptions(_imgF);\n";
+                req += "        var _imgItem = app.project.importFile(_imgIO);\n";
+                req += "        var _imgLyr = _imgComp.layers.add(_imgItem);\n";
+                req += "        _imgLyr.property('Position').setValue([" + _ie.x.toFixed(3) + ", " + _ie.y.toFixed(3) + "]);\n";
+                
+                if (_ie.clipLayerName) {
+                    // SplitLayer writes: lyr.comment = "uid_" + sd.name
+                    // sd.name for the clipmask = "GFX_TARGET_N_idxMxSESSION_clipmask"
+                    // So comment contains "uid_GFX_TARGET_N" as a substring
+                    var _searchTag = "uid_" + _ie.clipLayerName;
+                    req += "        try {\n";
+                    req += "          var _maskLyr = null;\n";
+                    req += "          var _fbkLyr = null;\n";
+                    req += "          for(var _s=1; _s<=_imgComp.numLayers; _s++){\n";
+                    req += "            var _sL = _imgComp.layer(_s);\n";
+                    req += "            var _c = _sL.comment || '';\n";
+                    // Match: comment contains uid_GFX_TARGET_N (the clipmask layer)
+                    req += "            if(_c.indexOf('" + _searchTag + "') === 0 && _c.indexOf('_clipmask') > 0){\n";
+                    req += "              _maskLyr = _sL; break;\n";
+                    req += "            }\n";
+                    req += "          }\n";
+                    // If still not found, try any layer whose comment starts with uid_GFX_TARGET_N
+                    req += "          if(!_maskLyr){\n";
+                    req += "            for(var _s2=1;_s2<=_imgComp.numLayers;_s2++){\n";
+                    req += "              var _c2 = _imgComp.layer(_s2).comment || '';\n";
+                    req += "              if(_c2.indexOf('" + _searchTag + "') === 0){\n";
+                    req += "                _maskLyr = _imgComp.layer(_s2); break;\n";
+                    req += "              }\n";
+                    req += "            }\n";
+                    req += "          }\n";
+                    req += "          if(_maskLyr){\n";
+                    req += "            try{ _maskLyr.enabled = true; }catch(e){}\n"; // ensure mask is visible for matte
+                    req += "            _imgLyr.moveAfter(_maskLyr);\n";
+                    req += "            _imgLyr.trackMatteType = TrackMatteType.ALPHA;\n";
+                    req += "          }\n";
+                    req += "        } catch(etm){}\n";
+                }
+
+                req += "        var _vetIdx = 0;\n";
+                req += "        for(var _vi=1;_vi<=_imgComp.numLayers;_vi++){\n";
+                req += "          if(_imgComp.layer(_vi).name==='Vetores'){_vetIdx=_vi;break;}\n";
+                req += "        }\n";
+                req += "        if(_vetIdx > 0) { try{ _imgLyr.moveTo(_vetIdx); }catch(e){} }\n";
+                req += "      }\n";
+                req += "    } catch(_eIL) {}\n";
+            }
+            req += "  }\n";
+            req += "} catch(_eIMG) {}\n";
+        }
+
         bt.body = req;
         bt.send();
         $.flashFillMode = ""; // Reseta a flag apos enviar
     } else {
         alert("O After Effects precisa estar aberto para importar automaticamente!\nAbra o AE e rode o SplitLayer manualmente.");
+    }
+    
+    for(var mg=0; mg<_modifiedGroups.length; mg++){
+        try{ _modifiedGroups[mg].grp.name = _modifiedGroups[mg].orig; }catch(e){}
     }
 })();
