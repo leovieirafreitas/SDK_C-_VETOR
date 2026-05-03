@@ -14,7 +14,6 @@
         return null;
     }
 
-    // Extrai path relativo ao centro (cx, cy) COM closed flag real
     function getPathData(pathItem, cx, cy) {
         if (!pathItem || !pathItem.pathPoints || pathItem.pathPoints.length < 2) return null;
         var pts = [];
@@ -26,7 +25,87 @@
                 o: [pt.rightDirection[0] - pt.anchor[0], pt.anchor[1] - pt.rightDirection[1]]
             });
         }
-        return { pts: pts, closed: pathItem.closed };
+        
+        var isRect = false;
+        var rectSize = [0, 0];
+        if (pts.length >= 4) {
+            var minX = pts[0].a[0], maxX = pts[0].a[0];
+            var minY = pts[0].a[1], maxY = pts[0].a[1];
+            for (var i = 1; i < pts.length; i++) {
+                minX = Math.min(minX, pts[i].a[0]);
+                maxX = Math.max(maxX, pts[i].a[0]);
+                minY = Math.min(minY, pts[i].a[1]);
+                maxY = Math.max(maxY, pts[i].a[1]);
+            }
+            var w = Math.abs(maxX - minX);
+            var h = Math.abs(maxY - minY);
+            
+            var isAxisAligned = true;
+            var cornersHit = { tl: false, tr: false, bl: false, br: false };
+            for (var i = 0; i < pts.length; i++) {
+                var dx1 = Math.abs(pts[i].a[0] - minX);
+                var dx2 = Math.abs(pts[i].a[0] - maxX);
+                var dy1 = Math.abs(pts[i].a[1] - minY);
+                var dy2 = Math.abs(pts[i].a[1] - maxY);
+                if (Math.min(dx1, dx2) > 2.0 || Math.min(dy1, dy2) > 2.0) {
+                    isAxisAligned = false; break;
+                }
+                var isMinX = dx1 <= 2.0;
+                var isMaxX = dx2 <= 2.0;
+                var isMinY = dy1 <= 2.0;
+                var isMaxY = dy2 <= 2.0;
+                if (isMinX && isMinY) cornersHit.tl = true;
+                if (isMaxX && isMinY) cornersHit.tr = true;
+                if (isMinX && isMaxY) cornersHit.bl = true;
+                if (isMaxX && isMaxY) cornersHit.br = true;
+            }
+            
+            if (isAxisAligned && w > 0 && h > 0 && cornersHit.tl && cornersHit.tr && cornersHit.bl && cornersHit.br) {
+                isRect = true;
+                rectSize = [w, h];
+            }
+        }
+        
+        var isEllipse = false;
+        var ellipseSize = [0, 0];
+        if (pts.length >= 4 && !isRect) {
+            var minX = pts[0].a[0], maxX = pts[0].a[0];
+            var minY = pts[0].a[1], maxY = pts[0].a[1];
+            for (var i = 1; i < pts.length; i++) {
+                minX = Math.min(minX, pts[i].a[0]);
+                maxX = Math.max(maxX, pts[i].a[0]);
+                minY = Math.min(minY, pts[i].a[1]);
+                maxY = Math.max(maxY, pts[i].a[1]);
+            }
+            var w = Math.abs(maxX - minX);
+            var h = Math.abs(maxY - minY);
+            var midX = (minX + maxX) / 2;
+            var midY = (minY + maxY) / 2;
+            
+            var isAxisAlignedEllipse = true;
+            var edgesHit = { t: false, b: false, l: false, r: false };
+            for (var i = 0; i < pts.length; i++) {
+                var onVertEdge = (Math.abs(pts[i].a[0] - minX) < 2.0 || Math.abs(pts[i].a[0] - maxX) < 2.0) && Math.abs(pts[i].a[1] - midY) < 2.0;
+                var onHorizEdge = (Math.abs(pts[i].a[1] - minY) < 2.0 || Math.abs(pts[i].a[1] - maxY) < 2.0) && Math.abs(pts[i].a[0] - midX) < 2.0;
+                if (!onVertEdge && !onHorizEdge) {
+                    isAxisAlignedEllipse = false; break;
+                }
+                if (Math.abs(pts[i].a[1] - minY) < 2.0 && Math.abs(pts[i].a[0] - midX) < 2.0) edgesHit.t = true;
+                if (Math.abs(pts[i].a[1] - maxY) < 2.0 && Math.abs(pts[i].a[0] - midX) < 2.0) edgesHit.b = true;
+                if (Math.abs(pts[i].a[0] - minX) < 2.0 && Math.abs(pts[i].a[1] - midY) < 2.0) edgesHit.l = true;
+                if (Math.abs(pts[i].a[0] - maxX) < 2.0 && Math.abs(pts[i].a[1] - midY) < 2.0) edgesHit.r = true;
+            }
+            
+            if (isAxisAlignedEllipse && w > 0 && h > 0 && edgesHit.t && edgesHit.b && edgesHit.l && edgesHit.r) {
+                isEllipse = true;
+                ellipseSize = [w, h];
+            }
+        }
+        
+        if (isRect) return { type: "rect", size: rectSize, pos: [0, 0], pts: pts, closed: true };
+        if (isEllipse) return { type: "ellipse", size: ellipseSize, pos: [0, 0], pts: pts, closed: true };
+
+        return { type: "path", pts: pts, closed: pathItem.closed };
     }
 
     // Extrai path ABSOLUTO para o GRAD FIXER (usa artboard como origem)
@@ -719,7 +798,11 @@
             for(var vp = 0; vp < pArr.length; vp++) { if(pArr[vp]) validPaths.push(pArr[vp]); }
             for (var pi3 = 0; pi3 < validPaths.length; pi3++) {
                 var pth = validPaths[pi3];
-                wr(jf, '        {"closed":' + (pth.closed ? 'true' : 'false') + ',"pts":[');
+                if (pth.type === "rect" || pth.type === "ellipse") {
+                    wr(jf, '        {"type":"' + pth.type + '", "size":[' + toFixed(pth.size[0]) + ',' + toFixed(pth.size[1]) + '], "pos":[' + toFixed(pth.pos[0]) + ',' + toFixed(pth.pos[1]) + '], "closed":' + (pth.closed ? 'true' : 'false') + ',"pts":[');
+                } else {
+                    wr(jf, '        {"type":"path", "closed":' + (pth.closed ? 'true' : 'false') + ',"pts":[');
+                }
                 for (var pp3 = 0; pp3 < pth.pts.length; pp3++) wPt(jf, pth.pts[pp3], pp3 === pth.pts.length - 1);
                 wr(jf, '        ]}' + (pi3 < validPaths.length - 1 ? ',' : ''));
             }
@@ -738,7 +821,11 @@
             for(var vp = 0; vp < pArr.length; vp++) { if(pArr[vp]) validPaths.push(pArr[vp]); }
             for (var pi3 = 0; pi3 < validPaths.length; pi3++) {
                 var pth = validPaths[pi3];
-                wr(jf, '        {"closed":' + (pth.closed ? 'true' : 'false') + ',"pts":[');
+                if (pth.type === "rect" || pth.type === "ellipse") {
+                    wr(jf, '        {"type":"' + pth.type + '", "size":[' + toFixed(pth.size[0]) + ',' + toFixed(pth.size[1]) + '], "pos":[' + toFixed(pth.pos[0]) + ',' + toFixed(pth.pos[1]) + '], "closed":' + (pth.closed ? 'true' : 'false') + ',"pts":[');
+                } else {
+                    wr(jf, '        {"type":"path", "closed":' + (pth.closed ? 'true' : 'false') + ',"pts":[');
+                }
                 for (var pp3 = 0; pp3 < pth.pts.length; pp3++) wPt(jf, pth.pts[pp3], pp3 === pth.pts.length - 1);
                 wr(jf, '        ]}' + (pi3 < validPaths.length - 1 ? ',' : ''));
             }

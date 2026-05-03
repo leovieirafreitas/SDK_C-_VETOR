@@ -164,6 +164,22 @@ try {
             var addedGPaths = 0;
             for (var gpi = 0; gpi < sd.paths.length; gpi++) {
                 var gPathData = sd.paths[gpi];
+                if (!gPathData) continue;
+                
+                if (gPathData.type === "rect") {
+                    var pGrp = gCont.addProperty("ADBE Vector Shape - Rect");
+                    pGrp.property("ADBE Vector Rect Size").setValue(gPathData.size);
+                    pGrp.property("ADBE Vector Rect Position").setValue([(gPathData.pos?gPathData.pos[0]:0) + shiftX, (gPathData.pos?gPathData.pos[1]:0) + shiftY]);
+                    addedGPaths++;
+                    continue;
+                } else if (gPathData.type === "ellipse") {
+                    var pGrp = gCont.addProperty("ADBE Vector Shape - Ellipse");
+                    pGrp.property("ADBE Vector Ellipse Size").setValue(gPathData.size);
+                    pGrp.property("ADBE Vector Ellipse Position").setValue([(gPathData.pos?gPathData.pos[0]:0) + shiftX, (gPathData.pos?gPathData.pos[1]:0) + shiftY]);
+                    addedGPaths++;
+                    continue;
+                }
+                
                 if (!gPathData.pts || gPathData.pts.length < 2) continue;
                 var pGrp = gCont.addProperty("ADBE Vector Shape - Group");
                 var gv=[], git=[], got=[];
@@ -218,6 +234,22 @@ try {
         var addedSPaths = 0;
         for (var pi = 0; pi < sPathsArr.length; pi++) {
             var pData = sPathsArr[pi];
+            if (!pData) continue;
+            
+            if (pData.type === "rect") {
+                var pg3 = cont2.addProperty("ADBE Vector Shape - Rect");
+                pg3.property("ADBE Vector Rect Size").setValue(pData.size);
+                pg3.property("ADBE Vector Rect Position").setValue([(pData.pos?pData.pos[0]:0) + shiftX2, (pData.pos?pData.pos[1]:0) + shiftY2]);
+                addedSPaths++;
+                continue;
+            } else if (pData.type === "ellipse") {
+                var pg3 = cont2.addProperty("ADBE Vector Shape - Ellipse");
+                pg3.property("ADBE Vector Ellipse Size").setValue(pData.size);
+                pg3.property("ADBE Vector Ellipse Position").setValue([(pData.pos?pData.pos[0]:0) + shiftX2, (pData.pos?pData.pos[1]:0) + shiftY2]);
+                addedSPaths++;
+                continue;
+            }
+            
             if (!pData.pts || pData.pts.length < 2) continue;
             var pg3 = cont2.addProperty("ADBE Vector Shape - Group");
             var vt=[], it3=[], ot3=[];

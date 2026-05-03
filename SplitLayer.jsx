@@ -214,7 +214,23 @@ try {
             if (sPathsArr && sPathsArr.length > 0) {
                 for (var pi=0; pi<sPathsArr.length; pi++) {
                     var pData = sPathsArr[pi];
-                    if (!pData || !pData.pts || pData.pts.length < 2) continue;
+                    if (!pData) continue;
+                    
+                    if (pData.type === "rect") {
+                        var pathGroup = cont.addProperty("ADBE Vector Shape - Rect");
+                        pathGroup.property("ADBE Vector Rect Size").setValue(pData.size);
+                        pathGroup.property("ADBE Vector Rect Position").setValue(pData.pos || [0,0]);
+                        addedSPaths++;
+                        continue;
+                    } else if (pData.type === "ellipse") {
+                        var pathGroup = cont.addProperty("ADBE Vector Shape - Ellipse");
+                        pathGroup.property("ADBE Vector Ellipse Size").setValue(pData.size);
+                        pathGroup.property("ADBE Vector Ellipse Position").setValue(pData.pos || [0,0]);
+                        addedSPaths++;
+                        continue;
+                    }
+                    
+                    if (!pData.pts || pData.pts.length < 2) continue;
                     var pathGroup = cont.addProperty("ADBE Vector Shape - Group");
                     var verts=[],inT=[],outT=[];
                     for (var p=0; p<pData.pts.length; p++) {
