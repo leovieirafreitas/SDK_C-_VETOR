@@ -480,7 +480,44 @@
         results.push(data);
     }
 
-    // â”€â”€ MAIN â”€â”€
+    $.flashFillWin = null;
+    $.flashFillText = null;
+    $.flashFillBar = null;
+
+    function initProgress(title) {
+        try {
+            $.flashFillWin = new Window("palette", title || "FlashFill", undefined, {closeButton: false});
+            $.flashFillWin.margins = 20;
+            $.flashFillWin.alignChildren = ["fill", "center"];
+            var titleTxt = $.flashFillWin.add("statictext", undefined, "FlashFill");
+            titleTxt.graphics.font = ScriptUI.newFont("Arial", "BOLD", 14);
+            $.flashFillText = $.flashFillWin.add("statictext", undefined, "Inicializando...");
+            $.flashFillText.characters = 30;
+            $.flashFillBar = $.flashFillWin.add("progressbar", [0, 0, 250, 10], 0, 100);
+            $.flashFillWin.center();
+            $.flashFillWin.show();
+        } catch(e) {}
+    }
+
+    function writeProgress(msg, current, total) {
+        try {
+            if (!$.flashFillWin) initProgress("FlashFill - Illustrator");
+            if ($.flashFillText) $.flashFillText.text = msg;
+            if ($.flashFillBar && total > 0) $.flashFillBar.value = (current / total) * 50;
+            if ($.flashFillWin) $.flashFillWin.update();
+        } catch(e) {}
+    }
+
+    function closeProgress() {
+        try {
+            if ($.flashFillWin) {
+                $.flashFillWin.close();
+                $.flashFillWin = null;
+            }
+        } catch(e) {}
+    }
+
+    // ── MAIN ──
     var doc; try { doc = app.activeDocument; } catch (e) { alert("Abra um documento!"); return; }
     var aiPathStr = ""; try { aiPathStr = doc.fullName.fsName.replace(/\\/g, "/"); } catch (e) { }
     var ab = doc.artboards[doc.artboards.getActiveArtboardIndex()], abRect = ab.artboardRect;
@@ -548,6 +585,7 @@
         }
 
         for (var s2 = 0; s2 < topLevelSel.length; s2++) {
+            if (s2 % 5 === 0 || s2 === topLevelSel.length - 1) writeProgress("Collecting Shapes...", s2, topLevelSel.length);
             collectAllWithClip(topLevelSel[s2], shapesData, abLeft, abTop, null, 100, null);
         }
     } else {
@@ -573,6 +611,7 @@
 
         // CRITICO: doc.pageItems retorna TODOS os items incluindo aninhados!
         for (var s = 0; s < doc.pageItems.length; s++) {
+            if (s % 50 === 0 || s === doc.pageItems.length - 1) writeProgress("Collecting Shapes...", s, doc.pageItems.length);
             var topItem = doc.pageItems[s];
             try {
                 if (topItem.parent && topItem.parent.typename === "Layer") {
@@ -586,6 +625,7 @@
     var uniqueData = [];
     var seenSig = {};
     for (var i = 0; i < shapesData.length; i++) {
+        if (i % 50 === 0 || i === shapesData.length - 1) writeProgress("Filtering Vectors...", i, shapesData.length);
         var sd = shapesData[i];
         var sig = "";
         if (sd.fillType === "text") {
@@ -736,7 +776,18 @@
     // ── EXPORTAR IMAGENS (raster/placed) antes do BridgeTalk ──
     var _imgExports = [];
     try {
-        var _expRootFolder = new Folder("C:/AEGP/img_export");
+        var _basePath = "C:/AEGP/img_export";
+        if (typeof $.flashFillExportPath !== "undefined" && $.flashFillExportPath) {
+            if ($.flashFillExportPath === "PROMPT") {
+                var _userFolder = Folder.selectDialog("Escolha a pasta para exportar as imagens");
+                if (_userFolder) {
+                    _basePath = _userFolder.fsName;
+                }
+            } else {
+                _basePath = $.flashFillExportPath;
+            }
+        }
+        var _expRootFolder = new Folder(_basePath);
         if (!_expRootFolder.exists) _expRootFolder.create();
 
         // Cria subpasta com timestamp para cada sessão — imagens de artes diferentes nunca se sobrescrevem
@@ -877,6 +928,10 @@
         var bt = new BridgeTalk();
         bt.target = "aftereffects";
         var req = "";
+        
+        var safePath = (typeof $.flashFillExportPath !== 'undefined' && $.flashFillExportPath !== "PROMPT") ? $.flashFillExportPath : "C:/AEGP/img_export";
+        req += "var flashFillExportPath = '" + safePath + "';\n";
+        req += "var flashFillIlstTarget = '" + BridgeTalk.appSpecifier + "';\n";
 
         if ($.flashFillMode === "group") {
             req += "var fgPaths = [\n";
@@ -1015,9 +1070,39 @@
             req += "} catch(_eIMG) {}\n";
         }
 
+        var sentToAE = false;
         bt.body = req;
+        var aeFinished = false;
+        bt.onResult = function(res) { aeFinished = true; };
+        bt.onError = function(err) { aeFinished = true; alert("Erro no After Effects: " + err.body); };
+        
         bt.send();
+        sentToAE = true;
         $.flashFillMode = ""; // Reseta a flag apos enviar
+        
+        // Loop manual para ler o arquivo de progresso (para nao travar o UI do ILST e mostrar o progresso do AE)
+        while (!aeFinished) {
+            try {
+                var f = new File(safePath + "/progress.txt");
+                if (f.exists && f.open("r")) {
+                    var data = f.read();
+                    f.close();
+                    var parts = data.split("|");
+                    if (parts.length >= 3) {
+                        if ($.flashFillText) $.flashFillText.text = parts[0];
+                        var curr = parseInt(parts[1], 10);
+                        var tot = parseInt(parts[2], 10);
+                        if (tot > 0 && $.flashFillBar) {
+                            $.flashFillBar.value = 50 + (curr / tot) * 50;
+                        }
+                    }
+                }
+            } catch(e) {}
+            if ($.flashFillWin) $.flashFillWin.update();
+            BridgeTalk.pump();
+            $.sleep(100);
+        }
+        
     } else {
         alert("O After Effects precisa estar aberto para importar automaticamente!\nAbra o AE e rode o SplitLayer manualmente.");
     }
@@ -1025,4 +1110,6 @@
     for(var mg=0; mg<_modifiedGroups.length; mg++){
         try{ _modifiedGroups[mg].grp.name = _modifiedGroups[mg].orig; }catch(e){}
     }
+    
+    closeProgress();
 })();

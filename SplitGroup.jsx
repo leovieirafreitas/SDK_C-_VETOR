@@ -87,9 +87,30 @@ try {
     // PASSO 1: Construir toda a árvore de shapes/grupos em tempComp.Vetores
     // (UI não atualiza — sem lag visual)
     // ─────────────────────────────────────────────────────────────────────
+    
+    function writeProgress(msg, current, total) {
+        try {
+            var expPath = (typeof flashFillExportPath !== 'undefined') ? flashFillExportPath : "C:/AEGP/img_export";
+            var f = new File(expPath + "/progress.txt");
+            f.open("w");
+            f.write(msg + "|" + current + "|" + total);
+            f.close();
+        } catch(e) {}
+    }
+
+    function closeProgress() {
+        // Handled by the ILST script's bt.onResult
+    }
+
+    // Coleta textos para criar depois como layers separadas
+    var _textShapes = [];
     for (var si = 0; si < jd.shapes.length; si++) {
+        if (si % 3 === 0 || si === jd.shapes.length - 1) {
+            writeProgress("Building Groups in After Effects...", si, jd.shapes.length);
+        }
         var sd = jd.shapes[si];
-        if (sd.fillType === "text" || !sd.name) continue;
+        if (sd.fillType === "text") { _textShapes.push(sd); continue; }
+        if (!sd.name) continue;
 
         var parentCont = (sd.parent && groupContMap[sd.parent])
             ? groupContMap[sd.parent]
@@ -246,7 +267,45 @@ try {
     }
     if (vetLayer) { try { vetLayer.moveToEnd(); } catch(e){} } // Vetores vai para o fundo
 
-    // Remove a tempComp — já cumpriu o papel
+    // ── CRIAR LAYERS DE TEXTO separadas acima do Vetores ──
+    try {
+        for (var ti2 = _textShapes.length - 1; ti2 >= 0; ti2--) {
+            var tsd = _textShapes[ti2];
+            var finalTxt = (tsd.text || "").replace(/\r?\n|\r/g, "\r");
+            if (!finalTxt) continue;
+            var txtLyr = comp.layers.addText(finalTxt);
+            txtLyr.name = tsd.origName || tsd.text.substring(0, 20);
+            var textProp = txtLyr.property("Source Text");
+            var textDoc = textProp.value;
+            textDoc.fontSize = tsd.fontSize || 50;
+            textDoc.font = tsd.fontName || "Arial";
+            try {
+                var tc2 = tsd.color || [1,1,1];
+                textDoc.fillColor = [tc2[0], tc2[1], tc2[2]];
+            } catch(e){}
+            try {
+                var aeJust2 = ParagraphJustification.LEFT_JUSTIFY;
+                if (tsd.justification === 1) aeJust2 = ParagraphJustification.CENTER_JUSTIFY;
+                if (tsd.justification === 2) aeJust2 = ParagraphJustification.RIGHT_JUSTIFY;
+                textDoc.justification = aeJust2;
+            } catch(e){}
+            try { textProp.setValue(textDoc); } catch(et){}
+            try {
+                var txtTr2 = txtLyr.property("ADBE Transform Group");
+                var tb2 = txtLyr.sourceRectAtTime(0, false);
+                var tcx2 = tb2.left + (tb2.width / 2);
+                var tcy2 = tb2.top + (tb2.height / 2);
+                txtTr2.property("ADBE Anchor Point").setValue([tcx2, tcy2]);
+                txtTr2.property("ADBE Position").setValue([tsd.x || 0, tsd.y || 0]);
+                if (tsd.rotation) { txtTr2.property("ADBE Rotate Z").setValue(tsd.rotation); }
+                if (tsd.opacity !== undefined) { txtTr2.property("ADBE Opacity").setValue(tsd.opacity); }
+            } catch(et){}
+            // Move o texto para logo acima do Vetores
+            if (vetLayer) { try { txtLyr.moveBefore(vetLayer); } catch(e){} }
+        }
+    } catch(eTxt){}
+
+
     try { tempComp.remove(); } catch(e){}
 
     // Selecionar vetLayer para que C++ saiba qual layer é o Vetores
@@ -372,6 +431,7 @@ try {
     // Manter o sufixo _idx garante que o plugin C++ sempre encontrará os grupos corretos
     // mesmo se a execução do plugin for postergada pelo CEP do After Effects.
 
+    closeProgress();
     comp.openInViewer();
     "true";
 

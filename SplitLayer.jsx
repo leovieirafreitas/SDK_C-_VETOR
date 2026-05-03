@@ -78,7 +78,24 @@ try {
     // ── CONTADORES DE DIAGNÓSTICO ──
     var diagGrad = 0, diagFallback = 0, diagGroup = 0, diagSolid = 0, diagSkip = 0;
 
+    function writeProgress(msg, current, total) {
+        try {
+            var expPath = (typeof flashFillExportPath !== 'undefined') ? flashFillExportPath : "C:/AEGP/img_export";
+            var f = new File(expPath + "/progress.txt");
+            f.open("w");
+            f.write(msg + "|" + current + "|" + total);
+            f.close();
+        } catch(e) {}
+    }
+
+    function closeProgress() {
+        // Handled by the ILST script's bt.onResult
+    }
+
     for (var si = 0; si < jd.shapes.length; si++) {
+        if (si % 3 === 0 || si === jd.shapes.length - 1) {
+            writeProgress("Building Layers in After Effects...", si, jd.shapes.length);
+        }
         var sd = jd.shapes[si];
 
         if (sd.fillType === "group") {
@@ -364,6 +381,7 @@ try {
     } catch(eDiag) {
     }
 
+    closeProgress();
     comp.openInViewer();
 
 } catch(e) {
