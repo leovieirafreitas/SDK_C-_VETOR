@@ -881,22 +881,32 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "          var oCont2=oGrp2.property('ADBE Vectors Group');\n";
   js += "          for(var ok2=1;ok2<=oCont2.numProperties;ok2++){\n";
   js += "            var oP2=oCont2.property(ok2);\n";
-  js += "            if(oP2.matchName==='ADBE Vector Shape - Group'){\n";
+  js += "            if(oP2.matchName==='ADBE Vector Shape - Rect'){\n";
+  js += "              try{\n";
+  js += "                var np2=newCont2.addProperty('ADBE Vector Shape - Rect');\n";
+  js += "                try{np2.property('ADBE Vector Rect Size').setValue(oP2.property('ADBE Vector Rect Size').value);}catch(e){}\n";
+  js += "                try{np2.property('ADBE Vector Rect Position').setValue(oP2.property('ADBE Vector Rect Position').value);}catch(e){}\n";
+  js += "                try{np2.property('ADBE Vector Rect Roundness').setValue(oP2.property('ADBE Vector Rect Roundness').value);}catch(e){}\n";
+  js += "                np2.moveTo(1); addedShapes++;\n";
+  js += "              }catch(eR){}\n";
+  js += "            } else if(oP2.matchName==='ADBE Vector Shape - Ellipse'){\n";
+  js += "              try{\n";
+  js += "                var np2=newCont2.addProperty('ADBE Vector Shape - Ellipse');\n";
+  js += "                try{np2.property('ADBE Vector Ellipse Size').setValue(oP2.property('ADBE Vector Ellipse Size').value);}catch(e){}\n";
+  js += "                try{np2.property('ADBE Vector Ellipse Position').setValue(oP2.property('ADBE Vector Ellipse Position').value);}catch(e){}\n";
+  js += "                np2.moveTo(1); addedShapes++;\n";
+  js += "              }catch(eE){}\n";
+  js += "            } else if(oP2.matchName==='ADBE Vector Shape - Group'){\n";
   js += "              try{\n";
   js += "                var sv2=oP2.property('ADBE Vector Shape').value;\n";
   js += "                if(sv2&&sv2.vertices&&sv2.vertices.length>=2){\n";
-  js += "                  var np2=newCont2.addProperty('ADBE Vector Shape - "
-        "Group');\n";
+  js += "                  var np2=newCont2.addProperty('ADBE Vector Shape - Group');\n";
   js += "                  np2.property('ADBE Vector Shape').setValue(sv2);\n";
   js += "                  np2.moveTo(1); addedShapes++;\n";
   js += "                }\n";
   js += "              }catch(eS){}\n";
-  js +=
-      "            } else if(oP2.matchName==='ADBE Vector Filter - Merge'){\n";
-  js += "              try{var mp2=newCont2.addProperty('ADBE Vector Filter - "
-        "Merge');mp2.property('ADBE Vector Merge "
-        "Type').setValue(oP2.property('ADBE Vector Merge "
-        "Type').value);}catch(eM){}\n";
+  js += "            } else if(oP2.matchName==='ADBE Vector Filter - Merge'){\n";
+  js += "              try{var mp2=newCont2.addProperty('ADBE Vector Filter - Merge');mp2.property('ADBE Vector Merge Type').setValue(oP2.property('ADBE Vector Merge Type').value);}catch(eM){}\n";
   js += "            }\n";
   js += "          }\n";
   js += "        }\n";

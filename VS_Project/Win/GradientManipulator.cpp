@@ -687,15 +687,12 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "        var grp = conteudo.property(gi+1);\n";
   js += "        grp.name = trgNm;\n";
   js += "        if(gd.type !== 'solid'){\n";
-  js += "          var fill = grp.property('ADBE Vectors "
-        "Group').property('ADBE Vector Graphic - G-Fill');\n";
+  js += "          var fill = grp.property('ADBE Vectors Group').property('ADBE Vector Graphic - G-Fill');\n";
+  js += "          var vgrpPaths = grp.property('ADBE Vectors Group');\n";
+  js += "          for(var vf=vgrpPaths.numProperties; vf>=1; vf--){ if(vgrpPaths.property(vf).matchName==='ADBE Vector Graphic - Fill') vgrpPaths.property(vf).remove(); }\n";
   js += "          if(fill){\n";
-  js += "            try{fill.property('Ponto "
-        "inicial').setValue([gd.gsX,gd.gsY]);}catch(e){try{fill.property('ADBE "
-        "Vector Grad Start').setValue([gd.gsX,gd.gsY]);}catch(e2){}}\n";
-  js += "            try{fill.property('Ponto "
-        "final').setValue([gd.geX,gd.geY]);}catch(e){try{fill.property('ADBE "
-        "Vector Grad End').setValue([gd.geX,gd.geY]);}catch(e2){}}\n";
+  js += "            try{fill.property('Ponto inicial').setValue([gd.gsX + (gd.x||0), gd.gsY + (gd.y||0)]);}catch(e){try{fill.property('ADBE Vector Grad Start Pt').setValue([gd.gsX + (gd.x||0), gd.gsY + (gd.y||0)]);}catch(e2){}}\n";
+  js += "            try{fill.property('Ponto final').setValue([gd.geX + (gd.x||0), gd.geY + (gd.y||0)]);}catch(e){try{fill.property('ADBE Vector Grad End Pt').setValue([gd.geX + (gd.x||0), gd.geY + (gd.y||0)]);}catch(e2){}}\n";
   js += "          }\n";
   js += "        }\n";
   js += "      }catch(e){}\n";
@@ -708,9 +705,8 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "  app.beginUndoGroup('Importar Split Layer/Group');\n";
   js += "  // Detect Split Group mode: a layer named 'Vetores' exists\n";
   js += "  var vetoresLyr=null;\n";
-  js += "  for(var vScan=1; vScan<=comp.numLayers; vScan++) { "
-        "if(comp.layer(vScan).name === 'Vetores'){ vetoresLyr = "
-        "comp.layer(vScan); break; } }\n";
+  js += "  for(var vScan=1; vScan<=comp.numLayers; vScan++) { if(comp.layer(vScan).selected){ vetoresLyr = comp.layer(vScan); break; } }\n";
+  js += "  if(!vetoresLyr){ for(var vScan=1; vScan<=comp.numLayers; vScan++) { if(comp.layer(vScan).name === 'Vetores'){ vetoresLyr = comp.layer(vScan); break; } } }\n";
   js += "  var isSplitGroup=(vetoresLyr!==null);\n";
   js += "\n";
   js += "  // bFile ALWAYS loads ae_batch_temp so each gradient gets its "
@@ -744,26 +740,9 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "           break;\n";
   js += "        }\n";
   js += "      }\n";
-  js += "      if(!origLyr){ alert('origLyr NULO para: ' + gd.name); continue; "
-        "}\n";
+  js += "      if(!origLyr && !isSplitGroup){ alert('origLyr NULO para: ' + gd.name); continue; }\n";
   js += "\n";
-  js += "      // Get shape path from original layer\n";
-  js += "      var shapeVal=null;\n";
-  js += "      try{\n";
-  js += "        var origRoot=origLyr.property('ADBE Root Vectors Group');\n";
-  js += "        for(var j=1;j<=origRoot.numProperties;j++){\n";
-  js += "          var origGrp=origRoot.property(j); "
-        "if(origGrp.matchName!=='ADBE Vector Group')continue;\n";
-  js += "          var origCont=origGrp.property('ADBE Vectors Group');\n";
-  js += "          for(var k=1;k<=origCont.numProperties;k++){\n";
-  js += "            var origP=origCont.property(k);\n";
-  js += "            if(origP.matchName==='ADBE Vector Shape - "
-        "Group'){shapeVal=origP.property('ADBE Vector Shape').value;break;}\n";
-  js += "          } if(shapeVal)break;\n";
-  js += "        }\n";
-  js += "      }catch(er){}\n";
-  js += "      // shapeVal guard is inside Split Group block only\n";
-  js += "\n";
+      // No longer need to extract shapeVal as SplitGroup builds paths natively
   js += "      var bIdx=Math.min(gradIndex,bComp.numLayers);\n";
   js += "\n";
   js += "      if(isSplitGroup && vetoresLyr){\n";
@@ -779,25 +758,38 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
         "copyToComp: ' + ecpy.message); continue; }\n";
   js += "        var newLyr = comp.layer(1);\n";
   js += "        if(!newLyr) { alert('newLyr falhou!'); continue; }\n";
-  js += "        newLyr.name = gd.name+' (grad)';\n";
+  js += "        try { newLyr.name = gd.name+' (grad)'; } catch(e){}\n";
   js += "        var vRoot = vetoresLyr.property('ADBE Root Vectors Group');\n";
-  js += "        // Busca recursiva do grupo pai dentro de Vetores (suporta hierarquia profunda)\n";
-  js += "        var _findGrp=function(cont,nm){for(var _i=1;_i<=cont.numProperties;_i++){var _g=cont.property(_i);if(_g.matchName==='ADBE Vector Group'){if(_g.name===nm||_g.name.indexOf(nm)===0)return _g.property('ADBE Vectors Group');var _r=_findGrp(_g.property('ADBE Vectors Group'),nm);if(_r)return _r;}}return null;};\n";
+  js += "        // Find parent group inside Vetores (by gd.parent -> display "
+        "name)\n";
   js += "        var parentCont = vRoot;\n";
-  js += "        if(gd.parent){var _found=_findGrp(vRoot,gd.parent);if(_found)parentCont=_found;}\n";
+  js += "        if(gd.parent){\n";
+  js += "          var pName = gd.parent;\n";
+  js += "          var _findGrp = function(cont) {\n";
+  js += "            for(var vp=1; vp<=cont.numProperties; vp++){\n";
+  js += "              var p = cont.property(vp);\n";
+  js += "              if(p.matchName==='ADBE Vector Group'){\n";
+  js += "                if(p.name===pName || p.name.indexOf(pName)===0) "
+        "return p.property('ADBE Vectors Group');\n";
+  js += "                var found = _findGrp(p.property('ADBE Vectors "
+        "Group'));\n";
+  js += "                if(found) return found;\n";
+  js += "              }\n";
+  js += "            }\n";
+  js += "            return null;\n";
+  js += "          };\n";
+  js += "          var foundGrp = _findGrp(vRoot);\n";
+  js += "          if(foundGrp) parentCont = foundGrp;\n";
+  js += "        }\n";
   js += "        // Create Vector Group for this gradient inside Vetores\n";
-  js += "        var gradVG = parentCont.addProperty('ADBE Vector Group');\n";
-  js += "        gradVG.name = trgNm || gd.name;\n";
+  js += "        // Find the existing Vector Group for this gradient inside Vetores (already created by SplitGroup native)\n";
+  js += "        var gradVG = null;\n";
+  js += "        for(var vf=1; vf<=parentCont.numProperties; vf++){ if(parentCont.property(vf).name === (trgNm||gd.name)){ gradVG = parentCont.property(vf); break; } }\n";
+  js += "        if(!gradVG){ try{newLyr.remove();}catch(e){} continue; }\n";
   js += "        var gradCont = gradVG.property('ADBE Vectors Group');\n";
-  js += "        // Add shape path\n";
-  js += "        if(!shapeVal||shapeVal.vertices.length<2){ alert('Skipping! "
-        "shapeVal invalid para: ' + gd.name); try{newLyr.remove();}catch(e){} "
-        "continue; }\n";
-  js +=
-      "        try{ var sp=gradCont.addProperty('ADBE Vector Shape - Group'); "
-      "sp.property('ADBE Vector Shape').setValue(shapeVal); }catch(ept){}\n";
-  js += "        // Get G-Fill from the batch template copy (has injected "
-        "colors)\n";
+  js += "        // Remove old native fallback fill placed by SplitGroup.jsx\n";
+  js += "        for(var vf=gradCont.numProperties; vf>=1; vf--){ if(gradCont.property(vf).matchName==='ADBE Vector Graphic - Fill') gradCont.property(vf).remove(); }\n";
+  js += "        // Get G-Fill from the batch template copy (has injected colors)\n";
   js += "        var srcGFill=null;\n";
   js += "        var nlRoot=newLyr.property('ADBE Root Vectors Group');\n";
   js += "        for(var nj=1;nj<=nlRoot.numProperties;nj++){\n";
@@ -832,31 +824,35 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "              app.executeCommand(20); // Paste\n";
   js += "            } catch(eCP) { alert('Paste Error: '+eCP.message); }\n";
   js += "        }\n";
-  js += "        // Find the freshly pasted G-Fill to adjust coordinates\n";
+  js += "        // Find the freshly pasted G-Fill and move to BOTTOM\n";
+  js += "        // AE rule: fill BELOW paths (higher index) applies to paths above.\n";
+  js += "        // Paste puts G-Fill at index 1 (top) pushing paths down = invisible!\n";
   js += "        var gradFill = null;\n";
-  js += "        for(var "
-        "ng=1;ng<=gradCont.numProperties;ng++){if(gradCont.property(ng)."
-        "matchName==='ADBE Vector Graphic - "
-        "G-Fill'){gradFill=gradCont.property(ng);break;}}\n";
+  js += "        for(var ng=1;ng<=gradCont.numProperties;ng++){\n";
+  js += "          if(gradCont.property(ng).matchName==='ADBE Vector Graphic - G-Fill'){\n";
+  js += "            gradFill=gradCont.property(ng);\n";
+  js += "            try{ gradFill.moveTo(gradCont.numProperties); }catch(emv){}\n";
+  js += "            gradFill=gradCont.property(gradCont.numProperties);\n";
+  js += "            break;\n";
+  js += "          }\n";
+  js += "        }\n";
   js +=
       "        var gradVGT = gradVG.property('ADBE Vector Transform Group');\n";
   js += "        try{gradVGT.property('ADBE Vector Position').setValue([0, "
         "0]);}catch(evt){}\n";
   js += "        try{gradVGT.property('ADBE Vector "
         "Anchor').setValue([0,0]);}catch(eva){}\n";
-  js += "        if(gradFill) {\n";
-  js += "            try{gradFill.property('Ponto inicial').setValue([gd.gsX + "
-        "(gd.x||0), gd.gsY + (gd.y||0)]);}catch(e){try{gradFill.property('ADBE "
-        "Vector Grad Start Pt').setValue([gd.gsX + (gd.x||0), gd.gsY + "
-        "(gd.y||0)]);}catch(e2){}}\n";
-  js += "            try{gradFill.property('Ponto final').setValue([gd.geX + "
-        "(gd.x||0), gd.geY + (gd.y||0)]);}catch(e){try{gradFill.property('ADBE "
-        "Vector Grad End Pt').setValue([gd.geX + (gd.x||0), gd.geY + "
-        "(gd.y||0)]);}catch(e2){}}\n";
+  js += "        // Aplicar opacidade do shape original (gd.opacity 0-1 -> 0-100)\n";
+  js += "        if(gd.opacity !== undefined && gd.opacity !== null){\n";
+  js += "          var opPct = (gd.opacity <= 1.0) ? gd.opacity * 100 : gd.opacity;\n";
+  js += "          try{gradVGT.property('ADBE Vector Opacity').setValue(opPct);}catch(eoVG){}\n";
   js += "        }\n";
-  js += "        // Remove the temp standalone layers\n";
+  js += "        if(gradFill) {\n";
+  js += "            try{gradFill.property('Ponto inicial').setValue([gd.gsX + (gd.x||0), gd.gsY + (gd.y||0)]);}catch(e){try{gradFill.property('ADBE Vector Grad Start Pt').setValue([gd.gsX + (gd.x||0), gd.gsY + (gd.y||0)]);}catch(e2){}}\n";
+  js += "            try{gradFill.property('Ponto final').setValue([gd.geX + (gd.x||0), gd.geY + (gd.y||0)]);}catch(e){try{gradFill.property('ADBE Vector Grad End Pt').setValue([gd.geX + (gd.x||0), gd.geY + (gd.y||0)]);}catch(e2){}}\n";
+  js += "        }\n";
   js += "        try{newLyr.remove();}catch(e){}\n";
-  js += "        try{origLyr.remove();}catch(e){}\n";
+  js += "        if(origLyr){ try{origLyr.remove();}catch(e){} }\n";
   js += "\n";
   js += "      } else {\n";
   js += "        // SPLIT LAYER MODE (SWAP ROBUST SHADOW-BUILD)\n";
@@ -885,22 +881,32 @@ static A_Err ApplyGradientsToExistingLayers(AEGP_SuiteHandler &suites) {
   js += "          var oCont2=oGrp2.property('ADBE Vectors Group');\n";
   js += "          for(var ok2=1;ok2<=oCont2.numProperties;ok2++){\n";
   js += "            var oP2=oCont2.property(ok2);\n";
-  js += "            if(oP2.matchName==='ADBE Vector Shape - Group'){\n";
+  js += "            if(oP2.matchName==='ADBE Vector Shape - Rect'){\n";
+  js += "              try{\n";
+  js += "                var np2=newCont2.addProperty('ADBE Vector Shape - Rect');\n";
+  js += "                try{np2.property('ADBE Vector Rect Size').setValue(oP2.property('ADBE Vector Rect Size').value);}catch(e){}\n";
+  js += "                try{np2.property('ADBE Vector Rect Position').setValue(oP2.property('ADBE Vector Rect Position').value);}catch(e){}\n";
+  js += "                try{np2.property('ADBE Vector Rect Roundness').setValue(oP2.property('ADBE Vector Rect Roundness').value);}catch(e){}\n";
+  js += "                np2.moveTo(1); addedShapes++;\n";
+  js += "              }catch(eR){}\n";
+  js += "            } else if(oP2.matchName==='ADBE Vector Shape - Ellipse'){\n";
+  js += "              try{\n";
+  js += "                var np2=newCont2.addProperty('ADBE Vector Shape - Ellipse');\n";
+  js += "                try{np2.property('ADBE Vector Ellipse Size').setValue(oP2.property('ADBE Vector Ellipse Size').value);}catch(e){}\n";
+  js += "                try{np2.property('ADBE Vector Ellipse Position').setValue(oP2.property('ADBE Vector Ellipse Position').value);}catch(e){}\n";
+  js += "                np2.moveTo(1); addedShapes++;\n";
+  js += "              }catch(eE){}\n";
+  js += "            } else if(oP2.matchName==='ADBE Vector Shape - Group'){\n";
   js += "              try{\n";
   js += "                var sv2=oP2.property('ADBE Vector Shape').value;\n";
   js += "                if(sv2&&sv2.vertices&&sv2.vertices.length>=2){\n";
-  js += "                  var np2=newCont2.addProperty('ADBE Vector Shape - "
-        "Group');\n";
+  js += "                  var np2=newCont2.addProperty('ADBE Vector Shape - Group');\n";
   js += "                  np2.property('ADBE Vector Shape').setValue(sv2);\n";
   js += "                  np2.moveTo(1); addedShapes++;\n";
   js += "                }\n";
   js += "              }catch(eS){}\n";
-  js +=
-      "            } else if(oP2.matchName==='ADBE Vector Filter - Merge'){\n";
-  js += "              try{var mp2=newCont2.addProperty('ADBE Vector Filter - "
-        "Merge');mp2.property('ADBE Vector Merge "
-        "Type').setValue(oP2.property('ADBE Vector Merge "
-        "Type').value);}catch(eM){}\n";
+  js += "            } else if(oP2.matchName==='ADBE Vector Filter - Merge'){\n";
+  js += "              try{var mp2=newCont2.addProperty('ADBE Vector Filter - Merge');mp2.property('ADBE Vector Merge Type').setValue(oP2.property('ADBE Vector Merge Type').value);}catch(eM){}\n";
   js += "            }\n";
   js += "          }\n";
   js += "        }\n";

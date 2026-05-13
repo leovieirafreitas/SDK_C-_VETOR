@@ -128,7 +128,13 @@ try {
                     setBlendNative(ngt, sd.blendMode);
                     if (sd.opacity !== undefined && sd.opacity !== null) {
                         var grpOp = (sd.opacity > 1.0) ? sd.opacity : sd.opacity * 100;
-                        try { ngt.property("ADBE Vector Opacity").setValue(grpOp); } catch(ego){}
+                        try { ngt.property("ADBE Vector Group Opacity").setValue(grpOp); } catch(e1) {
+                            try { ngt.property("Opacity").setValue(grpOp); } catch(e2) {
+                                try { ngt.property("ADBE Vector Opacity").setValue(grpOp); } catch(e3) {
+                                    try { ngt.property(11).setValue(grpOp); } catch(e4) {}
+                                }
+                            }
+                        }
                     }
                 }
             } catch(e){}
@@ -152,9 +158,13 @@ try {
             setBlendNative(vgt, sd.blendMode);
             if (sd.opacity !== undefined && sd.opacity !== null) {
                 var gradOp = (sd.opacity > 1.0) ? sd.opacity : sd.opacity * 100;
-                var opSet = false;
-                try { vgt.property("ADBE Vector Opacity").setValue(gradOp); opSet=true; } catch(eo){}
-                if (!opSet) { try { vgt.property(7).setValue(gradOp); } catch(eo2){} }
+                try { vgt.property("ADBE Vector Group Opacity").setValue(gradOp); } catch(e1) {
+                    try { vgt.property("Opacity").setValue(gradOp); } catch(e2) {
+                        try { vgt.property("ADBE Vector Opacity").setValue(gradOp); } catch(e3) {
+                            try { vgt.property(11).setValue(gradOp); } catch(e4) {}
+                        }
+                    }
+                }
             }
             var gCont = gradVG.property("ADBE Vectors Group");
 
@@ -162,17 +172,18 @@ try {
             var shiftY = sd.y || 0;
 
             var addedGPaths = 0;
+            var forceBezierGrad = (sd.paths && sd.paths.length > 1);
             for (var gpi = 0; gpi < sd.paths.length; gpi++) {
                 var gPathData = sd.paths[gpi];
                 if (!gPathData) continue;
                 
-                if (gPathData.type === "rect") {
+                if (!forceBezierGrad && gPathData.type === "rect") {
                     var pGrp = gCont.addProperty("ADBE Vector Shape - Rect");
                     pGrp.property("ADBE Vector Rect Size").setValue(gPathData.size);
                     pGrp.property("ADBE Vector Rect Position").setValue([(gPathData.pos?gPathData.pos[0]:0) + shiftX, (gPathData.pos?gPathData.pos[1]:0) + shiftY]);
                     addedGPaths++;
                     continue;
-                } else if (gPathData.type === "ellipse") {
+                } else if (!forceBezierGrad && gPathData.type === "ellipse") {
                     var pGrp = gCont.addProperty("ADBE Vector Shape - Ellipse");
                     pGrp.property("ADBE Vector Ellipse Size").setValue(gPathData.size);
                     pGrp.property("ADBE Vector Ellipse Position").setValue([(gPathData.pos?gPathData.pos[0]:0) + shiftX, (gPathData.pos?gPathData.pos[1]:0) + shiftY]);
@@ -226,23 +237,28 @@ try {
         setBlendNative(vgt2, sd.blendMode);
         if (sd.opacity !== undefined && sd.opacity !== null) {
             var solidOp = (sd.opacity > 1.0) ? sd.opacity : sd.opacity * 100;
-            var opSet2 = false;
-            try { vgt2.property("ADBE Vector Opacity").setValue(solidOp); opSet2=true; } catch(eopS){}
-            if (!opSet2) { try { vgt2.property(7).setValue(solidOp); } catch(eopS2){} }
+            try { vgt2.property("ADBE Vector Group Opacity").setValue(solidOp); } catch(e1) {
+                try { vgt2.property("Opacity").setValue(solidOp); } catch(e2) {
+                    try { vgt2.property("ADBE Vector Opacity").setValue(solidOp); } catch(e3) {
+                        try { vgt2.property(11).setValue(solidOp); } catch(e4) {}
+                    }
+                }
+            }
         }
 
         var addedSPaths = 0;
+        var forceBezierSolid = (sPathsArr && sPathsArr.length > 1);
         for (var pi = 0; pi < sPathsArr.length; pi++) {
             var pData = sPathsArr[pi];
             if (!pData) continue;
             
-            if (pData.type === "rect") {
+            if (!forceBezierSolid && pData.type === "rect") {
                 var pg3 = cont2.addProperty("ADBE Vector Shape - Rect");
                 pg3.property("ADBE Vector Rect Size").setValue(pData.size);
                 pg3.property("ADBE Vector Rect Position").setValue([(pData.pos?pData.pos[0]:0) + shiftX2, (pData.pos?pData.pos[1]:0) + shiftY2]);
                 addedSPaths++;
                 continue;
-            } else if (pData.type === "ellipse") {
+            } else if (!forceBezierSolid && pData.type === "ellipse") {
                 var pg3 = cont2.addProperty("ADBE Vector Shape - Ellipse");
                 pg3.property("ADBE Vector Ellipse Size").setValue(pData.size);
                 pg3.property("ADBE Vector Ellipse Position").setValue([(pData.pos?pData.pos[0]:0) + shiftX2, (pData.pos?pData.pos[1]:0) + shiftY2]);

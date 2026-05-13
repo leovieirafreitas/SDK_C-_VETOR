@@ -202,6 +202,13 @@
         // effectiveAngle para o C++ usar no center+angle (imune ao offset de artboard)
         var effectiveForExport = panelAngle - shapeRotation;
 
+        var gradTypeStr = "linear";
+        try {
+            if (grad.type && grad.type.toString().indexOf("RADIAL") > -1) {
+                gradTypeStr = "radial";
+            }
+        } catch(e) {}
+
         var stops = [];
         for (var g = 0; g < grad.gradientStops.length; g++) {
             var gs = grad.gradientStops[g];
@@ -276,7 +283,7 @@
             opacity: itemOpacity,
             x: aeX, y: aeY,
             parent: parentID, _dbgAngle: panelAngle, _dbgRotation: shapeRotation, _dbgEffective: effectiveForExport,
-            gradient: { angle: effectiveForExport, startX: relOx, startY: relOy, endX: relEx, endY: relEy, stops: stops },
+            gradient: { type: gradTypeStr, angle: effectiveForExport, startX: relOx, startY: relOy, endX: relEx, endY: relEy, stops: stops },
             paths: allPaths,
             isClipping: isClipping,
             clipMaskRef: (clipParentMaskID && !isClipping) ? clipParentMaskID : null
@@ -294,7 +301,7 @@
     function collectAll(item, results, abLeft, abTop, parentID, parentOpacity) {
         collectAllWithClip(item, results, abLeft, abTop, parentID, parentOpacity, null);
     }
-    function collectAllWithClip(item, results, abLeft, abTop, parentID, itemOpacity, clipParentMaskID) {
+    function collectAllWithClip(item, results, abLeft, abTop, parentID, parentOpacity, clipParentMaskID) {
         if (!item) return;
         try { if (item.hidden) return; } catch(e){} // IGNORE HIDDEN ITEMS
         try { if (item.layer && !item.layer.visible) return; } catch(e){} // IGNORE HIDDEN LAYERS
@@ -314,8 +321,17 @@
             } catch(e){}
         }
 
-        var itemOpacity = 100;
-        try { itemOpacity = Math.round(item.opacity * 100) / 100; } catch (e) { } // Capture local exact opacity
+        var localOpacity = 100;
+        try { localOpacity = Math.round(item.opacity * 100) / 100; } catch (e) { } // Capture local exact opacity
+
+        var combinedOpacity = localOpacity;
+        if (parentOpacity !== undefined && parentOpacity !== null) {
+            combinedOpacity = (localOpacity * parentOpacity) / 100;
+        }
+
+        var isGroupMode = ($.flashFillMode === "group");
+        var exportOpacity = isGroupMode ? localOpacity : combinedOpacity;
+        var passDownOpacity = isGroupMode ? 100 : combinedOpacity;
 
         var bm = 1; // 1 = Normal
         try { 
@@ -380,7 +396,7 @@
                 parent: parentID,
                 x: gX, y: gY,
                 w: gW, h: gH,
-                opacity: itemOpacity,
+                opacity: exportOpacity,
                 blendMode: bm,
                 clipMaskID: clipMaskID,
                 clipMaskRef: (clipParentMaskID && !clipMaskID) ? clipParentMaskID : null
@@ -389,7 +405,7 @@
             // Pass currentID so children have a unique, unambiguous parent reference
             var childParentID = currentID;
             for (var i = 0; i < item.pageItems.length; i++) {
-                collectAllWithClip(item.pageItems[i], results, abLeft, abTop, childParentID, 100, effectiveClipID);
+                collectAllWithClip(item.pageItems[i], results, abLeft, abTop, childParentID, passDownOpacity, effectiveClipID);
             }
             return;
         }
@@ -457,7 +473,7 @@
                 rotation: rot,
                 kind: isPoint,
                 x: aeX, y: aeY,
-                opacity: itemOpacity,
+                opacity: exportOpacity,
                 blendMode: bm
             });
             return;
@@ -487,7 +503,7 @@
         }
 
         if (fillColor && fillColor.typename === "GradientColor") {
-            processGradientFill(fillColor, item, pathsToProcess, results, abLeft, abTop, parentID, itemOpacity, cx, cy, aeX, aeY, clipParentMaskID);
+            processGradientFill(fillColor, item, pathsToProcess, results, abLeft, abTop, parentID, exportOpacity, cx, cy, aeX, aeY, clipParentMaskID);
             // Injetar blendMode nos gradientes processados (o Ãºltimo colocado no array)
             if (results.length > 0) results[results.length-1].blendMode = bm;
             return;
@@ -516,7 +532,7 @@
         var data = {
             name: currentID,
             x: aeX, y: aeY,
-            paths: paths, fillType: "solid", parent: parentID, opacity: itemOpacity,
+            paths: paths, fillType: "solid", parent: parentID, opacity: exportOpacity,
             blendMode: bm,
             isClipping: isClipping,
             clipMaskRef: clipMaskRef
@@ -564,36 +580,17 @@
     $.flashFillBar = null;
 
     function initProgress(title) {
-        try {
-            $.flashFillWin = new Window("palette", title || "FlashFill", undefined, {closeButton: false});
-            $.flashFillWin.margins = 20;
-            $.flashFillWin.alignChildren = ["fill", "center"];
-            var titleTxt = $.flashFillWin.add("statictext", undefined, "FlashFill");
-            titleTxt.graphics.font = ScriptUI.newFont("Arial", "BOLD", 14);
-            $.flashFillText = $.flashFillWin.add("statictext", undefined, "Inicializando...");
-            $.flashFillText.characters = 30;
-            $.flashFillBar = $.flashFillWin.add("progressbar", [0, 0, 250, 10], 0, 100);
-            $.flashFillWin.center();
-            $.flashFillWin.show();
-        } catch(e) {}
+        // UI removido para evitar travamentos
     }
 
+    var _lastProgTime = 0;
+    var _lastProgMsg = "";
     function writeProgress(msg, current, total) {
-        try {
-            if (!$.flashFillWin) initProgress("FlashFill - Illustrator");
-            if ($.flashFillText) $.flashFillText.text = msg;
-            if ($.flashFillBar && total > 0) $.flashFillBar.value = (current / total) * 50;
-            if ($.flashFillWin) $.flashFillWin.update();
-        } catch(e) {}
+        // UI removido para evitar travamentos
     }
 
     function closeProgress() {
-        try {
-            if ($.flashFillWin) {
-                $.flashFillWin.close();
-                $.flashFillWin = null;
-            }
-        } catch(e) {}
+        // UI removido para evitar travamentos
     }
 
     // ── MAIN ──
@@ -604,12 +601,20 @@
 
     var shapesData = [];
 
-    // â”€â”€ MODO SELEÃ‡ÃƒO ou TODOS â”€â”€
+    // ── MODO SELEÇÃO ──
     var modoSelecao = false;
     try {
         var sel = doc.selection;
-        if (sel && sel.length > 0) modoSelecao = true;
-    } catch (e) { }
+        if (sel && sel.length > 0) {
+            modoSelecao = true;
+        } else {
+            alert("Nenhum vetor selecionado!\nPor favor, selecione os itens que deseja exportar e tente novamente.");
+            return;
+        }
+    } catch (e) {
+        alert("Erro ao verificar a seleção. Tente novamente.");
+        return;
+    }
 
     var _modifiedGroups = [];
     var _clipTagMap = []; // { grp, orig, exactClipMaskID }
@@ -758,6 +763,7 @@
     wr(jf, '  "shapes": [');
     for (var k2 = 0; k2 < shapesData.length; k2++) {
         var sd = shapesData[k2];
+        if (k2 % 50 === 0 || k2 === shapesData.length - 1) writeProgress("Gerando JSON...", k2, shapesData.length);
         wr(jf, '    {');
         wr(jf, '      "name": "' + sd.name.replace(/"/g, "'").replace(/[\r\n]/g, " ") + '" ,');
         wr(jf, '      "fillType": "' + sd.fillType + '",');
@@ -784,8 +790,8 @@
             wr(jf, '      "kind": ' + (sd.kind || 0) + ',');
             wr(jf, '      "justification": ' + sd.justification + '');
         } else if (sd.fillType === "gradient") {
-            // Formato legado (GRAD FIXER usa este â€” nao alterar!)
-            wr(jf, '      "gradient": { "startX":' + toFixed(sd.gradient.startX) + ', "startY":' + toFixed(sd.gradient.startY) + ',');
+            // Formato legado (GRAD FIXER usa este -> nao alterar!)
+            wr(jf, '      "gradient": { "type":"' + (sd.gradient.type || "linear") + '", "startX":' + toFixed(sd.gradient.startX) + ', "startY":' + toFixed(sd.gradient.startY) + ',');
             wr(jf, '        "endX":' + toFixed(sd.gradient.endX) + ', "endY":' + toFixed(sd.gradient.endY) + ',');
             wr(jf, '        "stops": [');
             var ss = sd.gradient.stops;
@@ -1159,36 +1165,9 @@
 
         var sentToAE = false;
         bt.body = req;
-        var aeFinished = false;
-        bt.onResult = function(res) { aeFinished = true; };
-        bt.onError = function(err) { aeFinished = true; alert("Erro no After Effects: " + err.body); };
-        
         bt.send();
         sentToAE = true;
         $.flashFillMode = ""; // Reseta a flag apos enviar
-        
-        // Loop manual para ler o arquivo de progresso (para nao travar o UI do ILST e mostrar o progresso do AE)
-        while (!aeFinished) {
-            try {
-                var f = new File(safePath + "/progress.txt");
-                if (f.exists && f.open("r")) {
-                    var data = f.read();
-                    f.close();
-                    var parts = data.split("|");
-                    if (parts.length >= 3) {
-                        if ($.flashFillText) $.flashFillText.text = parts[0];
-                        var curr = parseInt(parts[1], 10);
-                        var tot = parseInt(parts[2], 10);
-                        if (tot > 0 && $.flashFillBar) {
-                            $.flashFillBar.value = 50 + (curr / tot) * 50;
-                        }
-                    }
-                }
-            } catch(e) {}
-            if ($.flashFillWin) $.flashFillWin.update();
-            BridgeTalk.pump();
-            $.sleep(100);
-        }
         
     } else {
         alert("O After Effects precisa estar aberto para importar automaticamente!\nAbra o AE e rode o SplitLayer manualmente.");
