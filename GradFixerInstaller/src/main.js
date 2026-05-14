@@ -358,8 +358,16 @@ loadStatus();
 
 async function verifyLocalLicense() {
     try {
-        const isValid = await invoke('check_license_local');
+        // First: fast local check — does a license file even exist?
+        const hasLocalFile = await invoke('check_license_local');
         const block = document.getElementById('activation-block');
+        if (!hasLocalFile) {
+            block.style.display = 'flex';
+            return;
+        }
+        // Second: real online validation against the server
+        // Editing the local JSON is useless because the server checks the real MAC
+        const isValid = await invoke('check_license_online');
         if (!isValid) {
             block.style.display = 'flex';
         } else {
@@ -367,6 +375,8 @@ async function verifyLocalLicense() {
         }
     } catch (e) {
         console.error(e);
+        // If there's no internet, we allow usage for now (offline grace)
+        document.getElementById('activation-block').style.display = 'none';
     }
 }
 verifyLocalLicense();

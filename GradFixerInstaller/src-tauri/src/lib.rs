@@ -389,20 +389,64 @@ fn get_license_info() -> Option<serde_json::Value> {
 }
 
 #[tauri::command]
-fn check_license_local() -> bool {
+async fn check_license_online() -> bool {
+    // Read the locally cached key (just the key, not trusted for validation)
     let license_path = std::path::PathBuf::from(r"C:\AEGP\license.json");
-    if let Ok(content) = std::fs::read_to_string(&license_path) {
-        if let Ok(json) = serde_json::from_str::<serde_json::Value>(&content) {
-            let saved_hwid = json.get("p_hardware_id").and_then(|h| h.as_str()).unwrap_or("");
-            let mac = mac_address::get_mac_address()
-                .ok()
-                .flatten()
-                .map(|m| m.to_string())
-                .unwrap_or_else(|| "00:00:00:00:00:00".to_string());
-            return saved_hwid == mac;
-        }
-    }
-    false
+    let content = match std::fs::read_to_string(&license_path) {
+        Ok(c) => c,
+        Err(_) => return false,
+    };
+    let json: serde_json::Value = match serde_json::from_str(&content) {
+        Ok(j) => j,
+        Err(_) => return false,
+    };
+    let key = match json.get("p_key").and_then(|k| k.as_str()) {
+        Some(k) => k.to_string(),
+        None => return false,
+    };
+
+    // Get real hardware ID from the machine (cannot be faked)
+    let mac = mac_address::get_mac_address()
+        .ok().flatten()
+        .map(|m| m.to_string())
+        .unwrap_or_else(|| "00:00:00:00:00:00".to_string());
+
+    // Always validate against the server - no local trust
+    let url = "https://rudhtwriohqmrwnkfkdq.supabase.co/rest/v1/rpc/validate_license_online";
+    let anon_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ1ZGh0d3Jpb2hxbXJ3bmtma2RxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2OTUxODMsImV4cCI6MjA5NDI3MTE4M30.iPaY--LfmkR5KOWkTPWFFR1D2T2ZoZH49jRCQguGz_g";
+
+    let client = reqwest::Client::new();
+    let req_body = serde_json::json!({
+        "p_key": key,
+        "p_hardware_id": mac  // <-- real MAC from the OS, cannot be edited
+    });
+
+    let resp = match client.post(url)
+        .header("apikey", anon_key)
+        .header("Authorization", format!("Bearer {}", anon_key))
+        .json(&req_body)
+        .send()
+        .await
+    {
+        Ok(r) => r,
+        Err(_) => return false,
+    };
+
+    let result: serde_json::Value = match resp.json().await {
+        Ok(r) => r,
+        Err(_) => return false,
+    };
+
+    result.get("valid").and_then(|v| v.as_bool()).unwrap_or(false)
+}
+
+// Kept for backward compat (just reads the cached key for display)
+#[tauri::command]
+fn check_license_local() -> bool {
+    // WARNING: This only checks if a key file exists locally.
+    // The real security check is check_license_online().
+    // This is ONLY used to decide whether to show the activation form or not.
+    std::path::Path::new(r"C:\AEGP\license.json").exists()
 }
 
 // ─── App entry ────────────────────────────────────────────────────────────────
@@ -474,6 +518,7 @@ pub fn run() {
             deactivate_license,
             check_license_local,
             get_license_info,
+            check_license_online,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
