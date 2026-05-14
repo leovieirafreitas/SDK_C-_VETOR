@@ -143,48 +143,113 @@ document.getElementById('btn-ai').addEventListener('click', function() {
 
 
 
-// --- EXTENSION LICENSE CHECK ---
-function checkExtensionLicense(callback) {
+// --- EXTENSION LICENSE CHECK (online, server-side) ---
+function getRealMacAddress() {
     try {
-        const path = "C:\\AEGP\\license.json";
-        const result = window.cep.fs.readFile(path);
-        
-        if (result.err !== window.cep.fs.NO_ERROR) {
-            // File simply doesn't exist — clean locked state, no error to show
-            return callback({ valid: false, error: null });
+        var os = require('os');
+        var interfaces = os.networkInterfaces();
+        for (var name in interfaces) {
+            var ifaces = interfaces[name];
+            for (var i = 0; i < ifaces.length; i++) {
+                var iface = ifaces[i];
+                // Skip loopback and virtual adapters
+                if (iface.mac && iface.mac !== '00:00:00:00:00:00' && !iface.internal) {
+                    return iface.mac.toUpperCase();
+                }
+            }
         }
-        
-        const data = JSON.parse(result.data);
-        if (data && data.p_hardware_id) {
-            return callback({ valid: true });
-        }
-        return callback({ valid: false, error: "Invalid license format" });
     } catch(e) {
-        console.error("License check error:", e);
-        return callback({ valid: false, error: e.toString() });
+        console.error("Failed to get MAC address:", e);
     }
+    return null;
 }
 
-function initExtensionLicense() {
-    checkExtensionLicense(function(result) {
-        if (!result.valid) {
-            document.body.innerHTML = `<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; padding: 15px; background: #2b2b2b;">
-                <img src="./img/extensao.png" style="width: 48px; margin-bottom: 15px;" />
-                <h3 style="color: #fff; font-size: 14px; font-weight: normal; margin-bottom: 10px;">FlashFill Locked</h3>
-                <p style="color: #aaa; font-size: 11px;">Por favor, ative a sua licenca no aplicativo oficial do FlashFill (Setup).</p>
-                ${result.error ? `<p style="color: #ff5555; font-size: 9px; margin-top: 15px;">Error: ${result.error}</p>` : ''}
-                <div style="margin-top: 20px;" class="spinner"></div>
-            </div>`;
-            
-            // Check periodically and reload window if activated
-            setInterval(function() {
-                checkExtensionLicense(function(check) {
-                    if (check.valid) {
-                        window.location.reload();
-                    }
-                });
-            }, 2000);
+function showLockedUI(reason) {
+    document.body.innerHTML = '<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; padding: 15px; background: #2b2b2b;">' +
+        '<img src="./img/extensao.png" style="width: 48px; margin-bottom: 15px;" />' +
+        '<h3 style="color: #fff; font-size: 14px; font-weight: normal; margin-bottom: 10px;">FlashFill Locked</h3>' +
+        '<p style="color: #aaa; font-size: 11px;">Ative a sua licença no aplicativo FlashFill Setup.</p>' +
+        (reason ? '<p style="color: #ff5555; font-size: 9px; margin-top: 10px;">' + reason + '</p>' : '') +
+    '</div>';
+    // Poll and reload if file appears (user just activated)
+    var poll = setInterval(function() {
+        var check = window.cep.fs.readFile("C:\\AEGP\\license.json");
+        if (check.err === 0) {
+            clearInterval(poll);
+            window.location.reload();
         }
-    });
+    }, 3000);
 }
-initExtensionLicense();
+
+function validateLicenseOnline() {
+    // Step 1: Read local license file (just to get the key - NOT trusted)
+    var fileResult = window.cep.fs.readFile("C:\\AEGP\\license.json");
+    if (fileResult.err !== 0 || !fileResult.data) {
+        showLockedUI(null);
+        return;
+    }
+
+    var data;
+    try {
+        data = JSON.parse(fileResult.data);
+    } catch(e) {
+        showLockedUI("Arquivo de licença inválido.");
+        return;
+    }
+
+    var cachedKey = data && data.p_key;
+    if (!cachedKey) {
+        showLockedUI("Chave não encontrada no arquivo local.");
+        return;
+    }
+
+    // Step 2: Get REAL MAC address from the OS (cannot be faked via JSON)
+    var realMac = getRealMacAddress();
+    if (!realMac) {
+        // If we can't get MAC, allow offline usage (fail open)
+        console.warn("FlashFill: Could not get MAC address, allowing offline usage.");
+        return;
+    }
+
+    // Step 3: Validate against the server
+    var url = "https://rudhtwriohqmrwnkfkdq.supabase.co/rest/v1/rpc/validate_license_online";
+    var anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ1ZGh0d3Jpb2hxbXJ3bmtma2RxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2OTUxODMsImV4cCI6MjA5NDI3MTE4M30.iPaY--LfmkR5KOWkTPWFFR1D2T2ZoZH49jRCQguGz_g";
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("apikey", anonKey);
+    xhr.setRequestHeader("Authorization", "Bearer " + anonKey);
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState !== 4) return;
+        if (xhr.status >= 200 && xhr.status < 300) {
+            try {
+                var resp = JSON.parse(xhr.responseText);
+                if (!resp.valid) {
+                    showLockedUI("Licença inválida: " + (resp.reason || "Hardware não autorizado."));
+                }
+                // If valid, do nothing — panel remains fully functional
+            } catch(e) {
+                console.warn("FlashFill: License parse error, allowing usage:", e);
+            }
+        } else {
+            // Server error or no internet — allow usage (fail open)
+            console.warn("FlashFill: License server unreachable (status " + xhr.status + "), allowing offline usage.");
+        }
+    };
+
+    xhr.onerror = function() {
+        // No internet — allow usage silently
+        console.warn("FlashFill: No internet, allowing offline usage.");
+    };
+
+    xhr.send(JSON.stringify({
+        p_key: cachedKey,
+        p_hardware_id: realMac  // Real MAC from OS, not from the editable JSON file
+    }));
+}
+
+// Run on panel load
+validateLicenseOnline();
+
