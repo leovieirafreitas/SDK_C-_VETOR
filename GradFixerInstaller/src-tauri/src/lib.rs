@@ -325,6 +325,52 @@ async fn activate_license(key: String) -> Result<String, String> {
 }
 
 #[tauri::command]
+async fn deactivate_license() -> Result<String, String> {
+    let license_path = std::path::PathBuf::from(r"C:\AEGP\license.json");
+    let content = std::fs::read_to_string(&license_path).map_err(|_| "Licença não encontrada localmente.".to_string())?;
+    let json: serde_json::Value = serde_json::from_str(&content).map_err(|_| "Formato de licença inválido.".to_string())?;
+    let key = json.get("p_key").and_then(|k| k.as_str()).unwrap_or("").to_string();
+
+    let mac = mac_address::get_mac_address()
+        .map_err(|e| format!("Erro HWID: {}", e))?
+        .map(|m| m.to_string())
+        .unwrap_or_else(|| "00:00:00:00:00:00".to_string());
+    
+    let url = "https://rudhtwriohqmrwnkfkdq.supabase.co/rest/v1/rpc/deactivate_license";
+    let anon_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ1ZGh0d3Jpb2hxbXJ3bmtma2RxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2OTUxODMsImV4cCI6MjA5NDI3MTE4M30.iPaY--LfmkR5KOWkTPWFFR1D2T2ZoZH49jRCQguGz_g";
+    
+    let client = reqwest::Client::new();
+    let req_body = serde_json::json!({
+        "p_key": key,
+        "p_hardware_id": mac
+    });
+    
+    let resp = client.post(url)
+        .header("apikey", anon_key)
+        .header("Authorization", format!("Bearer {}", anon_key))
+        .json(&req_body)
+        .send()
+        .await
+        .map_err(|e| format!("Erro de conexao: {}", e))?;
+        
+    if !resp.status().is_success() {
+        return Err("Falha ao comunicar com o servidor.".into());
+    }
+    
+    let rpc_result: serde_json::Value = resp.json().await.map_err(|e| e.to_string())?;
+    let success = rpc_result.get("success").and_then(|s| s.as_bool()).unwrap_or(false);
+    let message = rpc_result.get("message").and_then(|m| m.as_str()).unwrap_or("Desconhecido").to_string();
+    
+    if success {
+        let license_path = std::path::PathBuf::from(r"C:\AEGP\license.json");
+        let _ = std::fs::remove_file(license_path);
+        Ok(message)
+    } else {
+        Err(message)
+    }
+}
+
+#[tauri::command]
 fn get_license_info() -> Option<serde_json::Value> {
     let license_path = std::path::PathBuf::from(r"C:\AEGP\license.json");
     if let Ok(content) = std::fs::read_to_string(&license_path) {
@@ -425,23 +471,10 @@ pub fn run() {
             install_all,
             relaunch_as_admin,
             activate_license,
-            check_license_local,
             deactivate_license,
+            check_license_local,
             get_license_info,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
-}
-
-#[tauri::command]
-fn deactivate_license() -> Result<String, String> {
-    let path = std::path::Path::new("C:\\AEGP\\license.json");
-    if path.exists() {
-        match std::fs::remove_file(path) {
-            Ok(_) => Ok("License deactivated successfully.".to_string()),
-            Err(e) => Err(format!("Failed to delete license file: {}", e)),
-        }
-    } else {
-        Ok("No license to deactivate.".to_string())
-    }
 }
