@@ -1,1 +1,373 @@
-var a0_0x1eca29=a0_0x5483;(function(_0x37c41a,_0x11dee8){var _0x2f066e=a0_0x5483,_0x590c6f=_0x37c41a();while(!![]){try{var _0x100310=parseInt(_0x2f066e(0xb7))/0x1+parseInt(_0x2f066e(0xa8))/0x2+parseInt(_0x2f066e(0x9d))/0x3+-parseInt(_0x2f066e(0xce))/0x4+-parseInt(_0x2f066e(0x9a))/0x5+parseInt(_0x2f066e(0xa7))/0x6*(parseInt(_0x2f066e(0xb6))/0x7)+parseInt(_0x2f066e(0xc0))/0x8*(-parseInt(_0x2f066e(0xe8))/0x9);if(_0x100310===_0x11dee8)break;else _0x590c6f['push'](_0x590c6f['shift']());}catch(_0x541e1d){_0x590c6f['push'](_0x590c6f['shift']());}}}(a0_0x1d53,0xc3a7d));var extRoot=new File($[a0_0x1eca29(0xd8)])[a0_0x1eca29(0xba)][a0_0x1eca29(0xba)][a0_0x1eca29(0xde)]['replace'](/\\/g,'/');function runCriarComp(){var _0x53d624=a0_0x1eca29;try{var _0x587335=[extRoot+_0x53d624(0xa5),_0x53d624(0x93)];for(var _0x46f265=0x0;_0x46f265<_0x587335[_0x53d624(0xaf)];_0x46f265++){var _0x19f4bc=new File(_0x587335[_0x46f265]);if(_0x19f4bc[_0x53d624(0x6a)])return $[_0x53d624(0xbb)](_0x19f4bc),_0x53d624(0x70);}return alert(_0x53d624(0x7d)),_0x53d624(0xb8);}catch(_0x1c4449){return alert(_0x53d624(0xd9)+_0x1c4449['toString']()+'\x20(linha\x20'+_0x1c4449[_0x53d624(0xd5)]+')'),_0x53d624(0xb8);}}function runExtrairGradiente(_0x25e1d1){var _0xad5f0f=a0_0x1eca29;try{$[_0xad5f0f(0xe0)]='',$[_0xad5f0f(0x96)]=_0x25e1d1||_0xad5f0f(0xe9);var _0x2a0a03=[extRoot+'/ExtrairGradiente.jsx',_0xad5f0f(0xa4)];for(var _0x4dcd40=0x0;_0x4dcd40<_0x2a0a03['length'];_0x4dcd40++){var _0x58779e=new File(_0x2a0a03[_0x4dcd40]);if(_0x58779e[_0xad5f0f(0x6a)])return $['evalFile'](_0x58779e),_0xad5f0f(0x70);}return alert(_0xad5f0f(0x6d)),_0xad5f0f(0xb8);}catch(_0x2750c9){return alert(_0xad5f0f(0xd9)+_0x2750c9[_0xad5f0f(0x67)]()+'\x20(linha\x20'+_0x2750c9[_0xad5f0f(0xd5)]+')'),_0xad5f0f(0xb8);}}function runExtrairForSplitGroup(_0x2b2876){var _0x4d377e=a0_0x1eca29;try{$[_0x4d377e(0xe0)]=_0x4d377e(0xc1),$[_0x4d377e(0x96)]=_0x2b2876||_0x4d377e(0xe9);var _0x5a8517=[extRoot+'/ExtrairGradiente.jsx',_0x4d377e(0xa4)];for(var _0x2431b2=0x0;_0x2431b2<_0x5a8517[_0x4d377e(0xaf)];_0x2431b2++){var _0x18580e=new File(_0x5a8517[_0x2431b2]);if(_0x18580e[_0x4d377e(0x6a)])return $[_0x4d377e(0xbb)](_0x18580e),_0x4d377e(0x70);}return alert(_0x4d377e(0xa3)),'false';}catch(_0x5e77d4){return alert(_0x4d377e(0x71)+_0x5e77d4[_0x4d377e(0x67)]()),_0x4d377e(0xb8);}}function a0_0x1d53(){var _0x5418b9=['224zexHOn','262628NkcxRY','false','guide.property(\x27Position\x27).setValue([targetX,\x20targetY]);\x20','parent','evalFile','Rasterizar.jsx','Erro\x20BridgeTalk\x20(AE->ILST):\x20','}\x20catch(e)\x20{\x20alert(\x27Erro\x20no\x20Illustrator:\x20\x27\x20+\x20e.toString());\x20}','Erro\x20Rasterize:\x20','15102576IXlnii','group','var\x20f\x20=\x20new\x20File(\x22C:/Users/FELIPE\x20BARROSO/AppData/Roaming/Adobe/CEP/extensions/GradFixer/host/index.jsx\x22);\x20','documents','findMenuCommandId','match','\x20-\x20importedComp.height/2);\x20','RGB','antiAliasing','artboards','var\x20importedComp\x20=\x20app.project.importFile(io);\x20','body','layer.property(\x27Scale\x27).setValue([','app.beginUndoGroup(\x27Importar\x20Dynamic\x20Link\x20.ai\x27);\x20','434748VfWTIr','}\x20catch(eae)\x20{\x20alert(\x27Erro\x20no\x20AE\x20(Import\x20AI):\x20\x27\x20+\x20eae.toString()\x20+\x20\x27\x20(L\x27\x20+\x20eae.line\x20+\x20\x27)\x27);\x20}','var\x20guide\x20=\x20activeComp.layers.addShape();\x20','Illustrator\x20nao\x20esta\x20aberto\x20ou\x20reconhecido.','BT\x20Erro:\x20','Erro\x20BridgeTalk:\x20','for\x20(var\x20i\x20=\x20importedComp.layers.length;\x20i\x20>=\x201;\x20i--)\x20{\x20','line','GRAD\x20FIXER:\x20Aplicar\x20Gradientes','saved','fileName','Erro:\x20','$.flashFillMode\x20=\x20\x27group\x27;','}\x20else\x20{\x20alert(\x27Arquivo\x20não\x20encontrado:\x20\x27\x20+\x20f.fsName);\x20}\x20','}\x20else\x20{\x20alert(\x27Nenhuma\x20composição\x20ativa\x20no\x20AE\x20encontrada.\x20Abra\x20uma\x20onde\x20quer\x20inserir.\x27);\x20}\x20','Erro\x20Import\x20AI\x20IL:\x20','fsName','if\x20(f.exists)\x20{\x20$.evalFile(f);\x20}\x20else\x20{\x20alert(\x27Arquivo\x20nao\x20encontrado\x20no\x20ILST:\x20\x27\x20+\x20\x27','flashFillMode','aftereffects','io.sequence\x20=\x20false;\x20','guide.name\x20=\x20\x27#\x20\x27\x20+\x20docName;\x20','selection','Erro:\x20Salve\x20o\x20arquivo\x20.ai\x20do\x20Illustrator\x20localmente\x20(Ctrl+S)\x20pelo\x20menos\x20uma\x20vez.','Illustrator\x20nao\x20esta\x20aberto.',']);\x20','9snIqeX','C:/AEGP/img_export','layer','toString','artboardRect','if\x20(f.exists)\x20{\x20$.evalFile(f);\x20}\x20else\x20{\x20alert(\x27Arquivo\x20nao\x20encontrado:\x20\x27\x20+\x20\x27','exists','Plugin\x20GRAD\x20FIXER\x20nao\x20encontrado\x20no\x20menu.\x20Reinstale\x20o\x20.aex.','ExtrairGradiente.jsx','ExtrairGradiente.jsx\x20nao\x20encontrado\x20em\x20C:/AEGP/\x20nem\x20em\x20Documentos.','var\x20io\x20=\x20new\x20ImportOptions(f);\x20','Cancelado','true','Erro\x20SplitGroup\x20extract:\x20','\x20(linha\x20','guide.guideLayer\x20=\x20true;\x20','paste','\x27);\x20','io.importAs\x20=\x20ImportAsType.COMP_CROPPED_LAYERS;\x20','getActiveArtboardIndex','try\x20{','isRunning','save','visibleBounds','illustrator','CriarComp.jsx\x20nao\x20encontrado\x20em\x20C:/AEGP/\x20nem\x20em\x20Documentos.','var\x20sourceLayer\x20=\x20importedComp.layers[i];\x20','Erro:\x20Selecione\x20algo\x20para\x20rasterizar.','var\x20docParts\x20=\x20f.name.split(\x27.\x27);\x20docParts.pop();\x20var\x20docName\x20=\x20docParts.join(\x27.\x27);\x20','}\x20catch(e)\x20{\x20alert(\x22Erro\x20Ilst:\x20\x22\x20+\x20e.toString());\x20}','executeCommand','if(app.project.activeItem\x20&&\x20app.project.activeItem\x20instanceof\x20CompItem)\x20{\x20','send','if\x20(!f.exists)\x20f\x20=\x20new\x20File(\x27C:/AEGP/\x27\x20+\x20\x27','var\x20scaleVal\x20=\x20','DONOTSAVECHANGES','\x27);\x20if(f.exists)\x20{\x20f.open(\x27r\x27);\x20eval(f.read());\x20f.close();\x20}','app.beginUndoGroup(\x27Rasterizar\x20para\x20PNG\x27);\x20','Erro:\x20Abra\x20um\x20documento.','var\x20targetY\x20=\x20activeComp.height/2\x20+\x20(','copy','replace','var\x20origP\x20=\x20sourceLayer.property(\x27Position\x27).value;\x20','SplitGroup.jsx\x20nao\x20encontrado\x20em\x20C:/AEGP/','add','try\x20{\x20','var\x20targetX\x20=\x20activeComp.width/2\x20+\x20(','C:/Users/FELIPE\x20BARROSO/Documents/SDKAFTERGRADIENTE/CriarComp.jsx','C:/Users/FELIPE\x20BARROSO/Documents/SDKAFTERGRADIENTE/SplitGroup.jsx','if(f.exists)\x20{\x20','flashFillExportPath','.png','Erro\x20BT:\x20','var\x20item\x20=\x20app.project.importFile(io);\x20','2772245WfqWoG','target','PNG24','3017034McHKAw','if\x20(f.exists)\x20$.evalFile(f);\x20','var\x20f\x20=\x20new\x20File(\x27','transparency','\x27);\x20}','onResult','ExtrairGradiente.jsx\x20nao\x20encontrado.','C:/Users/FELIPE\x20BARROSO/Documents/SDKAFTERGRADIENTE/ExtrairGradiente.jsx','/CriarComp.jsx','fullName','135438sOPQYf','2723442qNwwVS','\x27);','Erro\x20AE:\x20','var\x20f\x20=\x20new\x20File(\x27C:/Users/FELIPE\x20BARROSO/Documents/SDKAFTERGRADIENTE/\x27\x20+\x20\x27','onError','io.forceAlphabetical\x20=\x20false;\x20','app.activate();','length','verticalScale','$.flashFillMode\x20=\x20\x27\x27;','saveDialog','if\x20(typeof\x20runCriarComp\x20===\x20\x22undefined\x22)\x20{\x20','Onde\x20quer\x20salvar\x20este\x20PNG?','var\x20newLayer\x20=\x20activeComp.layers.add(sourceLayer.source);\x20'];a0_0x1d53=function(){return _0x5418b9;};return a0_0x1d53();}function runApplyGradients(){var _0x4fec5c=a0_0x1eca29;try{var _0x2a6937=app[_0x4fec5c(0xc4)](_0x4fec5c(0xd6));if(_0x2a6937>0x0)return app[_0x4fec5c(0x82)](_0x2a6937),_0x4fec5c(0x70);return alert(_0x4fec5c(0x6b)),'false';}catch(_0x32fd85){return alert(_0x4fec5c(0xaa)+_0x32fd85['toString']()),_0x4fec5c(0xb8);}}function runSplitGroup(){var _0x23beeb=a0_0x1eca29;try{var _0x36e3b4=[extRoot+'/SplitGroup.jsx',_0x23beeb(0x94)];for(var _0x4d0ca3=0x0;_0x4d0ca3<_0x36e3b4[_0x23beeb(0xaf)];_0x4d0ca3++){var _0x2a5987=new File(_0x36e3b4[_0x4d0ca3]);if(_0x2a5987[_0x23beeb(0x6a)]){var _0x556fbc=new BridgeTalk();return _0x556fbc[_0x23beeb(0x9b)]=_0x23beeb(0xe1),_0x556fbc[_0x23beeb(0xcb)]=_0x23beeb(0x9f)+_0x2a5987[_0x23beeb(0xde)][_0x23beeb(0x8d)](/\\/g,'\x5c\x5c')+_0x23beeb(0x88),_0x556fbc[_0x23beeb(0x84)](),'true';}}return alert(_0x23beeb(0x8f)),'false';}catch(_0x485145){return alert('Erro\x20SplitGroup:\x20'+_0x485145[_0x23beeb(0x67)]()+_0x23beeb(0x72)+_0x485145[_0x23beeb(0xd5)]+')'),_0x23beeb(0xb8);}}function runRasterize(_0x55677c){var _0x1dc8d3=a0_0x1eca29;try{if(app[_0x1dc8d3(0xc3)][_0x1dc8d3(0xaf)]===0x0)return _0x1dc8d3(0x8a);var _0x5d9be7=app['activeDocument'];if(_0x5d9be7[_0x1dc8d3(0xe4)][_0x1dc8d3(0xaf)]===0x0)return _0x1dc8d3(0x7f);var _0x4ed76c=File[_0x1dc8d3(0xb2)](_0x1dc8d3(0xb4),'PNG\x20Files:*.png');if(!_0x4ed76c)return _0x1dc8d3(0x6f);!_0x4ed76c['name'][_0x1dc8d3(0xc5)](/\.png$/i)&&(_0x4ed76c=new File(_0x4ed76c['fsName']+_0x1dc8d3(0x97)));var _0x5c9aea=parseFloat(_0x55677c);if(isNaN(_0x5c9aea))_0x5c9aea=0x4;var _0xe381c=0xf423f,_0x14b64d=-0xf423f,_0x2e36ff=-0xf423f,_0x5579d9=0xf423f,_0x513251=_0x5d9be7[_0x1dc8d3(0xe4)];for(var _0x132d96=0x0;_0x132d96<_0x513251[_0x1dc8d3(0xaf)];_0x132d96++){var _0x39f73d=_0x513251[_0x132d96][_0x1dc8d3(0x7b)];if(_0x39f73d[0x0]<_0xe381c)_0xe381c=_0x39f73d[0x0];if(_0x39f73d[0x1]>_0x14b64d)_0x14b64d=_0x39f73d[0x1];if(_0x39f73d[0x2]>_0x2e36ff)_0x2e36ff=_0x39f73d[0x2];if(_0x39f73d[0x3]<_0x5579d9)_0x5579d9=_0x39f73d[0x3];}var _0x1393ef=(_0xe381c+_0x2e36ff)/0x2,_0x20f013=(_0x14b64d+_0x5579d9)/0x2,_0x169bac=_0x5d9be7['artboards'][_0x5d9be7['artboards'][_0x1dc8d3(0x77)]()],_0x4677b8=_0x169bac[_0x1dc8d3(0x68)],_0x4db0ef=_0x1393ef-_0x4677b8[0x0],_0x4252e8=_0x4677b8[0x1]-_0x20f013;app[_0x1dc8d3(0x8c)]();var _0x456af2=app[_0x1dc8d3(0xc3)][_0x1dc8d3(0x90)](DocumentColorSpace[_0x1dc8d3(0xc7)]);app[_0x1dc8d3(0x74)]();var _0x3a076b=_0x456af2[_0x1dc8d3(0x7b)];_0x456af2[_0x1dc8d3(0xc9)][0x0][_0x1dc8d3(0x68)]=_0x3a076b;var _0x37d140=new ExportOptionsPNG24();_0x37d140[_0x1dc8d3(0xc8)]=!![],_0x37d140[_0x1dc8d3(0xa0)]=!![],_0x37d140['artBoardClipping']=!![],_0x37d140['horizontalScale']=_0x5c9aea*0x64,_0x37d140[_0x1dc8d3(0xb0)]=_0x5c9aea*0x64,_0x37d140['saveAsHTML']=![],_0x456af2['exportFile'](_0x4ed76c,ExportType[_0x1dc8d3(0x9c)],_0x37d140),_0x456af2['close'](SaveOptions[_0x1dc8d3(0x87)]);var _0x53b429=new BridgeTalk();_0x53b429[_0x1dc8d3(0x9b)]=_0x1dc8d3(0xe1);var _0x40c3c4=_0x4ed76c[_0x1dc8d3(0xde)][_0x1dc8d3(0x8d)](/\\/g,'\x5c\x5c'),_0x4d20d8=0x64/_0x5c9aea,_0x2cdb6e=_0x1dc8d3(0x89)+'var\x20f\x20=\x20new\x20File(\x27'+_0x40c3c4+_0x1dc8d3(0x75)+_0x1dc8d3(0x95)+_0x1dc8d3(0x6e)+_0x1dc8d3(0x99)+_0x1dc8d3(0x83)+'var\x20layer\x20=\x20app.project.activeItem.layers.add(item);\x20'+_0x1dc8d3(0xcc)+_0x4d20d8+',\x20'+_0x4d20d8+']);\x20'+'layer.property(\x27Position\x27).setValue(['+_0x4db0ef+',\x20'+_0x4252e8+_0x1dc8d3(0xe7)+'}\x20'+'}\x20'+'app.endUndoGroup();\x20'+_0x1dc8d3(0xae);return _0x53b429['body']=_0x2cdb6e,_0x53b429[_0x1dc8d3(0x84)](),_0x1dc8d3(0x70);}catch(_0x594074){return _0x1dc8d3(0xbf)+_0x594074['toString']()+_0x1dc8d3(0x72)+_0x594074[_0x1dc8d3(0xd5)]+')';}}function runExportAI(){var _0x4fdd38=a0_0x1eca29;try{if(app[_0x4fdd38(0xc3)][_0x4fdd38(0xaf)]===0x0)return _0x4fdd38(0x8a);var _0x689546=app['activeDocument'],_0x373fa2;try{_0x373fa2=_0x689546[_0x4fdd38(0xa6)];}catch(_0x29a23c){return _0x4fdd38(0xe5);}!_0x689546[_0x4fdd38(0xd7)]&&_0x689546[_0x4fdd38(0x7a)]();var _0x13047e=_0x689546[_0x4fdd38(0xc9)][_0x689546[_0x4fdd38(0xc9)]['getActiveArtboardIndex']()],_0x4ff184=_0x13047e['artboardRect'],_0x15e7a3=0xf423f,_0x1ececb=-0xf423f,_0xffe585=-0xf423f,_0x54c54c=0xf423f,_0x367ce0=_0x689546[_0x4fdd38(0xe4)];if(_0x367ce0['length']>0x0)for(var _0x173bdf=0x0;_0x173bdf<_0x367ce0['length'];_0x173bdf++){var _0x530c50=_0x367ce0[_0x173bdf][_0x4fdd38(0x7b)];if(_0x530c50[0x0]<_0x15e7a3)_0x15e7a3=_0x530c50[0x0];if(_0x530c50[0x1]>_0x1ececb)_0x1ececb=_0x530c50[0x1];if(_0x530c50[0x2]>_0xffe585)_0xffe585=_0x530c50[0x2];if(_0x530c50[0x3]<_0x54c54c)_0x54c54c=_0x530c50[0x3];}else _0x15e7a3=_0x4ff184[0x0],_0x1ececb=_0x4ff184[0x1],_0xffe585=_0x4ff184[0x2],_0x54c54c=_0x4ff184[0x3];var _0xb284c0=(_0x15e7a3+_0xffe585)/0x2,_0x437dba=(_0x1ececb+_0x54c54c)/0x2,_0x33bec5=_0xb284c0-_0x4ff184[0x0],_0x294bf5=_0x4ff184[0x1]-_0x437dba,_0x61bd73=_0x373fa2['fsName'][_0x4fdd38(0x8d)](/\\/g,'\x5c\x5c'),_0x504bad=new BridgeTalk();_0x504bad[_0x4fdd38(0x9b)]=_0x4fdd38(0xe1);var _0x437127=_0x4fdd38(0x91)+_0x4fdd38(0xcd)+_0x4fdd38(0x9f)+_0x61bd73+_0x4fdd38(0x75)+_0x4fdd38(0x95)+_0x4fdd38(0x6e)+_0x4fdd38(0x76)+_0x4fdd38(0xe2)+_0x4fdd38(0xad)+_0x4fdd38(0xca)+'var\x20activeComp\x20=\x20app.project.activeItem;\x20'+'if(activeComp\x20&&\x20activeComp\x20instanceof\x20CompItem\x20&&\x20importedComp\x20instanceof\x20CompItem)\x20{\x20'+_0x4fdd38(0x80)+_0x4fdd38(0xd0)+_0x4fdd38(0xe3)+_0x4fdd38(0x73)+_0x4fdd38(0x92)+_0x33bec5+'\x20-\x20importedComp.width/2);\x20'+_0x4fdd38(0x8b)+_0x294bf5+_0x4fdd38(0xc6)+_0x4fdd38(0xb9)+_0x4fdd38(0xd4)+_0x4fdd38(0x7e)+_0x4fdd38(0xb5)+_0x4fdd38(0x8e)+'newLayer.property(\x27Position\x27).setValue([activeComp.width/2\x20+\x20(origP[0]\x20-\x20importedComp.width/2),\x20activeComp.height/2\x20+\x20(origP[1]\x20-\x20importedComp.height/2)]);\x20'+'newLayer.parent\x20=\x20guide;\x20'+'}\x20'+_0x4fdd38(0xdc)+_0x4fdd38(0xdb)+'app.endUndoGroup();\x20'+'app.activate();\x20'+_0x4fdd38(0xcf);_0x504bad[_0x4fdd38(0xcb)]=_0x437127;var _0x2df9e0='';_0x504bad[_0x4fdd38(0xac)]=function(_0x355d97){var _0xa3bc82=_0x4fdd38;_0x2df9e0=_0x355d97[_0xa3bc82(0xcb)];},_0x504bad[_0x4fdd38(0xa2)]=function(_0x3306b7){},_0x504bad['send'](0xa);if(_0x2df9e0!=='')return _0x4fdd38(0xd2)+_0x2df9e0;return _0x4fdd38(0x70);}catch(_0x36e5ba){return _0x4fdd38(0xdd)+_0x36e5ba[_0x4fdd38(0x67)]()+_0x4fdd38(0x72)+_0x36e5ba['line']+')';}}function aeTriggerIlst(_0x17ac84){var _0x136b7d=a0_0x1eca29;try{if(!BridgeTalk[_0x136b7d(0x79)](_0x136b7d(0x7c)))return _0x136b7d(0xd1);var _0x570dc7=new BridgeTalk();return _0x570dc7[_0x136b7d(0x9b)]=_0x136b7d(0x7c),_0x570dc7[_0x136b7d(0xcb)]=_0x17ac84+';',_0x570dc7[_0x136b7d(0x84)](),_0x136b7d(0x70);}catch(_0x244088){return _0x136b7d(0xbd)+_0x244088[_0x136b7d(0x67)]();}}function aeTriggerIlstSafe(_0x4b592d,_0x386387){var _0x5b8514=a0_0x1eca29;try{if(!BridgeTalk['isRunning'](_0x5b8514(0x7c)))return _0x5b8514(0xe6);var _0x237eb7=new BridgeTalk();_0x237eb7[_0x5b8514(0x9b)]=_0x5b8514(0x7c);var _0x3880ae=_0x5b8514(0x78);_0x3880ae+=_0x5b8514(0xab)+_0x4b592d+'\x27);',_0x3880ae+=_0x5b8514(0x85)+_0x4b592d+_0x5b8514(0xa9);if(_0x4b592d===_0x5b8514(0x6c))_0x3880ae+=_0x5b8514(0xb1);else _0x4b592d==='ExtrairForSplitGroup.jsx'&&(_0x3880ae+='$.flashFillMode\x20=\x20\x27group\x27;');return _0x4b592d===_0x5b8514(0xbc)&&_0x386387&&(_0x3880ae+=_0x5b8514(0x86)+_0x386387+';'),_0x3880ae+=_0x5b8514(0x69)+_0x4b592d+_0x5b8514(0xa1),_0x3880ae+=_0x5b8514(0xbe),_0x237eb7[_0x5b8514(0xcb)]=_0x3880ae,_0x237eb7[_0x5b8514(0x84)](),_0x5b8514(0x70);}catch(_0xe21d41){return _0x5b8514(0xd3)+_0xe21d41[_0x5b8514(0x67)]();}}function aeTriggerIlstSafe(_0x1b4386,_0x2e0a50,_0xc103ee){var _0x1478a3=a0_0x1eca29;try{if(!BridgeTalk[_0x1478a3(0x79)](_0x1478a3(0x7c)))return _0x1478a3(0xe6);var _0x19bc4c=new BridgeTalk();_0x19bc4c[_0x1478a3(0x9b)]=_0x1478a3(0x7c);var _0x186368=_0x1478a3(0x78);_0x186368+='var\x20f\x20=\x20new\x20File(\x27C:/Users/FELIPE\x20BARROSO/Documents/SDKAFTERGRADIENTE/\x27\x20+\x20\x27'+_0x1b4386+'\x27);',_0x186368+=_0x1478a3(0x85)+_0x1b4386+_0x1478a3(0xa9);if(_0x2e0a50===_0x1478a3(0xc1))_0x186368+=_0x1478a3(0xda);else _0x2e0a50===_0x1478a3(0x66)&&(_0x186368+='$.flashFillMode\x20=\x20\x27\x27;');return _0x1b4386===_0x1478a3(0xbc)&&_0xc103ee&&(_0x186368+='var\x20scaleVal\x20=\x20'+_0xc103ee+';'),_0x186368+=_0x1478a3(0xdf)+_0x1b4386+_0x1478a3(0xa1),_0x186368+=_0x1478a3(0xbe),_0x19bc4c[_0x1478a3(0xcb)]=_0x186368,_0x19bc4c[_0x1478a3(0x84)](),_0x1478a3(0x70);}catch(_0x5e833a){return _0x1478a3(0xd3)+_0x5e833a[_0x1478a3(0x67)]();}}function a0_0x5483(_0x29afe8,_0x4532e1){_0x29afe8=_0x29afe8-0x66;var _0x1d53a0=a0_0x1d53();var _0x548320=_0x1d53a0[_0x29afe8];return _0x548320;}function aeTriggerIlstCommand(_0x23c5a1){var _0x37ed62=a0_0x1eca29;try{if(!BridgeTalk[_0x37ed62(0x79)]('illustrator'))return'Illustrator\x20nao\x20esta\x20aberto.';var _0x3f49fd=new BridgeTalk();_0x3f49fd[_0x37ed62(0x9b)]='illustrator';var _0x34ca4d=_0x37ed62(0x91);return _0x34ca4d+=_0x37ed62(0xb3),_0x34ca4d+=_0x37ed62(0xc2),_0x34ca4d+=_0x37ed62(0x9e),_0x34ca4d+='}\x20',_0x34ca4d+=_0x23c5a1+';\x20',_0x34ca4d+=_0x37ed62(0x81),_0x3f49fd['body']=_0x34ca4d,_0x3f49fd[_0x37ed62(0x84)](),_0x37ed62(0x70);}catch(_0x2c9b2c){return _0x37ed62(0x98)+_0x2c9b2c['toString']();}}
+// host/index.jsx â€” FlashFill backend (avaliado pelo Adobe)
+var extRoot = new File($.fileName).parent.parent.fsName.replace(/\\/g, "/");
+
+function runCriarComp() {
+    try {
+        var paths = [
+            extRoot + "/CriarComp.jsx",
+            "C:/Users/FELIPE BARROSO/Documents/SDKAFTERGRADIENTE/CriarComp.jsx"
+        ];
+        for (var i = 0; i < paths.length; i++) {
+            var f = new File(paths[i]);
+            if (f.exists) {
+                $.evalFile(f);
+                return "true";
+            }
+        }
+        alert("CriarComp.jsx nao encontrado em C:/AEGP/ nem em Documentos.");
+        return "false";
+    } catch(e) {
+        alert("Erro: " + e.toString() + " (linha " + e.line + ")");
+        return "false";
+    }
+}
+
+function runExtrairGradiente(customExportPath) {
+    try {
+        $.flashFillMode = ""; // modo padrao = Split Layer
+        $.flashFillExportPath = customExportPath || "C:/AEGP/img_export";
+        var paths = [
+            extRoot + "/ExtrairGradiente.jsx",
+            "C:/Users/FELIPE BARROSO/Documents/SDKAFTERGRADIENTE/ExtrairGradiente.jsx"
+        ];
+        for (var i = 0; i < paths.length; i++) {
+            var f = new File(paths[i]);
+            if (f.exists) {
+                $.evalFile(f);
+                return "true";
+            }
+        }
+        alert("ExtrairGradiente.jsx nao encontrado em C:/AEGP/ nem em Documentos.");
+        return "false";
+    } catch(e) {
+        alert("Erro: " + e.toString() + " (linha " + e.line + ")");
+        return "false";
+    }
+}
+
+function runExtrairForSplitGroup(customExportPath) {
+    try {
+        $.flashFillMode = "group"; // Seta flag: BridgeTalk vai rodar SplitGroup.jsx no AE
+        $.flashFillExportPath = customExportPath || "C:/AEGP/img_export";
+        var paths = [
+            extRoot + "/ExtrairGradiente.jsx",
+            "C:/Users/FELIPE BARROSO/Documents/SDKAFTERGRADIENTE/ExtrairGradiente.jsx"
+        ];
+        for (var i = 0; i < paths.length; i++) {
+            var f = new File(paths[i]);
+            if (f.exists) {
+                $.evalFile(f);
+                return "true";
+            }
+        }
+        alert("ExtrairGradiente.jsx nao encontrado.");
+        return "false";
+    } catch(e) {
+        alert("Erro SplitGroup extract: " + e.toString());
+        return "false";
+    }
+}
+
+function runApplyGradients() {
+    try {
+        var gCmd = app.findMenuCommandId("GRAD FIXER: Aplicar Gradientes");
+        if (gCmd > 0) { app.executeCommand(gCmd); return "true"; }
+        alert("Plugin GRAD FIXER nao encontrado no menu. Reinstale o .aex.");
+        return "false";
+    } catch(e) {
+        alert("Erro AE: " + e.toString());
+        return "false";
+    }
+}
+
+function runSplitGroup() {
+    try {
+        var paths = [
+            extRoot + "/SplitGroup.jsx",
+            "C:/Users/FELIPE BARROSO/Documents/SDKAFTERGRADIENTE/SplitGroup.jsx"
+        ];
+        for (var i = 0; i < paths.length; i++) {
+            var f = new File(paths[i]);
+            if (f.exists) { 
+                var bt = new BridgeTalk();
+                bt.target = "aftereffects";
+                bt.body = "var f = new File('" + f.fsName.replace(/\\/g, "\\\\") + "'); if(f.exists) { f.open('r'); eval(f.read()); f.close(); }";
+                bt.send();
+                return "true"; 
+            }
+        }
+        alert("SplitGroup.jsx nao encontrado em C:/AEGP/");
+        return "false";
+    } catch(e) {
+        alert("Erro SplitGroup: " + e.toString() + " (linha " + e.line + ")");
+        return "false";
+    }
+}
+
+function runRasterize(scaleStr) {
+    try {
+        if (app.documents.length === 0) return "Erro: Abra um documento.";
+        var doc = app.activeDocument;
+        if (doc.selection.length === 0) return "Erro: Selecione algo para rasterizar.";
+        
+        var file = File.saveDialog("Onde quer salvar este PNG?", "PNG Files:*.png");
+        if (!file) return "Cancelado";
+        
+        if (!file.name.match(/\.png$/i)) { file = new File(file.fsName + ".png"); }
+        
+        var scale = parseFloat(scaleStr);
+        if (isNaN(scale)) scale = 4.0;
+        
+        // Calcular o centro da seleÃ§Ã£o no Artboard Original
+        var left = 999999, top = -999999, right = -999999, bottom = 999999;
+        var sel = doc.selection;
+        for (var i = 0; i < sel.length; i++) {
+            var b = sel[i].visibleBounds;
+            if (b[0] < left) left = b[0];
+            if (b[1] > top) top = b[1];
+            if (b[2] > right) right = b[2];
+            if (b[3] < bottom) bottom = b[3];
+        }
+        var centerX = (left + right) / 2.0;
+        var centerY = (top + bottom) / 2.0;
+
+        var ab = doc.artboards[doc.artboards.getActiveArtboardIndex()];
+        var abRect = ab.artboardRect; // [left, top, right, bottom] (onde top > bottom)
+        var relX = centerX - abRect[0];
+        var relY = abRect[1] - centerY;
+
+        app.copy();
+        var tempDoc = app.documents.add(DocumentColorSpace.RGB);
+        app.paste();
+        
+        // Fit artboard to selection
+        var vBounds = tempDoc.visibleBounds;
+        tempDoc.artboards[0].artboardRect = vBounds;
+        
+        var opts = new ExportOptionsPNG24();
+        opts.antiAliasing = true;
+        opts.transparency = true;
+        opts.artBoardClipping = true;
+        opts.horizontalScale = scale * 100;
+        opts.verticalScale = scale * 100;
+        opts.saveAsHTML = false;
+        
+        tempDoc.exportFile(file, ExportType.PNG24, opts);
+        tempDoc.close(SaveOptions.DONOTSAVECHANGES);
+        
+        // Send to After Effects
+        var bt = new BridgeTalk();
+        bt.target = "aftereffects";
+        var pathForAE = file.fsName.replace(/\\/g, "\\\\");
+        var aeScale = 100.0 / scale;
+        
+        var aeScript = "app.beginUndoGroup('Rasterizar para PNG'); " +
+                       "var f = new File('" + pathForAE + "'); " +
+                       "if(f.exists) { " +
+                           "var io = new ImportOptions(f); " +
+                           "var item = app.project.importFile(io); " +
+                           "if(app.project.activeItem && app.project.activeItem instanceof CompItem) { " +
+                                "var layer = app.project.activeItem.layers.add(item); " +
+                                "layer.property('Scale').setValue([" + aeScale + ", " + aeScale + "]); " +
+                                "layer.property('Position').setValue([" + relX + ", " + relY + "]); " +
+                           "} " +
+                       "} " +
+                       "app.endUndoGroup(); " +
+                       "app.activate();";
+        bt.body = aeScript;
+        bt.send();
+        
+        return "true";
+    } catch(e) {
+        return "Erro Rasterize: " + e.toString() + " (linha " + e.line + ")";
+    }
+}
+
+function runExportAI() {
+    try {
+        if (app.documents.length === 0) return "Erro: Abra um documento.";
+        var doc = app.activeDocument;
+        var docPath;
+        try {
+            docPath = doc.fullName;
+        } catch(e) {
+            return "Erro: Salve o arquivo .ai do Illustrator localmente (Ctrl+S) pelo menos uma vez.";
+        }
+        
+        if (!doc.saved) {
+            doc.save();
+        }
+        
+        var ab = doc.artboards[doc.artboards.getActiveArtboardIndex()];
+        var abRect = ab.artboardRect;
+        var left = 999999, top = -999999, right = -999999, bottom = 999999;
+        var sel = doc.selection;
+        if (sel.length > 0) {
+            for (var i = 0; i < sel.length; i++) {
+                var b = sel[i].visibleBounds;
+                if (b[0] < left) left = b[0];
+                if (b[1] > top) top = b[1];
+                if (b[2] > right) right = b[2];
+                if (b[3] < bottom) bottom = b[3];
+            }
+        } else {
+            left = abRect[0]; top = abRect[1]; right = abRect[2]; bottom = abRect[3];
+        }
+        var centerX = (left + right) / 2.0;
+        var centerY = (top + bottom) / 2.0;
+        var relX = centerX - abRect[0];
+        var relY = abRect[1] - centerY;
+
+        var pathForAE = docPath.fsName.replace(/\\/g, "\\\\");
+        
+        var bt = new BridgeTalk();
+        bt.target = "aftereffects";
+        var aeScript = "try { " +
+                       "app.beginUndoGroup('Importar Dynamic Link .ai'); " +
+                       "var f = new File('" + pathForAE + "'); " +
+                       "if(f.exists) { " +
+                           "var io = new ImportOptions(f); " +
+                           "io.importAs = ImportAsType.COMP_CROPPED_LAYERS; " +
+                           "io.sequence = false; " +
+                           "io.forceAlphabetical = false; " +
+                           "var importedComp = app.project.importFile(io); " +
+                               "var activeComp = app.project.activeItem; " +
+                               "if(activeComp && activeComp instanceof CompItem && importedComp instanceof CompItem) { " +
+                                    "var docParts = f.name.split('.'); docParts.pop(); var docName = docParts.join('.'); " +
+                                    "var guide = activeComp.layers.addShape(); " +
+                                    "guide.name = '# ' + docName; " +
+                                    "guide.guideLayer = true; " +
+                                    "var targetX = activeComp.width/2 + (" + relX + " - importedComp.width/2); " +
+                                    "var targetY = activeComp.height/2 + (" + relY + " - importedComp.height/2); " +
+                                    "guide.property('Position').setValue([targetX, targetY]); " +
+                                    "for (var i = importedComp.layers.length; i >= 1; i--) { " +
+                                        "var sourceLayer = importedComp.layers[i]; " +
+                                        "var newLayer = activeComp.layers.add(sourceLayer.source); " +
+                                        "var origP = sourceLayer.property('Position').value; " +
+                                        "newLayer.property('Position').setValue([activeComp.width/2 + (origP[0] - importedComp.width/2), activeComp.height/2 + (origP[1] - importedComp.height/2)]); " +
+                                        "newLayer.parent = guide; " +
+                                    "} " +
+                               "} else { alert('Nenhuma composição ativa no AE encontrada. Abra uma onde quer inserir.'); } " +
+                       "} else { alert('Arquivo não encontrado: ' + f.fsName); } " +
+                       "app.endUndoGroup(); " +
+                       "app.activate(); " +
+                       "} catch(eae) { alert('Erro no AE (Import AI): ' + eae.toString() + ' (L' + eae.line + ')'); }";
+        bt.body = aeScript;
+        
+        var btErr = "";
+        bt.onError = function(err) { btErr = err.body; };
+        bt.onResult = function(res) {};
+        bt.send(10);
+        
+        if (btErr !== "") {
+            return "BT Erro: " + btErr;
+        }
+        return "true";
+    } catch(e) {
+        return "Erro Import AI IL: " + e.toString() + " (linha " + e.line + ")";
+    }
+}
+
+
+
+
+
+
+// ======= FUNCOES PARA O AFTER EFFECTS ACIONAR O ILLUSTRATOR =======
+function aeTriggerIlst(scriptToRun) {
+    try {
+        if (!BridgeTalk.isRunning("illustrator")) {
+            return "Illustrator nao esta aberto ou reconhecido.";
+        }
+        var bt = new BridgeTalk();
+        bt.target = "illustrator";
+        bt.body = scriptToRun + ";";
+        bt.send();
+        return "true";
+    } catch(e) {
+        return "Erro BridgeTalk (AE->ILST): " + e.toString();
+    }
+}
+function aeTriggerIlstSafe(scriptFileName, scaleVal) {
+    try {
+        if (!BridgeTalk.isRunning("illustrator")) {
+            return "Illustrator nao esta aberto.";
+        }
+        var bt = new BridgeTalk();
+        bt.target = "illustrator";
+        
+        var req = "try {";
+        req += "var f = new File('C:/Users/FELIPE BARROSO/Documents/SDKAFTERGRADIENTE/' + '" + scriptFileName + "');";
+        req += "if (!f.exists) f = new File('C:/AEGP/' + '" + scriptFileName + "');";
+        if (scriptFileName === "ExtrairGradiente.jsx") {
+            req += "$.flashFillMode = '';";
+        } else if (scriptFileName === "ExtrairForSplitGroup.jsx") {
+            req += "$.flashFillMode = 'group';";
+        }
+        
+        if (scriptFileName === "Rasterizar.jsx" && scaleVal) {
+            req += "var scaleVal = " + scaleVal + ";";
+        }
+
+        req += "if (f.exists) { $.evalFile(f); } else { alert('Arquivo nao encontrado: ' + '" + scriptFileName + "'); }";
+        req += "} catch(e) { alert('Erro no Illustrator: ' + e.toString()); }";
+        
+        bt.body = req;
+        bt.send();
+        return "true";
+    } catch(e) {
+        return "Erro BridgeTalk: " + e.toString();
+    }
+}
+function aeTriggerIlstSafe(scriptFileName, mode, scaleVal) {
+    try {
+        if (!BridgeTalk.isRunning("illustrator")) {
+            return "Illustrator nao esta aberto.";
+        }
+        var bt = new BridgeTalk();
+        bt.target = "illustrator";
+        
+        var req = "try {";
+        req += "var f = new File('C:/Users/FELIPE BARROSO/Documents/SDKAFTERGRADIENTE/' + '" + scriptFileName + "');";
+        req += "if (!f.exists) f = new File('C:/AEGP/' + '" + scriptFileName + "');";
+        
+        if (mode === "group") {
+            req += "$.flashFillMode = 'group';";
+        } else if (mode === "layer") {
+            req += "$.flashFillMode = '';";
+        }
+        
+        if (scriptFileName === "Rasterizar.jsx" && scaleVal) {
+            req += "var scaleVal = " + scaleVal + ";";
+        }
+
+        req += "if (f.exists) { $.evalFile(f); } else { alert('Arquivo nao encontrado no ILST: ' + '" + scriptFileName + "'); }";
+        req += "} catch(e) { alert('Erro no Illustrator: ' + e.toString()); }";
+        
+        bt.body = req;
+        bt.send();
+        return "true";
+    } catch(e) {
+        return "Erro BridgeTalk: " + e.toString();
+    }
+}
+
+function aeTriggerIlstCommand(cmdString) {
+    try {
+        if (!BridgeTalk.isRunning('illustrator')) return 'Illustrator nao esta aberto.';
+        var bt = new BridgeTalk();
+        bt.target = 'illustrator';
+        var req = 'try { ';
+        req += 'if (typeof runCriarComp === \"undefined\") { ';
+        req += 'var f = new File(\"C:/Users/FELIPE BARROSO/AppData/Roaming/Adobe/CEP/extensions/GradFixer/host/index.jsx\"); ';
+        req += 'if (f.exists) $.evalFile(f); ';
+        req += '} ';
+        req += cmdString + '; ';
+        req += '} catch(e) { alert(\"Erro Ilst: \" + e.toString()); }';
+        bt.body = req;
+        bt.send();
+        return 'true';
+    } catch(e) {
+        return 'Erro BT: ' + e.toString();
+    }
+}

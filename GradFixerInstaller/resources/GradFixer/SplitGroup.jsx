@@ -1,1 +1,490 @@
-function a0_0xa09e(_0x59326f,_0x5b1813){_0x59326f=_0x59326f-0x164;var _0x2eb17e=a0_0x2eb1();var _0xa09ec9=_0x2eb17e[_0x59326f];return _0xa09ec9;}(function(_0x4f0b6c,_0x55da04){var _0x4f30fd=a0_0xa09e,_0x4506cd=_0x4f0b6c();while(!![]){try{var _0x172a69=-parseInt(_0x4f30fd(0x1c8))/0x1*(-parseInt(_0x4f30fd(0x1a9))/0x2)+-parseInt(_0x4f30fd(0x1c6))/0x3*(parseInt(_0x4f30fd(0x181))/0x4)+parseInt(_0x4f30fd(0x1a2))/0x5+parseInt(_0x4f30fd(0x165))/0x6*(-parseInt(_0x4f30fd(0x1b7))/0x7)+-parseInt(_0x4f30fd(0x1d2))/0x8+parseInt(_0x4f30fd(0x16b))/0x9*(parseInt(_0x4f30fd(0x1ae))/0xa)+-parseInt(_0x4f30fd(0x16d))/0xb*(-parseInt(_0x4f30fd(0x1b6))/0xc);if(_0x172a69===_0x55da04)break;else _0x4506cd['push'](_0x4506cd['shift']());}catch(_0x1f6949){_0x4506cd['push'](_0x4506cd['shift']());}}}(a0_0x2eb1,0x5eb13),(function(){var _0x99e176=a0_0xa09e;try{var _0x47ddf2=new File(_0x99e176(0x168));if(!_0x47ddf2['exists']){alert('Rode\x20ExtrairGradiente.jsx\x20no\x20Illustrator\x20primeiro!');return;}_0x47ddf2['open']('r');var _0x596422=eval('('+_0x47ddf2[_0x99e176(0x16e)]()+')');_0x47ddf2[_0x99e176(0x1bc)]();var _0x1cd91f=app[_0x99e176(0x1a7)]['activeItem'];if(!_0x1cd91f||!(_0x1cd91f instanceof CompItem)){alert(_0x99e176(0x1a0));return;}app[_0x99e176(0x1c0)](_0x99e176(0x194));var _0xf06dca=app['project'][_0x99e176(0x187)][_0x99e176(0x192)](_0x99e176(0x186),_0x1cd91f[_0x99e176(0x1e1)],_0x1cd91f[_0x99e176(0x183)],_0x1cd91f['pixelAspect'],_0x1cd91f[_0x99e176(0x1b5)],_0x1cd91f[_0x99e176(0x1cb)]),_0x5a5c82=_0xf06dca[_0x99e176(0x1ca)][_0x99e176(0x19d)](),_0x48ca55=![];for(var _0x8b0fc1=0x0;_0x8b0fc1<0x3;_0x8b0fc1++){try{_0x5a5c82['name']=_0x99e176(0x171),_0x48ca55=!![];break;}catch(_0x2fd4f3){$['sleep'](0x32);}}if(!_0x48ca55)try{_0x5a5c82[_0x99e176(0x18f)]='Vetores';}catch(_0x3c32e4){}_0x5a5c82[_0x99e176(0x180)]();var _0x2115e7=_0x5a5c82[_0x99e176(0x164)](_0x99e176(0x1e0));try{_0x2115e7[_0x99e176(0x164)]('ADBE\x20Anchor\x20Point')['setValue']([0x0,0x0]);}catch(_0x18cb68){}try{_0x2115e7['property'](_0x99e176(0x1d3))[_0x99e176(0x17d)]([0x0,0x0]);}catch(_0x592bd4){}var _0x153c4a=_0x5a5c82['property'](_0x99e176(0x1b1)),_0x24a25c={};function _0x823f1b(_0x25b6e3,_0xdf1438,_0x455e77){var _0x4dd0de=_0x99e176;if(!_0xdf1438)return;var _0x3d8ea5=_0x455e77?_0x4dd0de(0x199):_0x4dd0de(0x198),_0x39a935=_0x25b6e3[_0x4dd0de(0x1d1)](_0x3d8ea5);if(_0xdf1438[_0x4dd0de(0x1a5)]===_0x4dd0de(0x1c3)||!_0xdf1438[_0x4dd0de(0x1a5)]){var _0x1eaf4f=_0xdf1438[_0x4dd0de(0x1d6)]||[0.5,0.5,0.5];try{_0x39a935[_0x4dd0de(0x164)](_0x4dd0de(0x18b))['setValue'](_0x1eaf4f);}catch(_0x1bd5e3){try{_0x39a935[_0x4dd0de(0x164)]('ADBE\x20Vector\x20Fill\x20Color')[_0x4dd0de(0x17d)](_0x1eaf4f);}catch(_0x29e64b){try{_0x39a935[_0x4dd0de(0x164)](_0x4dd0de(0x1a4))['setValue'](_0x1eaf4f);}catch(_0x1830ce){}}}if(!_0x455e77)try{try{_0x39a935[_0x4dd0de(0x164)](_0x4dd0de(0x17c))[_0x4dd0de(0x17d)](0x2);}catch(_0x358551){_0x39a935[_0x4dd0de(0x164)](_0x4dd0de(0x1df))[_0x4dd0de(0x17d)](0x2);}}catch(_0x2a22dc){}}if(_0x455e77&&_0xdf1438[_0x4dd0de(0x1ac)]){try{_0x39a935[_0x4dd0de(0x164)](_0x4dd0de(0x1eb))[_0x4dd0de(0x17d)](_0xdf1438['strokeWidth']);}catch(_0x530a2f){}if(_0xdf1438[_0x4dd0de(0x179)])try{_0x39a935[_0x4dd0de(0x164)](_0x4dd0de(0x16f))[_0x4dd0de(0x17d)](_0xdf1438['strokeCap']);}catch(_0x5cc8c0){}if(_0xdf1438['strokeJoin'])try{_0x39a935[_0x4dd0de(0x164)](_0x4dd0de(0x1f5))[_0x4dd0de(0x17d)](_0xdf1438['strokeJoin']);}catch(_0x389a2d){}}}var _0x3c0ad5={};for(var _0x3a7f60=0x0;_0x3a7f60<_0x596422[_0x99e176(0x182)]['length'];_0x3a7f60++){_0x3c0ad5[_0x596422[_0x99e176(0x182)][_0x3a7f60][_0x99e176(0x18f)]]=_0x596422[_0x99e176(0x182)][_0x3a7f60];}function _0xa5ab39(_0x40b348,_0xdc909d){var _0x10051c=_0x99e176;if(!_0xdc909d||_0xdc909d===0x1)return;try{_0x40b348[_0x10051c(0x164)](_0x10051c(0x1ad))[_0x10051c(0x17d)](_0xdc909d);}catch(_0x35bd1b){}}function _0x46018b(_0x23ff58,_0x46df24,_0x5e2efa){var _0x468535=_0x99e176;try{var _0x2a14c3=typeof flashFillExportPath!==_0x468535(0x1d7)?flashFillExportPath:'C:/AEGP/img_export',_0x4db84d=new File(_0x2a14c3+_0x468535(0x1aa));_0x4db84d['open']('w'),_0x4db84d[_0x468535(0x1c1)](_0x23ff58+'|'+_0x46df24+'|'+_0x5e2efa),_0x4db84d[_0x468535(0x1bc)]();}catch(_0xa5cc1d){}}function _0x578692(){}var _0x39e54e=[];for(var _0x311322=0x0;_0x311322<_0x596422[_0x99e176(0x182)][_0x99e176(0x176)];_0x311322++){(_0x311322%0x3===0x0||_0x311322===_0x596422[_0x99e176(0x182)][_0x99e176(0x176)]-0x1)&&_0x46018b(_0x99e176(0x1ba),_0x311322,_0x596422[_0x99e176(0x182)][_0x99e176(0x176)]);var _0x527229=_0x596422[_0x99e176(0x182)][_0x311322];if(_0x527229[_0x99e176(0x167)]===_0x99e176(0x17f)){_0x39e54e[_0x99e176(0x191)](_0x527229);continue;}if(!_0x527229[_0x99e176(0x18f)])continue;var _0x4bdf78=_0x527229[_0x99e176(0x1e2)]&&_0x24a25c[_0x527229[_0x99e176(0x1e2)]]?_0x24a25c[_0x527229['parent']]:_0x153c4a;if(_0x527229['fillType']==='group'){var _0x4c1231=_0x4bdf78[_0x99e176(0x1d1)](_0x99e176(0x1b3));_0x4c1231[_0x99e176(0x18f)]=_0x527229[_0x99e176(0x18f)];try{var _0x283c99=_0x4c1231['property'](_0x99e176(0x1e9));if(_0x283c99){_0x283c99[_0x99e176(0x164)](_0x99e176(0x1c5))[_0x99e176(0x17d)]([0x0,0x0]),_0x283c99['property'](_0x99e176(0x19a))[_0x99e176(0x17d)]([0x0,0x0]),_0xa5ab39(_0x283c99,_0x527229[_0x99e176(0x1ee)]);if(_0x527229[_0x99e176(0x1f4)]!==undefined&&_0x527229['opacity']!==null){var _0x284e28=_0x527229[_0x99e176(0x1f4)]>0x1?_0x527229[_0x99e176(0x1f4)]:_0x527229[_0x99e176(0x1f4)]*0x64;try{_0x283c99['property'](_0x99e176(0x1be))['setValue'](_0x284e28);}catch(_0x4ad2c0){try{_0x283c99['property'](_0x99e176(0x173))[_0x99e176(0x17d)](_0x284e28);}catch(_0x516437){try{_0x283c99['property'](_0x99e176(0x1cf))[_0x99e176(0x17d)](_0x284e28);}catch(_0x1820fc){try{_0x283c99[_0x99e176(0x164)](0xb)[_0x99e176(0x17d)](_0x284e28);}catch(_0x30cbb3){}}}}}}}catch(_0x502ab2){}_0x4c1231=_0x4bdf78['property'](_0x527229[_0x99e176(0x18f)]),_0x24a25c[_0x527229[_0x99e176(0x18f)]]=_0x4c1231[_0x99e176(0x164)](_0x99e176(0x1af));continue;}if(_0x527229[_0x99e176(0x167)]===_0x99e176(0x189)){if(!_0x527229['paths']||_0x527229[_0x99e176(0x1a1)][_0x99e176(0x176)]===0x0){if(_0x527229[_0x99e176(0x1f6)])_0x527229['paths']=[_0x527229[_0x99e176(0x1f6)]];else continue;}var _0x11826d=_0x4bdf78[_0x99e176(0x1d1)]('ADBE\x20Vector\x20Group');_0x11826d['name']=_0x527229[_0x99e176(0x18f)];var _0x43767d=_0x11826d[_0x99e176(0x164)]('ADBE\x20Vector\x20Transform\x20Group');try{_0x43767d[_0x99e176(0x164)](_0x99e176(0x1c5))[_0x99e176(0x17d)]([0x0,0x0]);}catch(_0x159745){}try{_0x43767d['property'](_0x99e176(0x19a))['setValue']([0x0,0x0]);}catch(_0x3331d2){}_0xa5ab39(_0x43767d,_0x527229[_0x99e176(0x1ee)]);if(_0x527229[_0x99e176(0x1f4)]!==undefined&&_0x527229['opacity']!==null){var _0x35224a=_0x527229['opacity']>0x1?_0x527229[_0x99e176(0x1f4)]:_0x527229[_0x99e176(0x1f4)]*0x64;try{_0x43767d[_0x99e176(0x164)](_0x99e176(0x1be))[_0x99e176(0x17d)](_0x35224a);}catch(_0x2eaae2){try{_0x43767d[_0x99e176(0x164)]('Opacity')['setValue'](_0x35224a);}catch(_0xeb24de){try{_0x43767d[_0x99e176(0x164)](_0x99e176(0x1cf))[_0x99e176(0x17d)](_0x35224a);}catch(_0x37d35f){try{_0x43767d[_0x99e176(0x164)](0xb)['setValue'](_0x35224a);}catch(_0x3c2d27){}}}}}var _0x282ae8=_0x11826d['property'](_0x99e176(0x1af)),_0x5efae8=_0x527229['x']||0x0,_0xe809ef=_0x527229['y']||0x0,_0xa99626=0x0,_0x399bda=_0x527229[_0x99e176(0x1a1)]&&_0x527229['paths'][_0x99e176(0x176)]>0x1;for(var _0x282da9=0x0;_0x282da9<_0x527229[_0x99e176(0x1a1)][_0x99e176(0x176)];_0x282da9++){var _0x2aa351=_0x527229[_0x99e176(0x1a1)][_0x282da9];if(!_0x2aa351)continue;if(!_0x399bda&&_0x2aa351['type']===_0x99e176(0x1f9)){var _0x251727=_0x282ae8['addProperty'](_0x99e176(0x185));_0x251727[_0x99e176(0x164)](_0x99e176(0x172))['setValue'](_0x2aa351[_0x99e176(0x1bb)]),_0x251727['property'](_0x99e176(0x18a))[_0x99e176(0x17d)]([(_0x2aa351['pos']?_0x2aa351[_0x99e176(0x195)][0x0]:0x0)+_0x5efae8,(_0x2aa351[_0x99e176(0x195)]?_0x2aa351['pos'][0x1]:0x0)+_0xe809ef]),_0xa99626++;continue;}else{if(!_0x399bda&&_0x2aa351[_0x99e176(0x1a5)]===_0x99e176(0x1e5)){var _0x251727=_0x282ae8[_0x99e176(0x1d1)]('ADBE\x20Vector\x20Shape\x20-\x20Ellipse');_0x251727[_0x99e176(0x164)]('ADBE\x20Vector\x20Ellipse\x20Size')['setValue'](_0x2aa351[_0x99e176(0x1bb)]),_0x251727[_0x99e176(0x164)]('ADBE\x20Vector\x20Ellipse\x20Position')[_0x99e176(0x17d)]([(_0x2aa351[_0x99e176(0x195)]?_0x2aa351['pos'][0x0]:0x0)+_0x5efae8,(_0x2aa351['pos']?_0x2aa351['pos'][0x1]:0x0)+_0xe809ef]),_0xa99626++;continue;}}if(!_0x2aa351['pts']||_0x2aa351['pts'][_0x99e176(0x176)]<0x2)continue;var _0x251727=_0x282ae8['addProperty']('ADBE\x20Vector\x20Shape\x20-\x20Group'),_0x7fb6bf=[],_0x349a0c=[],_0x505a64=[];for(var _0x53370d=0x0;_0x53370d<_0x2aa351[_0x99e176(0x1d8)][_0x99e176(0x176)];_0x53370d++){_0x7fb6bf['push']([_0x2aa351[_0x99e176(0x1d8)][_0x53370d]['a'][0x0]+_0x5efae8,_0x2aa351[_0x99e176(0x1d8)][_0x53370d]['a'][0x1]+_0xe809ef]),_0x349a0c[_0x99e176(0x191)](_0x2aa351['pts'][_0x53370d]['i']),_0x505a64[_0x99e176(0x191)](_0x2aa351['pts'][_0x53370d]['o']);}var _0x4e2142=new Shape();_0x4e2142[_0x99e176(0x1ed)]=_0x7fb6bf,_0x4e2142[_0x99e176(0x1e3)]=_0x349a0c,_0x4e2142[_0x99e176(0x16a)]=_0x505a64,_0x4e2142[_0x99e176(0x193)]=_0x2aa351['closed']!==undefined?_0x2aa351[_0x99e176(0x193)]:!![],_0x251727[_0x99e176(0x164)](_0x99e176(0x19b))['setValue'](_0x4e2142),_0xa99626++;}if(_0xa99626>0x0){var _0x2efbad=_0xf06dca['layers'][_0x99e176(0x19d)]();_0x2efbad['name']=_0x527229['name'];var _0x317a9f=_0x282ae8['addProperty'](_0x99e176(0x198));if(_0x527229[_0x99e176(0x189)]&&_0x527229[_0x99e176(0x189)][_0x99e176(0x1e7)]&&_0x527229[_0x99e176(0x189)][_0x99e176(0x1e7)]['length']>0x0){var _0x5b5130=_0x527229['gradient'][_0x99e176(0x1e7)][0x0];try{_0x317a9f[_0x99e176(0x164)](_0x99e176(0x18d))['setValue']([_0x5b5130['r'],_0x5b5130['g'],_0x5b5130['b'],0x1]);}catch(_0x4a14c0){}}}else try{_0x11826d[_0x99e176(0x175)]();}catch(_0x3a5dae){}continue;}var _0x10fa56=_0x527229['paths']?_0x527229[_0x99e176(0x1a1)]:_0x527229[_0x99e176(0x1f6)]?[_0x527229[_0x99e176(0x1f6)]]:null;if(!_0x10fa56||_0x10fa56[_0x99e176(0x176)]===0x0)continue;var _0x258346=_0x527229['x']||0x0,_0x21f564=_0x527229['y']||0x0,_0x479c02=_0x4bdf78['addProperty'](_0x99e176(0x1b3));_0x479c02['name']=_0x527229[_0x99e176(0x18f)];var _0x57a239=_0x479c02[_0x99e176(0x164)](_0x99e176(0x1af)),_0x417854=_0x479c02[_0x99e176(0x164)]('ADBE\x20Vector\x20Transform\x20Group');_0xa5ab39(_0x417854,_0x527229[_0x99e176(0x1ee)]);if(_0x527229[_0x99e176(0x1f4)]!==undefined&&_0x527229[_0x99e176(0x1f4)]!==null){var _0x52fd10=_0x527229['opacity']>0x1?_0x527229['opacity']:_0x527229['opacity']*0x64;try{_0x417854['property'](_0x99e176(0x1be))[_0x99e176(0x17d)](_0x52fd10);}catch(_0x524b85){try{_0x417854['property'](_0x99e176(0x173))[_0x99e176(0x17d)](_0x52fd10);}catch(_0x2107de){try{_0x417854[_0x99e176(0x164)](_0x99e176(0x1cf))[_0x99e176(0x17d)](_0x52fd10);}catch(_0x140ec3){try{_0x417854[_0x99e176(0x164)](0xb)['setValue'](_0x52fd10);}catch(_0x307192){}}}}}var _0x112f2c=0x0,_0x198e5e=_0x10fa56&&_0x10fa56['length']>0x1;for(var _0x50b916=0x0;_0x50b916<_0x10fa56[_0x99e176(0x176)];_0x50b916++){var _0x2bbeab=_0x10fa56[_0x50b916];if(!_0x2bbeab)continue;if(!_0x198e5e&&_0x2bbeab[_0x99e176(0x1a5)]===_0x99e176(0x1f9)){var _0x287e61=_0x57a239['addProperty']('ADBE\x20Vector\x20Shape\x20-\x20Rect');_0x287e61['property'](_0x99e176(0x172))[_0x99e176(0x17d)](_0x2bbeab['size']),_0x287e61[_0x99e176(0x164)]('ADBE\x20Vector\x20Rect\x20Position')['setValue']([(_0x2bbeab[_0x99e176(0x195)]?_0x2bbeab['pos'][0x0]:0x0)+_0x258346,(_0x2bbeab[_0x99e176(0x195)]?_0x2bbeab[_0x99e176(0x195)][0x1]:0x0)+_0x21f564]),_0x112f2c++;continue;}else{if(!_0x198e5e&&_0x2bbeab[_0x99e176(0x1a5)]==='ellipse'){var _0x287e61=_0x57a239['addProperty'](_0x99e176(0x1b4));_0x287e61[_0x99e176(0x164)]('ADBE\x20Vector\x20Ellipse\x20Size')['setValue'](_0x2bbeab[_0x99e176(0x1bb)]),_0x287e61['property'](_0x99e176(0x169))[_0x99e176(0x17d)]([(_0x2bbeab[_0x99e176(0x195)]?_0x2bbeab[_0x99e176(0x195)][0x0]:0x0)+_0x258346,(_0x2bbeab[_0x99e176(0x195)]?_0x2bbeab[_0x99e176(0x195)][0x1]:0x0)+_0x21f564]),_0x112f2c++;continue;}}if(!_0x2bbeab[_0x99e176(0x1d8)]||_0x2bbeab['pts'][_0x99e176(0x176)]<0x2)continue;var _0x287e61=_0x57a239['addProperty'](_0x99e176(0x1c9)),_0x53e98b=[],_0x52c818=[],_0x343e65=[];for(var _0x3cd92c=0x0;_0x3cd92c<_0x2bbeab[_0x99e176(0x1d8)][_0x99e176(0x176)];_0x3cd92c++){_0x53e98b['push']([_0x2bbeab[_0x99e176(0x1d8)][_0x3cd92c]['a'][0x0]+_0x258346,_0x2bbeab[_0x99e176(0x1d8)][_0x3cd92c]['a'][0x1]+_0x21f564]),_0x52c818[_0x99e176(0x191)](_0x2bbeab[_0x99e176(0x1d8)][_0x3cd92c]['i']),_0x343e65[_0x99e176(0x191)](_0x2bbeab[_0x99e176(0x1d8)][_0x3cd92c]['o']);}var _0x348a84=new Shape();_0x348a84['vertices']=_0x53e98b,_0x348a84[_0x99e176(0x1e3)]=_0x52c818,_0x348a84[_0x99e176(0x16a)]=_0x343e65,_0x348a84['closed']=_0x2bbeab[_0x99e176(0x193)]!==undefined?_0x2bbeab['closed']:!![],_0x287e61['property']('ADBE\x20Vector\x20Shape')[_0x99e176(0x17d)](_0x348a84),_0x112f2c++;}if(_0x112f2c===0x0)continue;if(_0x112f2c>0x1||_0x527229[_0x99e176(0x17e)])try{var _0x3914df=_0x57a239[_0x99e176(0x1d1)](_0x99e176(0x16c));_0x3914df[_0x99e176(0x164)]('ADBE\x20Vector\x20Merge\x20Type')[_0x99e176(0x17d)](0x5);}catch(_0x452138){}_0x823f1b(_0x57a239,_0x527229['fill'],![]),_0x823f1b(_0x57a239,_0x527229[_0x99e176(0x1f1)],!![]);}for(var _0x4ef066=_0xf06dca[_0x99e176(0x1ab)];_0x4ef066>=0x1;_0x4ef066--){try{_0xf06dca['layer'](_0x4ef066)[_0x99e176(0x19e)](_0x1cd91f);}catch(_0xb71dbc){}}var _0x5a5c82=null;for(var _0x355fd0=0x1;_0x355fd0<=_0x1cd91f[_0x99e176(0x1ab)];_0x355fd0++){if(_0x1cd91f['layer'](_0x355fd0)[_0x99e176(0x18f)]===_0x99e176(0x171)){_0x5a5c82=_0x1cd91f[_0x99e176(0x1c2)](_0x355fd0);break;}}if(_0x5a5c82)try{_0x5a5c82[_0x99e176(0x1a8)]();}catch(_0x55c293){}try{for(var _0x299681=_0x39e54e[_0x99e176(0x176)]-0x1;_0x299681>=0x0;_0x299681--){var _0x1a26f2=_0x39e54e[_0x299681],_0x2c2990=(_0x1a26f2['text']||'')[_0x99e176(0x1f8)](/\r?\n|\r/g,'\x0d');if(!_0x2c2990)continue;var _0x51a0ab=_0x1cd91f['layers'][_0x99e176(0x1b0)](_0x2c2990);_0x51a0ab[_0x99e176(0x18f)]=_0x1a26f2[_0x99e176(0x166)]||_0x1a26f2['text']['substring'](0x0,0x14);var _0x423b38=_0x51a0ab[_0x99e176(0x164)]('Source\x20Text'),_0x296d1c=_0x423b38[_0x99e176(0x1d5)];_0x296d1c['fontSize']=_0x1a26f2[_0x99e176(0x1a6)]||0x32,_0x296d1c['font']=_0x1a26f2[_0x99e176(0x1d0)]||_0x99e176(0x18e);try{var _0x32f1e5=_0x1a26f2[_0x99e176(0x1d6)]||[0x1,0x1,0x1];_0x296d1c[_0x99e176(0x1cd)]=[_0x32f1e5[0x0],_0x32f1e5[0x1],_0x32f1e5[0x2]];}catch(_0x3c566b){}try{var _0x5291d9=ParagraphJustification[_0x99e176(0x17b)];if(_0x1a26f2[_0x99e176(0x19c)]===0x1)_0x5291d9=ParagraphJustification[_0x99e176(0x177)];if(_0x1a26f2['justification']===0x2)_0x5291d9=ParagraphJustification[_0x99e176(0x1a3)];_0x296d1c[_0x99e176(0x19c)]=_0x5291d9;}catch(_0x4706ce){}try{_0x423b38[_0x99e176(0x17d)](_0x296d1c);}catch(_0xebdbc1){}try{var _0x2e25fa=_0x51a0ab[_0x99e176(0x164)](_0x99e176(0x1e0)),_0x4ee396=_0x51a0ab[_0x99e176(0x184)](0x0,![]),_0x2a3188=_0x4ee396['left']+_0x4ee396[_0x99e176(0x1e1)]/0x2,_0x3fa28a=_0x4ee396['top']+_0x4ee396[_0x99e176(0x183)]/0x2;_0x2e25fa[_0x99e176(0x164)](_0x99e176(0x17a))['setValue']([_0x2a3188,_0x3fa28a]),_0x2e25fa[_0x99e176(0x164)]('ADBE\x20Position')[_0x99e176(0x17d)]([_0x1a26f2['x']||0x0,_0x1a26f2['y']||0x0]),_0x1a26f2['rotation']&&_0x2e25fa[_0x99e176(0x164)](_0x99e176(0x1dc))[_0x99e176(0x17d)](_0x1a26f2[_0x99e176(0x1ec)]),_0x1a26f2[_0x99e176(0x1f4)]!==undefined&&_0x2e25fa[_0x99e176(0x164)](_0x99e176(0x1d9))['setValue'](_0x1a26f2[_0x99e176(0x1f4)]);}catch(_0x28f036){}if(_0x5a5c82)try{_0x51a0ab[_0x99e176(0x1f7)](_0x5a5c82);}catch(_0x18b06e){}}}catch(_0xfa9196){}try{_0xf06dca[_0x99e176(0x175)]();}catch(_0x34667d){}try{for(var _0x355fd0=0x1;_0x355fd0<=_0x1cd91f[_0x99e176(0x1ab)];_0x355fd0++){_0x1cd91f['layer'](_0x355fd0)['selected']=![];}if(_0x5a5c82)_0x5a5c82[_0x99e176(0x1f0)]=!![];}catch(_0x92e6d8){}app[_0x99e176(0x197)]();var _0x423d7a=app['findMenuCommandId'](_0x99e176(0x188));if(_0x423d7a>0x0){try{_0x1cd91f['openInViewer']();}catch(_0x30738e){}app[_0x99e176(0x1c0)](_0x99e176(0x1c4)),app[_0x99e176(0x1e8)](_0x423d7a),app['endUndoGroup']();}try{var _0x5354a5=[];for(var _0x74ac94=0x1;_0x74ac94<=_0x1cd91f[_0x99e176(0x1ab)];_0x74ac94++){var _0x2bca18=_0x1cd91f[_0x99e176(0x1c2)](_0x74ac94)['name'];_0x2bca18!==_0x99e176(0x171)&&(_0x2bca18[_0x99e176(0x1bd)](/^Camada de forma \d+$/)||_0x2bca18[_0x99e176(0x1b9)](_0x99e176(0x1b2))!==-0x1||_0x2bca18[_0x99e176(0x1b9)](_0x99e176(0x19f))!==-0x1)&&_0x5354a5[_0x99e176(0x191)](_0x1cd91f[_0x99e176(0x1c2)](_0x74ac94));}for(var _0x1bcf25=0x0;_0x1bcf25<_0x5354a5['length'];_0x1bcf25++){_0x5354a5[_0x1bcf25][_0x99e176(0x175)]();}}catch(_0x3242eb){}app['beginUndoGroup']('Apply\x20ClipMasks\x20Native');var _0x13c86d=[],_0x3439f0=function(_0x3516fc,_0x4222f9){var _0x3d3282=_0x99e176;for(var _0x5aa7f4=0x1;_0x5aa7f4<=_0x3516fc['numProperties'];_0x5aa7f4++){var _0xe76273;try{_0xe76273=_0x3516fc[_0x3d3282(0x164)](_0x5aa7f4);}catch(_0x481f8b){continue;}if(!_0xe76273||_0xe76273[_0x3d3282(0x1db)]!==_0x3d3282(0x1b3))continue;if(_0xe76273['name']===_0x4222f9)return _0xe76273;try{var _0x2a086c=_0x3439f0(_0xe76273[_0x3d3282(0x164)](_0x3d3282(0x1af)),_0x4222f9);if(_0x2a086c)return _0x2a086c;}catch(_0x2b1c1d){}}return null;};if(_0x5a5c82){var _0x22ebd9=_0x5a5c82[_0x99e176(0x164)](_0x99e176(0x1b1));for(var _0x37c59d=0x0;_0x37c59d<_0x596422[_0x99e176(0x182)][_0x99e176(0x176)];_0x37c59d++){var _0x414898=_0x596422[_0x99e176(0x182)][_0x37c59d];if(!_0x414898[_0x99e176(0x18c)])continue;if(_0x414898[_0x99e176(0x167)]!==_0x99e176(0x1c3)&&_0x414898[_0x99e176(0x167)]!==_0x99e176(0x189))continue;var _0x582442=_0x3c0ad5[_0x414898[_0x99e176(0x18c)]];if(!_0x582442){_0x13c86d[_0x99e176(0x191)](_0x99e176(0x1d4)+_0x414898[_0x99e176(0x18f)]);continue;}var _0xaa5b4c=_0x582442[_0x99e176(0x1a1)]?_0x582442[_0x99e176(0x1a1)]:_0x582442['path']?[_0x582442[_0x99e176(0x1f6)]]:null;if(!_0xaa5b4c||_0xaa5b4c['length']===0x0){_0x13c86d[_0x99e176(0x191)](_0x99e176(0x1ea)+_0x414898[_0x99e176(0x18f)]);continue;}var _0x312ec9=_0x3439f0(_0x22ebd9,_0x414898[_0x99e176(0x18f)]);if(!_0x312ec9){_0x13c86d[_0x99e176(0x191)](_0x99e176(0x1cc)+_0x414898[_0x99e176(0x18f)]);continue;}var _0x55465c=_0x312ec9[_0x99e176(0x164)](_0x99e176(0x1af)),_0x364054=_0x582442['x']||0x0,_0x2b7413=_0x582442['y']||0x0,_0x4c1a13=0x0;for(var _0x53036e=0x0;_0x53036e<_0xaa5b4c[_0x99e176(0x176)];_0x53036e++){var _0x539051=_0xaa5b4c[_0x53036e];if(!_0x539051[_0x99e176(0x1d8)]||_0x539051[_0x99e176(0x1d8)][_0x99e176(0x176)]<0x2)continue;var _0x122d40=_0x55465c[_0x99e176(0x1d1)](_0x99e176(0x1c9)),_0x35bcda=new Shape(),_0x434093=[],_0x50fe09=[],_0x2bef71=[];for(var _0x22abe5=0x0;_0x22abe5<_0x539051[_0x99e176(0x1d8)]['length'];_0x22abe5++){var _0x56ad90=_0x539051['pts'][_0x22abe5];_0x434093[_0x99e176(0x191)]([_0x56ad90['a'][0x0]+_0x364054,_0x56ad90['a'][0x1]+_0x2b7413]),_0x50fe09[_0x99e176(0x191)](_0x56ad90['i']?[_0x56ad90['i'][0x0],_0x56ad90['i'][0x1]]:[0x0,0x0]),_0x2bef71[_0x99e176(0x191)](_0x56ad90['o']?[_0x56ad90['o'][0x0],_0x56ad90['o'][0x1]]:[0x0,0x0]);}_0x35bcda[_0x99e176(0x1ed)]=_0x434093,_0x35bcda['inTangents']=_0x50fe09,_0x35bcda[_0x99e176(0x16a)]=_0x2bef71,_0x35bcda[_0x99e176(0x193)]=_0x539051[_0x99e176(0x193)]!==undefined?_0x539051[_0x99e176(0x193)]:!![];try{_0x122d40[_0x99e176(0x164)]('ADBE\x20Vector\x20Shape')[_0x99e176(0x17d)](_0x35bcda),_0x4c1a13++;}catch(_0x4c1d34){}}if(_0x4c1a13>0x0)try{var _0x175308=_0x55465c['addProperty'](_0x99e176(0x16c));_0x175308['property'](_0x99e176(0x1da))[_0x99e176(0x17d)](0x4);var _0x55fc21=[];for(var _0x2bec11=0x1;_0x2bec11<=_0x55465c[_0x99e176(0x170)];_0x2bec11++){try{var _0x525195=_0x55465c[_0x99e176(0x164)](_0x2bec11),_0x183002=_0x525195[_0x99e176(0x1db)];(_0x183002===_0x99e176(0x198)||_0x183002==='ADBE\x20Vector\x20Graphic\x20-\x20Stroke'||_0x183002===_0x99e176(0x1f2))&&_0x55fc21[_0x99e176(0x191)](_0x525195);}catch(_0x32eb8b){}}for(var _0x224e5a=0x0;_0x224e5a<_0x55fc21[_0x99e176(0x176)];_0x224e5a++){try{_0x55fc21[_0x224e5a][_0x99e176(0x1ce)](_0x55465c['numProperties']);}catch(_0x9a2ec2){}}_0x13c86d['push'](_0x99e176(0x196)+_0x414898[_0x99e176(0x18f)]);}catch(_0x4f2ccd){_0x13c86d[_0x99e176(0x191)](_0x99e176(0x178)+_0x414898['name']+':'+_0x4f2ccd[_0x99e176(0x1dd)]);}}}else _0x13c86d[_0x99e176(0x191)](_0x99e176(0x1bf));(_0x13c86d[_0x99e176(0x1e4)]('')[_0x99e176(0x1b9)](_0x99e176(0x190))!==-0x1||_0x13c86d['join']('')[_0x99e176(0x1b9)](_0x99e176(0x1f3))!==-0x1)&&alert(_0x99e176(0x1de)+_0x13c86d[_0x99e176(0x1e6)](0x0,0xf)[_0x99e176(0x1e4)]('\x0a')),app[_0x99e176(0x197)](),_0x578692(),_0x1cd91f[_0x99e176(0x1ef)](),_0x99e176(0x1c7);}catch(_0x106dea){try{if(typeof _0xf06dca!==_0x99e176(0x1d7))_0xf06dca[_0x99e176(0x175)]();}catch(_0x456e83){}alert('ERRO\x20NATIVE\x20BLD:\x20'+_0x106dea['message']+_0x99e176(0x174)+_0x106dea[_0x99e176(0x1b8)]);}}()));function a0_0x2eb1(){var _0x25ad97=['addComp','closed','Transfer\x20Vectors\x20Native\x20Build\x20(Turbo)','pos','OK:','endUndoGroup','ADBE\x20Vector\x20Graphic\x20-\x20Fill','ADBE\x20Vector\x20Graphic\x20-\x20Stroke','ADBE\x20Vector\x20Position','ADBE\x20Vector\x20Shape','justification','addShape','copyToComp','\x20(grad)','Nenhuma\x20composicao\x20ativa!','paths','317550hTXJDu','RIGHT_JUSTIFY','ADBE\x20Vector\x20Stroke\x20Color','type','fontSize','project','moveToEnd','2PjZQMx','/progress.txt','numLayers','strokeWidth','ADBE\x20Vector\x20Blend\x20Mode','20CdZUmv','ADBE\x20Vectors\x20Group','addText','ADBE\x20Root\x20Vectors\x20Group','_idx','ADBE\x20Vector\x20Group','ADBE\x20Vector\x20Shape\x20-\x20Ellipse','duration','10788fovBsE','2422dtaGyO','line','indexOf','Building\x20Groups\x20in\x20After\x20Effects...','size','close','match','ADBE\x20Vector\x20Group\x20Opacity','NO_VETLYR','beginUndoGroup','write','layer','solid','C++\x20Gradient\x20Inject','ADBE\x20Vector\x20Anchor','2124321YQhcaD','true','223749TwnMER','ADBE\x20Vector\x20Shape\x20-\x20Group','layers','frameRate','NO_VG:','fillColor','moveTo','ADBE\x20Vector\x20Opacity','fontName','addProperty','4091104AddCoQ','ADBE\x20Position','NO_MASKSD:','value','color','undefined','pts','ADBE\x20Opacity','ADBE\x20Vector\x20Merge\x20Type','matchName','ADBE\x20Rotate\x20Z','message','MASK\x20DEBUG:\x0a','ADBE\x20Vector\x20Fill\x20Rule','ADBE\x20Transform\x20Group','width','parent','inTangents','join','ellipse','slice','stops','executeCommand','ADBE\x20Vector\x20Transform\x20Group','NO_MASKPATHS:','Stroke\x20Width','rotation','vertices','blendMode','openInViewer','selected','stroke','ADBE\x20Vector\x20Graphic\x20-\x20G-Fill','ERR','opacity','Line\x20Join','path','moveBefore','replace','rect','property','3918hOkgEB','origName','fillType','C:/AEGP/grad_data.json','ADBE\x20Vector\x20Ellipse\x20Position','outTangents','1240857YlUHpn','ADBE\x20Vector\x20Filter\x20-\x20Merge','15543LYXHWD','read','Line\x20Cap','numProperties','Vetores','ADBE\x20Vector\x20Rect\x20Size','Opacity','\x20L:','remove','length','CENTER_JUSTIFY','MERGE_ERR:','strokeCap','ADBE\x20Anchor\x20Point','LEFT_JUSTIFY','Fill\x20Rule','setValue','isClipping','text','moveToBeginning','4YTSdvj','shapes','height','sourceRectAtTime','ADBE\x20Vector\x20Shape\x20-\x20Rect','TempBuild_Group','items','GRAD\x20FIXER:\x20Aplicar\x20Gradientes','gradient','ADBE\x20Vector\x20Rect\x20Position','Color','clipMaskRef','ADBE\x20Vector\x20Fill\x20Color','Arial','name','NO_','push'];a0_0x2eb1=function(){return _0x25ad97;};return a0_0x2eb1();}
+// SplitGroup.jsx v14 — TURBO SHADOW-BUILD + NATIVE BUILD ARCHITECTURE + MASKS
+// TURBO: Constrói a layer "Vetores" numa TempComp INVISÍVEL (sem atualizar UI a cada shape)
+// Depois copyToComp(1 layer) → cai na comp ativa em ~1 batch. Mesma velocidade do SplitLayer.
+// Preserva: Hierarquia, Merge Paths (Clip), Blend Modes, Gradientes (Dummy Layers para C++).
+
+(function(){
+try {
+    var jf = new File("C:/AEGP/grad_data.json");
+    if (!jf.exists) { alert("Rode ExtrairGradiente.jsx no Illustrator primeiro!"); return; }
+    jf.open("r"); var jd = eval("(" + jf.read() + ")"); jf.close();
+
+    var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert("Nenhuma composicao ativa!"); return;
+    }
+
+    app.beginUndoGroup("Transfer Vectors Native Build (Turbo)");
+
+    // ─────────────────────────────────────────────────────────────────────
+    // TURBO SHADOW-BUILD: Cria comp temporária invisible para construção
+    // O AE não atualiza a UI da timeline principal durante o build
+    // ─────────────────────────────────────────────────────────────────────
+    var tempComp = app.project.items.addComp(
+        "TempBuild_Group",
+        comp.width, comp.height, comp.pixelAspect,
+        comp.duration, comp.frameRate
+    );
+
+    // Cria a layer Vetores DENTRO da tempComp (invisível ao usuário)
+    var vetLayer = tempComp.layers.addShape();
+
+    // Robust naming com retry
+    var nameSuccess = false;
+    for (var n = 0; n < 3; n++) {
+        try { vetLayer.name = "Vetores"; nameSuccess = true; break; } catch(e) { $.sleep(50); }
+    }
+    if (!nameSuccess) {
+        try { vetLayer.name = "Vetores"; } catch(e) {}
+    }
+
+    vetLayer.moveToBeginning();
+    var tr = vetLayer.property("ADBE Transform Group");
+    try{tr.property("ADBE Anchor Point").setValue([0, 0]);}catch(e){}
+    try{tr.property("ADBE Position").setValue([0, 0]);}catch(e){}
+    var rootVet = vetLayer.property("ADBE Root Vectors Group");
+
+    var groupContMap = {};
+
+    function applyFillOrStrokeNative(cont, data, isStroke) {
+        if (!data) return;
+        var type = isStroke ? "ADBE Vector Graphic - Stroke" : "ADBE Vector Graphic - Fill";
+        var prop = cont.addProperty(type);
+        if (data.type === "solid" || !data.type) {
+            var col = data.color || [0.5,0.5,0.5];
+            try { prop.property("Color").setValue(col); } catch(e) {
+                try { prop.property("ADBE Vector Fill Color").setValue(col); } catch(e2) {
+                    try { prop.property("ADBE Vector Stroke Color").setValue(col); } catch(e3) {}
+                }
+            }
+            if (!isStroke) {
+                try {
+                    try { prop.property("Fill Rule").setValue(2); }
+                    catch(ef1) { prop.property("ADBE Vector Fill Rule").setValue(2); }
+                } catch(ef2) {}
+            }
+        }
+        if (isStroke && data.strokeWidth) {
+            try { prop.property("Stroke Width").setValue(data.strokeWidth); } catch(e) {}
+            if (data.strokeCap)  try { prop.property("Line Cap").setValue(data.strokeCap); }  catch(e){}
+            if (data.strokeJoin) try { prop.property("Line Join").setValue(data.strokeJoin); } catch(e){}
+        }
+    }
+
+    // Guarda sd por nome para lookup de mascaras depois
+    var sdByName = {};
+    for (var k = 0; k < jd.shapes.length; k++) {
+        sdByName[jd.shapes[k].name] = jd.shapes[k];
+    }
+
+    // Blend mode no Vector Group Transform
+    function setBlendNative(vGroupTransform, bm) {
+        if (!bm || bm === 1) return;
+        try { vGroupTransform.property("ADBE Vector Blend Mode").setValue(bm); } catch(e){}
+    }
+
+    // ─────────────────────────────────────────────────────────────────────
+    // PASSO 1: Construir toda a árvore de shapes/grupos em tempComp.Vetores
+    // (UI não atualiza — sem lag visual)
+    // ─────────────────────────────────────────────────────────────────────
+    
+    function writeProgress(msg, current, total) {
+        try {
+            var expPath = (typeof flashFillExportPath !== 'undefined') ? flashFillExportPath : "C:/AEGP/img_export";
+            var f = new File(expPath + "/progress.txt");
+            f.open("w");
+            f.write(msg + "|" + current + "|" + total);
+            f.close();
+        } catch(e) {}
+    }
+
+    function closeProgress() {
+        // Handled by the ILST script's bt.onResult
+    }
+
+    // Coleta textos para criar depois como layers separadas
+    var _textShapes = [];
+    for (var si = 0; si < jd.shapes.length; si++) {
+        if (si % 3 === 0 || si === jd.shapes.length - 1) {
+            writeProgress("Building Groups in After Effects...", si, jd.shapes.length);
+        }
+        var sd = jd.shapes[si];
+        if (sd.fillType === "text") { _textShapes.push(sd); continue; }
+        if (!sd.name) continue;
+
+        var parentCont = (sd.parent && groupContMap[sd.parent])
+            ? groupContMap[sd.parent]
+            : rootVet;
+
+        // ── GRUPO ──
+        if (sd.fillType === "group") {
+            var nGrp = parentCont.addProperty("ADBE Vector Group");
+            nGrp.name = sd.name;
+            try {
+                var ngt = nGrp.property("ADBE Vector Transform Group");
+                if (ngt) {
+                    ngt.property("ADBE Vector Anchor").setValue([0,0]);
+                    ngt.property("ADBE Vector Position").setValue([0,0]);
+                    setBlendNative(ngt, sd.blendMode);
+                    if (sd.opacity !== undefined && sd.opacity !== null) {
+                        var grpOp = (sd.opacity > 1.0) ? sd.opacity : sd.opacity * 100;
+                        try { ngt.property("ADBE Vector Group Opacity").setValue(grpOp); } catch(e1) {
+                            try { ngt.property("Opacity").setValue(grpOp); } catch(e2) {
+                                try { ngt.property("ADBE Vector Opacity").setValue(grpOp); } catch(e3) {
+                                    try { ngt.property(11).setValue(grpOp); } catch(e4) {}
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch(e){}
+            nGrp = parentCont.property(sd.name);
+            groupContMap[sd.name] = nGrp.property("ADBE Vectors Group");
+            continue;
+        }
+
+        // ── GRADIENTE (Native Hybrid) ──
+        if (sd.fillType === "gradient") {
+            if (!sd.paths || sd.paths.length === 0) {
+                if (sd.path) sd.paths = [sd.path];
+                else continue;
+            }
+
+            var gradVG = parentCont.addProperty("ADBE Vector Group");
+            gradVG.name = sd.name;
+            var vgt = gradVG.property("ADBE Vector Transform Group");
+            try { vgt.property("ADBE Vector Anchor").setValue([0,0]); } catch(ea){}
+            try { vgt.property("ADBE Vector Position").setValue([0,0]); } catch(ep){}
+            setBlendNative(vgt, sd.blendMode);
+            if (sd.opacity !== undefined && sd.opacity !== null) {
+                var gradOp = (sd.opacity > 1.0) ? sd.opacity : sd.opacity * 100;
+                try { vgt.property("ADBE Vector Group Opacity").setValue(gradOp); } catch(e1) {
+                    try { vgt.property("Opacity").setValue(gradOp); } catch(e2) {
+                        try { vgt.property("ADBE Vector Opacity").setValue(gradOp); } catch(e3) {
+                            try { vgt.property(11).setValue(gradOp); } catch(e4) {}
+                        }
+                    }
+                }
+            }
+            var gCont = gradVG.property("ADBE Vectors Group");
+
+            var shiftX = sd.x || 0;
+            var shiftY = sd.y || 0;
+
+            var addedGPaths = 0;
+            var forceBezierGrad = (sd.paths && sd.paths.length > 1);
+            for (var gpi = 0; gpi < sd.paths.length; gpi++) {
+                var gPathData = sd.paths[gpi];
+                if (!gPathData) continue;
+                
+                if (!forceBezierGrad && gPathData.type === "rect") {
+                    var pGrp = gCont.addProperty("ADBE Vector Shape - Rect");
+                    pGrp.property("ADBE Vector Rect Size").setValue(gPathData.size);
+                    pGrp.property("ADBE Vector Rect Position").setValue([(gPathData.pos?gPathData.pos[0]:0) + shiftX, (gPathData.pos?gPathData.pos[1]:0) + shiftY]);
+                    addedGPaths++;
+                    continue;
+                } else if (!forceBezierGrad && gPathData.type === "ellipse") {
+                    var pGrp = gCont.addProperty("ADBE Vector Shape - Ellipse");
+                    pGrp.property("ADBE Vector Ellipse Size").setValue(gPathData.size);
+                    pGrp.property("ADBE Vector Ellipse Position").setValue([(gPathData.pos?gPathData.pos[0]:0) + shiftX, (gPathData.pos?gPathData.pos[1]:0) + shiftY]);
+                    addedGPaths++;
+                    continue;
+                }
+                
+                if (!gPathData.pts || gPathData.pts.length < 2) continue;
+                var pGrp = gCont.addProperty("ADBE Vector Shape - Group");
+                var gv=[], git=[], got=[];
+                for (var m = 0; m < gPathData.pts.length; m++) {
+                    gv.push([gPathData.pts[m].a[0] + shiftX, gPathData.pts[m].a[1] + shiftY]);
+                    git.push(gPathData.pts[m].i);
+                    got.push(gPathData.pts[m].o);
+                }
+                var gsh = new Shape();
+                gsh.vertices = gv; gsh.inTangents = git; gsh.outTangents = got;
+                gsh.closed = (gPathData.closed !== undefined) ? gPathData.closed : true;
+                pGrp.property("ADBE Vector Shape").setValue(gsh);
+                addedGPaths++;
+            }
+
+            if (addedGPaths > 0) {
+                // Dummy layer no tempComp para C++ encontrar pelo sd.name
+                var dummyLyr = tempComp.layers.addShape();
+                dummyLyr.name = sd.name;
+
+                // Solid fill provisorio — C++ vai substituir pelo G-Fill
+                var fp = gCont.addProperty("ADBE Vector Graphic - Fill");
+                if (sd.gradient && sd.gradient.stops && sd.gradient.stops.length > 0) {
+                    var s0 = sd.gradient.stops[0];
+                    try { fp.property("ADBE Vector Fill Color").setValue([s0.r, s0.g, s0.b, 1]); } catch(e){}
+                }
+            } else {
+                try { gradVG.remove(); } catch(eg){}
+            }
+            continue;
+        }
+
+        // ── SOLIDO / STROKE / CLIPPING ──
+        var sPathsArr = (sd.paths) ? sd.paths : ((sd.path) ? [sd.path] : null);
+        if (!sPathsArr || sPathsArr.length === 0) continue;
+
+        var shiftX2 = sd.x || 0;
+        var shiftY2 = sd.y || 0;
+
+        var grp2 = parentCont.addProperty("ADBE Vector Group");
+        grp2.name = sd.name;
+        var cont2 = grp2.property("ADBE Vectors Group");
+        var vgt2 = grp2.property("ADBE Vector Transform Group");
+        setBlendNative(vgt2, sd.blendMode);
+        if (sd.opacity !== undefined && sd.opacity !== null) {
+            var solidOp = (sd.opacity > 1.0) ? sd.opacity : sd.opacity * 100;
+            try { vgt2.property("ADBE Vector Group Opacity").setValue(solidOp); } catch(e1) {
+                try { vgt2.property("Opacity").setValue(solidOp); } catch(e2) {
+                    try { vgt2.property("ADBE Vector Opacity").setValue(solidOp); } catch(e3) {
+                        try { vgt2.property(11).setValue(solidOp); } catch(e4) {}
+                    }
+                }
+            }
+        }
+
+        var addedSPaths = 0;
+        var forceBezierSolid = (sPathsArr && sPathsArr.length > 1);
+        for (var pi = 0; pi < sPathsArr.length; pi++) {
+            var pData = sPathsArr[pi];
+            if (!pData) continue;
+            
+            if (!forceBezierSolid && pData.type === "rect") {
+                var pg3 = cont2.addProperty("ADBE Vector Shape - Rect");
+                pg3.property("ADBE Vector Rect Size").setValue(pData.size);
+                pg3.property("ADBE Vector Rect Position").setValue([(pData.pos?pData.pos[0]:0) + shiftX2, (pData.pos?pData.pos[1]:0) + shiftY2]);
+                addedSPaths++;
+                continue;
+            } else if (!forceBezierSolid && pData.type === "ellipse") {
+                var pg3 = cont2.addProperty("ADBE Vector Shape - Ellipse");
+                pg3.property("ADBE Vector Ellipse Size").setValue(pData.size);
+                pg3.property("ADBE Vector Ellipse Position").setValue([(pData.pos?pData.pos[0]:0) + shiftX2, (pData.pos?pData.pos[1]:0) + shiftY2]);
+                addedSPaths++;
+                continue;
+            }
+            
+            if (!pData.pts || pData.pts.length < 2) continue;
+            var pg3 = cont2.addProperty("ADBE Vector Shape - Group");
+            var vt=[], it3=[], ot3=[];
+            for (var p = 0; p < pData.pts.length; p++) {
+                vt.push([pData.pts[p].a[0] + shiftX2, pData.pts[p].a[1] + shiftY2]);
+                it3.push(pData.pts[p].i);
+                ot3.push(pData.pts[p].o);
+            }
+            var sh3 = new Shape();
+            sh3.vertices = vt; sh3.inTangents = it3; sh3.outTangents = ot3;
+            sh3.closed = (pData.closed !== undefined) ? pData.closed : true;
+            pg3.property("ADBE Vector Shape").setValue(sh3);
+            addedSPaths++;
+        }
+
+        if (addedSPaths === 0) continue;
+
+        // Merge Paths para shapes compostos ou clipping
+        if (addedSPaths > 1 || sd.isClipping) {
+            try {
+                var mp = cont2.addProperty("ADBE Vector Filter - Merge");
+                mp.property("ADBE Vector Merge Type").setValue(5); // Intersect
+            } catch(e){}
+        }
+
+        applyFillOrStrokeNative(cont2, sd.fill, false);
+        applyFillOrStrokeNative(cont2, sd.stroke, true);
+    }
+
+    // ─────────────────────────────────────────────────────────────────────
+    // TURBO TRANSFER: Copia a ÚNICA layer "Vetores" da tempComp → comp ativa
+    // 1 copyToComp em vez de N addProperty calls na UI
+    // ─────────────────────────────────────────────────────────────────────
+    // Copia também as Dummy layers (gradientes) que o C++ vai usar
+    // Loop reverso: mantém Z-order correto
+    for (var ti = tempComp.numLayers; ti >= 1; ti--) {
+        try { tempComp.layer(ti).copyToComp(comp); } catch(ec){}
+    }
+
+    // Atualiza referência vetLayer para a layer copiada no comp real
+    var vetLayer = null;
+    for (var li = 1; li <= comp.numLayers; li++) {
+        if (comp.layer(li).name === "Vetores") {
+            vetLayer = comp.layer(li);
+            break;
+        }
+    }
+    if (vetLayer) { try { vetLayer.moveToEnd(); } catch(e){} } // Vetores vai para o fundo
+
+    // ── CRIAR LAYERS DE TEXTO separadas acima do Vetores ──
+    try {
+        for (var ti2 = _textShapes.length - 1; ti2 >= 0; ti2--) {
+            var tsd = _textShapes[ti2];
+            var finalTxt = (tsd.text || "").replace(/\r?\n|\r/g, "\r");
+            if (!finalTxt) continue;
+            var txtLyr = comp.layers.addText(finalTxt);
+            txtLyr.name = tsd.origName || tsd.text.substring(0, 20);
+            var textProp = txtLyr.property("Source Text");
+            var textDoc = textProp.value;
+            textDoc.fontSize = tsd.fontSize || 50;
+            textDoc.font = tsd.fontName || "Arial";
+            try {
+                var tc2 = tsd.color || [1,1,1];
+                textDoc.fillColor = [tc2[0], tc2[1], tc2[2]];
+            } catch(e){}
+            try {
+                var aeJust2 = ParagraphJustification.LEFT_JUSTIFY;
+                if (tsd.justification === 1) aeJust2 = ParagraphJustification.CENTER_JUSTIFY;
+                if (tsd.justification === 2) aeJust2 = ParagraphJustification.RIGHT_JUSTIFY;
+                textDoc.justification = aeJust2;
+            } catch(e){}
+            try { textProp.setValue(textDoc); } catch(et){}
+            try {
+                var txtTr2 = txtLyr.property("ADBE Transform Group");
+                var tb2 = txtLyr.sourceRectAtTime(0, false);
+                var tcx2 = tb2.left + (tb2.width / 2);
+                var tcy2 = tb2.top + (tb2.height / 2);
+                txtTr2.property("ADBE Anchor Point").setValue([tcx2, tcy2]);
+                txtTr2.property("ADBE Position").setValue([tsd.x || 0, tsd.y || 0]);
+                if (tsd.rotation) { txtTr2.property("ADBE Rotate Z").setValue(tsd.rotation); }
+                if (tsd.opacity !== undefined) { txtTr2.property("ADBE Opacity").setValue(tsd.opacity); }
+            } catch(et){}
+            // Move o texto para logo acima do Vetores
+            if (vetLayer) { try { txtLyr.moveBefore(vetLayer); } catch(e){} }
+        }
+    } catch(eTxt){}
+
+
+    try { tempComp.remove(); } catch(e){}
+
+    // Selecionar vetLayer para que C++ saiba qual layer é o Vetores
+    try {
+        for (var li = 1; li <= comp.numLayers; li++) { comp.layer(li).selected = false; }
+        if (vetLayer) vetLayer.selected = true;
+    } catch(e){}
+
+    // ── 2. EXECUTA PLUGIN C++ ──
+    app.endUndoGroup();
+
+    var gCmd = app.findMenuCommandId("GRAD FIXER: Aplicar Gradientes");
+    if (gCmd > 0) {
+        try { comp.openInViewer(); } catch(e){} // Força o foco para a timeline/composition
+        app.beginUndoGroup("C++ Gradient Inject");
+        app.executeCommand(gCmd);
+        app.endUndoGroup();
+    }
+
+    // ── EXTRA CLEANUP: Remove dummy layers ou falhas do C++ ──
+    try {
+        var lixoArr = [];
+        for (var lixo = 1; lixo <= comp.numLayers; lixo++) {
+            var lName = comp.layer(lixo).name;
+            if (lName !== "Vetores" && (lName.match(/^Camada de forma \d+$/) || lName.indexOf("_idx") !== -1 || lName.indexOf(" (grad)") !== -1)) {
+                lixoArr.push(comp.layer(lixo));
+            }
+        }
+        for (var lx = 0; lx < lixoArr.length; lx++) {
+            lixoArr[lx].remove();
+        }
+    } catch(e) {}
+
+    // ── 3. MASCARAS — clip DENTRO do VG via Merge Paths (Intersect) ──
+    app.beginUndoGroup("Apply ClipMasks Native");
+    var _dbgMask = [];
+
+    // Busca recursiva de VG por nome
+    var _findVGByName = function(cont, nm) {
+        for (var fi=1; fi<=cont.numProperties; fi++) {
+            var fp; try { fp = cont.property(fi); } catch(e){ continue; }
+            if (!fp || fp.matchName !== "ADBE Vector Group") continue;
+            if (fp.name === nm) return fp;
+            try { var sub = _findVGByName(fp.property("ADBE Vectors Group"), nm); if(sub) return sub; } catch(e2){}
+        }
+        return null;
+    };
+
+    if (vetLayer) {
+        var rootVet3 = vetLayer.property("ADBE Root Vectors Group");
+
+        for (var si3=0; si3<jd.shapes.length; si3++) {
+            var sd3 = jd.shapes[si3];
+            if (!sd3.clipMaskRef) continue;
+            if (sd3.fillType !== "solid" && sd3.fillType !== "gradient") continue;
+
+            var maskSD3 = sdByName[sd3.clipMaskRef];
+            if (!maskSD3) { _dbgMask.push("NO_MASKSD:"+sd3.name); continue; }
+
+            var maskPaths3 = maskSD3.paths ? maskSD3.paths : (maskSD3.path ? [maskSD3.path] : null);
+            if (!maskPaths3 || maskPaths3.length === 0) { _dbgMask.push("NO_MASKPATHS:"+sd3.name); continue; }
+
+            var vgRef3 = _findVGByName(rootVet3, sd3.name);
+            if (!vgRef3) { _dbgMask.push("NO_VG:"+sd3.name); continue; }
+            var vgCont3 = vgRef3.property("ADBE Vectors Group");
+
+            var mxOff3 = maskSD3.x || 0, myOff3 = maskSD3.y || 0;
+
+            var addedClip = 0;
+            for (var mpi3=0; mpi3<maskPaths3.length; mpi3++) {
+                var mpD3 = maskPaths3[mpi3];
+                if (!mpD3.pts || mpD3.pts.length < 2) continue;
+                var clipPg = vgCont3.addProperty("ADBE Vector Shape - Group");
+                var clipSv = new Shape(); var clipV=[],clipIT=[],clipOT=[];
+                for (var mpv3=0; mpv3<mpD3.pts.length; mpv3++) {
+                    var mpt3 = mpD3.pts[mpv3];
+                    clipV.push([mpt3.a[0] + mxOff3, mpt3.a[1] + myOff3]);
+                    clipIT.push(mpt3.i ? [mpt3.i[0],mpt3.i[1]] : [0,0]);
+                    clipOT.push(mpt3.o ? [mpt3.o[0],mpt3.o[1]] : [0,0]);
+                }
+                clipSv.vertices=clipV; clipSv.inTangents=clipIT; clipSv.outTangents=clipOT;
+                clipSv.closed = (mpD3.closed !== undefined) ? mpD3.closed : true;
+                try { clipPg.property("ADBE Vector Shape").setValue(clipSv); addedClip++; } catch(e){}
+            }
+
+            if (addedClip > 0) {
+                try {
+                    var mp3 = vgCont3.addProperty("ADBE Vector Filter - Merge");
+                    mp3.property("ADBE Vector Merge Type").setValue(4); // 4 = Intersect
+
+                    // CRITICAL: Fill/Stroke deve vir APÓS o Merge Paths
+                    var fillRefs3 = [];
+                    for (var fpi3=1; fpi3<=vgCont3.numProperties; fpi3++) {
+                        try {
+                            var fp3 = vgCont3.property(fpi3);
+                            var fmn3 = fp3.matchName;
+                            if (fmn3 === "ADBE Vector Graphic - Fill"   ||
+                                fmn3 === "ADBE Vector Graphic - Stroke" ||
+                                fmn3 === "ADBE Vector Graphic - G-Fill") {
+                                fillRefs3.push(fp3);
+                            }
+                        } catch(e){}
+                    }
+                    for (var fri3=0; fri3<fillRefs3.length; fri3++) {
+                        try { fillRefs3[fri3].moveTo(vgCont3.numProperties); } catch(e){}
+                    }
+
+                    _dbgMask.push("OK:"+sd3.name);
+                } catch(emp3){ _dbgMask.push("MERGE_ERR:"+sd3.name+":"+emp3.message); }
+            }
+        }
+    } else {
+        _dbgMask.push("NO_VETLYR");
+    }
+
+    if (_dbgMask.join("").indexOf("NO_") !== -1 || _dbgMask.join("").indexOf("ERR") !== -1) {
+        alert("MASK DEBUG:\n" + _dbgMask.slice(0,15).join("\n"));
+    }
+
+    app.endUndoGroup();
+
+    // O Cleanup de nomes _idx foi removido.
+    // Manter o sufixo _idx garante que o plugin C++ sempre encontrará os grupos corretos
+    // mesmo se a execução do plugin for postergada pelo CEP do After Effects.
+
+    closeProgress();
+    comp.openInViewer();
+    "true";
+
+} catch (e) {
+    try { if (typeof tempComp !== "undefined") tempComp.remove(); } catch(ec){}
+    alert("ERRO NATIVE BLD: " + e.message + " L:" + e.line);
+}
+})();

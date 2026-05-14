@@ -1,1 +1,1181 @@
-function a0_0x3a82(){var _0x43287b=['Nenhum\x20vetor\x20selecionado!\x0aPor\x20favor,\x20selecione\x20os\x20itens\x20que\x20deseja\x20exportar\x20e\x20tente\x20novamente.','\x20\x20\x20\x20var\x20_idxPos=_cn.indexOf(\x27_idx\x27);\x0a','\x20\x20\x20\x20if(_idxPos>0){\x20try{_ac.layer(_ci).name=_cn.slice(0,_idxPos);}catch(e){}\x20}\x0a','_dbgAngle','9BkgAyU','replace','\x20\x20\x20\x20\x20\x20\x20\x20try\x20{\x0a','COLORBURN','\x20\x20Folder.userData.fsName\x20+\x20\x27/Adobe/CEP/extensions/GradFixer/SplitGroup.jsx\x27,\x0a','_grad_idx','clipping','split','Grupo','horizontalScale','\x20end=(','add','layers','var\x20fileFound\x20=\x20false;\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20_c\x20=\x20_sL.comment\x20||\x20\x27\x27;\x0a','DONOTSAVECHANGES','OVERLAY','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20_sL\x20=\x20_imgComp.layer(_s);\x0a','\x20\x20\x20\x20\x20\x20\x20\x20var\x20_imgLyr\x20=\x20_imgComp.layers.add(_imgItem);\x0a','atan2','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if(_dr.property(_dj).matchName===\x27ADBE\x20Vector\x20Group\x27){\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20if(_hasGFill)break;\x0a','\x20\x20\x20\x20\x20\x20}\x0a','fillType','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20try{\x20_maskLyr.enabled\x20=\x20true;\x20}catch(e){}\x0a','\x20\x20\x22artboard\x22:\x20{\x20\x22w\x22:','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20{\x22pos\x22:','fillColor','\x20\x20\x20\x20\x20\x20\x22blendMode\x22:','textRange','639777fsUPJk','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20_maskLyr\x20=\x20_sL;\x20break;\x0a',',\x22mid\x22:','closed','\x20\x20\x20\x20\x20\x20var\x20_hasGFill\x20=\x20false;\x0a','spot','layer','CMYKColor','\x20\x20var\x20f=new\x20File(paths[i]);\x0a','\x20\x20\x20\x20\x20\x20\x20\x20if(_vetIdx\x20>\x200)\x20{\x20try{\x20_imgLyr.moveTo(_vetIdx);\x20}catch(e){}\x20}\x0a','copy','8561912ZPCTvE','\x20\x20\x20\x20\x20\x20}catch(e){}\x0a','\x20|\x20STROKES:\x20','paths','LIGHTEN','\x20rot=','pts','\x20\x20\x20\x20}\x20catch(_eIL)\x20{}\x0a','\x20\x20for(var\x20_ci=1;_ci<=_ac.numLayers;_ci++){\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a','isClipping','body','8788570QenSNB',',\x22r\x22:','orig','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if(_c2.indexOf(\x27','\x20\x20if\x20(_imgComp\x20instanceof\x20CompItem)\x20{\x0a','\x20\x20\x20\x20\x20\x20\x22w\x22:\x20','visibleBounds','RGBColor','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20_imgLyr.moveAfter(_maskLyr);\x0a','\x20\x20\x20\x20\x20\x20\x22kind\x22:\x20','\x20\x20\x20\x20for(var\x20_di=1;_di<=_dbgAc.numLayers;_di++){\x0a','\x20\x20if(_dbgAc\x20instanceof\x20CompItem){\x0a','GFX_TARGET_','\x20\x20\x20\x20\x20\x20\x22fontName\x22:\x20\x22','strokeCap','strokeColor','antiAliasing','create','\x20\x20\x20\x20\x20\x20\x22parent\x22:\x20\x22','if(!fileFound){\x20alert(\x27SplitLayer.jsx\x20nao\x20encontrado\x20nos\x20caminhos\x20padroes!\x27);\x20}\x0a','for(var\x20j=0;\x20j<fgPaths.length;\x20j++)\x20{\x0a','vec:','\x20\x20_dbgLog\x20+=\x20\x27AEPX_0:\x20\x27\x20+\x20(new\x20File(\x27C:/AEGP/ae_batch_temp_0.aepx\x27).exists\x20?\x20\x27SIM\x27\x20:\x20\x27NAO\x27)\x20+\x20\x27\x5cn\x27;\x0a','if\x20(gCmd\x20>\x200)\x20{\x20app.executeCommand(gCmd);\x20}\x20else\x20{\x20alert(\x27Plugin\x20GRAD\x20FIXER\x20nao\x20encontrado\x20no\x20menu\x20do\x20AE!\x27);\x20}\x0a','paragraphAttributes','\x20\x20\x20\x20\x20\x20\x20\x20}\x0a','\x0a\x0aDiagnÃ³stico\x20Gradientes:','],\x22o\x22:[','_clipmask','pageItems','C:/AEGP/img_export','\x20\x20\x20\x20\x20\x20\x20\x20}\x20catch(etm){}\x0a','remove',',\x22g\x22:','true','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a','\x20eff=','\x20\x20\x22aiPath\x22:\x20\x22','rightDirection','grad','GroupItem','type',',\x22b\x22:','convertPointObjectToAreaObject','flashFillBar','\x20\x20\x20\x20\x20\x20\x20\x20var\x20_imgIO\x20=\x20new\x20ImportOptions(_imgF);\x0a','Gerando\x20JSON...','rampPoint','mid','\x22,\x20\x22startX\x22:','\x20\x20\x20\x20{','for(var\x20i=0;\x20i<paths.length;\x20i++)\x20{\x0a','\x20\x20\x20\x20try\x20{\x0a','magenta','substring','artboardRect','gradientStops','undefined',',\x20\x22h\x22:','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if(!_maskLyr){\x0a','\x20\x20\x20\x20}','Arial','flashFillMode','\x20\x20\x20\x20\x20\x20\x22color\x22:\x20[','\x20\x20\x20\x20\x20\x20\x22h\x22:\x20','push','hidden','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20_fbkLyr\x20=\x20null;\x0a','\x20\x20var\x20_dbgLog\x20=\x20\x27===\x20GRAD\x20DEBUG\x20===\x5cn\x27;\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20_maskLyr\x20=\x20_imgComp.layer(_s2);\x20break;\x0a','\x20\x20\x20\x20\x20\x20\x22paths\x22:\x20[','18454250JeRrxp','min','COLOR','PROMPT','222XlzbRJ','yellow','\x22,\x20\x22size\x22:[','\x20\x20_dbgLog\x20+=\x20\x27AEPX_1:\x20\x27\x20+\x20(new\x20File(\x27C:/AEGP/ae_batch_temp_1.aepx\x27).exists\x20?\x20\x27SIM\x27\x20:\x20\x27NAO\x27)\x20+\x20\x27\x5cn\x27;\x0a','stops','GradientColor','SATURATION','origin','\x27).setTrackMatte(_ac.layer(\x27','number','startY','stroke','\x20\x20\x20\x20_dbgLog\x20+=\x20\x27Layers\x20(\x27\x20+\x20_dbgAc.numLayers\x20+\x20\x27):\x5cn\x27;\x0a','send','1669fDUnsC','Collecting\x20Shapes...','.png','\x20\x20\x20\x20\x20\x20\x20\x20\x22stops\x22:\x20[','contents','toSource','text','\x20\x20]','\x20\x20_dbgF.open(\x27w\x27);\x20_dbgF.write(_dbgLog);\x20_dbgF.close();\x0a','close','\x0a\x20\x20[','\x20\x20Folder.myDocuments.fsName\x20+\x20\x27/SDKAFTERGRADIENTE/SplitLayer.jsx\x27,\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x22endX\x22:','parent','try{\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20_maskLyr\x20=\x20null;\x0a','],\x22i\x22:[','\x22\x20,','gradient','pos','str:','exists','justification','92075YVcIiY',',\x20\x22y\x22:','exportFile','var\x20paths\x20=\x20[\x0a','}catch(eDbg){}\x0a','false','matrix','mValueB','selection',',\x20\x22endY\x22:','\x20\x20\x20\x20\x20\x20\x20\x20_imgLyr.property(\x27Position\x27).setValue([','cyan','clipMaskRef','solid','CompoundPathItem','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20for(var\x20_s2=1;_s2<=_imgComp.numLayers;_s2++){\x0a','blendMode','\x20\x20\x20\x20}\x0a','transparency','GrayColor','group','SCREEN','_grad','\x20\x20}\x0a','join','\x20\x20try{\x20_ac.layer(\x27','visible','_dbgEffective','NonNativeItem','toFixed','red','open','\x20\x20\x20\x20\x20\x20\x20\x20]\x20},','flashFillWin','uid_','Escolha\x20a\x20pasta\x20para\x20exportar\x20as\x20imagens','\x20\x20if(fg.exists){\x20fg.open(\x27r\x27);\x20eval(fg.read());\x20fg.close();\x20fgFound=true;\x20break;\x20}\x0a','\x20\x20\x20\x20\x20\x20\x20\x20{\x22type\x22:\x22path\x22,\x20\x22closed\x22:','var\x20flashFillExportPath\x20=\x20\x27','selected','\x20\x20\x20\x20\x20\x20]','472xwHtBp','\x20\x20\x27C:/AEGP/SplitLayer.jsx\x27\x0a','\x20\x20\x20\x20\x20\x20\x20\x20for(var\x20_dj=1;_dj<=_dr.numProperties;_dj++){\x0a','\x20\x20\x20\x20\x20\x20var\x20_dl\x20=\x20_dbgAc.layer(_di);\x0a','selectDialog','11285648FndMQQ','Artboard:\x20','fsName','tag','artBoardClipping','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20{\x22a\x22:[','strokeJoin','\x0a\x20\x20\x20\x20start=(','leftDirection','clipped','fill','Total:\x20','],\x20\x22pos\x22:[','mValueA','DARKEN','getActiveArtboardIndex','angle','if(_ac\x20instanceof\x20CompItem){\x0a','flashFillExportPath','item','\x20\x20\x20\x20\x20\x20try{\x20var\x20_dr\x20=\x20_dl.property(\x27ADBE\x20Root\x20Vectors\x20Group\x27);\x0a','ROUND','\x27)\x20===\x200\x20&&\x20_c.indexOf(\x27_clipmask\x27)\x20>\x200){\x0a','_dbgRotation','sin','startX','HUE','anchor','\x20\x20\x20\x20var\x20_cn=_ac.layer(_ci).name;\x0a','activeDocument','abs','RGB','Layer','verticalScale','ellipse','\x20\x20\x22shapes\x22:\x20[','Filtering\x20Vectors...','TextFrame','size','isRunning','EXTRAIDO!\x20(v12\x20-\x20Auto-Bridge)\x0a','\x20item(s))','clipLayerName','round','\x20\x20\x20\x20\x20\x20\x20\x20{\x22type\x22:\x22','name','linear','_idx','length','\x20\x20\x20\x20\x20\x20\x22text\x22:\x20\x22','var\x20fgFound\x20=\x20false;\x0a','kind','\x20\x20\x20\x20\x20\x20\x20\x20for(var\x20_vi=1;_vi<=_imgComp.numLayers;_vi++){\x0a','\x20|\x20SOLIDOS:\x20','\x27;\x0a','\x20shapes','max','origName','\x27);\x0a','var\x20flashFillIlstTarget\x20=\x20\x27','PluginItem','\x20\x20\x20\x20\x20\x20\x22stroke\x22:\x20{\x22type\x22:\x22solid\x22,\x22color\x22:','fontSize','endX','paste','\x20\x20\x20\x20\x20\x20\x22fill\x22:\x20{\x22type\x22:\x22solid\x22,\x22color\x22:','indexOf','stroked','pathItems','gray','artboards','\x20\x20\x20\x20\x20\x20\x22justification\x22:\x20','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if(_maskLyr){\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20for(var\x20_dk=1;_dk<=_dc.numProperties;_dk++){\x0a','MULTIPLY','opacity','path','\x27),\x2014354\x20/*TrackMatteType.ALPHA*/);\x20}catch(e){}\x0a','textFont','RasterItem','grp','typename','blue','COLORDODGE','\x27)\x20===\x200){\x0a','getTime','];\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20_dc=_dr.property(_dj).property(\x27ADBE\x20Vectors\x20Group\x27);\x0a','\x20\x20\x20\x20\x20\x20\x22opacity\x22:','duplicate','color','none','geometricBounds','if(!fgFound){\x20alert(\x27SplitGroup.jsx\x20nao\x20encontrado\x20nos\x20caminhos\x20padroes!\x27);\x20}\x0a','Erro\x20ao\x20verificar\x20a\x20seleção.\x20Tente\x20novamente.','\x20\x20\x20\x20\x20\x20,\x22clipMaskRef\x22:\x20\x22','var\x20_ac\x20=\x20app.project.activeItem;\x0a',',\x22pts\x22:[','substr','blendingMode','rect','PlacedItem','Document',']);\x0a','cos','toString','\x20\x20\x20\x20\x20\x20\x20\x20]}','\x20\x20\x20\x20\x20\x20\x22x\x22:','Â°\x20(world\x20AE)','\x20panel=','try\x20{\x0a','txt:','\x20\x20Folder.userData.fsName\x20+\x20\x27/Adobe/CEP/extensions/GradFixer/SplitLayer.jsx\x27,\x0a','\x20\x20var\x20_dbgF\x20=\x20new\x20File(\x27C:/AEGP/grad_debug.txt\x27);\x0a','EXCLUSION','PROJECTING','rotation','20JkfxWp','pathPoints',':pts','SOFTLIGHT'];a0_0x3a82=function(){return _0x43287b;};return a0_0x3a82();}function a0_0x5e41(_0x39086c,_0x28c6f6){_0x39086c=_0x39086c-0xe8;var _0x3a8221=a0_0x3a82();var _0x5e413f=_0x3a8221[_0x39086c];return _0x5e413f;}(function(_0x552dcf,_0x1ae2f2){var _0x56f969=a0_0x5e41,_0x4573db=_0x552dcf();while(!![]){try{var _0x3d04a6=-parseInt(_0x56f969(0x17f))/0x1*(parseInt(_0x56f969(0x1bf))/0x2)+parseInt(_0x56f969(0x10f))/0x3*(parseInt(_0x56f969(0xe9))/0x4)+parseInt(_0x56f969(0x196))/0x5*(-parseInt(_0x56f969(0x171))/0x6)+parseInt(_0x56f969(0x126))/0x7+-parseInt(_0x56f969(0x11a))/0x8+-parseInt(_0x56f969(0xf1))/0x9*(-parseInt(_0x56f969(0x16d))/0xa)+-parseInt(_0x56f969(0x1c4))/0xb;if(_0x3d04a6===_0x1ae2f2)break;else _0x4573db['push'](_0x4573db['shift']());}catch(_0x4e3fab){_0x4573db['push'](_0x4573db['shift']());}}}(a0_0x3a82,0xf31c8),(function(){var _0x5ca621=a0_0x5e41;function _0x1bf114(_0x20ed20){var _0x3afc85=a0_0x5e41;if(typeof _0x20ed20!=='number'||isNaN(_0x20ed20)||!isFinite(_0x20ed20))return'0.000000';return _0x20ed20[_0x3afc85(0x1b3)](0x6);}function _0x39c776(_0x1f09a3){var _0x128919=a0_0x5e41;if(!_0x1f09a3)return null;try{if(_0x1f09a3['typename']==='SpotColor')_0x1f09a3=_0x1f09a3[_0x128919(0x114)][_0x128919(0x21e)];if(_0x1f09a3[_0x128919(0x215)]===_0x128919(0x12d))return[_0x1f09a3[_0x128919(0x1b4)]/0xff,_0x1f09a3['green']/0xff,_0x1f09a3[_0x128919(0x216)]/0xff];if(_0x1f09a3[_0x128919(0x215)]===_0x128919(0x116)){var _0x1bde6a=_0x1f09a3[_0x128919(0x1a1)]/0x64,_0x203523=_0x1f09a3[_0x128919(0x15b)]/0x64,_0x59f140=_0x1f09a3[_0x128919(0x172)]/0x64,_0x35e039=_0x1f09a3['black']/0x64;return[(0x1-_0x1bde6a)*(0x1-_0x35e039),(0x1-_0x203523)*(0x1-_0x35e039),(0x1-_0x59f140)*(0x1-_0x35e039)];}if(_0x1f09a3[_0x128919(0x215)]===_0x128919(0x1a9)){var _0x4dc5cb=0x1-_0x1f09a3[_0x128919(0x209)]/0x64;return[_0x4dc5cb,_0x4dc5cb,_0x4dc5cb];}}catch(_0x4da140){}return null;}function _0x2f71a0(_0x24582a,_0x129164,_0x59576e){var _0x18dc25=a0_0x5e41;if(!_0x24582a||!_0x24582a['pathPoints']||_0x24582a[_0x18dc25(0xea)]['length']<0x2)return null;var _0x3bcfb0=[];for(var _0x30086f=0x0;_0x30086f<_0x24582a['pathPoints'][_0x18dc25(0x1f4)];_0x30086f++){var _0x2d0a7c=_0x24582a[_0x18dc25(0xea)][_0x30086f];_0x3bcfb0[_0x18dc25(0x167)]({'a':[_0x2d0a7c[_0x18dc25(0x1df)][0x0]-_0x129164,_0x59576e-_0x2d0a7c[_0x18dc25(0x1df)][0x1]],'i':[_0x2d0a7c['leftDirection'][0x0]-_0x2d0a7c[_0x18dc25(0x1df)][0x0],_0x2d0a7c[_0x18dc25(0x1df)][0x1]-_0x2d0a7c[_0x18dc25(0x1cc)][0x1]],'o':[_0x2d0a7c[_0x18dc25(0x14c)][0x0]-_0x2d0a7c[_0x18dc25(0x1df)][0x0],_0x2d0a7c[_0x18dc25(0x1df)][0x1]-_0x2d0a7c['rightDirection'][0x1]]});}var _0x26fd09=![],_0x2b7b45=[0x0,0x0];if(_0x3bcfb0[_0x18dc25(0x1f4)]>=0x4){var _0x3f3faf=_0x3bcfb0[0x0]['a'][0x0],_0x5c8735=_0x3bcfb0[0x0]['a'][0x0],_0x595406=_0x3bcfb0[0x0]['a'][0x1],_0x3ee367=_0x3bcfb0[0x0]['a'][0x1];for(var _0x226f19=0x1;_0x226f19<_0x3bcfb0[_0x18dc25(0x1f4)];_0x226f19++){_0x3f3faf=Math[_0x18dc25(0x16e)](_0x3f3faf,_0x3bcfb0[_0x226f19]['a'][0x0]),_0x5c8735=Math[_0x18dc25(0x1fc)](_0x5c8735,_0x3bcfb0[_0x226f19]['a'][0x0]),_0x595406=Math[_0x18dc25(0x16e)](_0x595406,_0x3bcfb0[_0x226f19]['a'][0x1]),_0x3ee367=Math[_0x18dc25(0x1fc)](_0x3ee367,_0x3bcfb0[_0x226f19]['a'][0x1]);}var _0x153226=Math[_0x18dc25(0x1e2)](_0x5c8735-_0x3f3faf),_0x2a03bc=Math['abs'](_0x3ee367-_0x595406),_0x292db1=!![],_0x3028c2={'tl':![],'tr':![],'bl':![],'br':![]};for(var _0x226f19=0x0;_0x226f19<_0x3bcfb0['length'];_0x226f19++){var _0x2a8ae1=Math[_0x18dc25(0x1e2)](_0x3bcfb0[_0x226f19]['a'][0x0]-_0x3f3faf),_0x29268a=Math[_0x18dc25(0x1e2)](_0x3bcfb0[_0x226f19]['a'][0x0]-_0x5c8735),_0x2f8bf2=Math[_0x18dc25(0x1e2)](_0x3bcfb0[_0x226f19]['a'][0x1]-_0x595406),_0x23d06b=Math[_0x18dc25(0x1e2)](_0x3bcfb0[_0x226f19]['a'][0x1]-_0x3ee367);if(Math[_0x18dc25(0x16e)](_0x2a8ae1,_0x29268a)>0x2||Math[_0x18dc25(0x16e)](_0x2f8bf2,_0x23d06b)>0x2){_0x292db1=![];break;}var _0x3c3e3e=_0x2a8ae1<=0x2,_0x2c6db4=_0x29268a<=0x2,_0x2f2c91=_0x2f8bf2<=0x2,_0x3a3eb4=_0x23d06b<=0x2;if(_0x3c3e3e&&_0x2f2c91)_0x3028c2['tl']=!![];if(_0x2c6db4&&_0x2f2c91)_0x3028c2['tr']=!![];if(_0x3c3e3e&&_0x3a3eb4)_0x3028c2['bl']=!![];if(_0x2c6db4&&_0x3a3eb4)_0x3028c2['br']=!![];}_0x292db1&&_0x153226>0x0&&_0x2a03bc>0x0&&_0x3028c2['tl']&&_0x3028c2['tr']&&_0x3028c2['bl']&&_0x3028c2['br']&&(_0x26fd09=!![],_0x2b7b45=[_0x153226,_0x2a03bc]);}var _0xee7b7e=![],_0x16dab4=[0x0,0x0];if(_0x3bcfb0['length']>=0x4&&!_0x26fd09){var _0x3f3faf=_0x3bcfb0[0x0]['a'][0x0],_0x5c8735=_0x3bcfb0[0x0]['a'][0x0],_0x595406=_0x3bcfb0[0x0]['a'][0x1],_0x3ee367=_0x3bcfb0[0x0]['a'][0x1];for(var _0x226f19=0x1;_0x226f19<_0x3bcfb0[_0x18dc25(0x1f4)];_0x226f19++){_0x3f3faf=Math[_0x18dc25(0x16e)](_0x3f3faf,_0x3bcfb0[_0x226f19]['a'][0x0]),_0x5c8735=Math[_0x18dc25(0x1fc)](_0x5c8735,_0x3bcfb0[_0x226f19]['a'][0x0]),_0x595406=Math[_0x18dc25(0x16e)](_0x595406,_0x3bcfb0[_0x226f19]['a'][0x1]),_0x3ee367=Math['max'](_0x3ee367,_0x3bcfb0[_0x226f19]['a'][0x1]);}var _0x153226=Math[_0x18dc25(0x1e2)](_0x5c8735-_0x3f3faf),_0x2a03bc=Math[_0x18dc25(0x1e2)](_0x3ee367-_0x595406),_0x642678=(_0x3f3faf+_0x5c8735)/0x2,_0x11076e=(_0x595406+_0x3ee367)/0x2,_0x1b4bdd=!![],_0xb64109={'t':![],'b':![],'l':![],'r':![]};for(var _0x226f19=0x0;_0x226f19<_0x3bcfb0[_0x18dc25(0x1f4)];_0x226f19++){var _0xf9c3f2=(Math['abs'](_0x3bcfb0[_0x226f19]['a'][0x0]-_0x3f3faf)<0x2||Math[_0x18dc25(0x1e2)](_0x3bcfb0[_0x226f19]['a'][0x0]-_0x5c8735)<0x2)&&Math[_0x18dc25(0x1e2)](_0x3bcfb0[_0x226f19]['a'][0x1]-_0x11076e)<0x2,_0x509d1b=(Math[_0x18dc25(0x1e2)](_0x3bcfb0[_0x226f19]['a'][0x1]-_0x595406)<0x2||Math['abs'](_0x3bcfb0[_0x226f19]['a'][0x1]-_0x3ee367)<0x2)&&Math['abs'](_0x3bcfb0[_0x226f19]['a'][0x0]-_0x642678)<0x2;if(!_0xf9c3f2&&!_0x509d1b){_0x1b4bdd=![];break;}if(Math[_0x18dc25(0x1e2)](_0x3bcfb0[_0x226f19]['a'][0x1]-_0x595406)<0x2&&Math['abs'](_0x3bcfb0[_0x226f19]['a'][0x0]-_0x642678)<0x2)_0xb64109['t']=!![];if(Math[_0x18dc25(0x1e2)](_0x3bcfb0[_0x226f19]['a'][0x1]-_0x3ee367)<0x2&&Math[_0x18dc25(0x1e2)](_0x3bcfb0[_0x226f19]['a'][0x0]-_0x642678)<0x2)_0xb64109['b']=!![];if(Math['abs'](_0x3bcfb0[_0x226f19]['a'][0x0]-_0x3f3faf)<0x2&&Math[_0x18dc25(0x1e2)](_0x3bcfb0[_0x226f19]['a'][0x1]-_0x11076e)<0x2)_0xb64109['l']=!![];if(Math[_0x18dc25(0x1e2)](_0x3bcfb0[_0x226f19]['a'][0x0]-_0x5c8735)<0x2&&Math[_0x18dc25(0x1e2)](_0x3bcfb0[_0x226f19]['a'][0x1]-_0x11076e)<0x2)_0xb64109['r']=!![];}_0x1b4bdd&&_0x153226>0x0&&_0x2a03bc>0x0&&_0xb64109['t']&&_0xb64109['b']&&_0xb64109['l']&&_0xb64109['r']&&(_0xee7b7e=!![],_0x16dab4=[_0x153226,_0x2a03bc]);}if(_0x26fd09)return{'type':_0x18dc25(0x228),'size':_0x2b7b45,'pos':[0x0,0x0],'pts':_0x3bcfb0,'closed':!![]};if(_0xee7b7e)return{'type':'ellipse','size':_0x16dab4,'pos':[0x0,0x0],'pts':_0x3bcfb0,'closed':!![]};return{'type':'path','pts':_0x3bcfb0,'closed':_0x24582a[_0x18dc25(0x112)]};}function _0x35be96(_0x193596,_0x53715b,_0x10d9e0){var _0x3f0878=a0_0x5e41;if(!_0x193596||!_0x193596[_0x3f0878(0xea)]||_0x193596[_0x3f0878(0xea)][_0x3f0878(0x1f4)]<0x2)return null;var _0x4f3081=[];for(var _0x352fb2=0x0;_0x352fb2<_0x193596['pathPoints'][_0x3f0878(0x1f4)];_0x352fb2++){var _0x4312d4=_0x193596[_0x3f0878(0xea)][_0x352fb2];_0x4f3081[_0x3f0878(0x167)]({'a':[_0x4312d4[_0x3f0878(0x1df)][0x0]-_0x53715b,_0x10d9e0-_0x4312d4[_0x3f0878(0x1df)][0x1]],'i':[_0x4312d4[_0x3f0878(0x1cc)][0x0]-_0x4312d4['anchor'][0x0],-(_0x4312d4[_0x3f0878(0x1cc)][0x1]-_0x4312d4[_0x3f0878(0x1df)][0x1])],'o':[_0x4312d4[_0x3f0878(0x14c)][0x0]-_0x4312d4[_0x3f0878(0x1df)][0x0],-(_0x4312d4[_0x3f0878(0x14c)][0x1]-_0x4312d4['anchor'][0x1])]});}return{'pts':_0x4f3081,'closed':_0x193596['closed']};}function _0x105bea(_0x42f631){var _0xffc29f=a0_0x5e41;return typeof _0x42f631===_0xffc29f(0x17a)&&!isNaN(_0x42f631)&&isFinite(_0x42f631);}function _0x5dfcb0(_0x18e9a2,_0x28fbd5){var _0x3b1609=a0_0x5e41,_0x5918ab=_0x18e9a2['indexOf']('\x22'+_0x28fbd5+'\x22:');if(_0x5918ab<0x0)_0x5918ab=_0x18e9a2[_0x3b1609(0x206)](_0x28fbd5+':');if(_0x5918ab<0x0)return NaN;var _0x3dfb36=_0x5918ab+_0x28fbd5[_0x3b1609(0x1f4)]+0x1;while(_0x3dfb36<_0x18e9a2[_0x3b1609(0x1f4)]&&(_0x18e9a2[_0x3dfb36]==='\x20'||_0x18e9a2[_0x3dfb36]==='\x22'||_0x18e9a2[_0x3dfb36]===':'))_0x3dfb36++;var _0x224860=_0x3dfb36;while(_0x224860<_0x18e9a2[_0x3b1609(0x1f4)]&&(_0x18e9a2[_0x224860]==='-'||_0x18e9a2[_0x224860]==='.'||_0x18e9a2[_0x224860]>='0'&&_0x18e9a2[_0x224860]<='9'))_0x224860++;return parseFloat(_0x18e9a2[_0x3b1609(0x15c)](_0x3dfb36,_0x224860));}function _0x1b4352(_0x421892,_0x5c79d5,_0x427e10,_0x536142,_0x38e47a,_0x5ca6df,_0x12afc0,_0x176c37,_0x30da94,_0x596151,_0xbd7867,_0x44f9e1,_0x4df514){var _0x494313=a0_0x5e41,_0x34c536=_0x421892['gradient'],_0x5f1dd3,_0x567578,_0x1f13be,_0x10d9aa,_0x180328=![],_0x2c7418='';try{var _0x19c0aa=_0x421892[_0x494313(0x19c)],_0x3bd92f=_0x19c0aa['a'],_0x5d0d6b=_0x19c0aa['b'],_0x12811f=_0x19c0aa['tx'],_0x57e340=_0x19c0aa['ty'];if(!_0x105bea(_0x3bd92f)||!_0x105bea(_0x5d0d6b)||!_0x105bea(_0x12811f)||!_0x105bea(_0x57e340)){try{_0x2c7418=_0x19c0aa[_0x494313(0x184)]();}catch(_0x584f20){}_0x2c7418['length']>0x5&&(_0x3bd92f=_0x5dfcb0(_0x2c7418,'a'),_0x5d0d6b=_0x5dfcb0(_0x2c7418,'b'),_0x12811f=_0x5dfcb0(_0x2c7418,'tx'),_0x57e340=_0x5dfcb0(_0x2c7418,'ty'));}_0x105bea(_0x3bd92f)&&_0x105bea(_0x5d0d6b)&&_0x105bea(_0x12811f)&&_0x105bea(_0x57e340)&&(_0x5f1dd3=_0x12811f-_0x38e47a,_0x567578=_0x5ca6df-_0x57e340,_0x1f13be=_0x3bd92f+_0x12811f-_0x38e47a,_0x10d9aa=_0x5ca6df-(_0x5d0d6b+_0x57e340),_0x180328=!![]);}catch(_0x34183a){}var _0x196dcb=0x0,_0x48c2de=0x0,_0x22257d=0x64,_0x4582de=0x0,_0x7b05ee=0x0,_0x240768=0x0;try{_0x240768=_0x5c79d5[_0x494313(0xe8)]||0x0;}catch(_0x5d7766){}try{_0x7b05ee=_0x421892['angle']||0x0;var _0x507192=_0x7b05ee-_0x240768;_0x196dcb=_0x421892['origin'][0x0]-_0x38e47a,_0x48c2de=_0x5ca6df-_0x421892[_0x494313(0x178)][0x1];var _0x29a551=_0x507192*Math['PI']/0xb4;_0x22257d=_0x196dcb+_0x421892['length']*Math['cos'](_0x29a551),_0x4582de=_0x48c2de-_0x421892[_0x494313(0x1f4)]*Math[_0x494313(0x1dc)](_0x29a551);}catch(_0x508e3e){}!_0x180328&&(_0x5f1dd3=_0x196dcb,_0x567578=_0x48c2de,_0x1f13be=_0x22257d,_0x10d9aa=_0x4582de);if(!_0x105bea(_0x5f1dd3))_0x5f1dd3=_0x196dcb;if(!_0x105bea(_0x567578))_0x567578=_0x48c2de;if(!_0x105bea(_0x1f13be))_0x1f13be=_0x22257d;if(!_0x105bea(_0x10d9aa))_0x10d9aa=_0x4582de;if(!_0x105bea(_0x5f1dd3))_0x5f1dd3=0x0;if(!_0x105bea(_0x567578))_0x567578=0x0;if(!_0x105bea(_0x1f13be))_0x1f13be=0x64;if(!_0x105bea(_0x10d9aa))_0x10d9aa=0x0;var _0x4f610d=_0x7b05ee-_0x240768,_0x44f3aa='linear';try{_0x34c536[_0x494313(0x14f)]&&_0x34c536['type'][_0x494313(0x22d)]()[_0x494313(0x206)]('RADIAL')>-0x1&&(_0x44f3aa='radial');}catch(_0x1a0b70){}var _0x3db01b=[];for(var _0x397ab4=0x0;_0x397ab4<_0x34c536['gradientStops']['length'];_0x397ab4++){var _0x567d04=_0x34c536[_0x494313(0x15e)][_0x397ab4],_0x226003=_0x39c776(_0x567d04[_0x494313(0x21e)]),_0x1d2261=0x64;try{_0x1d2261=_0x567d04['opacity'];}catch(_0x28bc17){}if(_0x226003)_0x3db01b[_0x494313(0x167)]({'pos':_0x567d04[_0x494313(0x155)]/0x64,'mid':_0x567d04['midPoint']/0x64,'r':_0x226003[0x0],'g':_0x226003[0x1],'b':_0x226003[0x2],'opacity':_0x1d2261/0x64});}var _0x541273=[];for(var _0x3c849f=0x0;_0x3c849f<_0x427e10['length'];_0x3c849f++){var _0x4a585b=_0x2f71a0(_0x427e10[_0x3c849f],_0x30da94,_0x596151);if(_0x4a585b)_0x541273[_0x494313(0x167)](_0x4a585b);}if(_0x541273[_0x494313(0x1f4)]===0x0)try{var _0x2edd86=_0x5c79d5['geometricBounds'],_0x198b6a=Math[_0x494313(0x1e2)](_0x2edd86[0x2]-_0x2edd86[0x0]),_0x488e42=Math[_0x494313(0x1e2)](_0x2edd86[0x1]-_0x2edd86[0x3]),_0x4c79e9=_0x198b6a/0x2,_0x4997c3=_0x488e42/0x2;_0x541273[_0x494313(0x167)]({'pts':[{'a':[-_0x4c79e9,-_0x4997c3],'i':[0x0,0x0],'o':[0x0,0x0]},{'a':[_0x4c79e9,-_0x4997c3],'i':[0x0,0x0],'o':[0x0,0x0]},{'a':[_0x4c79e9,_0x4997c3],'i':[0x0,0x0],'o':[0x0,0x0]},{'a':[-_0x4c79e9,_0x4997c3],'i':[0x0,0x0],'o':[0x0,0x0]}],'closed':!![]});}catch(_0xb42b84){return;}var _0x70a09d=_0x5f1dd3-_0xbd7867,_0x2b4502=_0x567578-_0x44f9e1,_0x56e228=_0x1f13be-_0xbd7867,_0x7290be=_0x10d9aa-_0x44f9e1,_0x291f91=_0x5c79d5['geometricBounds'],_0x5a42e6=Math[_0x494313(0x1e2)](_0x291f91[0x2]-_0x291f91[0x0]),_0x21fb23=Math[_0x494313(0x1e2)](_0x291f91[0x3]-_0x291f91[0x1]),_0x178208=Math['max'](_0x5a42e6,_0x21fb23)*1.5;if(Math[_0x494313(0x1e2)](_0x70a09d)>_0x178208||Math['abs'](_0x2b4502)>_0x178208||isNaN(_0x70a09d)){var _0x1df855=_0x4f610d*Math['PI']/0xb4,_0x595a75=Math[_0x494313(0x1fc)](_0x5a42e6,_0x21fb23)/0x2;_0x70a09d=-Math['cos'](_0x1df855)*_0x595a75,_0x2b4502=Math['sin'](_0x1df855)*_0x595a75,_0x56e228=Math[_0x494313(0x22c)](_0x1df855)*_0x595a75,_0x7290be=-Math[_0x494313(0x1dc)](_0x1df855)*_0x595a75;}var _0x289845=![];try{if(_0x5c79d5['clipping'])_0x289845=!![];}catch(_0x3efc04){}try{if(!_0x289845&&_0x5c79d5[_0x494313(0x215)]==='CompoundPathItem'&&_0x5c79d5[_0x494313(0x208)]&&_0x5c79d5[_0x494313(0x208)][_0x494313(0x1f4)]>0x0&&_0x5c79d5[_0x494313(0x208)][0x0]['clipping'])_0x289845=!![];}catch(_0x335535){}var _0x97036a=_0x5c79d5[_0x494313(0x1f1)]||(_0x12afc0?_0x12afc0['split'](_0x494313(0x1f3))[0x0]:_0x494313(0x14d)),_0x3550fc=_0x97036a+_0x494313(0xf6)+_0x2af742+'x'+_0x561c4d,_0x599647=_0x5c79d5[_0x494313(0x1f1)]||(_0x12afc0?_0x12afc0[_0x494313(0xf8)](_0x494313(0x1f3))[0x0]+_0x494313(0x1ac):_0x494313(0x14d));_0x2af742++,_0x536142[_0x494313(0x167)]({'name':_0x3550fc,'origName':_0x599647,'fillType':_0x494313(0x191),'opacity':_0x176c37,'x':_0xbd7867,'y':_0x44f9e1,'parent':_0x12afc0,'_dbgAngle':_0x7b05ee,'_dbgRotation':_0x240768,'_dbgEffective':_0x4f610d,'gradient':{'type':_0x44f3aa,'angle':_0x4f610d,'startX':_0x70a09d,'startY':_0x2b4502,'endX':_0x56e228,'endY':_0x7290be,'stops':_0x3db01b},'paths':_0x541273,'isClipping':_0x289845,'clipMaskRef':_0x4df514&&!_0x289845?_0x4df514:null});}var _0x5ef7cf='',_0x2af742=0x1,_0x561c4d=new Date()[_0x5ca621(0x219)]()[_0x5ca621(0x22d)]()[_0x5ca621(0x226)](-0x5);function _0x9d6d55(_0x78b8,_0x464b57,_0x4a341c,_0xcf4028,_0x3fdace,_0x3145b3){_0x49066a(_0x78b8,_0x464b57,_0x4a341c,_0xcf4028,_0x3fdace,_0x3145b3,null);}function _0x49066a(_0x22a53a,_0xe98dda,_0x211711,_0x1d7485,_0x1271fb,_0x3cfd37,_0x572044){var _0x2df821=_0x5ca621;if(!_0x22a53a)return;try{if(_0x22a53a[_0x2df821(0x168)])return;}catch(_0x9c6f40){}try{if(_0x22a53a[_0x2df821(0x115)]&&!_0x22a53a[_0x2df821(0x115)][_0x2df821(0x1b0)])return;}catch(_0x7a35aa){}var _0x3d307c=_0x22a53a[_0x2df821(0x215)];try{if(_0x22a53a[_0x2df821(0x168)])return;}catch(_0x2244f0){}if(!_0x5d4042)try{var _0x347074=_0x22a53a[_0x2df821(0x220)];if(_0x347074[0x2]<_0x5d4c62[0x0]||_0x347074[0x0]>_0x5d4c62[0x2]||_0x347074[0x3]>_0x5d4c62[0x1]||_0x347074[0x1]<_0x5d4c62[0x3])return;}catch(_0x242049){}var _0x432627=0x64;try{_0x432627=Math['round'](_0x22a53a[_0x2df821(0x20f)]*0x64)/0x64;}catch(_0xf216ca){}var _0x3b8cb7=_0x432627;_0x3cfd37!==undefined&&_0x3cfd37!==null&&(_0x3b8cb7=_0x432627*_0x3cfd37/0x64);var _0x1bb451=$['flashFillMode']===_0x2df821(0x1aa),_0x9dfdac=_0x1bb451?_0x432627:_0x3b8cb7,_0x2616df=_0x1bb451?0x64:_0x3b8cb7,_0x6914c9=0x1;try{var _0x487d42=_0x22a53a[_0x2df821(0x227)]['toString']();if(_0x487d42[_0x2df821(0x206)](_0x2df821(0x20e))>-0x1)_0x6914c9=0x2;else{if(_0x487d42['indexOf'](_0x2df821(0x1ab))>-0x1)_0x6914c9=0x3;else{if(_0x487d42[_0x2df821(0x206)](_0x2df821(0x101))>-0x1)_0x6914c9=0x4;else{if(_0x487d42[_0x2df821(0x206)](_0x2df821(0x1d2))>-0x1)_0x6914c9=0x5;else{if(_0x487d42[_0x2df821(0x206)](_0x2df821(0x11e))>-0x1)_0x6914c9=0x6;else{if(_0x487d42[_0x2df821(0x206)](_0x2df821(0x217))>-0x1)_0x6914c9=0x7;else{if(_0x487d42[_0x2df821(0x206)]('COLORBURN')>-0x1)_0x6914c9=0x8;else{if(_0x487d42[_0x2df821(0x206)]('HARDLIGHT')>-0x1)_0x6914c9=0x9;else{if(_0x487d42[_0x2df821(0x206)](_0x2df821(0xec))>-0x1)_0x6914c9=0xa;else{if(_0x487d42['indexOf']('DIFFERENCE')>-0x1)_0x6914c9=0xb;else{if(_0x487d42[_0x2df821(0x206)](_0x2df821(0x236))>-0x1)_0x6914c9=0xc;else{if(_0x487d42[_0x2df821(0x206)](_0x2df821(0x1de))>-0x1)_0x6914c9=0xd;else{if(_0x487d42[_0x2df821(0x206)](_0x2df821(0x177))>-0x1)_0x6914c9=0xe;else{if(_0x487d42['indexOf'](_0x2df821(0x16f))>-0x1&&_0x487d42['indexOf'](_0x2df821(0x217))===-0x1&&_0x487d42[_0x2df821(0x206)](_0x2df821(0xf4))===-0x1)_0x6914c9=0xf;else{if(_0x487d42[_0x2df821(0x206)]('LUMINOSITY')>-0x1)_0x6914c9=0x10;}}}}}}}}}}}}}}}catch(_0x201065){}var _0x3d0fb3=(_0x22a53a[_0x2df821(0x1f1)]||_0x3d307c)+_0x2df821(0x1f3)+_0x2af742+'x'+_0x561c4d,_0xfde543=_0x22a53a[_0x2df821(0x1f1)]||'';_0x2af742++;if(_0x3d307c===_0x2df821(0x14e)){var _0x12952c=0x0,_0xf25c10=0x0,_0x49c56c=0x0,_0x41b9fc=0x0;try{var _0x2eb70f=_0x22a53a[_0x2df821(0x220)];_0x12952c=(_0x2eb70f[0x0]+_0x2eb70f[0x2])/0x2-_0x211711,_0xf25c10=_0x1d7485-(_0x2eb70f[0x1]+_0x2eb70f[0x3])/0x2,_0x49c56c=_0x2eb70f[0x2]-_0x2eb70f[0x0],_0x41b9fc=_0x2eb70f[0x1]-_0x2eb70f[0x3];}catch(_0x545de6){}var _0x3f90db=null;try{if(_0x22a53a[_0x2df821(0x143)]['length']>0x1)for(var _0x380d0a=0x0;_0x380d0a<_0x22a53a[_0x2df821(0x143)][_0x2df821(0x1f4)];_0x380d0a++){var _0x47c89b=_0x22a53a['pageItems'][_0x380d0a],_0x1504da=![];try{if(_0x47c89b[_0x2df821(0xf7)])_0x1504da=!![];}catch(_0x399b83){}try{if(!_0x1504da&&_0x47c89b[_0x2df821(0x215)]===_0x2df821(0x1a4)&&_0x47c89b[_0x2df821(0x208)][0x0]['clipping'])_0x1504da=!![];}catch(_0x1474d9){}if(_0x1504da){_0x3f90db=_0x3d0fb3+_0x2df821(0x142);break;}}}catch(_0x3fb642){}_0xe98dda[_0x2df821(0x167)]({'fillType':_0x2df821(0x1aa),'name':_0x3d0fb3,'origName':_0x22a53a[_0x2df821(0x1f1)]||_0x2df821(0xf9),'parent':_0x1271fb,'x':_0x12952c,'y':_0xf25c10,'w':_0x49c56c,'h':_0x41b9fc,'opacity':_0x9dfdac,'blendMode':_0x6914c9,'clipMaskID':_0x3f90db,'clipMaskRef':_0x572044&&!_0x3f90db?_0x572044:null});var _0x5d6b0a=_0x3f90db||_0x572044,_0x4faa09=_0x3d0fb3;for(var _0x5a3861=0x0;_0x5a3861<_0x22a53a[_0x2df821(0x143)][_0x2df821(0x1f4)];_0x5a3861++){_0x49066a(_0x22a53a[_0x2df821(0x143)][_0x5a3861],_0xe98dda,_0x211711,_0x1d7485,_0x4faa09,_0x2616df,_0x5d6b0a);}return;}if(_0x3d307c===_0x2df821(0x1e9)){var _0x4cd2d5='';try{_0x4cd2d5=_0x22a53a[_0x2df821(0x183)];}catch(_0x54fd90){}if(!_0x4cd2d5)return;var _0x256eaf=0x32,_0x4a9956=_0x2df821(0x163),_0x35a9fa=[0x1,0x1,0x1],_0x4d1567=0x0,_0x290ec8=0x0,_0x58700d=0x0,_0x10eaf3=0x0,_0x5e519a=0x0;try{if(_0x22a53a['kind']&&_0x22a53a[_0x2df821(0x1f7)]['toString']()[_0x2df821(0x206)]('POINT')>-0x1)_0x5e519a=0x1;var _0x2eb70f=_0x22a53a[_0x2df821(0x220)];_0x58700d=(_0x2eb70f[0x0]+_0x2eb70f[0x2])/0x2-_0x211711,_0x10eaf3=_0x1d7485-(_0x2eb70f[0x1]+_0x2eb70f[0x3])/0x2;}catch(_0x1bc6b2){var _0x10f4f2=_0x22a53a[_0x2df821(0x220)];_0x58700d=(_0x10f4f2[0x0]+_0x10f4f2[0x2])/0x2-_0x211711,_0x10eaf3=_0x1d7485-(_0x10f4f2[0x1]+_0x10f4f2[0x3])/0x2;}try{_0x22a53a[_0x2df821(0x19c)]&&(_0x290ec8=-Math['atan2'](_0x22a53a[_0x2df821(0x19c)]['mValueB'],_0x22a53a['matrix'][_0x2df821(0x1d1)])*0xb4/Math['PI']);if(Math['abs'](_0x290ec8)<0.1&&_0x5e519a===0x1)try{var _0xf6b80b=_0x22a53a[_0x2df821(0x21d)]();_0xf6b80b[_0x2df821(0x151)](),_0xf6b80b[_0x2df821(0x19c)]&&(_0x290ec8=-Math[_0x2df821(0x104)](_0xf6b80b['matrix'][_0x2df821(0x19d)],_0xf6b80b[_0x2df821(0x19c)][_0x2df821(0x1d1)])*0xb4/Math['PI']),_0xf6b80b[_0x2df821(0x146)]();}catch(_0x19292c){}}catch(_0x5e33f0){}try{var _0xdb8e39=_0x22a53a[_0x2df821(0x10e)]['characterAttributes'];if(_0xdb8e39[_0x2df821(0x1ea)])_0x256eaf=_0xdb8e39[_0x2df821(0x1ea)];if(_0xdb8e39['textFont'])_0x4a9956=_0xdb8e39[_0x2df821(0x212)][_0x2df821(0x1f1)];var _0x5cfce8=_0x39c776(_0xdb8e39[_0x2df821(0x10c)]);if(_0x5cfce8)_0x35a9fa=_0x5cfce8;var _0x4429da=_0x22a53a[_0x2df821(0x10e)][_0x2df821(0x13e)];if(_0x4429da[_0x2df821(0x195)]){var _0x5b315d=_0x4429da[_0x2df821(0x195)][_0x2df821(0x22d)]();if(_0x5b315d['indexOf']('CENTER')>-0x1)_0x4d1567=0x1;else{if(_0x5b315d[_0x2df821(0x206)]('RIGHT')>-0x1)_0x4d1567=0x2;}}}catch(_0xb25fcf){}_0xe98dda[_0x2df821(0x167)]({'fillType':'text','name':_0x3d0fb3,'origName':_0x22a53a['name']||_0x4cd2d5[_0x2df821(0x15c)](0x0,0xf),'parent':_0x1271fb,'text':_0x4cd2d5,'fontSize':_0x256eaf,'fontName':_0x4a9956,'color':_0x35a9fa,'justification':_0x4d1567,'rotation':_0x290ec8,'kind':_0x5e519a,'x':_0x58700d,'y':_0x10eaf3,'opacity':_0x9dfdac,'blendMode':_0x6914c9});return;}var _0x126274=![];try{if(_0x22a53a[_0x2df821(0xf7)])_0x126274=!![];}catch(_0x1c6765){}try{if(!_0x126274&&_0x3d307c===_0x2df821(0x1a4)&&_0x22a53a['pathItems']&&_0x22a53a[_0x2df821(0x208)][_0x2df821(0x1f4)]>0x0&&_0x22a53a['pathItems'][0x0][_0x2df821(0xf7)])_0x126274=!![];}catch(_0x3e4669){}var _0x2eb70f=_0x22a53a[_0x2df821(0x220)],_0x1b332a=(_0x2eb70f[0x0]+_0x2eb70f[0x2])/0x2,_0x28c588=(_0x2eb70f[0x1]+_0x2eb70f[0x3])/0x2,_0x58700d=_0x1b332a-_0x211711,_0x10eaf3=_0x1d7485-_0x28c588,_0x441b53=_0x3d307c==='CompoundPathItem'?_0x22a53a['pathItems']:[_0x22a53a],_0x11a952=null;if(_0x3d307c===_0x2df821(0x1a4)){try{_0x11a952=_0x22a53a[_0x2df821(0x10c)];}catch(_0x322f76){}if(!_0x11a952||_0x11a952[_0x2df821(0x215)]==='NoColor')try{_0x11a952=_0x22a53a['pathItems'][0x0][_0x2df821(0x10c)];}catch(_0x43409f){}}else try{_0x11a952=_0x22a53a[_0x2df821(0x10c)];}catch(_0x57645d){}if(_0x11a952&&_0x11a952[_0x2df821(0x215)]===_0x2df821(0x176)){_0x1b4352(_0x11a952,_0x22a53a,_0x441b53,_0xe98dda,_0x211711,_0x1d7485,_0x1271fb,_0x9dfdac,_0x1b332a,_0x28c588,_0x58700d,_0x10eaf3,_0x572044);if(_0xe98dda[_0x2df821(0x1f4)]>0x0)_0xe98dda[_0xe98dda['length']-0x1][_0x2df821(0x1a6)]=_0x6914c9;return;}var _0x3411cc=[];for(var _0x175863=0x0;_0x175863<_0x441b53[_0x2df821(0x1f4)];_0x175863++){var _0x9560f4=_0x2f71a0(_0x441b53[_0x175863],_0x1b332a,_0x28c588);if(_0x9560f4)_0x3411cc[_0x2df821(0x167)](_0x9560f4);}if(_0x3411cc[_0x2df821(0x1f4)]===0x0)return;var _0x111209=null;_0x572044&&(_0x126274?_0x3d0fb3=_0x572044:_0x111209=_0x572044);var _0x1fe631={'name':_0x3d0fb3,'x':_0x58700d,'y':_0x10eaf3,'paths':_0x3411cc,'fillType':_0x2df821(0x1a3),'parent':_0x1271fb,'opacity':_0x9dfdac,'blendMode':_0x6914c9,'isClipping':_0x126274,'clipMaskRef':_0x111209},_0x29f1c3=![];if(_0x11a952&&_0x11a952['typename']!=='NoColor'){var _0x5cfce8=_0x39c776(_0x11a952);_0x5cfce8&&(_0x1fe631[_0x2df821(0x1ce)]={'type':'solid','color':_0x5cfce8},_0x1fe631[_0x2df821(0x108)]=_0x2df821(0x1a3),_0x29f1c3=!![]);}var _0x51a637=![];try{if(_0x22a53a[_0x2df821(0x207)]&&_0x22a53a[_0x2df821(0x135)]&&_0x22a53a[_0x2df821(0x135)]['typename']!=='NoColor'){var _0x4f3cbd=_0x39c776(_0x22a53a[_0x2df821(0x135)]);if(_0x4f3cbd){_0x1fe631[_0x2df821(0x17c)]={'type':_0x2df821(0x1a3),'color':_0x4f3cbd,'strokeWidth':_0x22a53a['strokeWidth']||0x1};try{_0x1fe631[_0x2df821(0x17c)][_0x2df821(0x134)]=_0x22a53a['strokeCap']===StrokeCap[_0x2df821(0x1d9)]?0x2:_0x22a53a[_0x2df821(0x134)]===StrokeCap[_0x2df821(0x237)]?0x3:0x1;}catch(_0x1277f0){}try{_0x1fe631[_0x2df821(0x17c)]['strokeJoin']=_0x22a53a[_0x2df821(0x1ca)]===StrokeJoin['ROUND']?0x2:_0x22a53a[_0x2df821(0x1ca)]===StrokeJoin['BEVEL']?0x3:0x1;}catch(_0x5cdc4c){}_0x51a637=!![];if(!_0x29f1c3)_0x1fe631[_0x2df821(0x108)]='stroke';}}}catch(_0x35e305){}_0x126274&&(!_0x29f1c3&&!_0x51a637&&$[_0x2df821(0x164)]!=='group'&&(_0x1fe631['fill']={'type':_0x2df821(0x1a3),'color':[0.4,0.4,0.4]},_0x1fe631[_0x2df821(0x108)]='solid',_0x29f1c3=!![]));if(!_0x29f1c3&&!_0x51a637&&!_0x126274)return;_0xe98dda[_0x2df821(0x167)](_0x1fe631);}$[_0x5ca621(0x1b7)]=null,$['flashFillText']=null,$[_0x5ca621(0x152)]=null;function _0x3284b0(_0x10b4bd){}var _0x30c7ad=0x0,_0x4acaa0='';function _0x49c2d9(_0x3a2189,_0x21dadd,_0x4805c1){}function _0x128be4(){}var _0x423f3e;try{_0x423f3e=app[_0x5ca621(0x1e1)];}catch(_0x1c9366){alert('Abra\x20um\x20documento!');return;}var _0x3a70b9='';try{_0x3a70b9=_0x423f3e['fullName'][_0x5ca621(0x1c6)][_0x5ca621(0xf2)](/\\/g,'/');}catch(_0x23d4c0){}var _0x39dedd=_0x423f3e[_0x5ca621(0x20a)][_0x423f3e[_0x5ca621(0x20a)][_0x5ca621(0x1d3)]()],_0x5d4c62=_0x39dedd[_0x5ca621(0x15d)],_0x1399e0=_0x5d4c62[0x0],_0x22d39b=_0x5d4c62[0x1],_0x17b8c1=_0x5d4c62[0x2]-_0x5d4c62[0x0],_0x1f3c24=_0x22d39b-_0x5d4c62[0x3],_0x352506=[],_0x5d4042=![];try{var _0x4a52be=_0x423f3e[_0x5ca621(0x19e)];if(_0x4a52be&&_0x4a52be[_0x5ca621(0x1f4)]>0x0)_0x5d4042=!![];else{alert(_0x5ca621(0xed));return;}}catch(_0x2fabd5){alert(_0x5ca621(0x222));return;}var _0x4cbf65=[],_0x474ba9=[];function _0x36e2b2(_0x17c9aa){var _0x553bd1=_0x5ca621;if(!_0x17c9aa)return;for(var _0x224c12=0x0;_0x224c12<_0x17c9aa['length'];_0x224c12++){var _0x1e19f2=_0x17c9aa[_0x224c12],_0x47fbfd=_0x1e19f2['typename'];if(_0x47fbfd===_0x553bd1(0x14e))_0x36e2b2(_0x1e19f2[_0x553bd1(0x143)]);else{if(_0x47fbfd===_0x553bd1(0x213)||_0x47fbfd===_0x553bd1(0x229)||_0x47fbfd===_0x553bd1(0x1b2)||_0x47fbfd===_0x553bd1(0x200)){var _0x371854=_0x1e19f2[_0x553bd1(0x18c)];while(_0x371854&&_0x371854['typename']!==_0x553bd1(0x22a)&&_0x371854[_0x553bd1(0x215)]!==_0x553bd1(0x1e4)){if(_0x371854[_0x553bd1(0x215)]===_0x553bd1(0x14e)&&_0x371854[_0x553bd1(0x1cd)]){var _0x4c0011=_0x371854[_0x553bd1(0x1f1)];if(_0x4c0011[_0x553bd1(0x206)]('GFX_TARGET_')===-0x1){var _0x26a394=_0x553bd1(0x132)+_0x474ba9[_0x553bd1(0x1f4)];_0x371854[_0x553bd1(0x1f1)]=_0x26a394,_0x4cbf65[_0x553bd1(0x167)]({'grp':_0x371854,'orig':_0x4c0011}),_0x474ba9[_0x553bd1(0x167)]({'grp':_0x371854,'tag':_0x26a394});}break;}_0x371854=_0x371854[_0x553bd1(0x18c)];}}}}}_0x5d4042?_0x36e2b2(_0x423f3e['selection']):_0x36e2b2(_0x423f3e['pageItems']);if(_0x5d4042){var _0x2b5de8=[];for(var _0x1f43b5=0x0;_0x1f43b5<_0x423f3e['selection'][_0x5ca621(0x1f4)];_0x1f43b5++){var _0xf2bd42=_0x423f3e[_0x5ca621(0x19e)][_0x1f43b5],_0x4464e1=![],_0x17b50b=_0xf2bd42[_0x5ca621(0x18c)];while(_0x17b50b&&_0x17b50b[_0x5ca621(0x215)]!==_0x5ca621(0x22a)&&_0x17b50b[_0x5ca621(0x215)]!=='Layer'){for(var _0x345eb4=0x0;_0x345eb4<_0x423f3e[_0x5ca621(0x19e)]['length'];_0x345eb4++){if(_0x423f3e[_0x5ca621(0x19e)][_0x345eb4]==_0x17b50b){_0x4464e1=!![];break;}}if(_0x4464e1)break;_0x17b50b=_0x17b50b[_0x5ca621(0x18c)];}if(!_0x4464e1)_0x2b5de8['push'](_0xf2bd42);}for(var _0x36255e=0x0;_0x36255e<_0x2b5de8['length'];_0x36255e++){if(_0x36255e%0x5===0x0||_0x36255e===_0x2b5de8[_0x5ca621(0x1f4)]-0x1)_0x49c2d9(_0x5ca621(0x180),_0x36255e,_0x2b5de8[_0x5ca621(0x1f4)]);_0x49066a(_0x2b5de8[_0x36255e],_0x352506,_0x1399e0,_0x22d39b,null,0x64,null);}}else{var _0x5f31ef={};for(var _0x4ab478=0x0;_0x4ab478<_0x423f3e['layers'][_0x5ca621(0x1f4)];_0x4ab478++){var _0x57f0c8=_0x423f3e[_0x5ca621(0xfd)][_0x4ab478];try{if(_0x57f0c8[_0x5ca621(0x143)]&&_0x57f0c8['pageItems'][_0x5ca621(0x1f4)]>0x1)for(var _0x42dfe3=0x0;_0x42dfe3<_0x57f0c8['pageItems'][_0x5ca621(0x1f4)];_0x42dfe3++){var _0x224471=_0x57f0c8[_0x5ca621(0x143)][_0x42dfe3],_0x58a5f0=![];try{if(_0x224471[_0x5ca621(0xf7)])_0x58a5f0=!![];}catch(_0x28b291){}try{if(!_0x58a5f0&&_0x224471['typename']==='CompoundPathItem'&&_0x224471[_0x5ca621(0x208)][0x0]['clipping'])_0x58a5f0=!![];}catch(_0x1f4923){}if(_0x58a5f0){_0x5f31ef[_0x57f0c8[_0x5ca621(0x1f1)]]=_0x57f0c8[_0x5ca621(0x1f1)]+'_layer_clipmask';break;}}}catch(_0x4e1728){}}for(var _0x1f43b5=0x0;_0x1f43b5<_0x423f3e[_0x5ca621(0x143)][_0x5ca621(0x1f4)];_0x1f43b5++){if(_0x1f43b5%0x32===0x0||_0x1f43b5===_0x423f3e[_0x5ca621(0x143)][_0x5ca621(0x1f4)]-0x1)_0x49c2d9(_0x5ca621(0x180),_0x1f43b5,_0x423f3e[_0x5ca621(0x143)][_0x5ca621(0x1f4)]);var _0x1ff188=_0x423f3e[_0x5ca621(0x143)][_0x1f43b5];try{if(_0x1ff188[_0x5ca621(0x18c)]&&_0x1ff188[_0x5ca621(0x18c)][_0x5ca621(0x215)]===_0x5ca621(0x1e4)){var _0x150027=_0x5f31ef[_0x1ff188[_0x5ca621(0x18c)]['name']]||null;_0x49066a(_0x1ff188,_0x352506,_0x1399e0,_0x22d39b,null,0x64,_0x150027);}}catch(_0x1e3cd8){}}}var _0x32e091=[],_0x4b0770={};for(var _0x2722fa=0x0;_0x2722fa<_0x352506[_0x5ca621(0x1f4)];_0x2722fa++){if(_0x2722fa%0x32===0x0||_0x2722fa===_0x352506[_0x5ca621(0x1f4)]-0x1)_0x49c2d9(_0x5ca621(0x1e8),_0x2722fa,_0x352506[_0x5ca621(0x1f4)]);var _0x3a0b07=_0x352506[_0x2722fa],_0x344076='';if(_0x3a0b07[_0x5ca621(0x108)]===_0x5ca621(0x185))_0x344076=_0x5ca621(0x233)+_0x3a0b07['text']+':'+_0x3a0b07['x'][_0x5ca621(0x1b3)](0x2)+':'+_0x3a0b07['y']['toFixed'](0x2)+':'+_0x3a0b07['fontSize'];else{if(_0x3a0b07['fillType']==='group'){_0x32e091[_0x5ca621(0x167)](_0x3a0b07);continue;}else{var _0x3c77ee=_0x3a0b07[_0x5ca621(0x11d)]?_0x3a0b07[_0x5ca621(0x11d)][_0x5ca621(0x1f4)]:_0x3a0b07[_0x5ca621(0x210)]?0x1:0x0,_0x34ab8b=0x0;if(_0x3a0b07[_0x5ca621(0x11d)]){for(var _0x56076a=0x0;_0x56076a<_0x3a0b07[_0x5ca621(0x11d)]['length'];_0x56076a++)_0x34ab8b+=_0x3a0b07[_0x5ca621(0x11d)][_0x56076a]&&_0x3a0b07['paths'][_0x56076a]['pts']?_0x3a0b07[_0x5ca621(0x11d)][_0x56076a][_0x5ca621(0x120)][_0x5ca621(0x1f4)]:0x0;}else{if(_0x3a0b07['path']&&_0x3a0b07['path']['pts'])_0x34ab8b=_0x3a0b07[_0x5ca621(0x210)][_0x5ca621(0x120)][_0x5ca621(0x1f4)];}var _0x3d69fa=_0x5ca621(0x21f);if(_0x3a0b07[_0x5ca621(0x108)]==='solid'&&_0x3a0b07[_0x5ca621(0x21e)])_0x3d69fa='s:'+_0x3a0b07[_0x5ca621(0x21e)][0x0][_0x5ca621(0x1b3)](0x2)+','+_0x3a0b07[_0x5ca621(0x21e)][0x1][_0x5ca621(0x1b3)](0x2);else{if(_0x3a0b07[_0x5ca621(0x108)]==='gradient'&&_0x3a0b07[_0x5ca621(0x191)])_0x3d69fa='g:'+_0x3a0b07['gradient'][_0x5ca621(0x1dd)][_0x5ca621(0x1b3)](0x2)+','+_0x3a0b07[_0x5ca621(0x191)]['startY'][_0x5ca621(0x1b3)](0x2);else{if(_0x3a0b07[_0x5ca621(0x108)]===_0x5ca621(0x17c)&&_0x3a0b07[_0x5ca621(0x17c)]&&_0x3a0b07['stroke'][_0x5ca621(0x21e)])_0x3d69fa=_0x5ca621(0x193)+_0x3a0b07[_0x5ca621(0x17c)][_0x5ca621(0x21e)][0x0][_0x5ca621(0x1b3)](0x2);}}_0x344076=_0x5ca621(0x13b)+_0x3a0b07['x']['toFixed'](0x2)+':'+_0x3a0b07['y'][_0x5ca621(0x1b3)](0x2)+':p'+_0x3c77ee+_0x5ca621(0xeb)+_0x34ab8b+':'+_0x3d69fa+_0x5ca621(0x1f3)+_0x2722fa;}}if(_0x3a0b07[_0x5ca621(0x108)]===_0x5ca621(0x185)&&_0x4b0770[_0x344076])continue;_0x4b0770[_0x344076]=!![],_0x32e091[_0x5ca621(0x167)](_0x3a0b07);}_0x352506=_0x32e091;var _0x20ede2=0x0,_0x18b6dd=0x0,_0x24df2a=0x0;for(var _0x280698=0x0;_0x280698<_0x352506[_0x5ca621(0x1f4)];_0x280698++){if(_0x352506[_0x280698][_0x5ca621(0x108)]===_0x5ca621(0x191))_0x20ede2++;else{if(_0x352506[_0x280698][_0x5ca621(0x108)]===_0x5ca621(0x17c))_0x24df2a++;else _0x18b6dd++;}}function _0x2cc638(_0x12d5b7,_0x58484c){_0x12d5b7['writeln'](_0x58484c);}function _0x2d74ae(_0x52de09,_0x561a9f,_0x19b994){var _0x5a7717=_0x5ca621;_0x2cc638(_0x52de09,_0x5a7717(0x1c9)+_0x1bf114(_0x561a9f['a'][0x0])+','+_0x1bf114(_0x561a9f['a'][0x1])+_0x5a7717(0x18f)+_0x1bf114(_0x561a9f['i'][0x0])+','+_0x1bf114(_0x561a9f['i'][0x1])+_0x5a7717(0x141)+_0x1bf114(_0x561a9f['o'][0x0])+','+_0x1bf114(_0x561a9f['o'][0x1])+']}'+(_0x19b994?'':','));}function _0x334cf3(_0x488dc7){return'['+_0x1bf114(_0x488dc7[0x0])+','+_0x1bf114(_0x488dc7[0x1])+','+_0x1bf114(_0x488dc7[0x2])+']';}var _0x3f884a=new File('C:/AEGP/grad_data.json');_0x3f884a[_0x5ca621(0x1b5)]('w'),_0x2cc638(_0x3f884a,'{'),_0x2cc638(_0x3f884a,_0x5ca621(0x10a)+_0x1bf114(_0x17b8c1)+_0x5ca621(0x160)+_0x1bf114(_0x1f3c24)+'\x20},'),_0x2cc638(_0x3f884a,_0x5ca621(0x14b)+_0x3a70b9+'\x22,'),_0x2cc638(_0x3f884a,_0x5ca621(0x1e7));for(var _0x5eafd1=0x0;_0x5eafd1<_0x352506[_0x5ca621(0x1f4)];_0x5eafd1++){var _0x3a0b07=_0x352506[_0x5eafd1];if(_0x5eafd1%0x32===0x0||_0x5eafd1===_0x352506[_0x5ca621(0x1f4)]-0x1)_0x49c2d9(_0x5ca621(0x154),_0x5eafd1,_0x352506[_0x5ca621(0x1f4)]);_0x2cc638(_0x3f884a,_0x5ca621(0x158)),_0x2cc638(_0x3f884a,'\x20\x20\x20\x20\x20\x20\x22name\x22:\x20\x22'+_0x3a0b07[_0x5ca621(0x1f1)][_0x5ca621(0xf2)](/"/g,'\x27')['replace'](/[\r\n]/g,'\x20')+_0x5ca621(0x190)),_0x2cc638(_0x3f884a,'\x20\x20\x20\x20\x20\x20\x22fillType\x22:\x20\x22'+_0x3a0b07[_0x5ca621(0x108)]+'\x22,');if(_0x3a0b07[_0x5ca621(0x18c)])_0x2cc638(_0x3f884a,_0x5ca621(0x138)+_0x3a0b07[_0x5ca621(0x18c)][_0x5ca621(0xf2)](/"/g,'\x27')['replace'](/[\r\n]/g,'\x20')+'\x22,');var _0x3162dd=_0x3a0b07[_0x5ca621(0x20f)]!==undefined?_0x3a0b07[_0x5ca621(0x20f)]:0x64;_0x2cc638(_0x3f884a,_0x5ca621(0x21c)+_0x1bf114(_0x3162dd)+',');var _0x5b178d=_0x3a0b07[_0x5ca621(0x1a6)]!==undefined?_0x3a0b07[_0x5ca621(0x1a6)]:0x1;_0x2cc638(_0x3f884a,_0x5ca621(0x10d)+_0x5b178d+','),_0x2cc638(_0x3f884a,_0x5ca621(0x22f)+_0x1bf114(_0x3a0b07['x'])+_0x5ca621(0x197)+_0x1bf114(_0x3a0b07['y'])+',');if(_0x3a0b07[_0x5ca621(0x108)]===_0x5ca621(0x1aa)){_0x2cc638(_0x3f884a,'\x20\x20\x20\x20\x20\x20\x22origName\x22:\x20\x22'+(_0x3a0b07[_0x5ca621(0x1fd)]||'')[_0x5ca621(0xf2)](/"/g,'\x27')[_0x5ca621(0xf2)](/[\r\n]/g,'\x20')+'\x22,'),_0x2cc638(_0x3f884a,_0x5ca621(0x12b)+_0x1bf114(_0x3a0b07['w'])+','),_0x2cc638(_0x3f884a,_0x5ca621(0x166)+_0x1bf114(_0x3a0b07['h']));if(_0x3a0b07[_0x5ca621(0x1a2)])_0x2cc638(_0x3f884a,_0x5ca621(0x223)+_0x3a0b07[_0x5ca621(0x1a2)][_0x5ca621(0xf2)](/"/g,'\x27')[_0x5ca621(0xf2)](/[\r\n]/g,'\x20')+'\x22');}else{if(_0x3a0b07[_0x5ca621(0x108)]===_0x5ca621(0x185)){var _0x5325b7=(_0x3a0b07['text']||'')['replace'](/\\/g,'\x5c\x5c')['replace'](/"/g,'\x5c\x22')[_0x5ca621(0xf2)](/\n/g,'\x5cn')[_0x5ca621(0xf2)](/\r/g,'\x5cr');_0x2cc638(_0x3f884a,_0x5ca621(0x1f5)+_0x5325b7+'\x22,'),_0x2cc638(_0x3f884a,'\x20\x20\x20\x20\x20\x20\x22origName\x22:\x20\x22'+(_0x3a0b07[_0x5ca621(0x1fd)]||'')['replace'](/"/g,'\x27')[_0x5ca621(0xf2)](/[\r\n]/g,'\x20')+'\x22,'),_0x2cc638(_0x3f884a,'\x20\x20\x20\x20\x20\x20\x22fontSize\x22:\x20'+_0x3a0b07[_0x5ca621(0x202)]+','),_0x2cc638(_0x3f884a,_0x5ca621(0x133)+_0x3a0b07['fontName']+'\x22,'),_0x2cc638(_0x3f884a,_0x5ca621(0x165)+_0x1bf114(_0x3a0b07['color'][0x0])+','+_0x1bf114(_0x3a0b07['color'][0x1])+','+_0x1bf114(_0x3a0b07[_0x5ca621(0x21e)][0x2])+'],'),_0x2cc638(_0x3f884a,'\x20\x20\x20\x20\x20\x20\x22rotation\x22:\x20'+_0x1bf114(_0x3a0b07[_0x5ca621(0xe8)]||0x0)+','),_0x2cc638(_0x3f884a,_0x5ca621(0x12f)+(_0x3a0b07[_0x5ca621(0x1f7)]||0x0)+','),_0x2cc638(_0x3f884a,_0x5ca621(0x20b)+_0x3a0b07[_0x5ca621(0x195)]+'');}else{if(_0x3a0b07[_0x5ca621(0x108)]===_0x5ca621(0x191)){_0x2cc638(_0x3f884a,'\x20\x20\x20\x20\x20\x20\x22gradient\x22:\x20{\x20\x22type\x22:\x22'+(_0x3a0b07[_0x5ca621(0x191)]['type']||_0x5ca621(0x1f2))+_0x5ca621(0x157)+_0x1bf114(_0x3a0b07[_0x5ca621(0x191)][_0x5ca621(0x1dd)])+',\x20\x22startY\x22:'+_0x1bf114(_0x3a0b07[_0x5ca621(0x191)][_0x5ca621(0x17b)])+','),_0x2cc638(_0x3f884a,_0x5ca621(0x18b)+_0x1bf114(_0x3a0b07[_0x5ca621(0x191)][_0x5ca621(0x203)])+_0x5ca621(0x19f)+_0x1bf114(_0x3a0b07[_0x5ca621(0x191)]['endY'])+','),_0x2cc638(_0x3f884a,_0x5ca621(0x182));var _0x358749=_0x3a0b07[_0x5ca621(0x191)][_0x5ca621(0x175)];for(var _0x266fb5=0x0;_0x266fb5<_0x358749[_0x5ca621(0x1f4)];_0x266fb5++){var _0x2bc1e6=_0x358749[_0x266fb5];_0x2cc638(_0x3f884a,_0x5ca621(0x10b)+_0x2bc1e6[_0x5ca621(0x192)]+_0x5ca621(0x111)+_0x2bc1e6[_0x5ca621(0x156)]+_0x5ca621(0x127)+_0x2bc1e6['r']+_0x5ca621(0x147)+_0x2bc1e6['g']+_0x5ca621(0x150)+_0x2bc1e6['b']+',\x22opacity\x22:'+(_0x2bc1e6[_0x5ca621(0x20f)]!==undefined?_0x2bc1e6[_0x5ca621(0x20f)]:0x1)+'}'+(_0x266fb5<_0x358749[_0x5ca621(0x1f4)]-0x1?',':''));}_0x2cc638(_0x3f884a,_0x5ca621(0x1b6)),_0x2cc638(_0x3f884a,'\x20\x20\x20\x20\x20\x20\x22paths\x22:\x20[');var _0x592e95=_0x3a0b07[_0x5ca621(0x11d)]||[_0x3a0b07[_0x5ca621(0x210)]],_0xfe4779=[];for(var _0x3bbcf4=0x0;_0x3bbcf4<_0x592e95[_0x5ca621(0x1f4)];_0x3bbcf4++){if(_0x592e95[_0x3bbcf4])_0xfe4779[_0x5ca621(0x167)](_0x592e95[_0x3bbcf4]);}for(var _0x11d829=0x0;_0x11d829<_0xfe4779['length'];_0x11d829++){var _0x5f147f=_0xfe4779[_0x11d829];_0x5f147f[_0x5ca621(0x14f)]===_0x5ca621(0x228)||_0x5f147f[_0x5ca621(0x14f)]==='ellipse'?_0x2cc638(_0x3f884a,_0x5ca621(0x1f0)+_0x5f147f['type']+_0x5ca621(0x173)+_0x1bf114(_0x5f147f[_0x5ca621(0x1ea)][0x0])+','+_0x1bf114(_0x5f147f[_0x5ca621(0x1ea)][0x1])+_0x5ca621(0x1d0)+_0x1bf114(_0x5f147f[_0x5ca621(0x192)][0x0])+','+_0x1bf114(_0x5f147f[_0x5ca621(0x192)][0x1])+'],\x20\x22closed\x22:'+(_0x5f147f[_0x5ca621(0x112)]?'true':'false')+',\x22pts\x22:['):_0x2cc638(_0x3f884a,_0x5ca621(0x1bb)+(_0x5f147f[_0x5ca621(0x112)]?_0x5ca621(0x148):_0x5ca621(0x19b))+',\x22pts\x22:[');for(var _0x1a1df7=0x0;_0x1a1df7<_0x5f147f[_0x5ca621(0x120)][_0x5ca621(0x1f4)];_0x1a1df7++)_0x2d74ae(_0x3f884a,_0x5f147f[_0x5ca621(0x120)][_0x1a1df7],_0x1a1df7===_0x5f147f['pts'][_0x5ca621(0x1f4)]-0x1);_0x2cc638(_0x3f884a,_0x5ca621(0x22e)+(_0x11d829<_0xfe4779[_0x5ca621(0x1f4)]-0x1?',':''));}_0x2cc638(_0x3f884a,_0x5ca621(0x1be));if(_0x3a0b07[_0x5ca621(0x1a2)])_0x2cc638(_0x3f884a,_0x5ca621(0x223)+_0x3a0b07[_0x5ca621(0x1a2)][_0x5ca621(0xf2)](/\"/g,'\x27')[_0x5ca621(0xf2)](/[\r\n]/g,'\x20')+'\x22');}else{if(_0x3a0b07[_0x5ca621(0x124)])_0x2cc638(_0x3f884a,'\x20\x20\x20\x20\x20\x20\x22isClipping\x22:\x20true,');if(_0x3a0b07[_0x5ca621(0x1a2)])_0x2cc638(_0x3f884a,'\x20\x20\x20\x20\x20\x20\x22clipMaskRef\x22:\x20\x22'+_0x3a0b07[_0x5ca621(0x1a2)][_0x5ca621(0xf2)](/"/g,'\x27')['replace'](/[\r\n]/g,'\x20')+'\x22,');if(_0x3a0b07[_0x5ca621(0x1ce)])_0x2cc638(_0x3f884a,_0x5ca621(0x205)+_0x334cf3(_0x3a0b07[_0x5ca621(0x1ce)][_0x5ca621(0x21e)])+'},');if(_0x3a0b07[_0x5ca621(0x17c)])_0x2cc638(_0x3f884a,_0x5ca621(0x201)+_0x334cf3(_0x3a0b07[_0x5ca621(0x17c)][_0x5ca621(0x21e)])+',\x22strokeWidth\x22:'+_0x1bf114(_0x3a0b07[_0x5ca621(0x17c)]['strokeWidth']||0x1)+'},');_0x2cc638(_0x3f884a,_0x5ca621(0x16c));var _0x592e95=_0x3a0b07[_0x5ca621(0x11d)]||[],_0xfe4779=[];for(var _0x3bbcf4=0x0;_0x3bbcf4<_0x592e95[_0x5ca621(0x1f4)];_0x3bbcf4++){if(_0x592e95[_0x3bbcf4])_0xfe4779['push'](_0x592e95[_0x3bbcf4]);}for(var _0x11d829=0x0;_0x11d829<_0xfe4779[_0x5ca621(0x1f4)];_0x11d829++){var _0x5f147f=_0xfe4779[_0x11d829];_0x5f147f[_0x5ca621(0x14f)]==='rect'||_0x5f147f[_0x5ca621(0x14f)]===_0x5ca621(0x1e6)?_0x2cc638(_0x3f884a,'\x20\x20\x20\x20\x20\x20\x20\x20{\x22type\x22:\x22'+_0x5f147f[_0x5ca621(0x14f)]+'\x22,\x20\x22size\x22:['+_0x1bf114(_0x5f147f[_0x5ca621(0x1ea)][0x0])+','+_0x1bf114(_0x5f147f['size'][0x1])+'],\x20\x22pos\x22:['+_0x1bf114(_0x5f147f[_0x5ca621(0x192)][0x0])+','+_0x1bf114(_0x5f147f[_0x5ca621(0x192)][0x1])+'],\x20\x22closed\x22:'+(_0x5f147f[_0x5ca621(0x112)]?_0x5ca621(0x148):_0x5ca621(0x19b))+_0x5ca621(0x225)):_0x2cc638(_0x3f884a,_0x5ca621(0x1bb)+(_0x5f147f[_0x5ca621(0x112)]?_0x5ca621(0x148):_0x5ca621(0x19b))+',\x22pts\x22:[');for(var _0x1a1df7=0x0;_0x1a1df7<_0x5f147f[_0x5ca621(0x120)]['length'];_0x1a1df7++)_0x2d74ae(_0x3f884a,_0x5f147f['pts'][_0x1a1df7],_0x1a1df7===_0x5f147f[_0x5ca621(0x120)][_0x5ca621(0x1f4)]-0x1);_0x2cc638(_0x3f884a,_0x5ca621(0x22e)+(_0x11d829<_0xfe4779[_0x5ca621(0x1f4)]-0x1?',':''));}_0x2cc638(_0x3f884a,_0x5ca621(0x1be));}}}_0x2cc638(_0x3f884a,_0x5ca621(0x162)+(_0x5eafd1<_0x352506[_0x5ca621(0x1f4)]-0x1?',':''));}_0x2cc638(_0x3f884a,_0x5ca621(0x186)),_0x2cc638(_0x3f884a,'}'),_0x3f884a[_0x5ca621(0x188)]();var _0x179ce0='';for(var _0x874f8e=0x0;_0x874f8e<_0x352506[_0x5ca621(0x1f4)];_0x874f8e++){var _0xcbd879=_0x352506[_0x874f8e];if(_0xcbd879['fillType']===_0x5ca621(0x191)){var _0x424680=_0xcbd879[_0x5ca621(0x191)],_0x52bb5a=_0xcbd879[_0x5ca621(0x1b1)]!==undefined?_0xcbd879[_0x5ca621(0x1b1)]:_0x424680[_0x5ca621(0x1d4)];_0x179ce0+=_0x5ca621(0x189)+_0xcbd879['name']+']:',_0x179ce0+=_0x5ca621(0x231)+Math['round'](_0xcbd879[_0x5ca621(0xf0)])+'Â°',_0x179ce0+=_0x5ca621(0x11f)+Math[_0x5ca621(0x1ef)](_0xcbd879[_0x5ca621(0x1db)]||0x0)+'Â°',_0x179ce0+=_0x5ca621(0x14a)+Math[_0x5ca621(0x1ef)](_0x52bb5a)+_0x5ca621(0x230),_0x179ce0+=_0x5ca621(0x1cb)+Math[_0x5ca621(0x1ef)](_0x424680['startX'])+','+Math[_0x5ca621(0x1ef)](_0x424680[_0x5ca621(0x17b)])+')',_0x179ce0+=_0x5ca621(0xfb)+Math[_0x5ca621(0x1ef)](_0x424680['endX'])+','+Math[_0x5ca621(0x1ef)](_0x424680['endY'])+')';}}var _0x370854=_0x5ca621(0x1ec)+(_0x5d4042?'MODO:\x20Somente\x20selecionados\x20('+_0x423f3e[_0x5ca621(0x19e)][_0x5ca621(0x1f4)]+_0x5ca621(0x1ed):'MODO:\x20Documento\x20completo')+'\x0a'+_0x5ca621(0x1c5)+Math[_0x5ca621(0x1ef)](_0x17b8c1)+'x'+Math[_0x5ca621(0x1ef)](_0x1f3c24)+'\x0a'+'GRADIENTES:\x20'+_0x20ede2+_0x5ca621(0x1f9)+_0x18b6dd+_0x5ca621(0x11c)+_0x24df2a+'\x0a'+_0x5ca621(0x1cf)+_0x352506[_0x5ca621(0x1f4)]+_0x5ca621(0x1fb)+(_0x179ce0?_0x5ca621(0x140)+_0x179ce0:''),_0x1bf02f=[];try{var _0x436af8=_0x5ca621(0x144);if(typeof $['flashFillExportPath']!==_0x5ca621(0x15f)&&$[_0x5ca621(0x1d6)]){if($[_0x5ca621(0x1d6)]===_0x5ca621(0x170)){var _0x594918=Folder[_0x5ca621(0x1c3)](_0x5ca621(0x1b9));_0x594918&&(_0x436af8=_0x594918['fsName']);}else _0x436af8=$[_0x5ca621(0x1d6)];}var _0x55d86d=new Folder(_0x436af8);if(!_0x55d86d[_0x5ca621(0x194)])_0x55d86d[_0x5ca621(0x137)]();var _0x1b7a5a=new Date()[_0x5ca621(0x219)]()[_0x5ca621(0x22d)](),_0x552391=new Folder(_0x55d86d[_0x5ca621(0x1c6)]+'/'+_0x1b7a5a);if(!_0x552391[_0x5ca621(0x194)])_0x552391[_0x5ca621(0x137)]();function _0x469887(_0xe9ce4e){var _0x4d1693=_0x5ca621,_0x169281=_0xe9ce4e[_0x4d1693(0x18c)];while(_0x169281&&_0x169281[_0x4d1693(0x215)]!=='Document'&&_0x169281[_0x4d1693(0x215)]!=='Layer'){if(_0x169281[_0x4d1693(0x215)]===_0x4d1693(0x14e)&&_0x169281[_0x4d1693(0x1cd)])return _0x169281;_0x169281=_0x169281['parent'];}return _0xe9ce4e;}var _0x1d6a25={},_0x91e662=[];function _0x27163b(_0x4be67f){var _0x57685c=_0x5ca621,_0x4371a8=_0x4be67f[_0x57685c(0x18c)];while(_0x4371a8&&_0x4371a8['typename']!==_0x57685c(0x22a)&&_0x4371a8[_0x57685c(0x215)]!==_0x57685c(0x1e4)){if(_0x4371a8[_0x57685c(0x215)]===_0x57685c(0x14e)&&_0x4371a8[_0x57685c(0x1cd)]){var _0x5b4535=_0x4371a8[_0x57685c(0x1f1)]||null;if(_0x5b4535&&_0x5b4535[_0x57685c(0x206)](_0x57685c(0x132))===0x0)return{'tag':_0x5b4535};return null;}_0x4371a8=_0x4371a8[_0x57685c(0x18c)];}return null;}function _0x43a139(_0x386019){var _0x1eddc5=_0x5ca621;if(!_0x386019)return;for(var _0x3747c2=0x0;_0x3747c2<_0x386019[_0x1eddc5(0x1f4)];_0x3747c2++){var _0xfd25b8=_0x386019[_0x3747c2],_0xb3e521=_0xfd25b8[_0x1eddc5(0x215)];if(_0xb3e521==='GroupItem')_0x43a139(_0xfd25b8[_0x1eddc5(0x143)]);else{if(_0xb3e521===_0x1eddc5(0x213)||_0xb3e521===_0x1eddc5(0x229)||_0xb3e521==='NonNativeItem'||_0xb3e521===_0x1eddc5(0x200))try{var _0x5d0cf3=_0xfd25b8['visibleBounds'][_0x1eddc5(0x1ae)]('|');if(!_0x1d6a25[_0x5d0cf3]){_0x1d6a25[_0x5d0cf3]=!![];var _0x2f5ac0=_0x27163b(_0xfd25b8);_0x91e662[_0x1eddc5(0x167)]({'item':_0xfd25b8,'clipLayerName':_0x2f5ac0?_0x2f5ac0[_0x1eddc5(0x1c7)]:null});}}catch(_0x54cff6){}}}}_0x5d4042?_0x43a139(_0x423f3e[_0x5ca621(0x19e)]):_0x43a139(_0x423f3e['pageItems']);for(var _0x3f2dcb=0x0;_0x3f2dcb<_0x91e662['length'];_0x3f2dcb++){var _0x213853=_0x91e662[_0x3f2dcb],_0x5ad3a0=_0x213853[_0x5ca621(0x1d7)],_0x1c4b9f;try{var _0x4c7fa5=_0x5ad3a0[_0x5ca621(0x12c)],_0x2466f9=_0x4c7fa5[0x0],_0x242b43=_0x4c7fa5[0x1],_0x299b88=_0x4c7fa5[0x2],_0x2047fe=_0x4c7fa5[0x3],_0x26fb8f=Math[_0x5ca621(0x1e2)](_0x299b88-_0x2466f9),_0x54d21b=Math[_0x5ca621(0x1e2)](_0x242b43-_0x2047fe);if(_0x26fb8f<0x1||_0x54d21b<0x1)continue;var _0x46463f=(_0x2466f9+_0x299b88)/0x2,_0x7a92af=(_0x242b43+_0x2047fe)/0x2,_0x504f51=_0x46463f-_0x1399e0,_0x1b4158=_0x22d39b-_0x7a92af,_0x213b8a='img_'+_0x3f2dcb+'_'+new Date()[_0x5ca621(0x219)]()+_0x5ca621(0x181),_0x5ad86d=_0x552391[_0x5ca621(0x1c6)]+'/'+_0x213b8a,_0x5284ef=new File(_0x5ad86d);app[_0x5ca621(0x1e1)][_0x5ca621(0x19e)]=null;var _0x13486e=app[_0x5ca621(0x1e1)]['selection'];if(_0x13486e&&_0x13486e[_0x5ca621(0x1f4)]>0x0)for(var _0x4099dd=_0x13486e[_0x5ca621(0x1f4)]-0x1;_0x4099dd>=0x0;_0x4099dd--){try{_0x13486e[_0x4099dd][_0x5ca621(0x1bd)]=![];}catch(_0x3c0880){}}_0x5ad3a0[_0x5ca621(0x1bd)]=!![],app[_0x5ca621(0x119)](),_0x5ad3a0['selected']=![],_0x1c4b9f=app['documents'][_0x5ca621(0xfc)](DocumentColorSpace[_0x5ca621(0x1e3)],_0x26fb8f+0x2,_0x54d21b+0x2,0x1,DocumentArtboardLayout['GridByRow'],0x1,0x1),app[_0x5ca621(0x204)]();var _0x3451ae=_0x1c4b9f[_0x5ca621(0x143)][0x0];if(_0x3451ae){var _0x592b03=_0x3451ae[_0x5ca621(0x12c)];_0x1c4b9f[_0x5ca621(0x20a)][0x0][_0x5ca621(0x15d)]=[_0x592b03[0x0],_0x592b03[0x1],_0x592b03[0x2],_0x592b03[0x3]];}var _0x52d2cb=new ExportOptionsPNG24();_0x52d2cb[_0x5ca621(0x136)]=!![],_0x52d2cb[_0x5ca621(0x1a8)]=!![],_0x52d2cb[_0x5ca621(0x1c8)]=!![],_0x52d2cb[_0x5ca621(0xfa)]=0x64,_0x52d2cb[_0x5ca621(0x1e5)]=0x64,_0x1c4b9f[_0x5ca621(0x198)](_0x5284ef,ExportType['PNG24'],_0x52d2cb),_0x1c4b9f[_0x5ca621(0x188)](SaveOptions['DONOTSAVECHANGES']),_0x1c4b9f=null,_0x423f3e[_0x5ca621(0x19e)]=null,_0x5284ef[_0x5ca621(0x194)]&&_0x1bf02f['push']({'path':_0x5ad86d[_0x5ca621(0xf2)](/\\/g,'/'),'x':_0x504f51,'y':_0x1b4158,'w':_0x26fb8f,'h':_0x54d21b,'clipLayerName':_0x213853[_0x5ca621(0x1ee)]});}catch(_0x3aad4f){try{if(_0x1c4b9f)_0x1c4b9f[_0x5ca621(0x188)](SaveOptions[_0x5ca621(0x100)]);}catch(_0x1c6d0e){}}}}catch(_0x25dcdf){}if(BridgeTalk[_0x5ca621(0x1eb)]('aftereffects')){var _0x5949bf=new BridgeTalk();_0x5949bf['target']='aftereffects';var _0x5364f6='',_0x347d97=typeof $['flashFillExportPath']!==_0x5ca621(0x15f)&&$[_0x5ca621(0x1d6)]!==_0x5ca621(0x170)?$[_0x5ca621(0x1d6)]:'C:/AEGP/img_export';_0x5364f6+=_0x5ca621(0x1bc)+_0x347d97+_0x5ca621(0x1fa),_0x5364f6+=_0x5ca621(0x1ff)+BridgeTalk['appSpecifier']+'\x27;\x0a';if($[_0x5ca621(0x164)]===_0x5ca621(0x1aa))_0x5364f6+='var\x20fgPaths\x20=\x20[\x0a',_0x5364f6+=_0x5ca621(0xf5),_0x5364f6+='\x20\x20Folder.myDocuments.fsName\x20+\x20\x27/SDKAFTERGRADIENTE/SplitGroup.jsx\x27\x0a',_0x5364f6+=_0x5ca621(0x21a),_0x5364f6+=_0x5ca621(0x1f6),_0x5364f6+=_0x5ca621(0x13a),_0x5364f6+='\x20\x20var\x20fg=new\x20File(fgPaths[j]);\x0a',_0x5364f6+=_0x5ca621(0x1ba),_0x5364f6+='}\x0a',_0x5364f6+=_0x5ca621(0x221);else{_0x5364f6+=_0x5ca621(0x199),_0x5364f6+=_0x5ca621(0x234),_0x5364f6+=_0x5ca621(0x18a),_0x5364f6+=_0x5ca621(0x1c0),_0x5364f6+='];\x0a',_0x5364f6+=_0x5ca621(0xfe),_0x5364f6+=_0x5ca621(0x159),_0x5364f6+=_0x5ca621(0x117),_0x5364f6+='\x20\x20if(f.exists){\x20f.open(\x27r\x27);\x20eval(f.read());\x20f.close();\x20fileFound=true;\x20break;\x20}\x0a',_0x5364f6+='}\x0a',_0x5364f6+=_0x5ca621(0x139);if(_0x20ede2>0x0){_0x5364f6+='var\x20gCmd\x20=\x20app.findMenuCommandId(\x27GRAD\x20FIXER:\x20Aplicar\x20Gradientes\x27);\x0a',_0x5364f6+=_0x5ca621(0x13d),_0x5364f6+=_0x5ca621(0x18d),_0x5364f6+='\x20\x20var\x20_dbgAc\x20=\x20app.project.activeItem;\x0a',_0x5364f6+=_0x5ca621(0x16a),_0x5364f6+=_0x5ca621(0x13c),_0x5364f6+=_0x5ca621(0x174),_0x5364f6+=_0x5ca621(0x131),_0x5364f6+=_0x5ca621(0x17d),_0x5364f6+=_0x5ca621(0x130),_0x5364f6+=_0x5ca621(0x1c2),_0x5364f6+=_0x5ca621(0x113),_0x5364f6+=_0x5ca621(0x1d8),_0x5364f6+=_0x5ca621(0x1c1),_0x5364f6+=_0x5ca621(0x105),_0x5364f6+=_0x5ca621(0x21b),_0x5364f6+=_0x5ca621(0x20d),_0x5364f6+='\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if(_dc.property(_dk).matchName===\x27ADBE\x20Vector\x20Graphic\x20-\x20G-Fill\x27){_hasGFill=true;break;}\x0a',_0x5364f6+=_0x5ca621(0x106),_0x5364f6+=_0x5ca621(0x149),_0x5364f6+=_0x5ca621(0x13f),_0x5364f6+=_0x5ca621(0x11b),_0x5364f6+='\x20\x20\x20\x20\x20\x20_dbgLog\x20+=\x20\x27[\x27\x20+\x20_di\x20+\x20\x27]\x20\x27\x20+\x20_dl.name\x20+\x20\x27\x20|\x20comment=\x27\x20+\x20(_dl.comment||\x27\x27)\x20+\x20\x27\x20|\x20G-Fill=\x27\x20+\x20_hasGFill\x20+\x20\x27\x5cn\x27;\x0a',_0x5364f6+=_0x5ca621(0x1a7),_0x5364f6+=_0x5ca621(0x1ad),_0x5364f6+=_0x5ca621(0x235),_0x5364f6+=_0x5ca621(0x187),_0x5364f6+=_0x5ca621(0x19a),_0x5364f6+=_0x5ca621(0x224),_0x5364f6+=_0x5ca621(0x1d5);for(var _0x46cc92=0x0;_0x46cc92<_0x352506[_0x5ca621(0x1f4)];_0x46cc92++){_0x352506[_0x46cc92][_0x5ca621(0x108)]===_0x5ca621(0x191)&&_0x352506[_0x46cc92][_0x5ca621(0x1a2)]&&(_0x5364f6+=_0x5ca621(0x1af)+_0x352506[_0x46cc92]['name']+_0x5ca621(0x179)+_0x352506[_0x46cc92]['clipMaskRef']+_0x5ca621(0x211));}_0x5364f6+='}\x0a',_0x5364f6+='if(_ac\x20instanceof\x20CompItem){\x0a',_0x5364f6+=_0x5ca621(0x122),_0x5364f6+=_0x5ca621(0x1e0),_0x5364f6+=_0x5ca621(0xee),_0x5364f6+=_0x5ca621(0xef),_0x5364f6+=_0x5ca621(0x1ad),_0x5364f6+='}\x0a';}}if(_0x1bf02f[_0x5ca621(0x1f4)]>0x0){_0x5364f6+=_0x5ca621(0x232),_0x5364f6+='\x20\x20var\x20_imgComp\x20=\x20app.project.activeItem;\x0a',_0x5364f6+=_0x5ca621(0x12a);for(var _0x382acd=0x0;_0x382acd<_0x1bf02f[_0x5ca621(0x1f4)];_0x382acd++){var _0x2356d6=_0x1bf02f[_0x382acd];_0x5364f6+=_0x5ca621(0x15a),_0x5364f6+='\x20\x20\x20\x20\x20\x20var\x20_imgF\x20=\x20new\x20File(\x27'+_0x2356d6[_0x5ca621(0x210)]+_0x5ca621(0x1fe),_0x5364f6+='\x20\x20\x20\x20\x20\x20if\x20(_imgF.exists)\x20{\x0a',_0x5364f6+=_0x5ca621(0x153),_0x5364f6+='\x20\x20\x20\x20\x20\x20\x20\x20var\x20_imgItem\x20=\x20app.project.importFile(_imgIO);\x0a',_0x5364f6+=_0x5ca621(0x103),_0x5364f6+=_0x5ca621(0x1a0)+_0x2356d6['x'][_0x5ca621(0x1b3)](0x3)+',\x20'+_0x2356d6['y'][_0x5ca621(0x1b3)](0x3)+_0x5ca621(0x22b);if(_0x2356d6[_0x5ca621(0x1ee)]){var _0x5ae519=_0x5ca621(0x1b8)+_0x2356d6[_0x5ca621(0x1ee)];_0x5364f6+=_0x5ca621(0xf3),_0x5364f6+=_0x5ca621(0x18e),_0x5364f6+=_0x5ca621(0x169),_0x5364f6+='\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20for(var\x20_s=1;\x20_s<=_imgComp.numLayers;\x20_s++){\x0a',_0x5364f6+=_0x5ca621(0x102),_0x5364f6+=_0x5ca621(0xff),_0x5364f6+='\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if(_c.indexOf(\x27'+_0x5ae519+_0x5ca621(0x1da),_0x5364f6+=_0x5ca621(0x110),_0x5364f6+=_0x5ca621(0x123),_0x5364f6+=_0x5ca621(0x149),_0x5364f6+=_0x5ca621(0x161),_0x5364f6+=_0x5ca621(0x1a5),_0x5364f6+='\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20_c2\x20=\x20_imgComp.layer(_s2).comment\x20||\x20\x27\x27;\x0a',_0x5364f6+=_0x5ca621(0x129)+_0x5ae519+_0x5ca621(0x218),_0x5364f6+=_0x5ca621(0x16b),_0x5364f6+='\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a',_0x5364f6+=_0x5ca621(0x123),_0x5364f6+='\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a',_0x5364f6+=_0x5ca621(0x20c),_0x5364f6+=_0x5ca621(0x109),_0x5364f6+=_0x5ca621(0x12e),_0x5364f6+='\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20_imgLyr.trackMatteType\x20=\x20TrackMatteType.ALPHA;\x0a',_0x5364f6+=_0x5ca621(0x149),_0x5364f6+=_0x5ca621(0x145);}_0x5364f6+='\x20\x20\x20\x20\x20\x20\x20\x20var\x20_vetIdx\x20=\x200;\x0a',_0x5364f6+=_0x5ca621(0x1f8),_0x5364f6+='\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if(_imgComp.layer(_vi).name===\x27Vetores\x27){_vetIdx=_vi;break;}\x0a',_0x5364f6+=_0x5ca621(0x13f),_0x5364f6+=_0x5ca621(0x118),_0x5364f6+=_0x5ca621(0x107),_0x5364f6+=_0x5ca621(0x121);}_0x5364f6+='\x20\x20}\x0a',_0x5364f6+='}\x20catch(_eIMG)\x20{}\x0a';}var _0x4883bd=![];_0x5949bf[_0x5ca621(0x125)]=_0x5364f6,_0x5949bf[_0x5ca621(0x17e)](),_0x4883bd=!![],$['flashFillMode']='';}else alert('O\x20After\x20Effects\x20precisa\x20estar\x20aberto\x20para\x20importar\x20automaticamente!\x0aAbra\x20o\x20AE\x20e\x20rode\x20o\x20SplitLayer\x20manualmente.');for(var _0x35f677=0x0;_0x35f677<_0x4cbf65[_0x5ca621(0x1f4)];_0x35f677++){try{_0x4cbf65[_0x35f677][_0x5ca621(0x214)][_0x5ca621(0x1f1)]=_0x4cbf65[_0x35f677][_0x5ca621(0x128)];}catch(_0x72a2dc){}}_0x128be4();}()));
+// ExtrairGradiente.jsx v11 â€” Gradientes confiÃ¡veis + closed flag + strokes
+// Baseado no v6/v7 que funcionava para gradientes + formato overlord (closed real)
+(function () {
+    function toFixed(n) { if (typeof n !== 'number' || isNaN(n) || !isFinite(n)) return '0.000000'; return n.toFixed(6); }
+
+    function colorToRGB(c) {
+        if (!c) return null;
+        try {
+            if (c.typename === "SpotColor") c = c.spot.color;
+            if (c.typename === "RGBColor") return [c.red / 255, c.green / 255, c.blue / 255];
+            if (c.typename === "CMYKColor") { var cy = c.cyan / 100, m = c.magenta / 100, y = c.yellow / 100, k = c.black / 100; return [(1 - cy) * (1 - k), (1 - m) * (1 - k), (1 - y) * (1 - k)]; }
+            if (c.typename === "GrayColor") { var gv = 1 - c.gray / 100; return [gv, gv, gv]; }
+        } catch (e) { }
+        return null;
+    }
+
+    function getPathData(pathItem, cx, cy) {
+        if (!pathItem || !pathItem.pathPoints || pathItem.pathPoints.length < 2) return null;
+        var pts = [];
+        for (var p = 0; p < pathItem.pathPoints.length; p++) {
+            var pt = pathItem.pathPoints[p];
+            pts.push({
+                a: [pt.anchor[0] - cx, cy - pt.anchor[1]],
+                i: [pt.leftDirection[0] - pt.anchor[0], pt.anchor[1] - pt.leftDirection[1]],
+                o: [pt.rightDirection[0] - pt.anchor[0], pt.anchor[1] - pt.rightDirection[1]]
+            });
+        }
+        
+        var isRect = false;
+        var rectSize = [0, 0];
+        if (pts.length >= 4) {
+            var minX = pts[0].a[0], maxX = pts[0].a[0];
+            var minY = pts[0].a[1], maxY = pts[0].a[1];
+            for (var i = 1; i < pts.length; i++) {
+                minX = Math.min(minX, pts[i].a[0]);
+                maxX = Math.max(maxX, pts[i].a[0]);
+                minY = Math.min(minY, pts[i].a[1]);
+                maxY = Math.max(maxY, pts[i].a[1]);
+            }
+            var w = Math.abs(maxX - minX);
+            var h = Math.abs(maxY - minY);
+            
+            var isAxisAligned = true;
+            var cornersHit = { tl: false, tr: false, bl: false, br: false };
+            for (var i = 0; i < pts.length; i++) {
+                var dx1 = Math.abs(pts[i].a[0] - minX);
+                var dx2 = Math.abs(pts[i].a[0] - maxX);
+                var dy1 = Math.abs(pts[i].a[1] - minY);
+                var dy2 = Math.abs(pts[i].a[1] - maxY);
+                if (Math.min(dx1, dx2) > 2.0 || Math.min(dy1, dy2) > 2.0) {
+                    isAxisAligned = false; break;
+                }
+                var isMinX = dx1 <= 2.0;
+                var isMaxX = dx2 <= 2.0;
+                var isMinY = dy1 <= 2.0;
+                var isMaxY = dy2 <= 2.0;
+                if (isMinX && isMinY) cornersHit.tl = true;
+                if (isMaxX && isMinY) cornersHit.tr = true;
+                if (isMinX && isMaxY) cornersHit.bl = true;
+                if (isMaxX && isMaxY) cornersHit.br = true;
+            }
+            
+            if (isAxisAligned && w > 0 && h > 0 && cornersHit.tl && cornersHit.tr && cornersHit.bl && cornersHit.br) {
+                isRect = true;
+                rectSize = [w, h];
+            }
+        }
+        
+        var isEllipse = false;
+        var ellipseSize = [0, 0];
+        if (pts.length >= 4 && !isRect) {
+            var minX = pts[0].a[0], maxX = pts[0].a[0];
+            var minY = pts[0].a[1], maxY = pts[0].a[1];
+            for (var i = 1; i < pts.length; i++) {
+                minX = Math.min(minX, pts[i].a[0]);
+                maxX = Math.max(maxX, pts[i].a[0]);
+                minY = Math.min(minY, pts[i].a[1]);
+                maxY = Math.max(maxY, pts[i].a[1]);
+            }
+            var w = Math.abs(maxX - minX);
+            var h = Math.abs(maxY - minY);
+            var midX = (minX + maxX) / 2;
+            var midY = (minY + maxY) / 2;
+            
+            var isAxisAlignedEllipse = true;
+            var edgesHit = { t: false, b: false, l: false, r: false };
+            for (var i = 0; i < pts.length; i++) {
+                var onVertEdge = (Math.abs(pts[i].a[0] - minX) < 2.0 || Math.abs(pts[i].a[0] - maxX) < 2.0) && Math.abs(pts[i].a[1] - midY) < 2.0;
+                var onHorizEdge = (Math.abs(pts[i].a[1] - minY) < 2.0 || Math.abs(pts[i].a[1] - maxY) < 2.0) && Math.abs(pts[i].a[0] - midX) < 2.0;
+                if (!onVertEdge && !onHorizEdge) {
+                    isAxisAlignedEllipse = false; break;
+                }
+                if (Math.abs(pts[i].a[1] - minY) < 2.0 && Math.abs(pts[i].a[0] - midX) < 2.0) edgesHit.t = true;
+                if (Math.abs(pts[i].a[1] - maxY) < 2.0 && Math.abs(pts[i].a[0] - midX) < 2.0) edgesHit.b = true;
+                if (Math.abs(pts[i].a[0] - minX) < 2.0 && Math.abs(pts[i].a[1] - midY) < 2.0) edgesHit.l = true;
+                if (Math.abs(pts[i].a[0] - maxX) < 2.0 && Math.abs(pts[i].a[1] - midY) < 2.0) edgesHit.r = true;
+            }
+            
+            if (isAxisAlignedEllipse && w > 0 && h > 0 && edgesHit.t && edgesHit.b && edgesHit.l && edgesHit.r) {
+                isEllipse = true;
+                ellipseSize = [w, h];
+            }
+        }
+        
+        if (isRect) return { type: "rect", size: rectSize, pos: [0, 0], pts: pts, closed: true };
+        if (isEllipse) return { type: "ellipse", size: ellipseSize, pos: [0, 0], pts: pts, closed: true };
+
+        return { type: "path", pts: pts, closed: pathItem.closed };
+    }
+
+    // Extrai path ABSOLUTO para o GRAD FIXER (usa artboard como origem)
+    function getPathAbs(pathItem, abLeft, abTop) {
+        if (!pathItem || !pathItem.pathPoints || pathItem.pathPoints.length < 2) return null;
+        var pts = [];
+        for (var p = 0; p < pathItem.pathPoints.length; p++) {
+            var pt = pathItem.pathPoints[p];
+            pts.push({
+                a: [pt.anchor[0] - abLeft, abTop - pt.anchor[1]],
+                i: [pt.leftDirection[0] - pt.anchor[0], -(pt.leftDirection[1] - pt.anchor[1])],
+                o: [pt.rightDirection[0] - pt.anchor[0], -(pt.rightDirection[1] - pt.anchor[1])]
+            });
+        }
+        return { pts: pts, closed: pathItem.closed };
+    }
+
+    function isNum(v) { return typeof v === 'number' && !isNaN(v) && isFinite(v); }
+
+    // Extrai numero de uma fonte ExtendScript como "({a:0, b:-1920, tx:540})"
+    function parseNumFromSrc(src, key) {
+        var idx = src.indexOf('"' + key + '":');
+        if (idx < 0) idx = src.indexOf(key + ':');
+        if (idx < 0) return NaN;
+        var start = idx + key.length + 1;
+        while (start < src.length && (src[start] === ' ' || src[start] === '"' || src[start] === ':')) start++;
+        var end = start;
+        while (end < src.length && (src[end] === '-' || src[end] === '.' || (src[end] >= '0' && src[end] <= '9'))) end++;
+        return parseFloat(src.substring(start, end));
+    }
+
+    function processGradientFill(fc, item, pathsToProcess, results, abLeft, abTop, parentID, itemOpacity, cx, cy, aeX, aeY, clipParentMaskID) {
+        var grad = fc.gradient;
+
+        // METODO 1: fc.matrix via .toSource() (parsing confiavel no ExtendScript)
+        // Propriedades diretas m.a, m.tx retornam undefined nessa versao do AI.
+        // .toSource() serializa o objeto como string JS: "({a:0, b:-1920, tx:540, ty:1920})"
+        // Interpretacao: matriz 2D afim que mapeia [0,0] â†’ inicio do gradiente, [1,0] â†’ fim
+        //   inicio (em AI): [matrix.tx, matrix.ty]
+        //   fim    (em AI): [matrix.a + matrix.tx, matrix.b + matrix.ty]
+        var ox, oy, ex, ey;
+        var usedMatrix = false;
+        var matSrc = "";
+        try {
+            var m = fc.matrix;
+            // Tenta acesso direto primeiro (algumas versoes funcionam)
+            var ma = m.a, mb = m.b, mtx = m.tx, mty = m.ty;
+            if (!isNum(ma) || !isNum(mb) || !isNum(mtx) || !isNum(mty)) {
+                // Fallback: serializa via toSource() e parseia a string
+                try { matSrc = m.toSource(); } catch (e2) { }
+                if (matSrc.length > 5) {
+                    ma = parseNumFromSrc(matSrc, "a");
+                    mb = parseNumFromSrc(matSrc, "b");
+                    mtx = parseNumFromSrc(matSrc, "tx");
+                    mty = parseNumFromSrc(matSrc, "ty");
+                }
+            }
+            if (isNum(ma) && isNum(mb) && isNum(mtx) && isNum(mty)) {
+                ox = mtx - abLeft;
+                oy = abTop - mty;
+                ex = (ma + mtx) - abLeft;
+                ey = abTop - (mb + mty);
+                usedMatrix = true;
+            }
+        } catch (e) { }
+
+        // METODO 2: fc.origin + fc.angle + fc.length (funciona perfeitamente para gradientes do painel)
+        var ox1 = 0, oy1 = 0, ex1 = 100, ey1 = 0;
+        var panelAngle = 0;
+        var shapeRotation = 0;
+        try { shapeRotation = item.rotation || 0; } catch(eRot) {}
+        try {
+            panelAngle = fc.angle || 0;
+            // ANGULO EFETIVO no AE (world space) = angulo_painel - rotacao_shape
+            // Exemplo: shape rotated 90Â°, local gradient 0Â° (horizontal)
+            //   effective = 0Â° - 90Â° = -90Â° â†’ VERTICAL topâ†’bottom âœ“
+            // Exemplo: shape rotated 0Â°, panel gradient -90Â°
+            //   effective = -90Â° - 0Â° = -90Â° â†’ VERTICAL topâ†’bottom âœ“
+            var effectiveAngle = panelAngle - shapeRotation;
+            ox1 = fc.origin[0] - abLeft;
+            oy1 = abTop - fc.origin[1];
+            var rad1 = effectiveAngle * Math.PI / 180.0;
+            ex1 = ox1 + fc.length * Math.cos(rad1);
+            ey1 = oy1 - fc.length * Math.sin(rad1);
+        } catch (e) { }
+        if (!usedMatrix) { ox = ox1; oy = oy1; ex = ex1; ey = ey1; }
+
+        // GARANTIA FINAL: nunca NaN no JSON
+        if (!isNum(ox)) ox = ox1; if (!isNum(oy)) oy = oy1;
+        if (!isNum(ex)) ex = ex1; if (!isNum(ey)) ey = ey1;
+        if (!isNum(ox)) ox = 0; if (!isNum(oy)) oy = 0;
+        if (!isNum(ex)) ex = 100; if (!isNum(ey)) ey = 0;
+
+        // effectiveAngle para o C++ usar no center+angle (imune ao offset de artboard)
+        var effectiveForExport = panelAngle - shapeRotation;
+
+        var gradTypeStr = "linear";
+        try {
+            if (grad.type && grad.type.toString().indexOf("RADIAL") > -1) {
+                gradTypeStr = "radial";
+            }
+        } catch(e) {}
+
+        var stops = [];
+        for (var g = 0; g < grad.gradientStops.length; g++) {
+            var gs = grad.gradientStops[g];
+            var rgb = colorToRGB(gs.color);
+            var opac = 100; try { opac = gs.opacity; } catch(e){}
+            if (rgb) stops.push({ pos: gs.rampPoint / 100, mid: gs.midPoint / 100, r: rgb[0], g: rgb[1], b: rgb[2], opacity: opac / 100 });
+        }
+        var allPaths = [];
+        for (var pi = 0; pi < pathsToProcess.length; pi++) {
+            var relPath = getPathData(pathsToProcess[pi], cx, cy);
+            if (relPath) allPaths.push(relPath);
+        }
+        if (allPaths.length === 0) {
+            // FALLBACK: Se nenhum sub-path tinha pontos suficientes,
+            // usa o bounding-box do item como rectangle path de emergência.
+            // Isso garante que o shape aparece no JSON e no AE.
+            try {
+                var fb = item.geometricBounds; // [left, top, right, bottom]
+                var fbW = Math.abs(fb[2] - fb[0]);
+                var fbH = Math.abs(fb[1] - fb[3]);
+                var hW = fbW / 2, hH = fbH / 2;
+                allPaths.push({
+                    pts: [
+                        { a: [-hW, -hH], i: [0, 0], o: [0, 0] },
+                        { a: [ hW, -hH], i: [0, 0], o: [0, 0] },
+                        { a: [ hW,  hH], i: [0, 0], o: [0, 0] },
+                        { a: [-hW,  hH], i: [0, 0], o: [0, 0] }
+                    ],
+                    closed: true
+                });
+            } catch (eFb) { return; } // truly unrecoverable
+        }
+        
+        // Convert to relative coordinate space (centered on the shape)
+        var relOx = ox - aeX;
+        var relOy = oy - aeY;
+        var relEx = ex - aeX;
+        var relEy = ey - aeY;
+        
+        // --- SAFEGUARD FALLBACK FOR FLAWED MATRICES ---
+        // Se a origem do gradiente estiver incrivelmente fora da Ã¡rea (Matrix de grupos no Illustrator pode causar isso)
+        // forÃ§amos o ponto inicial e final baseado no centro da bounding box + a extensÃ£o dela
+        var b = item.geometricBounds;
+        var bWidth = Math.abs(b[2] - b[0]);
+        var bHeight = Math.abs(b[3] - b[1]);
+        var limit = Math.max(bWidth, bHeight) * 1.5;
+        if (Math.abs(relOx) > limit || Math.abs(relOy) > limit || isNaN(relOx)) {
+            var gAngleRad = effectiveForExport * Math.PI / 180.0;
+            var gRadius = Math.max(bWidth, bHeight) / 2;
+            relOx = -Math.cos(gAngleRad) * gRadius;
+            relOy = Math.sin(gAngleRad) * gRadius;
+            relEx = Math.cos(gAngleRad) * gRadius;
+            relEy = -Math.sin(gAngleRad) * gRadius;
+        }
+
+        var isClipping = false;
+        try { if (item.clipping) isClipping = true; } catch(e){}
+        try { if (!isClipping && item.typename === "CompoundPathItem" && item.pathItems && item.pathItems.length > 0 && item.pathItems[0].clipping) isClipping = true; } catch(e){}
+
+        // ALWAYS generate a unique _idx name regardless of item.name, to prevent
+        // collisions when the gradient path shares a name with its parent group (ex: "Bush").
+        // item.name (origName) is stored separately for display after C++ injection.
+        var gradBase = item.name || (parentID ? parentID.split("_idx")[0] : "grad");
+        var finalName = gradBase + "_grad_idx" + idCounter + "x" + globalSessionID;
+        var gradOrigName = item.name || (parentID ? parentID.split("_idx")[0] + "_grad" : "grad");
+        idCounter++;
+
+        results.push({
+            name: finalName,
+            origName: gradOrigName,
+            fillType: "gradient",
+            opacity: itemOpacity,
+            x: aeX, y: aeY,
+            parent: parentID, _dbgAngle: panelAngle, _dbgRotation: shapeRotation, _dbgEffective: effectiveForExport,
+            gradient: { type: gradTypeStr, angle: effectiveForExport, startX: relOx, startY: relOy, endX: relEx, endY: relEy, stops: stops },
+            paths: allPaths,
+            isClipping: isClipping,
+            clipMaskRef: (clipParentMaskID && !isClipping) ? clipParentMaskID : null
+        });
+    }
+
+
+
+
+    // Coleta items individualmente (aprofundando grupos)
+    var jsonStr = "";
+    var idCounter = 1;
+    var globalSessionID = new Date().getTime().toString().substr(-5);
+    // collectAll is shortcut with no clipParentMaskID
+    function collectAll(item, results, abLeft, abTop, parentID, parentOpacity) {
+        collectAllWithClip(item, results, abLeft, abTop, parentID, parentOpacity, null);
+    }
+    function collectAllWithClip(item, results, abLeft, abTop, parentID, parentOpacity, clipParentMaskID) {
+        if (!item) return;
+        try { if (item.hidden) return; } catch(e){} // IGNORE HIDDEN ITEMS
+        try { if (item.layer && !item.layer.visible) return; } catch(e){} // IGNORE HIDDEN LAYERS
+
+        var t = item.typename;
+        try { if (item.hidden) return; } catch (e) { }
+
+        // MODO TODOS: Filtra intensamente itens fora da prancheta ativa!
+        if (!modoSelecao) {
+            try {
+                var ib = item.geometricBounds; // [left, top, right, bottom]
+                // Se o item estiver COMPLETA MENTE fora dos limites do artboard ativo, ignore-o!
+                // abRect: [left(0), top(1), right(2), bottom(3)]
+                if (ib[2] < abRect[0] || ib[0] > abRect[2] || ib[3] > abRect[1] || ib[1] < abRect[3]) {
+                    return; // fora da prancheta
+                }
+            } catch(e){}
+        }
+
+        var localOpacity = 100;
+        try { localOpacity = Math.round(item.opacity * 100) / 100; } catch (e) { } // Capture local exact opacity
+
+        var combinedOpacity = localOpacity;
+        if (parentOpacity !== undefined && parentOpacity !== null) {
+            combinedOpacity = (localOpacity * parentOpacity) / 100;
+        }
+
+        var isGroupMode = ($.flashFillMode === "group");
+        var exportOpacity = isGroupMode ? localOpacity : combinedOpacity;
+        var passDownOpacity = isGroupMode ? 100 : combinedOpacity;
+
+        var bm = 1; // 1 = Normal
+        try { 
+            var bstr = item.blendingMode.toString();
+            if (bstr.indexOf("MULTIPLY") > -1) bm = 2;
+            else if (bstr.indexOf("SCREEN") > -1) bm = 3;
+            else if (bstr.indexOf("OVERLAY") > -1) bm = 4;
+            else if (bstr.indexOf("DARKEN") > -1) bm = 5;
+            else if (bstr.indexOf("LIGHTEN") > -1) bm = 6;
+            else if (bstr.indexOf("COLORDODGE") > -1) bm = 7;
+            else if (bstr.indexOf("COLORBURN") > -1) bm = 8;
+            else if (bstr.indexOf("HARDLIGHT") > -1) bm = 9;
+            else if (bstr.indexOf("SOFTLIGHT") > -1) bm = 10;
+            else if (bstr.indexOf("DIFFERENCE") > -1) bm = 11;
+            else if (bstr.indexOf("EXCLUSION") > -1) bm = 12;
+            else if (bstr.indexOf("HUE") > -1) bm = 13;
+            else if (bstr.indexOf("SATURATION") > -1) bm = 14;
+            else if (bstr.indexOf("COLOR") > -1 && bstr.indexOf("COLORDODGE") === -1 && bstr.indexOf("COLORBURN") === -1) bm = 15;
+            else if (bstr.indexOf("LUMINOSITY") > -1) bm = 16;
+        } catch(eBM) {}
+
+        var currentID = (item.name || t) + "_idx" + idCounter + "x" + globalSessionID;
+        var origItemName = item.name || "";
+        idCounter++;
+
+        if (t === "GroupItem") {
+            var gX = 0, gY = 0, gW = 0, gH = 0;
+            try {
+                var b = item.geometricBounds;
+                gX = ((b[0] + b[2]) / 2) - abLeft;
+                gY = abTop - ((b[1] + b[3]) / 2);
+                gW = b[2] - b[0];
+                gH = b[1] - b[3];
+            } catch(e) {}
+
+            // Detect ClipGroup: scan ALL children for one with clipping===true.
+            // Illustrator ClipGroups have exactly one item with clipping===true (the ellipse/path).
+            var clipMaskID = null;
+            try {
+                if (item.pageItems.length > 1) {
+                    for (var ci = 0; ci < item.pageItems.length; ci++) {
+                        var childItem = item.pageItems[ci];
+                        var childIsClip = false;
+                        try { if (childItem.clipping) childIsClip = true; } catch(ec){}
+                        // Also check CompoundPathItem with clipping first sub-path
+                        try { if (!childIsClip && childItem.typename === "CompoundPathItem" && childItem.pathItems[0].clipping) childIsClip = true; } catch(ec){}
+                        if (childIsClip) {
+                            clipMaskID = currentID + "_clipmask";
+                            break;
+                        }
+                    }
+                }
+            } catch(ecg){}
+
+            // Use currentID (unique with _idx) as JSON name to prevent collisions.
+            // origItemName is only for display (origName). childParentID = currentID so
+            // children can find their parent unambiguously via finalLayerDict.
+            results.push({
+                fillType: "group",
+                name: currentID,
+                origName: item.name || "Grupo",
+                parent: parentID,
+                x: gX, y: gY,
+                w: gW, h: gH,
+                opacity: exportOpacity,
+                blendMode: bm,
+                clipMaskID: clipMaskID,
+                clipMaskRef: (clipParentMaskID && !clipMaskID) ? clipParentMaskID : null
+            });
+            var effectiveClipID = clipMaskID || clipParentMaskID;
+            // Pass currentID so children have a unique, unambiguous parent reference
+            var childParentID = currentID;
+            for (var i = 0; i < item.pageItems.length; i++) {
+                collectAllWithClip(item.pageItems[i], results, abLeft, abTop, childParentID, passDownOpacity, effectiveClipID);
+            }
+            return;
+        }
+
+        if (t === "TextFrame") {
+            var txt = "";
+            try { txt = item.contents; } catch(e){}
+            if (!txt) return;
+            
+            var size = 50, font = "Arial", color = [1,1,1], just = 0, rot = 0;
+            var aeX = 0, aeY = 0, isPoint = 0;
+            try {
+                if (item.kind && item.kind.toString().indexOf("POINT") > -1) isPoint = 1;
+                var b = item.geometricBounds;
+                aeX = ((b[0] + b[2]) / 2) - abLeft;
+                aeY = abTop - ((b[1] + b[3]) / 2);
+            } catch(e) {
+                var b2 = item.geometricBounds;
+                aeX = ((b2[0] + b2[2]) / 2) - abLeft;
+                aeY = abTop - ((b2[1] + b2[3]) / 2);
+            }
+
+            try {
+                if (item.matrix) {
+                    rot = -Math.atan2(item.matrix.mValueB, item.matrix.mValueA) * 180.0 / Math.PI;
+                }
+                // Se for PointText, a matriz .matrix costuma falhar/omitir a rotaÃ§Ã£o no ExtendScript. 
+                // Usamos a tÃ©cnica de conversÃ£o temporÃ¡ria para AreaText numa cÃ³pia para ler a matriz real.
+                if (Math.abs(rot) < 0.1 && isPoint === 1) {
+                    try {
+                        var dup = item.duplicate();
+                        dup.convertPointObjectToAreaObject();
+                        if (dup.matrix) {
+                            rot = -Math.atan2(dup.matrix.mValueB, dup.matrix.mValueA) * 180.0 / Math.PI;
+                        }
+                        dup.remove();
+                    } catch(edup) {}
+                }
+            } catch(e) {}
+
+            try {
+                var attrs = item.textRange.characterAttributes;
+                if (attrs.size) size = attrs.size;
+                if (attrs.textFont) font = attrs.textFont.name;
+                var rgb = colorToRGB(attrs.fillColor);
+                if (rgb) color = rgb;
+                var pAttrs = item.textRange.paragraphAttributes;
+                if (pAttrs.justification) {
+                    var jstr = pAttrs.justification.toString();
+                    if (jstr.indexOf("CENTER") > -1) just = 1;
+                    else if (jstr.indexOf("RIGHT") > -1) just = 2;
+                }
+            } catch(e){}
+            
+            results.push({
+                fillType: "text",
+                name: currentID,
+                origName: item.name || txt.substring(0, 15),
+                parent: parentID,
+                text: txt,
+                fontSize: size,
+                fontName: font,
+                color: color,
+                justification: just,
+                rotation: rot,
+                kind: isPoint,
+                x: aeX, y: aeY,
+                opacity: exportOpacity,
+                blendMode: bm
+            });
+            return;
+        }
+
+        var isClipping = false;
+        try { if (item.clipping) isClipping = true; } catch (e) { }
+        try { if (!isClipping && t === "CompoundPathItem" && item.pathItems && item.pathItems.length > 0 && item.pathItems[0].clipping) isClipping = true; } catch (e) { }
+
+        var b = item.geometricBounds;
+        var cx = (b[0] + b[2]) / 2, cy = (b[1] + b[3]) / 2;
+        var aeX = cx - abLeft, aeY = abTop - cy;
+
+        // Lista de sub-paths a processar
+        var pathsToProcess = (t === "CompoundPathItem") ? item.pathItems : [item];
+
+        // â”€â”€ 1. Detecta e exporta GRADIENTE (sem try/catch que engole erro) â”€â”€
+        var fillColor = null;
+        if (t === "CompoundPathItem") {
+            // Para CompoundPathItem, tenta no item e no primeiro pathItem
+            try { fillColor = item.fillColor; } catch (e) { }
+            if (!fillColor || fillColor.typename === "NoColor") {
+                try { fillColor = item.pathItems[0].fillColor; } catch (e) { }
+            }
+        } else {
+            try { fillColor = item.fillColor; } catch (e) { }
+        }
+
+        if (fillColor && fillColor.typename === "GradientColor") {
+            processGradientFill(fillColor, item, pathsToProcess, results, abLeft, abTop, parentID, exportOpacity, cx, cy, aeX, aeY, clipParentMaskID);
+            // Injetar blendMode nos gradientes processados (o Ãºltimo colocado no array)
+            if (results.length > 0) results[results.length-1].blendMode = bm;
+            return;
+        }
+
+        // â”€â”€ 2. Path relativo ao centro para solid/stroke â”€â”€
+        var paths = [];
+        for (var j = 0; j < pathsToProcess.length; j++) {
+            var pd = getPathData(pathsToProcess[j], cx, cy);
+            if (pd) paths.push(pd);
+        }
+        if (paths.length === 0) return;
+
+        // If we are inside a ClipGroup:
+        //   - the clipper itself  => give it the shared clipMaskID as its name
+        //   - any sibling        => record which mask to apply
+        var clipMaskRef = null;
+        if (clipParentMaskID) {
+            if (isClipping) {
+                currentID = clipParentMaskID; // mask layer gets the unique shared ID
+            } else {
+                clipMaskRef = clipParentMaskID;
+            }
+        }
+
+        var data = {
+            name: currentID,
+            x: aeX, y: aeY,
+            paths: paths, fillType: "solid", parent: parentID, opacity: exportOpacity,
+            blendMode: bm,
+            isClipping: isClipping,
+            clipMaskRef: clipMaskRef
+        };
+
+        // Fill
+        var hasFill = false;
+        if (fillColor && fillColor.typename !== "NoColor") {
+            var rgb = colorToRGB(fillColor);
+            if (rgb) { data.fill = { type: "solid", color: rgb }; data.fillType = "solid"; hasFill = true; }
+        }
+        // Stroke
+        var hasStroke = false;
+        try {
+            if (item.stroked && item.strokeColor && item.strokeColor.typename !== "NoColor") {
+                var srgb = colorToRGB(item.strokeColor);
+                if (srgb) {
+                    data.stroke = { type: "solid", color: srgb, strokeWidth: item.strokeWidth || 1 };
+                    try { data.stroke.strokeCap = (item.strokeCap === StrokeCap.ROUND ? 2 : (item.strokeCap === StrokeCap.PROJECTING ? 3 : 1)); } catch (e) { }
+                    try { data.stroke.strokeJoin = (item.strokeJoin === StrokeJoin.ROUND ? 2 : (item.strokeJoin === StrokeJoin.BEVEL ? 3 : 1)); } catch (e) { }
+                    hasStroke = true;
+                    if (!hasFill) data.fillType = "stroke";
+                }
+            }
+        } catch (e) { }
+        
+        if (isClipping) {
+            // Em caso de Clipping Mask puros sem cor, forcamos um preenchimento 
+            // no After Effects para que o usuario veja a area para Alpha Matte
+            // IMPORTANTE: Apenas fazemos isso no modo LAYER. Em modo GROUP, deixamos sem fill 
+            // para nao desenhar um circulo cinza no meio dos filhos nativos.
+            if (!hasFill && !hasStroke && $.flashFillMode !== "group") {
+                data.fill = { type: "solid", color: [0.4, 0.4, 0.4] }; 
+                data.fillType = "solid"; 
+                hasFill = true;
+            }
+        }
+        
+        if (!hasFill && !hasStroke && !isClipping) return; // Skip if invisible AND not a clipping mask
+        results.push(data);
+    }
+
+    $.flashFillWin = null;
+    $.flashFillText = null;
+    $.flashFillBar = null;
+
+    function initProgress(title) {
+        // UI removido para evitar travamentos
+    }
+
+    var _lastProgTime = 0;
+    var _lastProgMsg = "";
+    function writeProgress(msg, current, total) {
+        // UI removido para evitar travamentos
+    }
+
+    function closeProgress() {
+        // UI removido para evitar travamentos
+    }
+
+    // ── MAIN ──
+    var doc; try { doc = app.activeDocument; } catch (e) { alert("Abra um documento!"); return; }
+    var aiPathStr = ""; try { aiPathStr = doc.fullName.fsName.replace(/\\/g, "/"); } catch (e) { }
+    var ab = doc.artboards[doc.artboards.getActiveArtboardIndex()], abRect = ab.artboardRect;
+    var abLeft = abRect[0], abTop = abRect[1], abW = abRect[2] - abRect[0], abH = abTop - abRect[3];
+
+    var shapesData = [];
+
+    // ── MODO SELEÇÃO ──
+    var modoSelecao = false;
+    try {
+        var sel = doc.selection;
+        if (sel && sel.length > 0) {
+            modoSelecao = true;
+        } else {
+            alert("Nenhum vetor selecionado!\nPor favor, selecione os itens que deseja exportar e tente novamente.");
+            return;
+        }
+    } catch (e) {
+        alert("Erro ao verificar a seleção. Tente novamente.");
+        return;
+    }
+
+    var _modifiedGroups = [];
+    var _clipTagMap = []; // { grp, orig, exactClipMaskID }
+    function _tagGroups(items) {
+        if (!items) return;
+        for (var _i = 0; _i < items.length; _i++) {
+            var _item = items[_i];
+            var _tn = _item.typename;
+            if (_tn === "GroupItem") {
+                _tagGroups(_item.pageItems);
+            } else if (_tn === "RasterItem" || _tn === "PlacedItem" || _tn === "NonNativeItem" || _tn === "PluginItem") {
+                var _par = _item.parent;
+                while (_par && _par.typename !== "Document" && _par.typename !== "Layer") {
+                    if (_par.typename === "GroupItem" && _par.clipped) {
+                        var origName = _par.name;
+                        if (origName.indexOf("GFX_TARGET_") === -1) {
+                            var uniqueTag = "GFX_TARGET_" + (_clipTagMap.length);
+                            _par.name = uniqueTag;
+                            // collectAllWithClip builds: currentID = name + "_idx" + idCounter + "x" + globalSessionID
+                            // then: clipMaskID = currentID + "_clipmask"
+                            // We can't predict idCounter exactly, so we store the tag name
+                            // and match by comment containing the tag name.
+                            _modifiedGroups.push({ grp: _par, orig: origName });
+                            _clipTagMap.push({ grp: _par, tag: uniqueTag });
+                        }
+                        break;
+                    }
+                    _par = _par.parent;
+                }
+            }
+        }
+    }
+    if (modoSelecao) { _tagGroups(doc.selection); } else { _tagGroups(doc.pageItems); }
+
+    if (modoSelecao) {
+        // Remover duplicatas de selecoes profundas (Illustrator retorna Grupo e Filhos juntos)
+        var topLevelSel = [];
+        for (var s = 0; s < doc.selection.length; s++) {
+            var item = doc.selection[s];
+            var parentInSelection = false;
+            var par = item.parent;
+            while (par && par.typename !== "Document" && par.typename !== "Layer") {
+                for (var js = 0; js < doc.selection.length; js++) {
+                    // Cuidado: comparacao direta as vezes falha no DOM, usar UUID ou try bounds se possivel,
+                    // mas em JSX padrao (==) funciona bem para objetos do mesmo doc.
+                    if (doc.selection[js] == par) { parentInSelection = true; break; }
+                }
+                if (parentInSelection) break;
+                par = par.parent;
+            }
+            if (!parentInSelection) topLevelSel.push(item);
+        }
+
+        for (var s2 = 0; s2 < topLevelSel.length; s2++) {
+            if (s2 % 5 === 0 || s2 === topLevelSel.length - 1) writeProgress("Collecting Shapes...", s2, topLevelSel.length);
+            collectAllWithClip(topLevelSel[s2], shapesData, abLeft, abTop, null, 100, null);
+        }
+    } else {
+        // Mapear mÃ¡scaras de recorte no nÃ­vel de Layer
+        var layerClipMap = {};
+        for (var L = 0; L < doc.layers.length; L++) {
+            var lyr = doc.layers[L];
+            try {
+                if (lyr.pageItems && lyr.pageItems.length > 1) {
+                    for (var ci = 0; ci < lyr.pageItems.length; ci++) {
+                        var childItem = lyr.pageItems[ci];
+                        var childIsClip = false;
+                        try { if (childItem.clipping) childIsClip = true; } catch(ec){}
+                        try { if (!childIsClip && childItem.typename === "CompoundPathItem" && childItem.pathItems[0].clipping) childIsClip = true; } catch(ec){}
+                        if (childIsClip) {
+                            layerClipMap[lyr.name] = lyr.name + "_layer_clipmask";
+                            break;
+                        }
+                    }
+                }
+            } catch(e) {}
+        }
+
+        // CRITICO: doc.pageItems retorna TODOS os items incluindo aninhados!
+        for (var s = 0; s < doc.pageItems.length; s++) {
+            if (s % 50 === 0 || s === doc.pageItems.length - 1) writeProgress("Collecting Shapes...", s, doc.pageItems.length);
+            var topItem = doc.pageItems[s];
+            try {
+                if (topItem.parent && topItem.parent.typename === "Layer") {
+                    var cMask = layerClipMap[topItem.parent.name] || null;
+                    collectAllWithClip(topItem, shapesData, abLeft, abTop, null, 100, cMask);
+                }
+            } catch (e) { }
+        }
+    }
+
+    var uniqueData = [];
+    var seenSig = {};
+    for (var i = 0; i < shapesData.length; i++) {
+        if (i % 50 === 0 || i === shapesData.length - 1) writeProgress("Filtering Vectors...", i, shapesData.length);
+        var sd = shapesData[i];
+        var sig = "";
+        if (sd.fillType === "text") {
+            sig = "txt:" + sd.text + ":" + sd.x.toFixed(2) + ":" + sd.y.toFixed(2) + ":" + sd.fontSize;
+        } else if (sd.fillType === "group") {
+            uniqueData.push(sd);
+            continue;
+        } else {
+            var pCount = sd.paths ? sd.paths.length : (sd.path ? 1 : 0);
+            var totalPts = 0;
+            if (sd.paths) { for (var _p=0; _p<sd.paths.length; _p++) totalPts += (sd.paths[_p] && sd.paths[_p].pts) ? sd.paths[_p].pts.length : 0; }
+            else if (sd.path && sd.path.pts) totalPts = sd.path.pts.length;
+            
+            var colSig = "none";
+            if (sd.fillType === "solid" && sd.color) colSig = "s:" + sd.color[0].toFixed(2) + "," + sd.color[1].toFixed(2);
+            else if (sd.fillType === "gradient" && sd.gradient) colSig = "g:" + sd.gradient.startX.toFixed(2) + "," + sd.gradient.startY.toFixed(2);
+            else if (sd.fillType === "stroke" && sd.stroke && sd.stroke.color) colSig = "str:" + sd.stroke.color[0].toFixed(2);
+            
+            // Bypass deduplication entirely for diagnostic
+            sig = "vec:" + sd.x.toFixed(2) + ":" + sd.y.toFixed(2) + ":p" + pCount + ":pts" + totalPts + ":" + colSig + "_idx" + i;
+        }
+        
+        // Aplica desduplicação somentes para textos (já que vetores possuem o bypass `_idx`)
+        if (sd.fillType === "text" && seenSig[sig]) {
+            continue;
+        }
+        
+        seenSig[sig] = true;
+        uniqueData.push(sd);
+    }
+    shapesData = uniqueData;
+
+    var nGrad = 0, nSolid = 0, nStroke = 0;
+    for (var k = 0; k < shapesData.length; k++) {
+        if (shapesData[k].fillType === "gradient") nGrad++;
+        else if (shapesData[k].fillType === "stroke") nStroke++;
+        else nSolid++;
+    }
+
+    // â”€â”€ Escreve JSON â”€â”€
+    function wr(f, s) { f.writeln(s); }
+    function wPt(f, pt, isLast) {
+        wr(f, '          {"a":[' + toFixed(pt.a[0]) + ',' + toFixed(pt.a[1]) + '],"i":[' + toFixed(pt.i[0]) + ',' + toFixed(pt.i[1]) + '],"o":[' + toFixed(pt.o[0]) + ',' + toFixed(pt.o[1]) + ']}' + (isLast ? '' : ','));
+    }
+    function wColor(arr) { return '[' + toFixed(arr[0]) + ',' + toFixed(arr[1]) + ',' + toFixed(arr[2]) + ']'; }
+
+    var jf = new File("C:/AEGP/grad_data.json"); jf.open("w");
+    wr(jf, "{");
+    wr(jf, '  "artboard": { "w":' + toFixed(abW) + ', "h":' + toFixed(abH) + ' },');
+    wr(jf, '  "aiPath": "' + aiPathStr + '",');
+    wr(jf, '  "shapes": [');
+    for (var k2 = 0; k2 < shapesData.length; k2++) {
+        var sd = shapesData[k2];
+        if (k2 % 50 === 0 || k2 === shapesData.length - 1) writeProgress("Gerando JSON...", k2, shapesData.length);
+        wr(jf, '    {');
+        wr(jf, '      "name": "' + sd.name.replace(/"/g, "'").replace(/[\r\n]/g, " ") + '" ,');
+        wr(jf, '      "fillType": "' + sd.fillType + '",');
+        if (sd.parent) wr(jf, '      "parent": "' + sd.parent.replace(/"/g, "'").replace(/[\r\n]/g, " ") + '",');
+        var opact = (sd.opacity !== undefined) ? sd.opacity : 100;
+        wr(jf, '      "opacity":' + toFixed(opact) + ',');
+        var blMode = (sd.blendMode !== undefined) ? sd.blendMode : 1;
+        wr(jf, '      "blendMode":' + blMode + ',');
+        wr(jf, '      "x":' + toFixed(sd.x) + ', "y":' + toFixed(sd.y) + ',');
+
+        if (sd.fillType === "group") {
+            wr(jf, '      "origName": "' + (sd.origName||"").replace(/"/g, "'").replace(/[\r\n]/g, " ") + '",');
+            wr(jf, '      "w": ' + toFixed(sd.w) + ',');
+            wr(jf, '      "h": ' + toFixed(sd.h));
+            if (sd.clipMaskRef) wr(jf, '      ,"clipMaskRef": "' + sd.clipMaskRef.replace(/"/g, "'").replace(/[\r\n]/g, " ") + '"');
+        } else if (sd.fillType === "text") {
+            var estr = (sd.text||"").replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, '\\n').replace(/\r/g, '\\r');
+            wr(jf, '      "text": "' + estr + '",');
+            wr(jf, '      "origName": "' + (sd.origName||"").replace(/"/g, "'").replace(/[\r\n]/g, " ") + '",');
+            wr(jf, '      "fontSize": ' + sd.fontSize + ',');
+            wr(jf, '      "fontName": "' + sd.fontName + '",');
+            wr(jf, '      "color": [' + toFixed(sd.color[0]) + ',' + toFixed(sd.color[1]) + ',' + toFixed(sd.color[2]) + '],');
+            wr(jf, '      "rotation": ' + toFixed(sd.rotation || 0) + ',');
+            wr(jf, '      "kind": ' + (sd.kind || 0) + ',');
+            wr(jf, '      "justification": ' + sd.justification + '');
+        } else if (sd.fillType === "gradient") {
+            // Formato legado (GRAD FIXER usa este -> nao alterar!)
+            wr(jf, '      "gradient": { "type":"' + (sd.gradient.type || "linear") + '", "startX":' + toFixed(sd.gradient.startX) + ', "startY":' + toFixed(sd.gradient.startY) + ',');
+            wr(jf, '        "endX":' + toFixed(sd.gradient.endX) + ', "endY":' + toFixed(sd.gradient.endY) + ',');
+            wr(jf, '        "stops": [');
+            var ss = sd.gradient.stops;
+            for (var g = 0; g < ss.length; g++) { var st = ss[g]; wr(jf, '          {"pos":' + st.pos + ',"mid":' + st.mid + ',"r":' + st.r + ',"g":' + st.g + ',"b":' + st.b + ',"opacity":' + (st.opacity !== undefined ? st.opacity : 1) + '}' + (g < ss.length - 1 ? ',' : '')); }
+            wr(jf, '        ] },');
+            // Multiple paths (supports compound gradients)
+            wr(jf, '      "paths": [');
+            var pArr = sd.paths || [ sd.path ]; // fallback
+            var validPaths = [];
+            for(var vp = 0; vp < pArr.length; vp++) { if(pArr[vp]) validPaths.push(pArr[vp]); }
+            for (var pi3 = 0; pi3 < validPaths.length; pi3++) {
+                var pth = validPaths[pi3];
+                if (pth.type === "rect" || pth.type === "ellipse") {
+                    wr(jf, '        {"type":"' + pth.type + '", "size":[' + toFixed(pth.size[0]) + ',' + toFixed(pth.size[1]) + '], "pos":[' + toFixed(pth.pos[0]) + ',' + toFixed(pth.pos[1]) + '], "closed":' + (pth.closed ? 'true' : 'false') + ',"pts":[');
+                } else {
+                    wr(jf, '        {"type":"path", "closed":' + (pth.closed ? 'true' : 'false') + ',"pts":[');
+                }
+                for (var pp3 = 0; pp3 < pth.pts.length; pp3++) wPt(jf, pth.pts[pp3], pp3 === pth.pts.length - 1);
+                wr(jf, '        ]}' + (pi3 < validPaths.length - 1 ? ',' : ''));
+            }
+            wr(jf, '      ]');
+            if (sd.clipMaskRef) wr(jf, '      ,\"clipMaskRef\": \"' + sd.clipMaskRef.replace(/\"/g, "'").replace(/[\r\n]/g, " ") + '\"');
+        } else {
+            // Solid/Stroke/Clipping: fill e stroke separados
+            if (sd.isClipping) wr(jf, '      "isClipping": true,');
+            if (sd.clipMaskRef) wr(jf, '      "clipMaskRef": "' + sd.clipMaskRef.replace(/"/g, "'").replace(/[\r\n]/g, " ") + '",');
+            if (sd.fill) wr(jf, '      "fill": {"type":"solid","color":' + wColor(sd.fill.color) + '},');
+            if (sd.stroke) wr(jf, '      "stroke": {"type":"solid","color":' + wColor(sd.stroke.color) + ',"strokeWidth":' + toFixed(sd.stroke.strokeWidth || 1) + '},');
+            // paths: formato overlord [{pts:[...], closed:bool}]
+            wr(jf, '      "paths": [');
+            var pArr = sd.paths || [];
+            var validPaths = [];
+            for(var vp = 0; vp < pArr.length; vp++) { if(pArr[vp]) validPaths.push(pArr[vp]); }
+            for (var pi3 = 0; pi3 < validPaths.length; pi3++) {
+                var pth = validPaths[pi3];
+                if (pth.type === "rect" || pth.type === "ellipse") {
+                    wr(jf, '        {"type":"' + pth.type + '", "size":[' + toFixed(pth.size[0]) + ',' + toFixed(pth.size[1]) + '], "pos":[' + toFixed(pth.pos[0]) + ',' + toFixed(pth.pos[1]) + '], "closed":' + (pth.closed ? 'true' : 'false') + ',"pts":[');
+                } else {
+                    wr(jf, '        {"type":"path", "closed":' + (pth.closed ? 'true' : 'false') + ',"pts":[');
+                }
+                for (var pp3 = 0; pp3 < pth.pts.length; pp3++) wPt(jf, pth.pts[pp3], pp3 === pth.pts.length - 1);
+                wr(jf, '        ]}' + (pi3 < validPaths.length - 1 ? ',' : ''));
+            }
+            wr(jf, '      ]');
+        }
+        wr(jf, '    }' + (k2 < shapesData.length - 1 ? ',' : ''));
+    }
+    wr(jf, '  ]'); wr(jf, "}"); jf.close();
+
+    // Info de debug sobre gradientes
+    var gradInfo = "";
+    for (var k3 = 0; k3 < shapesData.length; k3++) {
+        var sd3 = shapesData[k3];
+        if (sd3.fillType === "gradient") {
+            var gr = sd3.gradient;
+            var eff = sd3._dbgEffective !== undefined ? sd3._dbgEffective : gr.angle;
+            gradInfo += "\n  [" + sd3.name + "]:";
+            gradInfo += " panel=" + Math.round(sd3._dbgAngle) + "Â°";
+            gradInfo += " rot=" + Math.round(sd3._dbgRotation || 0) + "Â°";
+            gradInfo += " eff=" + Math.round(eff) + "Â° (world AE)";
+            gradInfo += "\n    start=(" + Math.round(gr.startX) + "," + Math.round(gr.startY) + ")";
+            gradInfo += " end=(" + Math.round(gr.endX) + "," + Math.round(gr.endY) + ")";
+        }
+
+    }
+
+    var summary = "EXTRAIDO! (v12 - Auto-Bridge)\n" +
+        (modoSelecao ? "MODO: Somente selecionados (" + doc.selection.length + " item(s))" :
+            "MODO: Documento completo") + "\n" +
+        "Artboard: " + Math.round(abW) + "x" + Math.round(abH) + "\n" +
+        "GRADIENTES: " + nGrad + " | SOLIDOS: " + nSolid + " | STROKES: " + nStroke + "\n" +
+        "Total: " + shapesData.length + " shapes" +
+        (gradInfo ? "\n\nDiagnÃ³stico Gradientes:" + gradInfo : "");
+
+    // ── EXPORTAR IMAGENS (raster/placed) antes do BridgeTalk ──
+    var _imgExports = [];
+    try {
+        var _basePath = "C:/AEGP/img_export";
+        if (typeof $.flashFillExportPath !== "undefined" && $.flashFillExportPath) {
+            if ($.flashFillExportPath === "PROMPT") {
+                var _userFolder = Folder.selectDialog("Escolha a pasta para exportar as imagens");
+                if (_userFolder) {
+                    _basePath = _userFolder.fsName;
+                }
+            } else {
+                _basePath = $.flashFillExportPath;
+            }
+        }
+        var _expRootFolder = new Folder(_basePath);
+        if (!_expRootFolder.exists) _expRootFolder.create();
+
+        // Cria subpasta com timestamp para cada sessão — imagens de artes diferentes nunca se sobrescrevem
+        var _sessionID = new Date().getTime().toString();
+        var _expFolder = new Folder(_expRootFolder.fsName + "/" + _sessionID);
+        if (!_expFolder.exists) _expFolder.create();
+
+        // Helper: sobe a cadeia de pais até encontrar o GroupItem clipped mais próximo
+        // (para exportar a imagem com máscara aplicada como alpha)
+        function _getExportItem(img) {
+            var _par = img.parent;
+            while (_par && _par.typename !== "Document" && _par.typename !== "Layer") {
+                if (_par.typename === "GroupItem" && _par.clipped) return _par;
+                _par = _par.parent;
+            }
+            return img; // sem clipping mask — exporta a imagem diretamente
+        }
+
+        var _seenBounds = {};
+        var _imgItems = [];
+
+        // Helper: sobe a cadeia de pais até encontrar o GroupItem clipped mais próximo
+        // Retorna o TAG (GFX_TARGET_N) do grupo, que também será parte do comment no AE
+        function _getClipInfo(img) {
+            var _par = img.parent;
+            while (_par && _par.typename !== "Document" && _par.typename !== "Layer") {
+                if (_par.typename === "GroupItem" && _par.clipped) {
+                    var _tag = _par.name || null;
+                    if (_tag && _tag.indexOf("GFX_TARGET_") === 0) {
+                        return { tag: _tag };
+                    }
+                    return null;
+                }
+                _par = _par.parent;
+            }
+            return null;
+        }
+
+        // Busca imagens descendo a árvore. Pega Raster, Placed, NonNative, Plugin items.
+        function _traverseAndCollect(items) {
+            if (!items) return;
+            for (var _i = 0; _i < items.length; _i++) {
+                var _item = items[_i];
+                var _tn = _item.typename;
+                if (_tn === "GroupItem") {
+                    _traverseAndCollect(_item.pageItems);
+                } else if (_tn === "RasterItem" || _tn === "PlacedItem" || _tn === "NonNativeItem" || _tn === "PluginItem") {
+                    // APENAS itens de imagem real (excluindo PathItem, CompoundPathItem, TextFrame, SymbolItem, GroupItem)
+                    try {
+                        var _bk = _item.visibleBounds.join("|");
+                        if (!_seenBounds[_bk]) {
+                            _seenBounds[_bk] = true;
+                            var _ci = _getClipInfo(_item);
+                            _imgItems.push({ item: _item, clipLayerName: _ci ? _ci.tag : null });
+                        }
+                    } catch(e) {}
+                }
+            }
+        }
+
+        if (modoSelecao) {
+            _traverseAndCollect(doc.selection);
+        } else {
+            _traverseAndCollect(doc.pageItems);
+        }
+
+        for (var _ii = 0; _ii < _imgItems.length; _ii++) {
+            var _imgObj = _imgItems[_ii];
+            var _img = _imgObj.item;
+            var _td;
+            try {
+                // Usa os bounds da imagem bruta para posicionamento no AE
+                var _bounds = _img.visibleBounds;
+                var _iL = _bounds[0], _iT = _bounds[1], _iR = _bounds[2], _iB = _bounds[3];
+                var _iW = Math.abs(_iR - _iL), _iH = Math.abs(_iT - _iB);
+                if (_iW < 1 || _iH < 1) continue;
+
+                var _iCX = (_iL + _iR) / 2, _iCY = (_iT + _iB) / 2;
+                var _aeX = _iCX - abLeft;
+                var _aeY = abTop - _iCY;
+
+                var _fname = "img_" + _ii + "_" + (new Date()).getTime() + ".png";
+                var _fpath = _expFolder.fsName + "/" + _fname;
+                var _expFile = new File(_fpath);
+
+                // Deselecionar tudo com segurança
+                app.activeDocument.selection = null;
+                var _currSel = app.activeDocument.selection;
+                if (_currSel && _currSel.length > 0) {
+                    for (var _s = _currSel.length - 1; _s >= 0; _s--) {
+                        try { _currSel[_s].selected = false; } catch(e) {}
+                    }
+                }
+
+                // Seleciona e copia APENAS a imagem bruta (sem grupo de clipes)
+                _img.selected = true;
+                app.copy();
+                _img.selected = false;
+
+                _td = app.documents.add(DocumentColorSpace.RGB, _iW + 2, _iH + 2, 1,
+                    DocumentArtboardLayout.GridByRow, 1, 1);
+                app.paste();
+
+                var _pastedItem = _td.pageItems[0];
+                if (_pastedItem) {
+                    var _pb = _pastedItem.visibleBounds;
+                    _td.artboards[0].artboardRect = [_pb[0], _pb[1], _pb[2], _pb[3]];
+                }
+
+                var _pngOpts = new ExportOptionsPNG24();
+                _pngOpts.antiAliasing = true;
+                _pngOpts.transparency = true;
+                _pngOpts.artBoardClipping = true;
+                _pngOpts.horizontalScale = 100;
+                _pngOpts.verticalScale = 100;
+                _td.exportFile(_expFile, ExportType.PNG24, _pngOpts);
+                _td.close(SaveOptions.DONOTSAVECHANGES);
+                _td = null;
+
+                doc.selection = null;
+
+                if (_expFile.exists) {
+                    _imgExports.push({
+                        path: _fpath.replace(/\\/g, "/"),
+                        x: _aeX, y: _aeY, w: _iW, h: _iH,
+                        clipLayerName: _imgObj.clipLayerName
+                    });
+                }
+            } catch (_eImg) {
+                try { if (_td) _td.close(SaveOptions.DONOTSAVECHANGES); } catch(e) {}
+            }
+        }
+    } catch (_eImgBlock) {}
+    // Fim da exportação de imagens
+
+    // ── ENVIAR PARA O AFTER EFFECTS VIA BRIDGETALK ──
+    if (BridgeTalk.isRunning("aftereffects")) {
+        var bt = new BridgeTalk();
+        bt.target = "aftereffects";
+        var req = "";
+        
+        var safePath = (typeof $.flashFillExportPath !== 'undefined' && $.flashFillExportPath !== "PROMPT") ? $.flashFillExportPath : "C:/AEGP/img_export";
+        req += "var flashFillExportPath = '" + safePath + "';\n";
+        req += "var flashFillIlstTarget = '" + BridgeTalk.appSpecifier + "';\n";
+
+        if ($.flashFillMode === "group") {
+            req += "var fgPaths = [\n";
+            req += "  Folder.userData.fsName + '/Adobe/CEP/extensions/GradFixer/SplitGroup.jsx',\n";
+            req += "  Folder.myDocuments.fsName + '/SDKAFTERGRADIENTE/SplitGroup.jsx'\n";
+            req += "];\n";
+            req += "var fgFound = false;\n";
+            req += "for(var j=0; j<fgPaths.length; j++) {\n";
+            req += "  var fg=new File(fgPaths[j]);\n";
+            req += "  if(fg.exists){ fg.open('r'); eval(fg.read()); fg.close(); fgFound=true; break; }\n";
+            req += "}\n";
+            req += "if(!fgFound){ alert('SplitGroup.jsx nao encontrado nos caminhos padroes!'); }\n";
+            // The C++ execution and cleanup is now entirely handled by SplitGroup.jsx v10
+        } else {
+            // Modo Split Layer (padrao): envia SplitLayer
+            req += "var paths = [\n";
+            req += "  Folder.userData.fsName + '/Adobe/CEP/extensions/GradFixer/SplitLayer.jsx',\n";
+            req += "  Folder.myDocuments.fsName + '/SDKAFTERGRADIENTE/SplitLayer.jsx',\n";
+            req += "  'C:/AEGP/SplitLayer.jsx'\n";
+            req += "];\n";
+            req += "var fileFound = false;\n";
+            req += "for(var i=0; i<paths.length; i++) {\n";
+            req += "  var f=new File(paths[i]);\n";
+            req += "  if(f.exists){ f.open('r'); eval(f.read()); f.close(); fileFound=true; break; }\n";
+            req += "}\n";
+            req += "if(!fileFound){ alert('SplitLayer.jsx nao encontrado nos caminhos padroes!'); }\n";
+
+            if (nGrad > 0) {
+                req += "var gCmd = app.findMenuCommandId('GRAD FIXER: Aplicar Gradientes');\n";
+                req += "if (gCmd > 0) { app.executeCommand(gCmd); } else { alert('Plugin GRAD FIXER nao encontrado no menu do AE!'); }\n";
+                // DIAGNOSTIC: write debug log to C:\AEGP\grad_debug.txt
+                req += "try{\n";
+                req += "  var _dbgAc = app.project.activeItem;\n";
+                req += "  var _dbgLog = '=== GRAD DEBUG ===\\n';\n";
+                req += "  _dbgLog += 'AEPX_0: ' + (new File('C:/AEGP/ae_batch_temp_0.aepx').exists ? 'SIM' : 'NAO') + '\\n';\n";
+                req += "  _dbgLog += 'AEPX_1: ' + (new File('C:/AEGP/ae_batch_temp_1.aepx').exists ? 'SIM' : 'NAO') + '\\n';\n";
+                req += "  if(_dbgAc instanceof CompItem){\n";
+                req += "    _dbgLog += 'Layers (' + _dbgAc.numLayers + '):\\n';\n";
+                req += "    for(var _di=1;_di<=_dbgAc.numLayers;_di++){\n";
+                req += "      var _dl = _dbgAc.layer(_di);\n";
+                req += "      var _hasGFill = false;\n";
+                req += "      try{ var _dr = _dl.property('ADBE Root Vectors Group');\n";
+                req += "        for(var _dj=1;_dj<=_dr.numProperties;_dj++){\n";
+                req += "          if(_dr.property(_dj).matchName==='ADBE Vector Group'){\n";
+                req += "            var _dc=_dr.property(_dj).property('ADBE Vectors Group');\n";
+                req += "            for(var _dk=1;_dk<=_dc.numProperties;_dk++){\n";
+                req += "              if(_dc.property(_dk).matchName==='ADBE Vector Graphic - G-Fill'){_hasGFill=true;break;}\n";
+                req += "            } if(_hasGFill)break;\n";
+                req += "          }\n";
+                req += "        }\n";
+                req += "      }catch(e){}\n";
+                req += "      _dbgLog += '[' + _di + '] ' + _dl.name + ' | comment=' + (_dl.comment||'') + ' | G-Fill=' + _hasGFill + '\\n';\n";
+                req += "    }\n";
+                req += "  }\n";
+                req += "  var _dbgF = new File('C:/AEGP/grad_debug.txt');\n";
+                req += "  _dbgF.open('w'); _dbgF.write(_dbgLog); _dbgF.close();\n";
+                req += "}catch(eDbg){}\n";
+                // Recuperacao forcada de Track Mattes para layers de gradiente (Bypass do plugin C++ antigo)
+                req += "var _ac = app.project.activeItem;\n";
+                req += "if(_ac instanceof CompItem){\n";
+                for (var rj=0; rj<shapesData.length; rj++) {
+                    if (shapesData[rj].fillType === "gradient" && shapesData[rj].clipMaskRef) {
+                        req += "  try{ _ac.layer('" + shapesData[rj].name + "').setTrackMatte(_ac.layer('" + shapesData[rj].clipMaskRef + "'), 14354 /*TrackMatteType.ALPHA*/); }catch(e){}\n";
+                    }
+                }
+                req += "}\n";
+                // Cleanup 1: rename layer names with _idx (SplitLayer mode)
+                req += "if(_ac instanceof CompItem){\n";
+                req += "  for(var _ci=1;_ci<=_ac.numLayers;_ci++){\n";
+                req += "    var _cn=_ac.layer(_ci).name;\n";
+                req += "    var _idxPos=_cn.indexOf('_idx');\n";
+                req += "    if(_idxPos>0){ try{_ac.layer(_ci).name=_cn.slice(0,_idxPos);}catch(e){} }\n";
+                req += "  }\n";
+                req += "}\n";
+                // Cleanup code moved to scheduled task.
+            }
+        }
+
+        // ── IMPORTAR IMAGENS NO AE (append ao final do req) ──
+        if (_imgExports.length > 0) {
+            req += "try {\n";
+            req += "  var _imgComp = app.project.activeItem;\n";
+            req += "  if (_imgComp instanceof CompItem) {\n";
+            for (var _ij = 0; _ij < _imgExports.length; _ij++) {
+                var _ie = _imgExports[_ij];
+                req += "    try {\n";
+                req += "      var _imgF = new File('" + _ie.path + "');\n";
+                req += "      if (_imgF.exists) {\n";
+                req += "        var _imgIO = new ImportOptions(_imgF);\n";
+                req += "        var _imgItem = app.project.importFile(_imgIO);\n";
+                req += "        var _imgLyr = _imgComp.layers.add(_imgItem);\n";
+                req += "        _imgLyr.property('Position').setValue([" + _ie.x.toFixed(3) + ", " + _ie.y.toFixed(3) + "]);\n";
+                
+                if (_ie.clipLayerName) {
+                    // SplitLayer writes: lyr.comment = "uid_" + sd.name
+                    // sd.name for the clipmask = "GFX_TARGET_N_idxMxSESSION_clipmask"
+                    // So comment contains "uid_GFX_TARGET_N" as a substring
+                    var _searchTag = "uid_" + _ie.clipLayerName;
+                    req += "        try {\n";
+                    req += "          var _maskLyr = null;\n";
+                    req += "          var _fbkLyr = null;\n";
+                    req += "          for(var _s=1; _s<=_imgComp.numLayers; _s++){\n";
+                    req += "            var _sL = _imgComp.layer(_s);\n";
+                    req += "            var _c = _sL.comment || '';\n";
+                    // Match: comment contains uid_GFX_TARGET_N (the clipmask layer)
+                    req += "            if(_c.indexOf('" + _searchTag + "') === 0 && _c.indexOf('_clipmask') > 0){\n";
+                    req += "              _maskLyr = _sL; break;\n";
+                    req += "            }\n";
+                    req += "          }\n";
+                    // If still not found, try any layer whose comment starts with uid_GFX_TARGET_N
+                    req += "          if(!_maskLyr){\n";
+                    req += "            for(var _s2=1;_s2<=_imgComp.numLayers;_s2++){\n";
+                    req += "              var _c2 = _imgComp.layer(_s2).comment || '';\n";
+                    req += "              if(_c2.indexOf('" + _searchTag + "') === 0){\n";
+                    req += "                _maskLyr = _imgComp.layer(_s2); break;\n";
+                    req += "              }\n";
+                    req += "            }\n";
+                    req += "          }\n";
+                    req += "          if(_maskLyr){\n";
+                    req += "            try{ _maskLyr.enabled = true; }catch(e){}\n"; // ensure mask is visible for matte
+                    req += "            _imgLyr.moveAfter(_maskLyr);\n";
+                    req += "            _imgLyr.trackMatteType = TrackMatteType.ALPHA;\n";
+                    req += "          }\n";
+                    req += "        } catch(etm){}\n";
+                }
+
+                req += "        var _vetIdx = 0;\n";
+                req += "        for(var _vi=1;_vi<=_imgComp.numLayers;_vi++){\n";
+                req += "          if(_imgComp.layer(_vi).name==='Vetores'){_vetIdx=_vi;break;}\n";
+                req += "        }\n";
+                req += "        if(_vetIdx > 0) { try{ _imgLyr.moveTo(_vetIdx); }catch(e){} }\n";
+                req += "      }\n";
+                req += "    } catch(_eIL) {}\n";
+            }
+            req += "  }\n";
+            req += "} catch(_eIMG) {}\n";
+        }
+
+        var sentToAE = false;
+        bt.body = req;
+        bt.send();
+        sentToAE = true;
+        $.flashFillMode = ""; // Reseta a flag apos enviar
+        
+    } else {
+        alert("O After Effects precisa estar aberto para importar automaticamente!\nAbra o AE e rode o SplitLayer manualmente.");
+    }
+    
+    for(var mg=0; mg<_modifiedGroups.length; mg++){
+        try{ _modifiedGroups[mg].grp.name = _modifiedGroups[mg].orig; }catch(e){}
+    }
+    
+    closeProgress();
+})();

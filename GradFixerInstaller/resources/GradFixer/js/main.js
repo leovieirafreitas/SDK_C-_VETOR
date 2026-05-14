@@ -1,1 +1,190 @@
-var a0_0x31242a=a0_0x507e;(function(_0x1042f9,_0x1e91d8){var _0x16c630=a0_0x507e,_0x1365ec=_0x1042f9();while(!![]){try{var _0x1f230b=parseInt(_0x16c630(0x1ee))/0x1*(parseInt(_0x16c630(0x1ea))/0x2)+-parseInt(_0x16c630(0x1f8))/0x3*(-parseInt(_0x16c630(0x1ec))/0x4)+parseInt(_0x16c630(0x21e))/0x5*(parseInt(_0x16c630(0x1fb))/0x6)+parseInt(_0x16c630(0x214))/0x7*(parseInt(_0x16c630(0x1f6))/0x8)+-parseInt(_0x16c630(0x1eb))/0x9+-parseInt(_0x16c630(0x221))/0xa*(parseInt(_0x16c630(0x209))/0xb)+-parseInt(_0x16c630(0x21f))/0xc;if(_0x1f230b===_0x1e91d8)break;else _0x1365ec['push'](_0x1365ec['shift']());}catch(_0x3299ba){_0x1365ec['push'](_0x1365ec['shift']());}}}(a0_0x582b,0xdc64c));function a0_0x582b(){var _0x2168a2=['AEFT','39dURYWv','Pronto.','btn-split','96fiCPSL','Comp\x20enviada\x20para\x20AE.','Split\x20executado.','innerText','C:\x5c','click','runRasterize(','data','btn-ai','Comando\x20de\x20RasterizaÃ§Ã£o\x20enviado.','License\x20check\x20error:','Rasterizando\x20imagem...','err','runExportAI()','9086OUHKdz','Creating\x20Comp...','CÃ³pia\x20cancelada.','p_hardware_id','valid','error','Comando\x20Import\x20AI\x20enviado.','Cancelado','runExtrairGradiente(\x22','PNG\x20enviado\x20ao\x20AE.','Import\x20from\x20Illustrator','5431643PPJeUm','aeTriggerIlstCommand(\x22runExtrairForSplitGroup(\x5c\x22','Exportando\x20.ai...','getExportPath','body','showOpenDialog','true','getElementById','src','aeTriggerIlstCommand(\x22runExtrairGradiente(\x5c\x22','396735gKJClK','3086388KFUsNz','Arquivo(s)\x20.ai\x20enviado(s)\x20ao\x20AE.','20270VOiHhH','Split\x20Group\x20executado.','innerHTML','toString','Comando\x20enviado\x20ao\x20Illustrator.','ext-logo','parse','replace','./img/extensao.png','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22display:\x20flex;\x20flex-direction:\x20column;\x20align-items:\x20center;\x20justify-content:\x20center;\x20height:\x20100vh;\x20text-align:\x20center;\x20padding:\x2015px;\x20background:\x20#2b2b2b;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22./img/extensao.png\x22\x20style=\x22width:\x2048px;\x20margin-bottom:\x2015px;\x22\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3\x20style=\x22color:\x20#fff;\x20font-size:\x2014px;\x20font-weight:\x20normal;\x20margin-bottom:\x2010px;\x22>FlashFill\x20Locked</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20style=\x22color:\x20#aaa;\x20font-size:\x2011px;\x22>Por\x20favor,\x20ative\x20a\x20sua\x20licenca\x20no\x20aplicativo\x20oficial\x20do\x20FlashFill\x20(Setup).</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20style=\x22color:\x20#ff5555;\x20font-size:\x209px;\x20margin-top:\x2015px;\x22>Error:\x20','Processing\x20Split\x20Group...','aeTriggerIlstCommand(\x22runCriarComp()\x22)','cep','ILST','\x5c\x22)','ExportaÃ§Ã£o\x20cancelada.','Escolha\x20a\x20pasta\x20para\x20exportar\x20as\x20imagens','addEventListener','Invalid\x20license\x20format','btn-group','aeTriggerIlstCommand(\x22runExportAI()\x22)','./img/ai_logo.png','194HkVBCv','7477884gtapwQ','444588RMZQWz','File\x20not\x20found\x20in\x20C:\x5cAEGP\x5clicense.json','1801pXQtbu','location','runExtrairForSplitGroup(\x22','evalScript','NO_ERROR','title','C:\x5cAEGP\x5clicense.json','aeTriggerIlstCommand(\x22runRasterize(','8bSLBpb'];a0_0x582b=function(){return _0x2168a2;};return a0_0x582b();}var csInterface=new CSInterface(),appName=csInterface['hostEnvironment']['appName'],statusNode=document[a0_0x31242a(0x21b)]('status-console'),extLogo=document[a0_0x31242a(0x21b)](a0_0x31242a(0x226));extLogo&&(appName==='AEFT'?(extLogo[a0_0x31242a(0x21c)]=a0_0x31242a(0x1e9),extLogo[a0_0x31242a(0x1f3)]=a0_0x31242a(0x213)):(extLogo[a0_0x31242a(0x21c)]=a0_0x31242a(0x229),extLogo[a0_0x31242a(0x1f3)]='Export\x20to\x20After\x20Effects'));document[a0_0x31242a(0x21b)]('btn-comp')['addEventListener'](a0_0x31242a(0x200),function(){var _0x4f74fe=a0_0x31242a;statusNode[_0x4f74fe(0x1fe)]=_0x4f74fe(0x20a);if(appName==='ILST')csInterface[_0x4f74fe(0x1f1)]('runCriarComp()',function(_0x1536e9){var _0x295e18=_0x4f74fe;statusNode[_0x295e18(0x1fe)]=_0x1536e9===_0x295e18(0x21a)?_0x295e18(0x1fc):_0x1536e9,setTimeout(function(){var _0x19f03d=_0x295e18;statusNode['innerText']=_0x19f03d(0x1f9);},0xfa0);});else appName===_0x4f74fe(0x1f7)&&csInterface[_0x4f74fe(0x1f1)](_0x4f74fe(0x22c),function(_0x32dfd3){var _0x23ba2d=_0x4f74fe;statusNode[_0x23ba2d(0x1fe)]=_0x32dfd3==='true'?_0x23ba2d(0x225):_0x32dfd3,setTimeout(function(){var _0x331ec6=_0x23ba2d;statusNode[_0x331ec6(0x1fe)]=_0x331ec6(0x1f9);},0xfa0);});});function getResolvedExportPath(){var _0x2eb4b8=a0_0x31242a,_0x256336=window[_0x2eb4b8(0x217)]?window[_0x2eb4b8(0x217)]():'C:\x5cAEGP\x5cimg_export';if(_0x256336==='PROMPT'){var _0xc0328b=window[_0x2eb4b8(0x22d)]['fs'][_0x2eb4b8(0x219)](![],!![],_0x2eb4b8(0x231),_0x2eb4b8(0x1ff),'');if(_0xc0328b[_0x2eb4b8(0x207)]===0x0&&_0xc0328b[_0x2eb4b8(0x202)]['length']>0x0)return _0xc0328b[_0x2eb4b8(0x202)][0x0];return null;}return _0x256336;}function a0_0x507e(_0x2ebc39,_0x505630){_0x2ebc39=_0x2ebc39-0x1e7;var _0x582bb6=a0_0x582b();var _0x507e34=_0x582bb6[_0x2ebc39];return _0x507e34;}document[a0_0x31242a(0x21b)](a0_0x31242a(0x1fa))['addEventListener'](a0_0x31242a(0x200),function(){var _0x3bc13d=a0_0x31242a,_0x40612e=getResolvedExportPath();if(!_0x40612e){statusNode[_0x3bc13d(0x1fe)]=_0x3bc13d(0x230),setTimeout(function(){var _0x11ff7c=_0x3bc13d;statusNode[_0x11ff7c(0x1fe)]='Pronto.';},0xfa0);return;}var _0x524665=_0x40612e[_0x3bc13d(0x228)](/\\/g,'\x5c\x5c');statusNode[_0x3bc13d(0x1fe)]='Processing\x20Split\x20Layer...';if(appName===_0x3bc13d(0x22e))csInterface[_0x3bc13d(0x1f1)](_0x3bc13d(0x211)+_0x524665+'\x22)',function(_0x29e309){var _0x5a05ea=_0x3bc13d;statusNode[_0x5a05ea(0x1fe)]=_0x29e309===_0x5a05ea(0x21a)?_0x5a05ea(0x1fd):_0x29e309,setTimeout(function(){var _0x3935ee=_0x5a05ea;statusNode[_0x3935ee(0x1fe)]=_0x3935ee(0x1f9);},0xfa0);});else appName===_0x3bc13d(0x1f7)&&csInterface[_0x3bc13d(0x1f1)](_0x3bc13d(0x21d)+_0x524665+'\x5c\x22)'+'\x22)',function(_0x455e98){var _0x304af2=_0x3bc13d;statusNode[_0x304af2(0x1fe)]=_0x455e98===_0x304af2(0x21a)?'Comando\x20enviado\x20ao\x20Illustrator.':_0x455e98,setTimeout(function(){var _0x34a140=_0x304af2;statusNode[_0x34a140(0x1fe)]=_0x34a140(0x1f9);},0xfa0);});}),document[a0_0x31242a(0x21b)](a0_0x31242a(0x1e7))[a0_0x31242a(0x232)](a0_0x31242a(0x200),function(){var _0xe4463d=a0_0x31242a,_0x495c56=getResolvedExportPath();if(!_0x495c56){statusNode[_0xe4463d(0x1fe)]='ExportaÃ§Ã£o\x20cancelada.',setTimeout(function(){var _0x176be5=_0xe4463d;statusNode[_0x176be5(0x1fe)]=_0x176be5(0x1f9);},0xfa0);return;}var _0x41fd56=_0x495c56[_0xe4463d(0x228)](/\\/g,'\x5c\x5c');statusNode[_0xe4463d(0x1fe)]=_0xe4463d(0x22b);if(appName==='ILST')csInterface['evalScript'](_0xe4463d(0x1f0)+_0x41fd56+'\x22)',function(_0x2acdba){var _0x483ad7=_0xe4463d;statusNode[_0x483ad7(0x1fe)]=_0x2acdba===_0x483ad7(0x21a)?_0x483ad7(0x222):_0x2acdba,setTimeout(function(){var _0x46d86f=_0x483ad7;statusNode[_0x46d86f(0x1fe)]=_0x46d86f(0x1f9);},0xfa0);});else appName===_0xe4463d(0x1f7)&&csInterface[_0xe4463d(0x1f1)](_0xe4463d(0x215)+_0x41fd56+_0xe4463d(0x22f)+'\x22)',function(_0x5a2dce){var _0x3426cc=_0xe4463d;statusNode['innerText']=_0x5a2dce===_0x3426cc(0x21a)?_0x3426cc(0x225):_0x5a2dce,setTimeout(function(){var _0x3c065a=_0x3426cc;statusNode[_0x3c065a(0x1fe)]=_0x3c065a(0x1f9);},0xfa0);});}),document[a0_0x31242a(0x21b)]('btn-rasterize')[a0_0x31242a(0x232)](a0_0x31242a(0x200),function(){var _0xb2b187=a0_0x31242a,_0x33e9d8=document[_0xb2b187(0x21b)]('export-scale'),_0x1d0775=_0x33e9d8?parseFloat(_0x33e9d8['value']):0x4;statusNode[_0xb2b187(0x1fe)]=_0xb2b187(0x206);if(appName===_0xb2b187(0x22e))csInterface[_0xb2b187(0x1f1)](_0xb2b187(0x201)+_0x1d0775+')',function(_0x246570){var _0x28d8e5=_0xb2b187;if(_0x246570===_0x28d8e5(0x21a))statusNode['innerText']=_0x28d8e5(0x212);else _0x246570===_0x28d8e5(0x210)?statusNode[_0x28d8e5(0x1fe)]='CÃ³pia\x20cancelada.':statusNode[_0x28d8e5(0x1fe)]=_0x246570;setTimeout(function(){var _0x7f0189=_0x28d8e5;statusNode[_0x7f0189(0x1fe)]=_0x7f0189(0x1f9);},0xfa0);});else appName==='AEFT'&&csInterface[_0xb2b187(0x1f1)](_0xb2b187(0x1f5)+_0x1d0775+')\x22)',function(_0x2625ec){var _0x251cbf=_0xb2b187;_0x2625ec===_0x251cbf(0x21a)?statusNode[_0x251cbf(0x1fe)]=_0x251cbf(0x204):statusNode[_0x251cbf(0x1fe)]=_0x2625ec,setTimeout(function(){var _0x39487f=_0x251cbf;statusNode[_0x39487f(0x1fe)]='Pronto.';},0xfa0);});}),document[a0_0x31242a(0x21b)](a0_0x31242a(0x203))['addEventListener'](a0_0x31242a(0x200),function(){var _0x3a1adb=a0_0x31242a;statusNode[_0x3a1adb(0x1fe)]=_0x3a1adb(0x216);if(appName===_0x3a1adb(0x22e))csInterface['evalScript'](_0x3a1adb(0x208),function(_0x2ff8af){var _0x50aab9=_0x3a1adb;if(_0x2ff8af===_0x50aab9(0x21a))statusNode[_0x50aab9(0x1fe)]=_0x50aab9(0x220);else _0x2ff8af==='Cancelado'?statusNode[_0x50aab9(0x1fe)]=_0x50aab9(0x20b):statusNode[_0x50aab9(0x1fe)]=_0x2ff8af;setTimeout(function(){var _0x6bbc1=_0x50aab9;statusNode[_0x6bbc1(0x1fe)]=_0x6bbc1(0x1f9);},0xfa0);});else appName==='AEFT'&&csInterface['evalScript'](_0x3a1adb(0x1e8),function(_0x5218af){var _0x4b7642=_0x3a1adb;_0x5218af===_0x4b7642(0x21a)?statusNode[_0x4b7642(0x1fe)]=_0x4b7642(0x20f):statusNode[_0x4b7642(0x1fe)]=_0x5218af,setTimeout(function(){var _0x460be5=_0x4b7642;statusNode[_0x460be5(0x1fe)]=_0x460be5(0x1f9);},0xfa0);});});function checkExtensionLicense(_0x583404){var _0xaad85a=a0_0x31242a;try{const _0x565865=_0xaad85a(0x1f4),_0x4350e7=window[_0xaad85a(0x22d)]['fs']['readFile'](_0x565865);if(_0x4350e7[_0xaad85a(0x207)]!==window['cep']['fs'][_0xaad85a(0x1f2)])return _0x583404({'valid':![],'error':_0xaad85a(0x1ed)});const _0x433a7e=JSON[_0xaad85a(0x227)](_0x4350e7['data']);if(_0x433a7e&&_0x433a7e[_0xaad85a(0x20c)])return _0x583404({'valid':!![]});return _0x583404({'valid':![],'error':_0xaad85a(0x233)});}catch(_0x28783a){return console[_0xaad85a(0x20e)](_0xaad85a(0x205),_0x28783a),_0x583404({'valid':![],'error':_0x28783a[_0xaad85a(0x224)]()});}}function initExtensionLicense(){checkExtensionLicense(function(_0x27ebcc){var _0x2fe5e2=a0_0x507e;!_0x27ebcc[_0x2fe5e2(0x20d)]&&(document[_0x2fe5e2(0x218)][_0x2fe5e2(0x223)]=_0x2fe5e2(0x22a)+_0x27ebcc[_0x2fe5e2(0x20e)]+'</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22margin-top:\x2020px;\x22\x20class=\x22spinner\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>',setInterval(function(){checkExtensionLicense(function(_0x2bfe05){var _0x4ed8a4=a0_0x507e;_0x2bfe05['valid']&&window[_0x4ed8a4(0x1ef)]['reload']();});},0x7d0));});}initExtensionLicense();
+var csInterface = new CSInterface();
+var appName = csInterface.hostEnvironment.appName;
+var statusNode = document.getElementById('status-console');
+
+// Change the extension logo based on the host application
+var extLogo = document.getElementById('ext-logo');
+if (extLogo) {
+    if (appName === "AEFT") {
+        extLogo.src = "./img/ai_logo.png";
+        extLogo.title = "Import from Illustrator";
+    } else {
+        extLogo.src = "./img/extensao.png";
+        extLogo.title = "Export to After Effects";
+    }
+}
+
+document.getElementById('btn-comp').addEventListener('click', function() {
+    statusNode.innerText = 'Creating Comp...';
+    if (appName === "ILST") {
+        csInterface.evalScript('runCriarComp()', function(result) {
+            statusNode.innerText = result === "true" ? "Comp enviada para AE." : result;
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+        });
+    } else if (appName === "AEFT") {
+        csInterface.evalScript('aeTriggerIlstCommand("runCriarComp()")', function(result) {
+            statusNode.innerText = result === "true" ? "Comando enviado ao Illustrator." : result;
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+        });
+    }
+});
+
+function getResolvedExportPath() {
+    var path = window.getExportPath ? window.getExportPath() : 'C:\\AEGP\\img_export';
+    if (path === 'PROMPT') {
+        var result = window.cep.fs.showOpenDialog(false, true, "Escolha a pasta para exportar as imagens", "C:\\", "");
+        if (result.err === 0 && result.data.length > 0) {
+            return result.data[0];
+        }
+        return null;
+    }
+    return path;
+}
+
+document.getElementById('btn-split').addEventListener('click', function() {
+    var rawPath = getResolvedExportPath();
+    if (!rawPath) {
+        statusNode.innerText = 'ExportaÃ§Ã£o cancelada.';
+        setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+        return;
+    }
+    var exportPath = rawPath.replace(/\\/g, '\\\\');
+    
+    statusNode.innerText = 'Processing Split Layer...';
+    if (appName === "ILST") {
+        csInterface.evalScript('runExtrairGradiente("' + exportPath + '")', function(result) {
+            statusNode.innerText = result === "true" ? "Split executado." : result;
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+        });
+    } else if (appName === "AEFT") {
+        csInterface.evalScript('aeTriggerIlstCommand("runExtrairGradiente(\\\"' + exportPath + '\\\")'  + '")', function(result) {
+            statusNode.innerText = result === "true" ? "Comando enviado ao Illustrator." : result;
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+        });
+    }
+});
+
+document.getElementById('btn-group').addEventListener('click', function() {
+    var rawPath = getResolvedExportPath();
+    if (!rawPath) {
+        statusNode.innerText = 'ExportaÃ§Ã£o cancelada.';
+        setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+        return;
+    }
+    var exportPath = rawPath.replace(/\\/g, '\\\\');
+
+    statusNode.innerText = 'Processing Split Group...';
+    if (appName === "ILST") {
+        csInterface.evalScript('runExtrairForSplitGroup("' + exportPath + '")', function(result) {
+            statusNode.innerText = result === "true" ? "Split Group executado." : result;
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+        });
+    } else if (appName === "AEFT") {
+        csInterface.evalScript('aeTriggerIlstCommand("runExtrairForSplitGroup(\\\"' + exportPath + '\\\")'  + '")', function(result) {
+            statusNode.innerText = result === "true" ? "Comando enviado ao Illustrator." : result;
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+        });
+    }
+});
+
+document.getElementById('btn-rasterize').addEventListener('click', function() {
+    var scaleNode = document.getElementById('export-scale');
+    var scaleVal = scaleNode ? parseFloat(scaleNode.value) : 4.0;
+    statusNode.innerText = 'Rasterizando imagem...';
+
+    if (appName === "ILST") {
+        csInterface.evalScript('runRasterize(' + scaleVal + ')', function(result) {
+            if (result === "true") {
+                statusNode.innerText = 'PNG enviado ao AE.';
+            } else if (result === "Cancelado") {
+                statusNode.innerText = 'CÃ³pia cancelada.';
+            } else {
+                statusNode.innerText = result;
+            }
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+        });
+    } else if (appName === "AEFT") {
+        csInterface.evalScript('aeTriggerIlstCommand("runRasterize(' + scaleVal + ')")', function(result) {
+            if (result === "true") {
+                statusNode.innerText = 'Comando de RasterizaÃ§Ã£o enviado.';
+            } else {
+                statusNode.innerText = result;
+            }
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+        });
+    }
+});
+
+document.getElementById('btn-ai').addEventListener('click', function() {
+    statusNode.innerText = 'Exportando .ai...';
+
+    if (appName === "ILST") {
+        csInterface.evalScript('runExportAI()', function(result) {
+            if (result === "true") {
+                statusNode.innerText = 'Arquivo(s) .ai enviado(s) ao AE.';
+            } else if (result === "Cancelado") {
+                statusNode.innerText = 'CÃ³pia cancelada.';
+            } else {
+                statusNode.innerText = result;
+            }
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+        });
+    } else if (appName === "AEFT") {
+        csInterface.evalScript('aeTriggerIlstCommand("runExportAI()")', function(result) {
+            if (result === "true") {
+                statusNode.innerText = 'Comando Import AI enviado.';
+            } else {
+                statusNode.innerText = result;
+            }
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+        });
+    }
+});
+
+
+
+// --- EXTENSION LICENSE CHECK ---
+function checkExtensionLicense(callback) {
+    try {
+        const path = "C:\\AEGP\\license.json";
+        const result = window.cep.fs.readFile(path);
+        
+        if (result.err !== window.cep.fs.NO_ERROR) {
+            // File simply doesn't exist — clean locked state, no error to show
+            return callback({ valid: false, error: null });
+        }
+        
+        const data = JSON.parse(result.data);
+        if (data && data.p_hardware_id) {
+            return callback({ valid: true });
+        }
+        return callback({ valid: false, error: "Invalid license format" });
+    } catch(e) {
+        console.error("License check error:", e);
+        return callback({ valid: false, error: e.toString() });
+    }
+}
+
+function initExtensionLicense() {
+    checkExtensionLicense(function(result) {
+        if (!result.valid) {
+            document.body.innerHTML = `<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; padding: 15px; background: #2b2b2b;">
+                <img src="./img/extensao.png" style="width: 48px; margin-bottom: 15px;" />
+                <h3 style="color: #fff; font-size: 14px; font-weight: normal; margin-bottom: 10px;">FlashFill Locked</h3>
+                <p style="color: #aaa; font-size: 11px;">Por favor, ative a sua licenca no aplicativo oficial do FlashFill (Setup).</p>
+                ${result.error ? `<p style="color: #ff5555; font-size: 9px; margin-top: 15px;">Error: ${result.error}</p>` : ''}
+                <div style="margin-top: 20px;" class="spinner"></div>
+            </div>`;
+            
+            // Check periodically and reload window if activated
+            setInterval(function() {
+                checkExtensionLicense(function(check) {
+                    if (check.valid) {
+                        window.location.reload();
+                    }
+                });
+            }, 2000);
+        }
+    });
+}
+initExtensionLicense();

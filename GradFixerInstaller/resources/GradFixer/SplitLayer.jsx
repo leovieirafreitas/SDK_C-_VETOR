@@ -1,1 +1,408 @@
-function a0_0x2cd3(_0xf87bd2,_0x475e2a){_0xf87bd2=_0xf87bd2-0xb5;var _0x9b077a=a0_0x9b07();var _0x2cd3ad=_0x9b077a[_0xf87bd2];return _0x2cd3ad;}function a0_0x9b07(){var _0xff6665=['stops','ADBE\x20Vector\x20Ellipse\x20Position','ADD','rotation','ADBE\x20Vector\x20Blend\x20Mode','ADBE\x20Mask\x20Atom','Line\x20Cap','ADBE\x20Opacity','Arial','function','open','project','fontSize','addText','/progress.txt','duration','Transfer\x20Vectors','C:/AEGP/grad_data.json','artboard','SOFT_LIGHT','color','DARKEN','beginUndoGroup','split','C:/AEGP/img_export','fillType','message','setTrackMatte','Matte\x20(no-path)\x20','toString','transform','isClipping','fillColor','_idx','COLOR','parent','stroke','property','12LzQRoC','HARD_LIGHT','CENTER_JUSTIFY','strokeWidth','204772vkQwPy','text','LEFT_JUSTIFY','\x20(L','inTangents','ADBE\x20Vector\x20Shape\x20-\x20Group','ADBE\x20Root\x20Vectors\x20Group','write','195846bDjYsv','Bounds','MaskAtom\x20falhou\x20p/\x20','endUndoGroup','font','justification','solid','fontName','size','ADBE\x20Vector\x20Fill\x20Color','ADBE\x20Vector\x20Graphic\x20-\x20Fill','round','COLOR_DODGE','rect','uid_','name','clipMaskRef','ADBE\x20Vector\x20Group','replace','opacity','position','origName','length','pos','Line\x20Join','layer','\x20->\x20','value','HUE','TempBuild_GF','copyToComp','540421tqtFWv','4604bRsMRo','enabled','value\x20*\x20(hasParent\x20?\x20parent.transform.opacity\x20/\x20100\x20:\x201)','ADBE\x20Vector\x20Stroke\x20Color','759890HUhJsC','group','LUMINOSITY','149427eNawPb','vertices','strokeJoin','setValue','ADBE\x20Position','ADBE\x20Mask\x20Parade','numLayers','canSetExpression','expression','path','blendingMode','ADBE\x20Vector\x20Rect\x20Size','COLOR_BURN','MULTIPLY','layers','sourceRectAtTime','ERRO\x20GLOBAL:\x20','ADBE\x20Vector\x20Ellipse\x20Size','pixelAspect','read','8nbfDGO','width','411aRCSpt','shapes','strokeCap','ADBE\x20Vector\x20Shape\x20-\x20Rect','fill','ADBE\x20Mask\x20Mode','Rode\x20ExtrairGradiente.jsx\x20no\x20Illustrator\x20primeiro!','pts','blendMode','closed','type','ADBE\x20Rotate\x20Z','comment','height','guideLayer','ADBE\x20Vector\x20Rect\x20Position','ADBE\x20Vectors\x20Group','line','gradient','top','Stroke\x20Width','shape_','outTangents','SCREEN','ADBE\x20Mask\x20Shape','ADBE\x20Anchor\x20Point','5386390KnBEyb','Source\x20Text','Building\x20Layers\x20in\x20After\x20Effects...','ADBE\x20Transform\x20Group','push','close','addShape','addProperty','selected','activeItem','paths','Nenhuma\x20composicao\x20aberta.\x20Clique\x20no\x20botao\x20COMP\x20no\x20Illustrator\x20primeiro!','remove','LIGHTEN','ALPHA','ADBE\x20Vector\x20Fill\x20Rule','ADBE\x20Vector\x20Graphic\x20-\x20Stroke'];a0_0x9b07=function(){return _0xff6665;};return a0_0x9b07();}(function(_0x464cd7,_0x220222){var _0x30a0e4=a0_0x2cd3,_0x2a671f=_0x464cd7();while(!![]){try{var _0x123d8f=-parseInt(_0x30a0e4(0x14d))/0x1+-parseInt(_0x30a0e4(0x145))/0x2+-parseInt(_0x30a0e4(0xf0))/0x3*(parseInt(_0x30a0e4(0xd3))/0x4)+-parseInt(_0x30a0e4(0xd7))/0x5+-parseInt(_0x30a0e4(0x141))/0x6*(-parseInt(_0x30a0e4(0xd2))/0x7)+parseInt(_0x30a0e4(0xee))/0x8*(parseInt(_0x30a0e4(0xda))/0x9)+parseInt(_0x30a0e4(0x10a))/0xa;if(_0x123d8f===_0x220222)break;else _0x2a671f['push'](_0x2a671f['shift']());}catch(_0x50a102){_0x2a671f['push'](_0x2a671f['shift']());}}}(a0_0x9b07,0x18d77),(function(){var _0x399af5=a0_0x2cd3;try{var _0x39fed2=new File(_0x399af5(0x12c));if(!_0x39fed2['exists']){alert(_0x399af5(0xf6));return;}_0x39fed2[_0x399af5(0x125)]('r');var _0x265d52=eval('('+_0x39fed2[_0x399af5(0xed)]()+')');_0x39fed2[_0x399af5(0x10f)]();var _0x3759d9=Math[_0x399af5(0xbe)](_0x265d52[_0x399af5(0x12d)]['w']),_0x2ccdcf=Math[_0x399af5(0xbe)](_0x265d52[_0x399af5(0x12d)]['h']),_0x1025bf=app[_0x399af5(0x126)][_0x399af5(0x113)];if(!_0x1025bf||!(_0x1025bf instanceof CompItem)){alert(_0x399af5(0x115));return;}app[_0x399af5(0x131)](_0x399af5(0x12b));var _0x3007a7=app[_0x399af5(0x126)]['items']['addComp'](_0x399af5(0xd0),_0x1025bf[_0x399af5(0xef)],_0x1025bf[_0x399af5(0xfd)],_0x1025bf[_0x399af5(0xec)],_0x1025bf[_0x399af5(0x12a)],_0x1025bf['frameRate']),_0x21552c={};function _0x25fec0(_0x1b2fea,_0x15f000,_0xfcb33c){var _0x2bb5de=_0x399af5;if(!_0xfcb33c||_0xfcb33c===0x1)return;try{if(_0x15f000)_0x15f000[_0x2bb5de(0x140)](_0x2bb5de(0x11f))[_0x2bb5de(0xdd)](_0xfcb33c);}catch(_0x1024ea){}try{if(_0xfcb33c===0x2)_0x1b2fea['blendingMode']=BlendingMode[_0x2bb5de(0xe7)];else{if(_0xfcb33c===0x3)_0x1b2fea['blendingMode']=BlendingMode[_0x2bb5de(0x107)];else{if(_0xfcb33c===0x4)_0x1b2fea[_0x2bb5de(0xe4)]=BlendingMode['OVERLAY'];else{if(_0xfcb33c===0x5)_0x1b2fea['blendingMode']=BlendingMode[_0x2bb5de(0x130)];else{if(_0xfcb33c===0x6)_0x1b2fea[_0x2bb5de(0xe4)]=BlendingMode[_0x2bb5de(0x117)];else{if(_0xfcb33c===0x7)_0x1b2fea[_0x2bb5de(0xe4)]=BlendingMode[_0x2bb5de(0xbf)];else{if(_0xfcb33c===0x8)_0x1b2fea[_0x2bb5de(0xe4)]=BlendingMode[_0x2bb5de(0xe6)];else{if(_0xfcb33c===0x9)_0x1b2fea[_0x2bb5de(0xe4)]=BlendingMode[_0x2bb5de(0x142)];else{if(_0xfcb33c===0xa)_0x1b2fea[_0x2bb5de(0xe4)]=BlendingMode[_0x2bb5de(0x12e)];else{if(_0xfcb33c===0xb)_0x1b2fea['blendingMode']=BlendingMode['DIFFERENCE'];else{if(_0xfcb33c===0xc)_0x1b2fea[_0x2bb5de(0xe4)]=BlendingMode['EXCLUSION'];else{if(_0xfcb33c===0xd)_0x1b2fea[_0x2bb5de(0xe4)]=BlendingMode[_0x2bb5de(0xcf)];else{if(_0xfcb33c===0xe)_0x1b2fea[_0x2bb5de(0xe4)]=BlendingMode['SATURATION'];else{if(_0xfcb33c===0xf)_0x1b2fea[_0x2bb5de(0xe4)]=BlendingMode[_0x2bb5de(0x13d)];else{if(_0xfcb33c===0x10)_0x1b2fea[_0x2bb5de(0xe4)]=BlendingMode[_0x2bb5de(0xd9)];}}}}}}}}}}}}}}}catch(_0x14918d){}}function _0x1bc954(_0x114605,_0x2ae171,_0x3f42d5){var _0x487a09=_0x399af5;if(!_0x2ae171)return;var _0x267f83=_0x3f42d5?_0x487a09(0x11a):_0x487a09(0xbd),_0x56c156=_0x114605['addProperty'](_0x267f83);if(_0x2ae171[_0x487a09(0xfa)]==='solid'||!_0x2ae171[_0x487a09(0xfa)]){var _0x518cf8=_0x2ae171[_0x487a09(0x12f)]||[0.5,0.5,0.5];try{_0x56c156['property']('Color')['setValue'](_0x518cf8);}catch(_0x492e93){try{_0x56c156[_0x487a09(0x140)](_0x487a09(0xbc))[_0x487a09(0xdd)](_0x518cf8);}catch(_0x1d0314){try{_0x56c156[_0x487a09(0x140)](_0x487a09(0xd6))['setValue'](_0x518cf8);}catch(_0x1eba9a){}}}if(!_0x3f42d5)try{try{_0x56c156[_0x487a09(0x140)]('Fill\x20Rule')[_0x487a09(0xdd)](0x2);}catch(_0x47d454){_0x56c156[_0x487a09(0x140)](_0x487a09(0x119))[_0x487a09(0xdd)](0x2);}}catch(_0x4a06bd){}}if(_0x3f42d5&&_0x2ae171['strokeWidth']){try{_0x56c156[_0x487a09(0x140)](_0x487a09(0x104))[_0x487a09(0xdd)](_0x2ae171[_0x487a09(0x144)]);}catch(_0x52bdb8){}if(_0x2ae171[_0x487a09(0xf2)])try{_0x56c156['property'](_0x487a09(0x121))[_0x487a09(0xdd)](_0x2ae171[_0x487a09(0xf2)]);}catch(_0x52d192){}if(_0x2ae171[_0x487a09(0xdc)])try{_0x56c156[_0x487a09(0x140)](_0x487a09(0xcb))[_0x487a09(0xdd)](_0x2ae171['strokeJoin']);}catch(_0x5731cd){}}}var _0x4ac478=0x0,_0x4a099e=0x0,_0x2e6cd7=0x0,_0x3ed447=0x0,_0x5089dc=0x0;function _0x3283cd(_0x21ed0f,_0x5251f6,_0x273671){var _0x317506=_0x399af5;try{var _0x5b118f=typeof flashFillExportPath!=='undefined'?flashFillExportPath:_0x317506(0x133),_0x2dabd0=new File(_0x5b118f+_0x317506(0x129));_0x2dabd0[_0x317506(0x125)]('w'),_0x2dabd0[_0x317506(0x14c)](_0x21ed0f+'|'+_0x5251f6+'|'+_0x273671),_0x2dabd0['close']();}catch(_0x28cf23){}}function _0x5203fc(){}for(var _0x14e491=0x0;_0x14e491<_0x265d52[_0x399af5(0xf1)]['length'];_0x14e491++){(_0x14e491%0x3===0x0||_0x14e491===_0x265d52[_0x399af5(0xf1)][_0x399af5(0xc9)]-0x1)&&_0x3283cd(_0x399af5(0x10c),_0x14e491,_0x265d52[_0x399af5(0xf1)]['length']);var _0x162ceb=_0x265d52['shapes'][_0x14e491];if(_0x162ceb[_0x399af5(0x134)]===_0x399af5(0xd8)){var _0x35c578=_0x3007a7[_0x399af5(0xe8)][_0x399af5(0x110)]();_0x35c578[_0x399af5(0xc2)]=_0x162ceb[_0x399af5(0xc2)];try{_0x35c578[_0x399af5(0xfe)]=!![];}catch(_0x365c9f){}try{var _0x446c40=_0x35c578[_0x399af5(0x140)](_0x399af5(0x14b)),_0x3e2131=_0x446c40[_0x399af5(0x111)]('ADBE\x20Vector\x20Group');_0x3e2131['name']=_0x399af5(0x14e);var _0x4aad56=_0x3e2131[_0x399af5(0x140)](_0x399af5(0x100)),_0x35fe6c=_0x4aad56[_0x399af5(0x111)](_0x399af5(0xf3));_0x35fe6c[_0x399af5(0x140)](_0x399af5(0xe5))['setValue']([_0x162ceb['w']||0x64,_0x162ceb['h']||0x64]);var _0x337159=_0x162ceb['x']!==undefined?_0x162ceb['x']:0x0,_0x3cd44e=_0x162ceb['y']!==undefined?_0x162ceb['y']:0x0,_0x35d851=_0x35c578[_0x399af5(0x140)](_0x399af5(0x10d));_0x35d851[_0x399af5(0x140)](_0x399af5(0x109))[_0x399af5(0xdd)]([0x0,0x0]),_0x35d851[_0x399af5(0x140)](_0x399af5(0xde))[_0x399af5(0xdd)]([_0x337159,_0x3cd44e]);if(_0x162ceb[_0x399af5(0xc6)]!==undefined)try{_0x35d851[_0x399af5(0x140)](_0x399af5(0x122))[_0x399af5(0xdd)](_0x162ceb[_0x399af5(0xc6)]);}catch(_0x328370){}_0x35c578['label']=0x0;}catch(_0x5e3ce3){}_0x25fec0(_0x35c578,null,_0x162ceb[_0x399af5(0xf8)]),_0x2e6cd7++,_0x21552c[_0x162ceb['name']]=_0x35c578;continue;}if(_0x162ceb['fillType']===_0x399af5(0x146)){var _0x53eadc=(_0x162ceb[_0x399af5(0x146)]||'')[_0x399af5(0xc5)](/\r?\n|\r/g,'\x0d'),_0x44286e=_0x3007a7[_0x399af5(0xe8)][_0x399af5(0x128)](_0x53eadc);_0x44286e[_0x399af5(0xc2)]=_0x162ceb[_0x399af5(0xc2)];var _0x55c2fe=_0x44286e[_0x399af5(0x140)](_0x399af5(0x10b)),_0x1500b3=_0x55c2fe[_0x399af5(0xce)];_0x1500b3[_0x399af5(0x127)]=_0x162ceb[_0x399af5(0x127)]||0x32,_0x1500b3[_0x399af5(0xb7)]=_0x162ceb[_0x399af5(0xba)]||_0x399af5(0x123);try{var _0x6b2ae0=_0x162ceb['color']||[0x0,0x0,0x0];_0x1500b3[_0x399af5(0x13b)]=[_0x6b2ae0[0x0],_0x6b2ae0[0x1],_0x6b2ae0[0x2]];}catch(_0x950915){}try{var _0xc4898f=ParagraphJustification[_0x399af5(0x147)];if(_0x162ceb[_0x399af5(0xb8)]===0x1)_0xc4898f=ParagraphJustification[_0x399af5(0x143)];if(_0x162ceb['justification']===0x2)_0xc4898f=ParagraphJustification['RIGHT_JUSTIFY'];_0x1500b3[_0x399af5(0xb8)]=_0xc4898f;}catch(_0x22e5d9){}try{_0x55c2fe[_0x399af5(0xdd)](_0x1500b3);}catch(_0x46a2f8){}try{var _0x5f059d=_0x44286e['property'](_0x399af5(0x10d)),_0x883516=_0x44286e[_0x399af5(0xe9)](0x0,![]),_0x41d4cc=_0x883516['left']+_0x883516[_0x399af5(0xef)]/0x2,_0x2c7585=_0x883516[_0x399af5(0x103)]+_0x883516[_0x399af5(0xfd)]/0x2;_0x5f059d[_0x399af5(0x140)](_0x399af5(0x109))[_0x399af5(0xdd)]([_0x41d4cc,_0x2c7585]),_0x5f059d[_0x399af5(0x140)](_0x399af5(0xde))[_0x399af5(0xdd)]([_0x162ceb['x']||0x0,_0x162ceb['y']||0x0]),_0x162ceb[_0x399af5(0x11e)]&&_0x5f059d[_0x399af5(0x140)](_0x399af5(0xfb))[_0x399af5(0xdd)](_0x162ceb[_0x399af5(0x11e)]),_0x162ceb[_0x399af5(0xc6)]!==undefined&&_0x5f059d['property']('ADBE\x20Opacity')[_0x399af5(0xdd)](_0x162ceb[_0x399af5(0xc6)]);}catch(_0x24106e){}_0x25fec0(_0x44286e,null,_0x162ceb[_0x399af5(0xf8)]),_0x21552c[_0x162ceb[_0x399af5(0xc2)]]=_0x44286e,_0x3ed447++;continue;}var _0x3ffec5=_0x3007a7[_0x399af5(0xe8)][_0x399af5(0x110)]();_0x3ffec5[_0x399af5(0xc2)]=_0x162ceb[_0x399af5(0xc2)]||_0x399af5(0x105)+_0x14e491,_0x21552c[_0x162ceb[_0x399af5(0xc2)]]=_0x3ffec5;var _0x446c40=_0x3ffec5[_0x399af5(0x140)](_0x399af5(0x14b)),_0x170e41=_0x446c40[_0x399af5(0x111)](_0x399af5(0xc4));_0x170e41[_0x399af5(0xc2)]=_0x162ceb[_0x399af5(0xc2)]||'g_'+_0x14e491;var _0x4aad56=_0x170e41[_0x399af5(0x140)](_0x399af5(0x100));if(_0x162ceb['fillType']===_0x399af5(0x102)){var _0x4fe199=_0x162ceb[_0x399af5(0x114)]?_0x162ceb[_0x399af5(0x114)]:_0x162ceb['path']?[_0x162ceb['path']]:null,_0x5671a9=0x0;if(_0x4fe199&&_0x4fe199[_0x399af5(0xc9)]>0x0)for(var _0x129eb0=0x0;_0x129eb0<_0x4fe199[_0x399af5(0xc9)];_0x129eb0++){var _0xc6f4b0=_0x4fe199[_0x129eb0];if(!_0xc6f4b0||!_0xc6f4b0[_0x399af5(0xf7)]||_0xc6f4b0[_0x399af5(0xf7)][_0x399af5(0xc9)]<0x2)continue;var _0xa0f5c4=_0x4aad56[_0x399af5(0x111)](_0x399af5(0x14a)),_0x1b468a=[],_0x3c6736=[],_0x3cd4f3=[];for(var _0x4fc363=0x0;_0x4fc363<_0xc6f4b0['pts'][_0x399af5(0xc9)];_0x4fc363++){_0x1b468a[_0x399af5(0x10e)](_0xc6f4b0[_0x399af5(0xf7)][_0x4fc363]['a']),_0x3c6736[_0x399af5(0x10e)](_0xc6f4b0[_0x399af5(0xf7)][_0x4fc363]['i']),_0x3cd4f3[_0x399af5(0x10e)](_0xc6f4b0[_0x399af5(0xf7)][_0x4fc363]['o']);}var _0xf83fd1=new Shape();_0xf83fd1[_0x399af5(0xdb)]=_0x1b468a,_0xf83fd1[_0x399af5(0x149)]=_0x3c6736,_0xf83fd1[_0x399af5(0x106)]=_0x3cd4f3,_0xf83fd1[_0x399af5(0xf9)]=_0xc6f4b0['closed']!==undefined?_0xc6f4b0[_0x399af5(0xf9)]:!![],_0xa0f5c4['property']('ADBE\x20Vector\x20Shape')[_0x399af5(0xdd)](_0xf83fd1),_0x5671a9++;}if(_0x5671a9===0x0)try{var _0x3c9986=_0x162ceb['w']||0x64,_0xb110bd=_0x162ceb['h']||0x64,_0x4ff2c0=_0x4aad56['addProperty'](_0x399af5(0xf3));_0x4ff2c0[_0x399af5(0x140)](_0x399af5(0xe5))[_0x399af5(0xdd)]([_0x3c9986,_0xb110bd]),_0x4a099e++;}catch(_0x819246){}_0x4ac478++;var _0x42584=_0x4aad56[_0x399af5(0x111)](_0x399af5(0xbd));if(_0x162ceb['gradient']&&_0x162ceb[_0x399af5(0x102)][_0x399af5(0x11b)]&&_0x162ceb[_0x399af5(0x102)][_0x399af5(0x11b)][_0x399af5(0xc9)]>0x0){var _0x67a810=_0x162ceb[_0x399af5(0x102)][_0x399af5(0x11b)][0x0];_0x42584['property'](_0x399af5(0xbc))['setValue']([_0x67a810['r'],_0x67a810['g'],_0x67a810['b'],0x1]);}_0x3ffec5[_0x399af5(0x140)](_0x399af5(0x10d))[_0x399af5(0x140)](_0x399af5(0x109))[_0x399af5(0xdd)]([0x0,0x0]),_0x3ffec5[_0x399af5(0x140)](_0x399af5(0x10d))[_0x399af5(0x140)]('ADBE\x20Position')[_0x399af5(0xdd)]([_0x162ceb['x']||0x0,_0x162ceb['y']||0x0]),_0x25fec0(_0x3ffec5,_0x170e41,_0x162ceb[_0x399af5(0xf8)]);if(_0x162ceb[_0x399af5(0xc6)]!==undefined)try{_0x3ffec5[_0x399af5(0x140)](_0x399af5(0x10d))['property'](_0x399af5(0x122))[_0x399af5(0xdd)](_0x162ceb[_0x399af5(0xc6)]);}catch(_0x10014e){}if(_0x162ceb[_0x399af5(0x13a)])try{_0x3ffec5[_0x399af5(0xd4)]=![];}catch(_0x37177a){}}else{var _0x47739a=_0x162ceb[_0x399af5(0x114)]?_0x162ceb[_0x399af5(0x114)]:_0x162ceb[_0x399af5(0xe3)]?[_0x162ceb[_0x399af5(0xe3)]]:null,_0x52f2b3=0x0;if(_0x47739a&&_0x47739a[_0x399af5(0xc9)]>0x0){var _0xca7a62=_0x47739a[_0x399af5(0xc9)]>0x1;for(var _0x129eb0=0x0;_0x129eb0<_0x47739a[_0x399af5(0xc9)];_0x129eb0++){var _0xc6f4b0=_0x47739a[_0x129eb0];if(!_0xc6f4b0)continue;if(!_0xca7a62&&_0xc6f4b0[_0x399af5(0xfa)]===_0x399af5(0xc0)){var _0x6abb63=_0x4aad56[_0x399af5(0x111)](_0x399af5(0xf3));_0x6abb63['property'](_0x399af5(0xe5))['setValue'](_0xc6f4b0[_0x399af5(0xbb)]),_0x6abb63[_0x399af5(0x140)](_0x399af5(0xff))[_0x399af5(0xdd)](_0xc6f4b0[_0x399af5(0xca)]||[0x0,0x0]),_0x52f2b3++;continue;}else{if(!_0xca7a62&&_0xc6f4b0[_0x399af5(0xfa)]==='ellipse'){var _0x6abb63=_0x4aad56[_0x399af5(0x111)]('ADBE\x20Vector\x20Shape\x20-\x20Ellipse');_0x6abb63[_0x399af5(0x140)](_0x399af5(0xeb))[_0x399af5(0xdd)](_0xc6f4b0[_0x399af5(0xbb)]),_0x6abb63['property'](_0x399af5(0x11c))[_0x399af5(0xdd)](_0xc6f4b0[_0x399af5(0xca)]||[0x0,0x0]),_0x52f2b3++;continue;}}if(!_0xc6f4b0[_0x399af5(0xf7)]||_0xc6f4b0[_0x399af5(0xf7)][_0x399af5(0xc9)]<0x2)continue;var _0x6abb63=_0x4aad56[_0x399af5(0x111)](_0x399af5(0x14a)),_0x4dfbb4=[],_0x4048df=[],_0x8d6c4=[];for(var _0x3dc600=0x0;_0x3dc600<_0xc6f4b0[_0x399af5(0xf7)][_0x399af5(0xc9)];_0x3dc600++){_0x4dfbb4[_0x399af5(0x10e)](_0xc6f4b0['pts'][_0x3dc600]['a']),_0x4048df[_0x399af5(0x10e)](_0xc6f4b0[_0x399af5(0xf7)][_0x3dc600]['i']),_0x8d6c4[_0x399af5(0x10e)](_0xc6f4b0['pts'][_0x3dc600]['o']);}var _0x118f2e=new Shape();_0x118f2e[_0x399af5(0xdb)]=_0x4dfbb4,_0x118f2e[_0x399af5(0x149)]=_0x4048df,_0x118f2e[_0x399af5(0x106)]=_0x8d6c4,_0x118f2e[_0x399af5(0xf9)]=_0xc6f4b0[_0x399af5(0xf9)]!==undefined?_0xc6f4b0[_0x399af5(0xf9)]:!![],_0x6abb63[_0x399af5(0x140)]('Path')['setValue'](_0x118f2e),_0x52f2b3++;}}if(_0x52f2b3===0x0)try{var _0x466069=_0x162ceb['w']||0x64,_0x292858=_0x162ceb['h']||0x64,_0x151f78=_0x4aad56[_0x399af5(0x111)]('ADBE\x20Vector\x20Shape\x20-\x20Rect');_0x151f78['property'](_0x399af5(0xe5))[_0x399af5(0xdd)]([_0x466069,_0x292858]);}catch(_0x2e83e8){}_0x1bc954(_0x4aad56,_0x162ceb[_0x399af5(0xf4)],![]),_0x1bc954(_0x4aad56,_0x162ceb[_0x399af5(0x13f)],!![]);_0x162ceb[_0x399af5(0x13a)]&&!_0x162ceb[_0x399af5(0xf4)]&&!_0x162ceb[_0x399af5(0x13f)]&&_0x1bc954(_0x4aad56,{'type':_0x399af5(0xb9),'color':[0x1,0x1,0x1]},![]);var _0x35d851=_0x3ffec5['property'](_0x399af5(0x10d));_0x35d851[_0x399af5(0x140)](_0x399af5(0x109))[_0x399af5(0xdd)]([0x0,0x0]),_0x35d851['property'](_0x399af5(0xde))[_0x399af5(0xdd)]([_0x162ceb['x']||0x0,_0x162ceb['y']||0x0]);if(_0x162ceb['opacity']!==undefined)try{_0x35d851[_0x399af5(0x140)](_0x399af5(0x122))[_0x399af5(0xdd)](_0x162ceb[_0x399af5(0xc6)]);}catch(_0x354db5){}if(_0x162ceb['isClipping'])try{_0x3ffec5['enabled']=![];}catch(_0x2e6bcd){}_0x25fec0(_0x3ffec5,_0x170e41,_0x162ceb[_0x399af5(0xf8)]),_0x3ed447++;}}for(var _0x47e275=0x1;_0x47e275<=_0x3007a7[_0x399af5(0xe0)];_0x47e275++){try{_0x3007a7[_0x399af5(0xcc)](_0x47e275)[_0x399af5(0xd1)](_0x1025bf);}catch(_0x32ae1c){}}var _0x23aa1f={};for(var _0x3c6c42=0x1;_0x3c6c42<=_0x1025bf['numLayers'];_0x3c6c42++){var _0x1fc2fd=_0x1025bf[_0x399af5(0xcc)](_0x3c6c42);try{_0x1fc2fd[_0x399af5(0x112)]=![];}catch(_0x3e9726){}_0x23aa1f[_0x1fc2fd[_0x399af5(0xc2)]]=_0x1fc2fd;}try{_0x3007a7[_0x399af5(0x116)]();}catch(_0x19f8b4){}var _0x44b7df={};for(var _0x219cf1=0x0;_0x219cf1<_0x265d52[_0x399af5(0xf1)][_0x399af5(0xc9)];_0x219cf1++)_0x44b7df[_0x265d52[_0x399af5(0xf1)][_0x219cf1]['name']]=_0x265d52[_0x399af5(0xf1)][_0x219cf1];app['endUndoGroup'](),app['beginUndoGroup']('Relink\x20Hierachy');var _0x4542cd=[];for(var _0x14e491=0x0;_0x14e491<_0x265d52['shapes'][_0x399af5(0xc9)];_0x14e491++){var _0x162ceb=_0x265d52[_0x399af5(0xf1)][_0x14e491],_0x1577f1=_0x23aa1f[_0x162ceb[_0x399af5(0xc2)]];if(!_0x1577f1)continue;if(_0x162ceb[_0x399af5(0x13e)]&&_0x23aa1f[_0x162ceb['parent']]){var _0x3577d9=_0x44b7df[_0x162ceb[_0x399af5(0x13e)]];try{_0x1577f1[_0x399af5(0x13e)]=_0x23aa1f[_0x162ceb[_0x399af5(0x13e)]];try{var _0x59f619=_0x1577f1['property'](_0x399af5(0x10d))[_0x399af5(0x140)](_0x399af5(0x122));_0x59f619&&_0x59f619[_0x399af5(0xe1)]&&(_0x59f619[_0x399af5(0xe2)]=_0x399af5(0xd5));}catch(_0x3f64de){}}catch(_0x47ed98){_0x4542cd['push'](_0x162ceb[_0x399af5(0xc2)]+_0x399af5(0xcd)+_0x162ceb[_0x399af5(0x13e)]+':\x20'+_0x47ed98[_0x399af5(0x138)]());}if(_0x3577d9){var _0x1fa619=(_0x162ceb['x']||0x0)-(_0x3577d9['x']||0x0),_0x1def59=(_0x162ceb['y']||0x0)-(_0x3577d9['y']||0x0);try{var _0x5b682d=_0x1577f1[_0x399af5(0x140)](_0x399af5(0x10d))['property'](_0x399af5(0xde)),_0x3aae58=_0x1fa619!==undefined?_0x5b682d[_0x399af5(0xce)][_0x399af5(0xc9)]>=0x3?[_0x1fa619,_0x1def59,0x0]:[_0x1fa619,_0x1def59]:null;if(_0x3aae58)_0x5b682d[_0x399af5(0xdd)](_0x3aae58);}catch(_0x50447a){try{_0x1577f1[_0x399af5(0x139)][_0x399af5(0xc7)]['setValue']([_0x1fa619,_0x1def59]);}catch(_0x3e9cb3){}}}}if(_0x162ceb[_0x399af5(0xc3)]){var _0x5d6120=_0x44b7df[_0x162ceb['clipMaskRef']],_0x3d3e6d=_0x23aa1f[_0x162ceb[_0x399af5(0xc3)]];if(_0x3d3e6d){try{_0x3d3e6d['enabled']=![];}catch(_0xc38aed){}var _0x417c13=_0x5d6120?_0x5d6120[_0x399af5(0x114)]?_0x5d6120[_0x399af5(0x114)]:_0x5d6120[_0x399af5(0xe3)]?[_0x5d6120['path']]:null:null;if(_0x417c13&&_0x417c13[_0x399af5(0xc9)]>0x0)try{var _0x2afb54=_0x1577f1['property'](_0x399af5(0xdf)),_0x1c3582=(_0x5d6120['x']||0x0)-(_0x162ceb['x']||0x0),_0x165cfc=(_0x5d6120['y']||0x0)-(_0x162ceb['y']||0x0);for(var _0x4c78db=0x0;_0x4c78db<_0x417c13[_0x399af5(0xc9)];_0x4c78db++){var _0x54951d=_0x417c13[_0x4c78db];if(!_0x54951d['pts']||_0x54951d[_0x399af5(0xf7)]['length']<0x2)continue;var _0x2baed9=_0x2afb54['addProperty'](_0x399af5(0x120)),_0x2d52a5=new Shape(),_0x51eeda=[],_0x399ac0=[],_0x275349=[];for(var _0x482f95=0x0;_0x482f95<_0x54951d[_0x399af5(0xf7)][_0x399af5(0xc9)];_0x482f95++){var _0x158de0=_0x54951d['pts'][_0x482f95];_0x51eeda['push']([_0x158de0['a'][0x0]+_0x1c3582,_0x158de0['a'][0x1]+_0x165cfc]),_0x399ac0[_0x399af5(0x10e)](_0x158de0['i']?[_0x158de0['i'][0x0],_0x158de0['i'][0x1]]:[0x0,0x0]),_0x275349[_0x399af5(0x10e)](_0x158de0['o']?[_0x158de0['o'][0x0],_0x158de0['o'][0x1]]:[0x0,0x0]);}_0x2d52a5[_0x399af5(0xdb)]=_0x51eeda,_0x2d52a5[_0x399af5(0x149)]=_0x399ac0,_0x2d52a5['outTangents']=_0x275349,_0x2d52a5[_0x399af5(0xf9)]=_0x54951d[_0x399af5(0xf9)]!==undefined?_0x54951d[_0x399af5(0xf9)]:!![];try{_0x2baed9[_0x399af5(0x140)](_0x399af5(0x108))[_0x399af5(0xdd)](_0x2d52a5);}catch(_0x698562){}try{_0x2baed9[_0x399af5(0x140)](_0x399af5(0xf5))[_0x399af5(0xdd)](MaskMode[_0x399af5(0x11d)]);}catch(_0x18a524){}}}catch(_0xb61fed){_0x4542cd['push'](_0x399af5(0xb5)+_0x162ceb[_0x399af5(0xc2)]+':\x20'+_0xb61fed[_0x399af5(0x138)]());}else try{typeof _0x1577f1[_0x399af5(0x136)]===_0x399af5(0x124)?_0x1577f1[_0x399af5(0x136)](_0x3d3e6d,TrackMatteType[_0x399af5(0x118)]):_0x1577f1['trackMatteType']=TrackMatteType[_0x399af5(0x118)];}catch(_0x331e5d){_0x4542cd['push'](_0x399af5(0x137)+_0x162ceb[_0x399af5(0xc2)]+':\x20'+_0x331e5d[_0x399af5(0x138)]());}}}try{_0x162ceb[_0x399af5(0x134)]!==_0x399af5(0x102)&&(_0x162ceb[_0x399af5(0xc8)]?_0x1577f1[_0x399af5(0xc2)]=_0x162ceb['origName']:_0x1577f1[_0x399af5(0xc2)]=_0x162ceb[_0x399af5(0xc2)][_0x399af5(0x132)](_0x399af5(0x13c))[0x0]);try{_0x1577f1[_0x399af5(0xfc)]=_0x399af5(0xc1)+_0x162ceb[_0x399af5(0xc2)];}catch(_0x410196){}}catch(_0x2ce493){}}app[_0x399af5(0xb6)]();try{}catch(_0x3e8fd1){}_0x5203fc(),_0x1025bf['openInViewer']();}catch(_0x396732){try{app[_0x399af5(0xb6)]();}catch(_0x4df581){}alert(_0x399af5(0xea)+_0x396732[_0x399af5(0x135)]+_0x399af5(0x148)+_0x396732[_0x399af5(0x101)]+')');}}()));
+// SimularOverlord.jsx v10 — TURBO SHADOW-BUILD + ClipGroup Track Matte
+// Documento: TempBuild_GF escondida no background para velocidade máxima (<10s).
+// ClipGroups detectados via clipMaskRef: máscara posicionada ACIMA da alvo na timeline.
+
+(function(){
+try {
+    var jf = new File("C:/AEGP/grad_data.json");
+    if (!jf.exists) { alert("Rode ExtrairGradiente.jsx no Illustrator primeiro!"); return; }
+    jf.open("r"); var jd = eval("(" + jf.read() + ")"); jf.close();
+
+    var artW = Math.round(jd.artboard.w);
+    var artH = Math.round(jd.artboard.h);
+
+    var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert("Nenhuma composicao aberta. Clique no botao COMP no Illustrator primeiro!");
+        return;
+    }
+
+    app.beginUndoGroup("Transfer Vectors");
+
+    // while (comp.numLayers > 0) {
+    //     try { comp.layer(1).remove(); } catch(er) { break; }
+    // }
+
+    var tempComp = app.project.items.addComp("TempBuild_GF", comp.width, comp.height, comp.pixelAspect, comp.duration, comp.frameRate);
+
+    var layerDict = {};  // sd.name -> layer na tempComp
+
+    function setBlend(layer, vGrp, bm) {
+        if (!bm || bm === 1) return;
+        try { if (vGrp) vGrp.property("ADBE Vector Blend Mode").setValue(bm); } catch(e){}
+        try {
+            if (bm===2) layer.blendingMode=BlendingMode.MULTIPLY;
+            else if(bm===3) layer.blendingMode=BlendingMode.SCREEN;
+            else if(bm===4) layer.blendingMode=BlendingMode.OVERLAY;
+            else if(bm===5) layer.blendingMode=BlendingMode.DARKEN;
+            else if(bm===6) layer.blendingMode=BlendingMode.LIGHTEN;
+            else if(bm===7) layer.blendingMode=BlendingMode.COLOR_DODGE;
+            else if(bm===8) layer.blendingMode=BlendingMode.COLOR_BURN;
+            else if(bm===9) layer.blendingMode=BlendingMode.HARD_LIGHT;
+            else if(bm===10) layer.blendingMode=BlendingMode.SOFT_LIGHT;
+            else if(bm===11) layer.blendingMode=BlendingMode.DIFFERENCE;
+            else if(bm===12) layer.blendingMode=BlendingMode.EXCLUSION;
+            else if(bm===13) layer.blendingMode=BlendingMode.HUE;
+            else if(bm===14) layer.blendingMode=BlendingMode.SATURATION;
+            else if(bm===15) layer.blendingMode=BlendingMode.COLOR;
+            else if(bm===16) layer.blendingMode=BlendingMode.LUMINOSITY;
+        } catch(e){}
+    }
+
+
+    function applyFillOrStroke(cont, data, isStroke) {
+        if (!data) return;
+        var type = isStroke ? "ADBE Vector Graphic - Stroke" : "ADBE Vector Graphic - Fill";
+        var prop = cont.addProperty(type);
+        if (data.type === "solid" || !data.type) {
+            var col = data.color || [0.5,0.5,0.5];
+            try { prop.property("Color").setValue(col); } catch(e) {
+                try { prop.property("ADBE Vector Fill Color").setValue(col); } catch(e2) {
+                    try { prop.property("ADBE Vector Stroke Color").setValue(col); } catch(e3) {}
+                }
+            }
+            if (!isStroke) {
+                try {
+                    try { prop.property("Fill Rule").setValue(2); } 
+                    catch(ef1) { prop.property("ADBE Vector Fill Rule").setValue(2); }
+                } catch(ef2) {}
+            }
+        }
+        if (isStroke && data.strokeWidth) {
+            try { prop.property("Stroke Width").setValue(data.strokeWidth); } catch(e) {}
+            if (data.strokeCap)  try { prop.property("Line Cap").setValue(data.strokeCap); }  catch(e){}
+            if (data.strokeJoin) try { prop.property("Line Join").setValue(data.strokeJoin); } catch(e){}
+        }
+    }
+
+    // ── CONTADORES DE DIAGNÓSTICO ──
+    var diagGrad = 0, diagFallback = 0, diagGroup = 0, diagSolid = 0, diagSkip = 0;
+
+    function writeProgress(msg, current, total) {
+        try {
+            var expPath = (typeof flashFillExportPath !== 'undefined') ? flashFillExportPath : "C:/AEGP/img_export";
+            var f = new File(expPath + "/progress.txt");
+            f.open("w");
+            f.write(msg + "|" + current + "|" + total);
+            f.close();
+        } catch(e) {}
+    }
+
+    function closeProgress() {
+        // Handled by the ILST script's bt.onResult
+    }
+
+    for (var si = 0; si < jd.shapes.length; si++) {
+        if (si % 3 === 0 || si === jd.shapes.length - 1) {
+            writeProgress("Building Layers in After Effects...", si, jd.shapes.length);
+        }
+        var sd = jd.shapes[si];
+
+        if (sd.fillType === "group") {
+            var nLayer = tempComp.layers.addShape();
+            nLayer.name = sd.name;
+            try { nLayer.guideLayer = true; } catch(eg) {} // Torna o grupo uma Camada de Guia
+            try {
+                var root = nLayer.property("ADBE Root Vectors Group");
+                var bx = root.addProperty("ADBE Vector Group");
+                bx.name = "Bounds";
+                var cont = bx.property("ADBE Vectors Group");
+                var rect = cont.addProperty("ADBE Vector Shape - Rect");
+                rect.property("ADBE Vector Rect Size").setValue([sd.w || 100, sd.h || 100]);
+                var gX = (sd.x !== undefined) ? sd.x : 0;
+                var gY = (sd.y !== undefined) ? sd.y : 0;
+                var tr = nLayer.property("ADBE Transform Group");
+                tr.property("ADBE Anchor Point").setValue([0, 0]);
+                tr.property("ADBE Position").setValue([gX, gY]);
+                if (sd.opacity !== undefined) { try { tr.property("ADBE Opacity").setValue(sd.opacity); } catch(eo){} }
+                nLayer.label = 0;
+            } catch(e){}
+            setBlend(nLayer, null, sd.blendMode);
+            diagGroup++;
+            layerDict[sd.name] = nLayer;
+            continue;
+        }
+
+        if (sd.fillType === "text") {
+            var finalTxt = (sd.text || "").replace(/\r?\n|\r/g, "\r");
+            var txtLyr = tempComp.layers.addText(finalTxt);
+            txtLyr.name = sd.name;
+            var textProp = txtLyr.property("Source Text");
+            var textDoc = textProp.value;
+            textDoc.fontSize = sd.fontSize || 50;
+            textDoc.font = sd.fontName || "Arial";
+            try {
+                var tc = sd.color || [0,0,0];
+                textDoc.fillColor = [tc[0], tc[1], tc[2]];
+            } catch(e){}
+            try {
+                var aeJust = ParagraphJustification.LEFT_JUSTIFY;
+                if (sd.justification === 1) aeJust = ParagraphJustification.CENTER_JUSTIFY;
+                if (sd.justification === 2) aeJust = ParagraphJustification.RIGHT_JUSTIFY;
+                textDoc.justification = aeJust;
+            } catch(e){}
+            try { textProp.setValue(textDoc); } catch(et){}
+            try {
+                var txtTr = txtLyr.property("ADBE Transform Group");
+                var tb = txtLyr.sourceRectAtTime(0, false);
+                var tcx = tb.left + (tb.width/2);
+                var tcy = tb.top  + (tb.height/2);
+                txtTr.property("ADBE Anchor Point").setValue([tcx, tcy]);
+                txtTr.property("ADBE Position").setValue([sd.x || 0, sd.y || 0]);
+                if (sd.rotation) { txtTr.property("ADBE Rotate Z").setValue(sd.rotation); }
+                if (sd.opacity !== undefined) { txtTr.property("ADBE Opacity").setValue(sd.opacity); }
+            } catch(et){}
+            setBlend(txtLyr, null, sd.blendMode);
+            layerDict[sd.name] = txtLyr;
+            diagSolid++;
+            continue;
+        }
+
+        var shLyr = tempComp.layers.addShape();
+        shLyr.name    = sd.name || ("shape_" + si);
+        layerDict[sd.name] = shLyr;
+
+        var root = shLyr.property("ADBE Root Vectors Group");
+        var grp  = root.addProperty("ADBE Vector Group");
+        grp.name = sd.name || ("g_"+si);
+        var cont = grp.property("ADBE Vectors Group");
+
+        if (sd.fillType === "gradient") {
+            var gPathsArr = (sd.paths) ? sd.paths : ((sd.path) ? [sd.path] : null);
+            // NÃO remove se vazio — usamos rect de fallback mais abaixo
+
+            var addedGPaths = 0;
+            if (gPathsArr && gPathsArr.length > 0) {
+                for (var pi=0; pi<gPathsArr.length; pi++) {
+                    var pData = gPathsArr[pi];
+                    if (!pData || !pData.pts || pData.pts.length < 2) continue;
+                    var pGrp = cont.addProperty("ADBE Vector Shape - Group");
+                    var v=[], it=[], ot=[];
+                    for (var m=0; m<pData.pts.length; m++) { v.push(pData.pts[m].a); it.push(pData.pts[m].i); ot.push(pData.pts[m].o); }
+                    var sh=new Shape(); sh.vertices=v; sh.inTangents=it; sh.outTangents=ot;
+                    sh.closed = (pData.closed !== undefined) ? pData.closed : true;
+                    pGrp.property("ADBE Vector Shape").setValue(sh);
+                    addedGPaths++;
+                }
+            }
+            if (addedGPaths === 0) {
+                try {
+                    var fbW = sd.w || 100, fbH = sd.h || 100;
+                    var fbRect = cont.addProperty("ADBE Vector Shape - Rect");
+                    fbRect.property("ADBE Vector Rect Size").setValue([fbW, fbH]);
+                    diagFallback++;
+                } catch(efb) {}
+            }
+            diagGrad++;
+
+            var gFill = cont.addProperty("ADBE Vector Graphic - Fill");
+            if (sd.gradient && sd.gradient.stops && sd.gradient.stops.length>0) {
+                var s0=sd.gradient.stops[0];
+                gFill.property("ADBE Vector Fill Color").setValue([s0.r, s0.g, s0.b, 1]);
+            }
+            shLyr.property("ADBE Transform Group").property("ADBE Anchor Point").setValue([0,0]);
+            shLyr.property("ADBE Transform Group").property("ADBE Position").setValue([sd.x || 0, sd.y || 0]);
+            setBlend(shLyr, grp, sd.blendMode);
+            if (sd.opacity !== undefined) { try { shLyr.property("ADBE Transform Group").property("ADBE Opacity").setValue(sd.opacity); } catch(eo){} }
+            
+            if (sd.isClipping) { try { shLyr.enabled = false; } catch(eC){} }
+
+        } else {
+            var sPathsArr = (sd.paths) ? sd.paths : ((sd.path) ? [sd.path] : null);
+
+            var addedSPaths = 0;
+            if (sPathsArr && sPathsArr.length > 0) {
+                var forceBezierSolid = (sPathsArr.length > 1);
+                for (var pi=0; pi<sPathsArr.length; pi++) {
+                    var pData = sPathsArr[pi];
+                    if (!pData) continue;
+                    
+                    if (!forceBezierSolid && pData.type === "rect") {
+                        var pathGroup = cont.addProperty("ADBE Vector Shape - Rect");
+                        pathGroup.property("ADBE Vector Rect Size").setValue(pData.size);
+                        pathGroup.property("ADBE Vector Rect Position").setValue(pData.pos || [0,0]);
+                        addedSPaths++;
+                        continue;
+                    } else if (!forceBezierSolid && pData.type === "ellipse") {
+                        var pathGroup = cont.addProperty("ADBE Vector Shape - Ellipse");
+                        pathGroup.property("ADBE Vector Ellipse Size").setValue(pData.size);
+                        pathGroup.property("ADBE Vector Ellipse Position").setValue(pData.pos || [0,0]);
+                        addedSPaths++;
+                        continue;
+                    }
+                    
+                    if (!pData.pts || pData.pts.length < 2) continue;
+                    var pathGroup = cont.addProperty("ADBE Vector Shape - Group");
+                    var verts=[],inT=[],outT=[];
+                    for (var p=0; p<pData.pts.length; p++) {
+                        verts.push(pData.pts[p].a);
+                        inT.push(pData.pts[p].i);
+                        outT.push(pData.pts[p].o);
+                    }
+                    var shapeShape = new Shape();
+                    shapeShape.vertices   = verts;
+                    shapeShape.inTangents = inT;
+                    shapeShape.outTangents= outT;
+                    shapeShape.closed = (pData.closed !== undefined) ? pData.closed : true;
+                    pathGroup.property("Path").setValue(shapeShape);
+                    addedSPaths++;
+                }
+            }
+            // FALLBACK: Sem caminhos válidos — usa rect da bounding box
+            if (addedSPaths === 0) {
+                try {
+                    var sfbW = sd.w || 100, sfbH = sd.h || 100;
+                    var sfbRect = cont.addProperty("ADBE Vector Shape - Rect");
+                    sfbRect.property("ADBE Vector Rect Size").setValue([sfbW, sfbH]);
+                } catch(esfb) {}
+            }
+
+            applyFillOrStroke(cont, sd.fill, false);
+            applyFillOrStroke(cont, sd.stroke, true);
+
+            if (sd.isClipping && !sd.fill && !sd.stroke) {
+                applyFillOrStroke(cont, {type:"solid", color:[1,1,1]}, false);
+            }
+            
+            var tr = shLyr.property("ADBE Transform Group");
+            tr.property("ADBE Anchor Point").setValue([0, 0]);
+            tr.property("ADBE Position").setValue([sd.x || 0, sd.y || 0]);
+            if (sd.opacity !== undefined) { try { tr.property("ADBE Opacity").setValue(sd.opacity); } catch(eo){} }
+            
+            if (sd.isClipping) { try { shLyr.enabled = false; } catch(eC){} }
+            setBlend(shLyr, grp, sd.blendMode);
+            diagSolid++;
+        }
+    }
+    
+    for (var i = 1; i <= tempComp.numLayers; i++) { 
+        try {
+            tempComp.layer(i).copyToComp(comp);
+        } catch(ec){}
+    }
+    
+    // BUILD STATIC DICTIONARY POST-PASTE
+    var finalLayerDict = {};
+    for (var L = 1; L <= comp.numLayers; L++) {
+        var cl = comp.layer(L);
+        try { cl.selected = false; } catch(esel){}
+        finalLayerDict[cl.name] = cl;
+    }
+    
+    try { tempComp.remove(); } catch(e){}
+
+    var sdByName = {};
+    for (var k = 0; k < jd.shapes.length; k++) sdByName[jd.shapes[k].name] = jd.shapes[k];
+
+    app.endUndoGroup();
+    app.beginUndoGroup("Relink Hierachy");
+
+    var relinkErrs = [];
+
+    for (var si = 0; si < jd.shapes.length; si++) {
+        var sd  = jd.shapes[si];
+        var lyr = finalLayerDict[sd.name];
+        if (!lyr) continue;
+
+        if (sd.parent && finalLayerDict[sd.parent]) {
+            var parentSD = sdByName[sd.parent];
+            try { 
+                lyr.parent = finalLayerDict[sd.parent]; 
+                try {
+                    var opProp = lyr.property("ADBE Transform Group").property("ADBE Opacity");
+                    if (opProp && opProp.canSetExpression) {
+                        opProp.expression = "value * (hasParent ? parent.transform.opacity / 100 : 1)";
+                    }
+                } catch(eOp){}
+            } catch(e){
+                relinkErrs.push(sd.name + " -> " + sd.parent + ": " + e.toString());
+            }
+            if (parentSD) {
+                var lx = (sd.x || 0) - (parentSD.x || 0);
+                var ly = (sd.y || 0) - (parentSD.y || 0);
+                try {
+                    var posProp = lyr.property("ADBE Transform Group").property("ADBE Position");
+                    var posVal = lx !== undefined ? (posProp.value.length >= 3 ? [lx, ly, 0] : [lx, ly]) : null;
+                    if (posVal) posProp.setValue(posVal);
+                } catch(ep) { try { lyr.transform.position.setValue([lx, ly]); } catch(ep2){} }
+            }
+        }
+
+        if (sd.clipMaskRef) {
+            var maskSD   = sdByName[sd.clipMaskRef];
+            var maskLyr2 = finalLayerDict[sd.clipMaskRef];
+            if (maskLyr2) { 
+                try { maskLyr2.enabled = false; } catch(em2){} 
+                var maskPathsArr = maskSD ? (maskSD.paths ? maskSD.paths : (maskSD.path ? [maskSD.path] : null)) : null;
+                
+                // USAMOS SEMPRE MASCARA INTERNA (ADBE Mask Parade) SE EXISTIREM PATHS!
+                // Isso e muito mais robusto que o Track Matte do AE.
+                if (maskPathsArr && maskPathsArr.length > 0) {
+                    try {
+                        var maskProp = lyr.property("ADBE Mask Parade");
+                        var offX = (maskSD.x || 0) - (sd.x || 0);
+                        var offY = (maskSD.y || 0) - (sd.y || 0);
+                        for (var mpi = 0; mpi < maskPathsArr.length; mpi++) {
+                            var mpData = maskPathsArr[mpi];
+                            if (!mpData.pts || mpData.pts.length < 2) continue;
+                            var aeM = maskProp.addProperty("ADBE Mask Atom");
+                            var ms  = new Shape();
+                            var mv=[], mit=[], mot=[];
+                            for (var mpv=0; mpv<mpData.pts.length; mpv++) {
+                                var pt = mpData.pts[mpv];
+                                mv.push( [pt.a[0]+offX, pt.a[1]+offY] );
+                                mit.push(pt.i ? [pt.i[0], pt.i[1]] : [0,0]);
+                                mot.push(pt.o ? [pt.o[0], pt.o[1]] : [0,0]);
+                            }
+                            ms.vertices = mv; ms.inTangents = mit; ms.outTangents = mot;
+                            ms.closed = (mpData.closed !== undefined) ? mpData.closed : true;
+                            try { aeM.property("ADBE Mask Shape").setValue(ms); } catch(ems){}
+                            try { aeM.property("ADBE Mask Mode").setValue(MaskMode.ADD); } catch(emm){} // Usamos ADD para o clip funcionar visualmente antes do C++
+                        }
+                    } catch(eme){
+                        relinkErrs.push("MaskAtom falhou p/ " + sd.name + ": " + eme.toString());
+                    }
+                } else {
+                    // Fallback para Track Matte SOMENTE se for um clip estranho sem path
+                    try { 
+                        if (typeof lyr.setTrackMatte === 'function') {
+                            lyr.setTrackMatte(maskLyr2, TrackMatteType.ALPHA);
+                        } else {
+                            lyr.trackMatteType = TrackMatteType.ALPHA;
+                        }
+                    } catch(eTM) {
+                        relinkErrs.push("Matte (no-path) " + sd.name + ": " + eTM.toString());
+                    }
+                }
+            }
+        }
+
+        
+        // Aplica o nome bonito só no fim, depois que todos os links foram feitos!
+        // GRADIENTES: NAO renomear - o plugin C++ precisa encontrar pelo sd.name exato!
+        // O plugin ira substituir a camada e limpar o nome _idx depois.
+        try {
+            if (sd.fillType !== "gradient") {
+                if (sd.origName) { lyr.name = sd.origName; }
+                else { lyr.name = sd.name.split("_idx")[0]; }
+            }
+            try { lyr.comment = "uid_" + sd.name; } catch(ec){}
+        } catch(en) {}
+    }
+
+    app.endUndoGroup();
+
+    // ── DIAGNÓSTICO FINAL ──
+    try {
+        // Diagnóstico removido a pedido do usuário
+    } catch(eDiag) {
+    }
+
+    closeProgress();
+    comp.openInViewer();
+
+} catch(e) {
+    try { app.endUndoGroup(); } catch(err){}
+    alert("ERRO GLOBAL: "+e.message+" (L"+e.line+")");
+}
+})();

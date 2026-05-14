@@ -212,6 +212,18 @@ fn install_extension(app: tauri::AppHandle) -> Result<String, String> {
     }
 
     copy_dir_all(&res_dir, &dst).map_err(|e| format!("Erro ao instalar extensão: {e}"))?;
+
+    // Enable PlayerDebugMode so unsigned extensions can load in AE/AI
+    #[cfg(windows)]
+    {
+        for csxs_version in 8..=18 {
+            let key = format!("HKCU\\Software\\Adobe\\CSXS.{}", csxs_version);
+            let _ = std::process::Command::new("reg.exe")
+                .args(["add", &key, "/v", "PlayerDebugMode", "/t", "REG_SZ", "/d", "1", "/f"])
+                .output();
+        }
+    }
+
     Ok("Extensão FlashFill instalada com sucesso!".into())
 }
 
