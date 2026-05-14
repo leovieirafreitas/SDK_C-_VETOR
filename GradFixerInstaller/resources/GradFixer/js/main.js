@@ -137,119 +137,120 @@ document.getElementById('btn-ai').addEventListener('click', function() {
                 statusNode.innerText = result;
             }
             setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
-        });
-    }
-});
+        
+// --- EXTENSION LICENSE CHECK (hybrid: offline local + periodic online) ---
 
-
-
-// --- EXTENSION LICENSE CHECK (online, server-side) ---
-function getRealMacAddress() {
-    try {
-        var os = require('os');
-        var interfaces = os.networkInterfaces();
-        for (var name in interfaces) {
-            var ifaces = interfaces[name];
-            for (var i = 0; i < ifaces.length; i++) {
-                var iface = ifaces[i];
-                // Skip loopback and virtual adapters
-                if (iface.mac && iface.mac !== '00:00:00:00:00:00' && !iface.internal) {
-                    return iface.mac.toUpperCase();
-                }
-            }
-        }
-    } catch(e) {
-        console.error("Failed to get MAC address:", e);
-    }
-    return null;
-}
+var SUPABASE_URL  = "https://rudhtwriohqmrwnkfkdq.supabase.co/rest/v1/rpc/validate_license_online";
+var SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ1ZGh0d3Jpb2hxbXJ3bmtma2RxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2OTUxODMsImV4cCI6MjA5NDI3MTE4M30.iPaY--LfmkR5KOWkTPWFFR1D2T2ZoZH49jRCQguGz_g";
 
 function showLockedUI(reason) {
-    document.body.innerHTML = '<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; padding: 15px; background: #2b2b2b;">' +
-        '<img src="./img/extensao.png" style="width: 48px; margin-bottom: 15px;" />' +
-        '<h3 style="color: #fff; font-size: 14px; font-weight: normal; margin-bottom: 10px;">FlashFill Locked</h3>' +
-        '<p style="color: #aaa; font-size: 11px;">Ative a sua licença no aplicativo FlashFill Setup.</p>' +
-        (reason ? '<p style="color: #ff5555; font-size: 9px; margin-top: 10px;">' + reason + '</p>' : '') +
-    '</div>';
-    // Poll and reload if file appears (user just activated)
+    document.body.innerHTML =
+        '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;text-align:center;padding:15px;background:#2b2b2b;">' +
+        '<img src="./img/extensao.png" style="width:48px;margin-bottom:15px;" />' +
+        '<h3 style="color:#fff;font-size:14px;font-weight:normal;margin-bottom:10px;">FlashFill Locked</h3>' +
+        '<p style="color:#aaa;font-size:11px;">Ative a sua licen\u00e7a no aplicativo FlashFill Setup.</p>' +
+        (reason ? '<p style="color:#ff5555;font-size:9px;margin-top:10px;">' + reason + '</p>' : '') +
+        '</div>';
     var poll = setInterval(function() {
         var check = window.cep.fs.readFile("C:\\AEGP\\license.json");
-        if (check.err === 0) {
-            clearInterval(poll);
-            window.location.reload();
-        }
+        if (check.err === 0) { clearInterval(poll); window.location.reload(); }
     }, 3000);
 }
 
-function validateLicenseOnline() {
-    // Step 1: Read local license file (just to get the key - NOT trusted)
+function parseMacFromGetmac(raw) {
+    if (!raw) return null;
+    var match = raw.match(/([0-9A-Fa-f]{2}[:\-]){5}[0-9A-Fa-f]{2}/);
+    if (!match) return null;
+    return match[0].replace(/-/g, ':').toUpperCase();
+}
+
+function needsOnlineRecheck() {
+    var r = window.cep.fs.readFile("C:\\AEGP\\license_check.json");
+    if (r.err !== 0 || !r.data) return true;
+    try {
+        var d = JSON.parse(r.data);
+        var days = (Date.now() - (d.last_check || 0)) / 86400000;
+        return days >= 7;
+    } catch(e) { return true; }
+}
+
+function saveOnlineCheck() {
+    window.cep.fs.writeFile(
+        "C:\\AEGP\\license_check.json",
+        JSON.stringify({ last_check: Date.now() }),
+        false
+    );
+}
+
+function validateLicense() {
+    // 1. Read local JSON — only to get p_key and stored hardware_id
     var fileResult = window.cep.fs.readFile("C:\\AEGP\\license.json");
     if (fileResult.err !== 0 || !fileResult.data) {
         showLockedUI(null);
         return;
     }
-
     var data;
-    try {
-        data = JSON.parse(fileResult.data);
-    } catch(e) {
-        showLockedUI("Arquivo de licença inválido.");
+    try { data = JSON.parse(fileResult.data); } catch(e) {
+        showLockedUI("Arquivo de licen\u00e7a inv\u00e1lido.");
         return;
     }
-
     var cachedKey = data && data.p_key;
-    if (!cachedKey) {
-        showLockedUI("Chave não encontrada no arquivo local.");
+    var storedMac = data && data.p_hardware_id;
+    if (!cachedKey || !storedMac) {
+        showLockedUI("Arquivo de licen\u00e7a incompleto. Reative no FlashFill Setup.");
         return;
     }
 
-    // Step 2: Get REAL MAC address from the OS (cannot be faked via JSON)
-    var realMac = getRealMacAddress();
-    if (!realMac) {
-        // If we can't get MAC, allow offline usage (fail open)
-        console.warn("FlashFill: Could not get MAC address, allowing offline usage.");
-        return;
-    }
+    // 2. Get REAL MAC from OS via ExtendScript — cannot be faked by editing files
+    csInterface.evalScript('$.system("getmac /fo csv /nh")', function(raw) {
+        var realMac = parseMacFromGetmac(raw);
 
-    // Step 3: Validate against the server
-    var url = "https://rudhtwriohqmrwnkfkdq.supabase.co/rest/v1/rpc/validate_license_online";
-    var anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ1ZGh0d3Jpb2hxbXJ3bmtma2RxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2OTUxODMsImV4cCI6MjA5NDI3MTE4M30.iPaY--LfmkR5KOWkTPWFFR1D2T2ZoZH49jRCQguGz_g";
-
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.setRequestHeader("apikey", anonKey);
-    xhr.setRequestHeader("Authorization", "Bearer " + anonKey);
-
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState !== 4) return;
-        if (xhr.status >= 200 && xhr.status < 300) {
-            try {
-                var resp = JSON.parse(xhr.responseText);
-                if (!resp.valid) {
-                    showLockedUI("Licença inválida: " + (resp.reason || "Hardware não autorizado."));
-                }
-                // If valid, do nothing — panel remains fully functional
-            } catch(e) {
-                console.warn("FlashFill: License parse error, allowing usage:", e);
-            }
-        } else {
-            // Server error or no internet — allow usage (fail open)
-            console.warn("FlashFill: License server unreachable (status " + xhr.status + "), allowing offline usage.");
+        if (!realMac) {
+            // Very rare — ExtendScript unavailable. Allow but log.
+            console.warn("FlashFill: getmac unavailable, skipping hardware check.");
+            return;
         }
-    };
 
-    xhr.onerror = function() {
-        // No internet — allow usage silently
-        console.warn("FlashFill: No internet, allowing offline usage.");
-    };
+        // 3. LOCAL check (works fully OFFLINE)
+        //    Real MAC of THIS machine must match what server stored at activation
+        //    Copying the JSON to another machine: realMac !== storedMac → BLOCKED
+        if (realMac !== storedMac) {
+            showLockedUI("Esta licen\u00e7a n\u00e3o pertence a este computador.");
+            return;
+        }
 
-    xhr.send(JSON.stringify({
-        p_key: cachedKey,
-        p_hardware_id: realMac  // Real MAC from OS, not from the editable JSON file
-    }));
+        // LOCAL CHECK PASSED — extension is unlocked and works fully offline
+
+        // 4. Periodic ONLINE recheck (every 7 days, background — non-blocking)
+        //    Only locks if server EXPLICITLY says revoked
+        //    If offline/timeout/error → silently allow (local check already passed)
+        if (needsOnlineRecheck()) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", SUPABASE_URL, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("apikey", SUPABASE_ANON);
+            xhr.setRequestHeader("Authorization", "Bearer " + SUPABASE_ANON);
+            xhr.timeout = 8000;
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState !== 4) return;
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    try {
+                        var resp = JSON.parse(xhr.responseText);
+                        if (resp.valid === true) {
+                            saveOnlineCheck(); // Reset 7-day timer
+                        } else if (resp.valid === false) {
+                            // Server explicitly revoked (e.g. admin cancelled) → lock
+                            showLockedUI("Licen\u00e7a revogada: " + (resp.reason || "Contate o suporte."));
+                        }
+                    } catch(e) { /* parse error → ignore, local check passed */ }
+                }
+                // Any other status (offline, 5xx) → silently allow
+            };
+            xhr.onerror = xhr.ontimeout = function() { /* offline → allow */ };
+            xhr.send(JSON.stringify({ p_key: cachedKey, p_hardware_id: realMac }));
+        }
+    });
 }
 
-// Run on panel load
-validateLicenseOnline();
-
+// Run validation on panel load
+validateLicense();
