@@ -1,0 +1,14 @@
+{
+  "name": "flashfillinstaller",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite src --port 1420",
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2",
+    "vite": "^8.0.12"
+  }
+}

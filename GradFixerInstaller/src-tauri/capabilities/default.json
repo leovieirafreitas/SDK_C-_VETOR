@@ -1,0 +1,24 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-minimize",
+    "core:window:allow-close",
+    "core:window:allow-hide",
+    "core:window:allow-show",
+    "core:window:allow-set-focus",
+    "core:window:allow-start-dragging",
+    "opener:default",
+    "fs:default",
+    "fs:allow-read-dir",
+    "fs:allow-read-file",
+    "fs:allow-write-file",
+    "fs:allow-mkdir",
+    "fs:allow-copy-file",
+    "fs:allow-exists",
+    "fs:scope-resource-recursive"
+  ]
+}

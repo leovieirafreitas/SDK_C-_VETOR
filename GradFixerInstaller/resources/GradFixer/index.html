@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>FlashFill</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: hidden; /* Ocultar para um visual limpo como nativo */
+        }
+        body {
+            background-color: #2b2b2b;
+            color: #cccccc;
+            font-family: "Adobe Clean", "Segoe UI", Arial, sans-serif;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .header {
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #777;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #3a3a3a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header img.ext-indicator {
+            height: 22px; /* Aumentado conforme pedido */
+            object-fit: contain;
+            opacity: 0.9;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            padding: 4px 0;
+            align-items: center;
+        }
+
+        /* Botão icone pequeno no estilo Overlord */
+        .icon-btn-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            cursor: pointer;
+        }
+        .icon-btn-wrap button {
+            background: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.15s;
+            width: 42px;
+            height: 42px;
+            overflow: hidden;
+            border-radius: 4px; /* caso o png não tenha arredondamento */
+        }
+        .icon-btn-wrap button:hover { opacity: 0.8; }
+        .icon-btn-wrap button:active { opacity: 0.5; }
+        .icon-btn-wrap button img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .icon-btn-wrap .btn-label {
+            font-size: 9px;
+            color: #888;
+            text-align: center;
+            white-space: nowrap;
+            user-select: none;
+        }
+        
+        .settings-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4px 6px;
+            background: transparent;
+            border-radius: 4px;
+            margin-top: 2px;
+        }
+        .settings-row label {
+            font-size: 10px;
+            color: #aaa;
+        }
+        .settings-row input[type="number"] {
+            background: #252525;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 3px;
+            padding: 2px 4px;
+            width: 45px;
+            font-size: 10px;
+            text-align: right;
+        }
+        .settings-row input[type="number"].scrubbable {
+            cursor: ew-resize;
+            user-select: none;
+        }
+        /* Esconde as setinhas padrão se quiser um visual mais limpo */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+
+        /* ── SYSTEM SECTION ── */
+        .section-header {
+            font-size: 9px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #666;
+            padding: 6px 0 3px 0;
+            border-bottom: 1px solid #3a3a3a;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        .section-header span.caret { font-size: 8px; color: #555; transition: transform 0.15s; }
+        .section-header.collapsed span.caret { transform: rotate(-90deg); }
+        .section-body {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            overflow: hidden;
+            transition: max-height 0.2s;
+        }
+        .section-body.collapsed { max-height: 0 !important; }
+
+        .sys-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 6px;
+            background: transparent;
+            border-radius: 4px;
+        }
+        .sys-row label { font-size: 10px; color: #aaa; white-space: nowrap; }
+        .sys-row input[type="checkbox"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: transparent;
+            margin: 0;
+            color: #888;
+            width: 13px;
+            height: 13px;
+            border: 1px solid #666;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 8px 8px;
+        }
+        .sys-row input[type="checkbox"]:checked {
+            background-color: transparent;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M2.5 7l3 3L11.5 3.5' fill='none' stroke='%23aaaaaa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        }
+        .path-row {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 6px;
+            background: #2a2a2a;
+            border: 1px solid #3d3d3d;
+            border-radius: 4px;
+        }
+        .path-row input[type="text"] {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #8bc4ff;
+            font-size: 9px;
+            font-family: monospace;
+            outline: none;
+            min-width: 0;
+        }
+        .path-btn {
+            background: #444;
+            border: 1px solid #555;
+            border-radius: 3px;
+            color: #ccc;
+            font-size: 9px;
+            padding: 2px 6px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .path-btn:hover { background: #555; }
+
+        .status-box {
+            font-size: 10px;
+            color: #666;
+            background: #1e1e1e;
+            padding: 4px 7px;
+            border-radius: 3px;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <span>FlashFill</span>
+        <img id="ext-logo" src="./img/extensao.png" class="ext-indicator" draggable="false" alt="Host Logo" />
+    </div>
+
+    <div class="toolbar">
+        <div class="icon-btn-wrap">
+            <button id="btn-comp">
+                <img src="./img/composicao.png" alt="Create Comp" />
+            </button>
+            <span class="btn-label">Comp</span>
+        </div>
+        <div class="icon-btn-wrap">
+            <button id="btn-split">
+                <img src="./img/split_layer.png" alt="Split Layer" />
+            </button>
+            <span class="btn-label">Split Layer</span>
+        </div>
+        <div class="icon-btn-wrap">
+            <button id="btn-group">
+                <img src="./img/split_group.png" alt="Split Group" />
+            </button>
+            <span class="btn-label">Split Group</span>
+        </div>
+
+        <div class="icon-btn-wrap">
+            <button id="btn-rasterize">
+                <img src="./img/rasterizar.png" alt="Rasterizar" />
+            </button>
+            <span class="btn-label">Rasterizar</span>
+        </div>
+        <div class="icon-btn-wrap">
+            <button id="btn-ai">
+                <img src="./img/AI.png" alt="Importar AI" />
+            </button>
+            <span class="btn-label">Import AI</span>
+        </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="section-header collapsed" id="sys-header">
+        <span>Settings</span>
+        <span class="caret">
+            <svg viewBox="0 0 10 6" fill="currentColor" width="8" height="5">
+                <path d="M5 6L0 1.25L1.187 0L5 3.5L8.813 0L10 1.25L5 6Z"/>
+            </svg>
+        </span>
+    </div>
+    <div class="section-body collapsed" id="sys-body">
+        <div class="settings-group" style="margin-top:2px;">
+            <label style="font-size: 10px; color: #aaa; margin-bottom: 3px; margin-left: 6px; display: block;">Export Imagem</label>
+            <div class="sys-row" style="display: flex; justify-content: space-between; margin-top:0;">
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <input type="checkbox" id="use-default-path" checked title="Usar /AEGP/img_export padrão" />
+                    <label for="use-default-path" title="/AEGP/img_export">/AEGP/img_export</label>
+                </div>
+            <button id="btn-open-folder" title="Abrir pasta" style="background: transparent; border: none; cursor: pointer; color: #888; font-size: 12px; display: flex; align-items: center; justify-content: center; width: 16px; height: 16px; transition: color 0.15s;">
+                <svg viewBox="0 0 16 16" fill="currentColor" width="12" height="12">
+                    <path d="M1.5 3A1.5 1.5 0 0 1 3 1.5h3.379a1.5 1.5 0 0 1 1.06.44l1.122 1.12A.5.5 0 0 0 8.914 3.25H13A1.5 1.5 0 0 1 14.5 4.75v7.5A1.5 1.5 0 0 1 13 13.75H3A1.5 1.5 0 0 1 1.5 12.25v-9z"/>
+                </svg>
+            </button>
+        </div> <!-- end of sys-row -->
+        </div> <!-- end of settings-group -->
+        <div class="settings-row">
+            <label for="export-scale">Imagem Scale</label>
+            <input type="number" id="export-scale" class="scrubbable" value="4.00" step="0.25" min="0.25" max="100.00" />
+        </div>
+    </div>
+
+    <div class="status-box" id="status-console" style="margin-top: 10px;">Pronto.</div>
+
+    <script>
+        // Logica de arrastar para input numérico
+        const scaleInput = document.getElementById('export-scale');
+        let isDragging = false;
+        let startX = 0;
+        let startVal = 0;
+
+        scaleInput.addEventListener('mousedown', function(e) {
+            isDragging = true;
+            startX = e.clientX;
+            startVal = parseFloat(scaleInput.value) || 0;
+            document.body.style.cursor = 'ew-resize';
+        });
+
+        window.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+            const dx = e.clientX - startX;
+            // Cada 5 pixels equivale a 0.25 de passo
+            const steps = Math.round(dx / 5);
+            let newVal = startVal + (steps * 0.25);
+            
+            if (newVal < 0.25) newVal = 0.25;
+            if (newVal > 100) newVal = 100;
+            
+            scaleInput.value = newVal.toFixed(2);
+        });
+
+        window.addEventListener('mouseup', function(e) {
+            if (isDragging) {
+                isDragging = false;
+                document.body.style.cursor = '';
+            }
+        });
+
+        // ── SYSTEM SECTION LOGIC ──
+        const DEFAULT_PATH = 'C:\\AEGP\\img_export';
+        const LS_USE_DEFAULT = 'gradfixer_use_default_path';
+
+        const useDefaultChk  = document.getElementById('use-default-path');
+        const sysHeader       = document.getElementById('sys-header');
+        const sysBody         = document.getElementById('sys-body');
+
+        function getExportPath() {
+            // Se checked, retorna o caminho padrao. Se nao, retorna 'PROMPT'
+            if (useDefaultChk.checked) return DEFAULT_PATH;
+            return 'PROMPT';
+        }
+
+        // Restore saved prefs
+        const savedUseDefault = localStorage.getItem(LS_USE_DEFAULT);
+        if (savedUseDefault === 'false') {
+            useDefaultChk.checked = false;
+        }
+
+        useDefaultChk.addEventListener('change', function() {
+            localStorage.setItem(LS_USE_DEFAULT, useDefaultChk.checked);
+        });
+
+        document.getElementById('btn-open-folder').addEventListener('click', function() {
+            var cs = new CSInterface();
+            cs.evalScript('Folder("C:/AEGP/img_export").execute()');
+        });
+
+        // Collapse/expand SYSTEM section
+        sysHeader.addEventListener('click', function() {
+            sysHeader.classList.toggle('collapsed');
+            sysBody.classList.toggle('collapsed');
+            if (!sysBody.classList.contains('collapsed')) {
+                sysBody.style.maxHeight = '120px';
+            }
+        });
+
+        // Expose getExportPath globally so main.js can call it
+        window.getExportPath = getExportPath;
+
+    </script>
+    <script src="./js/CSInterface.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlashFill Installer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Custom title bar -->
+  <div id="titlebar" data-tauri-drag-region>
+    <div class="titlebar-logo" data-tauri-drag-region>
+      <img src="assets/logo.png" alt="FlashFill Logo" style="width: 20px; height: 20px; object-fit: contain;" />
+      <span data-tauri-drag-region>FlashFill</span>
+    </div>
+    <div class="titlebar-controls">
+      <button id="lang-toggle" title="Change Language">EN/PT</button>
+      <button id="btn-minimize" title="Minimizar">─</button>
+      <button id="btn-close" title="Fechar">✕</button>
+    </div>
+  </div>
+
+  <!-- ACTIVATION BLOCK OVERLAY -->
+  <div id="activation-block" style="display: none; position: fixed; top: 36px; left: 0; right: 0; bottom: 0; background: #0f172a; z-index: 999; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-family: 'Segoe UI', sans-serif;">
+      <div style="width: 72px; height: 72px; background: #1e293b; border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,0.5); margin-bottom: 24px;">
+          <img src="assets/logo.png" alt="Logo" style="width: 48px; height: 48px; object-fit: contain;" />
+      </div>
+      <h2 style="color: #f8fafc; font-size: 20px; font-weight: 600; margin-bottom: 8px;">FlashFill Locked</h2>
+      <p style="color: #94a3b8; font-size: 13px; margin-bottom: 30px; max-width: 280px; line-height: 1.5;">Please enter your license key to unlock the FlashFill system.</p>
+      
+      <div style="width: 100%; max-width: 320px; display: flex; flex-direction: column; gap: 12px;">
+          <input type="text" id="overlay-license-input" placeholder="XXXX-XXXX-XXXX-XXXX" spellcheck="false" autocomplete="off" style="width: 100%; background: #1e293b; border: 1px solid #334155; color: #f8fafc; padding: 14px; border-radius: 8px; font-family: monospace; font-size: 14px; text-align: center; outline: none; transition: all 0.2s; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);" />
+          <button id="btn-overlay-activate" style="width: 100%; background: #7c3aed; color: white; border: none; padding: 14px; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; transition: background 0.2s; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);">Activate License</button>
+      </div>
+      <div id="overlay-activation-msg" style="margin-top: 16px; font-size: 13px; color: #ef4444; min-height: 20px; font-weight: 500;"></div>
+  </div>
+
+  <!-- Main layout -->
+  <div id="app">
+    <!-- Sidebar -->
+    <aside id="sidebar">
+      <nav>
+        <button class="nav-btn active" data-page="setup">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
+          </svg>
+          <span data-i18n="nav_setup">Setup</span>
+        </button>
+        <button class="nav-btn" data-page="status">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+          <span data-i18n="nav_status">Status</span>
+        </button>
+        <button class="nav-btn" data-page="about">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span data-i18n="nav_about">Sobre</span>
+        </button>
+        <button class="nav-btn" data-page="license">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <span data-i18n="nav_license">Licença</span>
+        </button>
+      </nav>
+      <!-- Removed sidebar-status (dots) per user request -->
+    </aside>
+
+    <!-- Content pages -->
+    <main id="content">
+      <!-- SETUP PAGE -->
+      <section id="page-setup" class="page active">
+        <div class="page-header">
+          <h1 data-i18n="setup_title">Instalação do FlashFill</h1>
+          <p data-i18n="setup_desc">Configure e instale todos os componentes necessários para o FlashFill funcionar.</p>
+        </div>
+
+        <!-- Admin warning -->
+        <div id="admin-warning" class="alert alert-warn" style="display:none">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          <span data-i18n="admin_warn">O app não está rodando como Administrador. O plugin não poderá ser instalado.</span>
+          <button id="btn-relaunch" class="btn-link" data-i18n="admin_btn">Reiniciar como Admin →</button>
+        </div>
+
+        <!-- Components -->
+        <div class="components-grid">
+
+          <div class="component-card">
+            <div class="component-icon" style="background: transparent;">
+              <!-- Generic Core Icon -->
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <div class="component-info">
+              <strong data-i18n="comp_core_title">FlashFill Core Framework</strong>
+              <span data-i18n="comp_core_desc">Componentes base do sistema e templates essenciais</span>
+              <div id="templates-status-text" class="status-text" data-i18n="status_verifying">Verificando...</div>
+            </div>
+            <div class="component-state" id="comp-templates-state">
+              <div class="spinner" id="spinner-templates"></div>
+            </div>
+          </div>
+
+          <div class="component-card">
+            <div class="component-icon" style="background: transparent;">
+              <!-- Illustrator Ai Logo -->
+              <svg width="32" height="32" viewBox="0 0 100 100">
+                <rect width="100" height="100" rx="20" fill="#330000"/>
+                <text x="50" y="68" font-family="Arial, sans-serif" font-weight="bold" font-size="45" fill="#FF9A00" text-anchor="middle">Ai</text>
+              </svg>
+            </div>
+            <div class="component-info">
+              <strong data-i18n="comp_ext_title">Adobe Illustrator Extension</strong>
+              <span data-i18n="comp_ext_desc">Painel nativo para extração de vetores e gradientes</span>
+              <div id="ext-status-text" class="status-text" data-i18n="status_verifying">Verificando...</div>
+            </div>
+            <div class="component-state" id="comp-ext-state">
+              <div class="spinner" id="spinner-ext"></div>
+            </div>
+          </div>
+
+          <div class="component-card" id="ae-versions-card">
+            <div class="component-icon" style="background: transparent;">
+              <!-- After Effects Ae Logo -->
+              <svg width="32" height="32" viewBox="0 0 100 100">
+                <rect width="100" height="100" rx="20" fill="#00005B"/>
+                <text x="50" y="68" font-family="Arial, sans-serif" font-weight="bold" font-size="45" fill="#9999FF" text-anchor="middle">Ae</text>
+              </svg>
+            </div>
+            <div class="component-info">
+              <strong data-i18n="comp_plugin_title">Adobe After Effects Plugin</strong>
+              <span data-i18n="comp_plugin_desc">Integração nativa para reconstrução de gradientes</span>
+              <div id="plugin-versions-list">
+                <div class="status-text" data-i18n="status_detecting">Detectando versões...</div>
+              </div>
+            </div>
+            <div class="component-state" id="comp-plugin-state">
+              <div class="spinner" id="spinner-plugin"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Install button -->
+        <div class="install-footer">
+          <button id="btn-install-all" class="btn-install">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span data-i18n="btn_install">Instalar Tudo</span>
+          </button>
+          <div id="install-progress" class="install-progress" style="display:none">
+            <div class="progress-bar"><div id="progress-fill"></div></div>
+            <div id="progress-label" data-i18n="status_installing">Instalando...</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STATUS PAGE -->
+      <section id="page-status" class="page">
+        <div class="page-header">
+          <h1 data-i18n="status_title">Status da Instalação</h1>
+          <p data-i18n="status_desc">Verifique o estado de cada componente do FlashFill no seu sistema.</p>
+        </div>
+        <div id="status-log" class="status-log">
+          <p class="log-placeholder" data-i18n="status_placeholder">Clique em "Verificar novamente" para escanear o sistema.</p>
+        </div>
+        <button id="btn-refresh" class="btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
+            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+          </svg>
+          <span data-i18n="btn_verify">Verificar novamente</span>
+        </button>
+      </section>
+
+      <!-- LICENSE PAGE -->
+      <section id="page-license" class="page">
+        <div class="page-header">
+          <h1 data-i18n="license_title">FlashFill License</h1>
+          <p data-i18n="license_desc" id="license-desc-text">Enter your license key to unlock the system.</p>
+        </div>
+        
+        <!-- VIEW: NOT ACTIVATED -->
+        <div id="license-activate-view" class="license-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 15px;">
+            <div class="logo-container" style="width: 64px; height: 64px; background: #1e1e35; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+                <img src="assets/logo.png" alt="FlashFill Logo" style="width: 40px; height: 40px; object-fit: contain;" />
+            </div>
+            <div class="activation-input-group" style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 300px;">
+                <input type="text" id="license-input" placeholder="XXXX-XXXX-XXXX-XXXX" spellcheck="false" autocomplete="off" style="width: 100%; background: #1e1e35; border: 1px solid #334155; color: #fff; padding: 10px; border-radius: 6px; font-family: monospace; font-size: 13px; text-align: center; outline: none; transition: border-color 0.2s;" />
+                <button id="btn-activate" style="width: 100%; background: #7c3aed; color: #fff; border: none; padding: 10px; border-radius: 6px; font-size: 13px; font-weight: bold; cursor: pointer; transition: background 0.2s;">Activate</button>
+            </div>
+            <div id="activation-msg" style="margin-top: 10px; font-size: 12px; color: #ef4444; min-height: 15px; font-weight: 500;"></div>
+        </div>
+
+        <!-- VIEW: ACTIVATED -->
+        <div id="license-info-view" style="display: none; flex-direction: column; gap: 14px; padding: 4px 0;">
+            <div style="background: #1e1e35; border: 1px solid rgba(34,197,94,0.3); border-radius: 10px; padding: 16px 18px; display: flex; flex-direction: column; gap: 12px;">
+                <div style="display: flex; align-items: center; gap: 8px; color: #22c55e; font-size: 12px; font-weight: 600;">
+                    <span style="font-size: 16px;">✓</span> <span data-i18n="license_active">License Active</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <span data-i18n="license_key_label" style="font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">License Key</span>
+                    <span id="info-license-key" style="font-family: monospace; font-size: 13px; color: #e2e8f0; background: #12121f; padding: 8px 10px; border-radius: 6px; border: 1px solid #1e293b;">—</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <span data-i18n="email_label" style="font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">Email</span>
+                    <span id="info-email" style="font-size: 12px; color: #94a3b8; background: #12121f; padding: 8px 10px; border-radius: 6px; border: 1px solid #1e293b;">—</span>
+                </div>
+            </div>
+            <button id="btn-deactivate" style="background: none; border: none; color: #ffffff; font-size: 10px; text-decoration: underline; cursor: pointer; padding: 0; text-align: right;" data-i18n="btn_deactivate">Deactivate (Test Mode)</button>
+            <div id="activation-msg" style="font-size: 12px; color: #eab308; min-height: 15px;"></div>
+        </div>
+      </section>
+
+
+      <!-- ABOUT PAGE -->
+      <section id="page-about" class="page">
+        <div class="page-header">
+          <h1 data-i18n="about_title">Sobre o FlashFill</h1>
+        </div>
+        <div class="about-content">
+          <div class="about-logo">
+            <img src="assets/logo.png" alt="FlashFill Logo" style="width: 64px; height: 64px; object-fit: contain; border-radius: 50%;" />
+          </div>
+          <h2>FlashFill v1.0.0</h2>
+          <p data-i18n="about_desc">Pipeline de exportação vetorial do Illustrator para o After Effects com suporte a gradientes lineares, radiais, opacidade e compound paths.</p>
+          <p class="about-author"><span data-i18n="developed_by">Desenvolvido por</span> <strong>Leonardo Freitas</strong></p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Right panel -->
+    <div id="right-panel">
+      <div class="right-header">
+        <div class="gradfixer-logo-big">
+          <img src="assets/logo.png" alt="FlashFill Logo" style="width: 52px; height: 52px; object-fit: contain; border-radius: 50%;" />
+        </div>
+        <h3>FlashFill Setup</h3>
+        <p data-i18n="right_desc">Instale todos os componentes para começar a exportar vetores do Illustrator para o After Effects.</p>
+      </div>
+
+      <!-- Keep checklist but hide paths -->
+      <div class="checklist">
+        <div class="check-item" id="check-admin">
+          <span class="check-icon pending">○</span>
+          <span data-i18n="check_admin">Permissão admin</span>
+        </div>
+        <div class="check-item" id="check-templates">
+          <span class="check-icon pending">○</span>
+          <span data-i18n="check_core">Core Framework</span>
+        </div>
+        <div class="check-item" id="check-ext">
+          <span class="check-icon pending">○</span>
+          <span data-i18n="check_ai">Illustrator Extension</span>
+        </div>
+        <div class="check-item" id="check-plugin">
+          <span class="check-icon pending">○</span>
+          <span data-i18n="check_ae">After Effects Plugin</span>
+        </div>
+      </div>
+
+      <div id="install-log" class="install-log"></div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
