@@ -90,6 +90,17 @@
                 if (!onVertEdge && !onHorizEdge) {
                     isAxisAlignedEllipse = false; break;
                 }
+                
+                // Validação de Bezier para evitar falsos positivos com Estrelas/Losangos
+                if (onHorizEdge) {
+                    if (Math.abs(pts[i].i[1]) > 5.0 || Math.abs(pts[i].o[1]) > 5.0) { isAxisAlignedEllipse = false; break; }
+                    if (Math.abs(pts[i].i[0]) < w * 0.05 || Math.abs(pts[i].o[0]) < w * 0.05) { isAxisAlignedEllipse = false; break; }
+                }
+                if (onVertEdge) {
+                    if (Math.abs(pts[i].i[0]) > 5.0 || Math.abs(pts[i].o[0]) > 5.0) { isAxisAlignedEllipse = false; break; }
+                    if (Math.abs(pts[i].i[1]) < h * 0.05 || Math.abs(pts[i].o[1]) < h * 0.05) { isAxisAlignedEllipse = false; break; }
+                }
+                
                 if (Math.abs(pts[i].a[1] - minY) < 2.0 && Math.abs(pts[i].a[0] - midX) < 2.0) edgesHit.t = true;
                 if (Math.abs(pts[i].a[1] - maxY) < 2.0 && Math.abs(pts[i].a[0] - midX) < 2.0) edgesHit.b = true;
                 if (Math.abs(pts[i].a[0] - minX) < 2.0 && Math.abs(pts[i].a[1] - midY) < 2.0) edgesHit.l = true;
