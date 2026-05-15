@@ -137,7 +137,10 @@ document.getElementById('btn-ai').addEventListener('click', function() {
                 statusNode.innerText = result;
             }
             setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
-        
+        });
+    }
+});
+
 // --- EXTENSION LICENSE CHECK (hybrid: offline local + periodic online) ---
 
 var SUPABASE_URL  = "https://rudhtwriohqmrwnkfkdq.supabase.co/rest/v1/rpc/validate_license_online";
