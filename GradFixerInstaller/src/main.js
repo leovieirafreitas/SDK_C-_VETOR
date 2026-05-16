@@ -479,3 +479,49 @@ async function showLicenseView() {
 
 // Run on load
 showLicenseView();
+
+// ─── Auto-Update Check ───────────────────────────────────────────────────────
+const CURRENT_VERSION = "1.0.0"; // Versão atual do instalador
+
+async function checkForUpdates() {
+    try {
+        const response = await fetch("https://raw.githubusercontent.com/leovieirafreitas/FlashFill_Dashboard/main/public/version.json", {
+            cache: 'no-store' // Para não pegar versão antiga do cache
+        });
+        
+        if (!response.ok) return;
+        
+        const data = await response.json();
+        
+        // Compara versão simples (ex: 1.0.0 vs 1.0.1)
+        if (data.version && data.version !== CURRENT_VERSION) {
+            const banner = document.getElementById('update-banner');
+            const bannerText = document.getElementById('update-banner-text');
+            
+            if (banner && bannerText) {
+                // Aplica tradução se necessário, ou só mostra o banner
+                bannerText.innerText = currentLang === 'en' 
+                    ? `A new version (${data.version}) is available! Click to download.` 
+                    : `Nova versão (${data.version}) disponível! Clique para baixar.`;
+                    
+                banner.style.display = 'flex';
+                
+                banner.addEventListener('click', async () => {
+                    const url = data.download_url || "https://github.com/leovieirafreitas/FlashFill_Dashboard/tree/main/public";
+                    try {
+                        // Tenta abrir pelo plugin do Tauri
+                        await invoke('plugin:opener|open', { path: url });
+                    } catch(e) {
+                        // Fallback nativo
+                        window.open(url, '_blank');
+                    }
+                });
+            }
+        }
+    } catch (e) {
+        console.warn("Update check failed:", e);
+    }
+}
+
+// Verifica atualizações assim que o app carrega
+setTimeout(checkForUpdates, 1500);
