@@ -512,51 +512,76 @@ async function checkForUpdates(manual = false) {
         
         // Compara versão simples (ex: 1.0.0 vs 1.0.1)
         if (data.version && data.version !== CURRENT_VERSION) {
-            const banner = document.getElementById('update-banner');
-            const bannerText = document.getElementById('update-banner-text');
+            const modal = document.getElementById('update-modal');
+            const modalTitle = document.getElementById('update-modal-title');
+            const modalDesc = document.getElementById('update-modal-desc');
+            const btnLater = document.getElementById('btn-update-later');
+            const btnNow = document.getElementById('btn-update-now');
+            const btnNowText = document.getElementById('btn-update-now-text');
             
             if (manual && msgEl) {
                 msgEl.style.color = '#22c55e';
                 msgEl.innerText = currentLang === 'en' ? 'Update found!' : 'Atualização encontrada!';
             }
             
-            if (banner && bannerText) {
-                bannerText.innerText = currentLang === 'en' 
-                    ? `A new version (${data.version}) is available! Click to update.` 
-                    : `Nova versão (${data.version}) disponível! Clique para atualizar.`;
-                    
-                banner.style.display = 'flex';
+            if (modal && modalTitle && modalDesc) {
+                modalTitle.innerText = currentLang === 'en' ? 'Update Available!' : 'Atualização Disponível!';
+                modalDesc.innerText = currentLang === 'en' 
+                    ? `FlashFill version ${data.version} is ready for you.` 
+                    : `A versão ${data.version} do FlashFill está pronta para você.`;
                 
-                // Remove previous listeners just in case
-                const newBanner = banner.cloneNode(true);
-                banner.parentNode.replaceChild(newBanner, banner);
+                if (btnLater) {
+                    btnLater.innerText = currentLang === 'en' ? 'Not Now' : 'Agora Não';
+                    btnLater.onclick = () => {
+                        modal.style.display = 'none';
+                    };
+                }
                 
-                newBanner.addEventListener('click', async () => {
-                    const url = data.download_url;
-                    if (!url) return;
+                if (btnNowText) {
+                    btnNowText.innerText = currentLang === 'en' ? 'Update Now' : 'Atualizar Agora';
+                }
+                
+                if (btnNow) {
+                    // Limpa listeners antigos clonando o botão (caso rode várias vezes)
+                    const newBtnNow = btnNow.cloneNode(true);
+                    btnNow.parentNode.replaceChild(newBtnNow, btnNow);
                     
-                    const textSpan = newBanner.querySelector('#update-banner-text');
-                    if (textSpan) {
-                        textSpan.innerText = currentLang === 'en' 
-                            ? `Downloading update... Please wait.` 
-                            : `Baixando atualização... Aguarde.`;
-                    }
-                    newBanner.style.pointerEvents = 'none'; // previne multiplos cliques
-                    newBanner.style.background = '#eab308'; // amarelo para loading
-                    
-                    try {
-                        await invoke('download_and_install_update', { url: url });
-                        // App will automatically close if successful
-                    } catch(e) {
-                        console.error("Update failed:", e);
+                    newBtnNow.addEventListener('click', async () => {
+                        const url = data.download_url;
+                        if (!url) return;
+                        
+                        const textSpan = newBtnNow.querySelector('#btn-update-now-text');
                         if (textSpan) {
                             textSpan.innerText = currentLang === 'en' 
-                                ? `Error downloading update.` 
-                                : `Erro ao baixar atualização.`;
+                                ? `Downloading...` 
+                                : `Baixando...`;
                         }
-                        newBanner.style.background = '#ef4444'; // vermelho para erro
-                    }
-                });
+                        
+                        // Disable buttons
+                        newBtnNow.style.pointerEvents = 'none';
+                        newBtnNow.style.background = '#eab308'; // amarelo
+                        if (btnLater) {
+                            btnLater.style.pointerEvents = 'none';
+                            btnLater.style.opacity = '0.5';
+                        }
+                        
+                        try {
+                            await invoke('download_and_install_update', { url: url });
+                            // App fecha automático se der certo
+                        } catch(e) {
+                            console.error("Update failed:", e);
+                            if (textSpan) {
+                                textSpan.innerText = currentLang === 'en' ? `Error!` : `Erro!`;
+                            }
+                            newBtnNow.style.background = '#ef4444'; // vermelho
+                            setTimeout(() => {
+                                modal.style.display = 'none';
+                            }, 3000);
+                        }
+                    });
+                }
+                
+                modal.style.display = 'flex';
             }
         } else {
             if (manual && msgEl) {
