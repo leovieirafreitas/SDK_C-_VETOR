@@ -449,6 +449,36 @@ fn check_license_local() -> bool {
     std::path::Path::new(r"C:\AEGP\license.json").exists()
 }
 
+#[tauri::command]
+async fn download_and_install_update(app: tauri::AppHandle, url: String) -> Result<(), String> {
+    let client = reqwest::Client::builder()
+        .user_agent("FlashFill-Updater")
+        .build()
+        .map_err(|e| format!("Erro cliente: {}", e))?;
+        
+    let resp = client.get(&url).send().await.map_err(|e| format!("Erro de download: {}", e))?;
+    
+    if !resp.status().is_success() {
+        return Err(format!("Falha ao baixar (Status {}).", resp.status()));
+    }
+    
+    let bytes = resp.bytes().await.map_err(|e| format!("Erro ao ler bytes: {}", e))?;
+    
+    let temp_dir = std::env::temp_dir();
+    let exe_path = temp_dir.join("FlashFill_Update.exe");
+    
+    std::fs::write(&exe_path, bytes).map_err(|e| format!("Erro ao salvar arquivo: {}", e))?;
+    
+    // Spawn the installer
+    std::process::Command::new(&exe_path)
+        .spawn()
+        .map_err(|e| format!("Erro ao abrir instalador: {}", e))?;
+        
+    // Exit current app so the installer can overwrite files
+    app.exit(0);
+    Ok(())
+}
+
 // ─── App entry ────────────────────────────────────────────────────────────────
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -519,6 +549,7 @@ pub fn run() {
             check_license_local,
             get_license_info,
             check_license_online,
+            download_and_install_update,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

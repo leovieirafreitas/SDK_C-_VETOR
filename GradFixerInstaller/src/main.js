@@ -522,17 +522,39 @@ async function checkForUpdates(manual = false) {
             
             if (banner && bannerText) {
                 bannerText.innerText = currentLang === 'en' 
-                    ? `A new version (${data.version}) is available! Click to download.` 
-                    : `Nova versão (${data.version}) disponível! Clique para baixar.`;
+                    ? `A new version (${data.version}) is available! Click to update.` 
+                    : `Nova versão (${data.version}) disponível! Clique para atualizar.`;
                     
                 banner.style.display = 'flex';
                 
-                banner.addEventListener('click', async () => {
-                    const url = data.download_url || "https://github.com/leovieirafreitas/FlashFill_Dashboard/tree/main/public";
+                // Remove previous listeners just in case
+                const newBanner = banner.cloneNode(true);
+                banner.parentNode.replaceChild(newBanner, banner);
+                
+                newBanner.addEventListener('click', async () => {
+                    const url = data.download_url;
+                    if (!url) return;
+                    
+                    const textSpan = newBanner.querySelector('#update-banner-text');
+                    if (textSpan) {
+                        textSpan.innerText = currentLang === 'en' 
+                            ? `Downloading update... Please wait.` 
+                            : `Baixando atualização... Aguarde.`;
+                    }
+                    newBanner.style.pointerEvents = 'none'; // previne multiplos cliques
+                    newBanner.style.background = '#eab308'; // amarelo para loading
+                    
                     try {
-                        await invoke('plugin:opener|open', { path: url });
+                        await invoke('download_and_install_update', { url: url });
+                        // App will automatically close if successful
                     } catch(e) {
-                        window.open(url, '_blank');
+                        console.error("Update failed:", e);
+                        if (textSpan) {
+                            textSpan.innerText = currentLang === 'en' 
+                                ? `Error downloading update.` 
+                                : `Erro ao baixar atualização.`;
+                        }
+                        newBanner.style.background = '#ef4444'; // vermelho para erro
                     }
                 });
             }
