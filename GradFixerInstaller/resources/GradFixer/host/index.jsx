@@ -1,4 +1,4 @@
-// host/index.jsx — FlashFill backend (avaliado pelo Adobe)
+﻿// host/index.jsx Ã¢â‚¬â€ FlashFill backend (avaliado pelo Adobe)
 var extRoot = Folder.userData.fsName.replace(/\\/g, "/") + "/Adobe/CEP/extensions/GradFixer";
 
 function runCriarComp() {
@@ -114,7 +114,7 @@ function runRasterize(scaleStr) {
         var scale = parseFloat(scaleStr);
         if (isNaN(scale)) scale = 4.0;
         
-        // Calcular o centro da seleÃ§Ã£o no Artboard Original
+        // Calcular o centro da seleÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o no Artboard Original
         var left = 999999, top = -999999, right = -999999, bottom = 999999;
         var sel = doc.selection;
         for (var i = 0; i < sel.length; i++) {
@@ -248,8 +248,8 @@ function runExportAI() {
                                         "newLayer.property('Position').setValue([activeComp.width/2 + (origP[0] - importedComp.width/2), activeComp.height/2 + (origP[1] - importedComp.height/2)]); " +
                                         "newLayer.parent = guide; " +
                                     "} " +
-                               "} else { alert('Nenhuma composição ativa no AE encontrada. Abra uma onde quer inserir.'); } " +
-                       "} else { alert('Arquivo não encontrado: ' + f.fsName); } " +
+                               "} else { alert('Nenhuma composiÃƒÂ§ÃƒÂ£o ativa no AE encontrada. Abra uma onde quer inserir.'); } " +
+                       "} else { alert('Arquivo nÃƒÂ£o encontrado: ' + f.fsName); } " +
                        "app.endUndoGroup(); " +
                        "app.activate(); " +
                        "} catch(eae) { alert('Erro no AE (Import AI): ' + eae.toString() + ' (L' + eae.line + ')'); }";
@@ -373,5 +373,188 @@ function aeTriggerIlstCommand(cmdString) {
         return 'true';
     } catch(e) {
         return 'Erro BT: ' + e.toString();
+    }
+}
+
+function runPrecomp() {
+    try {
+        var bt = new BridgeTalk();
+        bt.target = "aftereffects";
+        var aeScript =
+            "try {" +
+            "app.beginUndoGroup('FlashFill: Precomp');" +
+            "var comp = app.project.activeItem;" +
+            "if (!comp || !(comp instanceof CompItem)) { alert('Abra uma Composicao no AE.'); app.endUndoGroup(); } else {" +
+            "var rawSel = comp.selectedLayers;" +
+            "if (rawSel.length === 0) { alert('Selecione pelo menos uma layer.'); app.endUndoGroup(); } else {" +
+            "var layersToComp = [];" +
+            "if (rawSel.length === 1 && rawSel[0].guideLayer) {" +
+            "  var guideRef = rawSel[0];" +
+            "  layersToComp.push(guideRef);" +
+            "  for (var k = 1; k <= comp.layers.length; k++) {" +
+            "    if (comp.layers[k].index !== guideRef.index &&" +
+            "        comp.layers[k].parent && comp.layers[k].parent.index === guideRef.index) {" +
+            "      layersToComp.push(comp.layers[k]);" +
+            "    }" +
+            "  }" +
+            "} else {" +
+            "  for (var k3 = 0; k3 < rawSel.length; k3++) layersToComp.push(rawSel[k3]);" +
+            "}" +
+            "var idxArr = [];" +
+            "for (var j = 0; j < layersToComp.length; j++) idxArr.push(layersToComp[j].index);" +
+            "var t = comp.time;" +
+            "var minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;" +
+            "for (var i = 0; i < layersToComp.length; i++) {" +
+            "  var src = layersToComp[i].source;" +
+            "  if (src && src.width) {" +
+            "    var pos = layersToComp[i].property('Position').valueAtTime(t, false);" +
+            "    var w2 = src.width/2, h2 = src.height/2;" +
+            "    if (pos[0]-w2 < minX) minX = pos[0]-w2;" +
+            "    if (pos[1]-h2 < minY) minY = pos[1]-h2;" +
+            "    if (pos[0]+w2 > maxX) maxX = pos[0]+w2;" +
+            "    if (pos[1]+h2 > maxY) maxY = pos[1]+h2;" +
+            "  }" +
+            "}" +
+            "if (!isFinite(minX)) { minX=0; minY=0; maxX=comp.width; maxY=comp.height; }" +
+            "var bW = Math.ceil(maxX-minX), bH = Math.ceil(maxY-minY);" +
+            "if (bW < 1) bW = comp.width; if (bH < 1) bH = comp.height;" +
+            "var newComp = comp.layers.precompose(idxArr, 'Precomp', true);" +
+            "if (newComp && newComp instanceof CompItem) { newComp.width = bW; newComp.height = bH; }" +
+            "}" + 
+            "}" + 
+            "app.endUndoGroup();" +
+            "app.activate();" +
+            "} catch(eae) { alert('FlashFill Precomp: ' + eae.toString() + ' L' + eae.line); }";
+        bt.body = aeScript;
+        bt.send();
+        return "true";
+    } catch(e) {
+        return "Erro Precomp: " + e.toString();
+    }
+}
+
+function runDecomp() {
+    try {
+        var bt = new BridgeTalk();
+        bt.target = "aftereffects";
+        var aeScript =
+            "try {" +
+            "var comp = app.project.activeItem;" +
+            "if (!comp || !(comp instanceof CompItem)) { alert('Abra uma Composicao no AE.'); } else {" +
+            "var sel = comp.selectedLayers;" +
+            "if (sel.length === 0) { alert('Selecione uma Precomp.'); } else {" +
+            "var target = sel[0];" +
+            "if (!(target.source instanceof CompItem)) {" +
+            "  alert('Selecione uma layer do tipo Precomp.');" +
+            "} else {" +
+
+            "var parentComp = comp;" +
+            "var nested = target.source;" +
+
+            // Calculate exact offset
+            "var tPos = target.property('Position').value;" +
+            "var tAP = target.property('Anchor Point').value;" +
+            "var bX = tPos[0] - tAP[0];" +
+            "var bY = tPos[1] - tAP[1];" +
+
+            // Tag target for safe removal later
+            "target.name = '__ff_target_precomp';" +
+            "target.selected = false;" + // Deselect it
+
+            // Open nested comp and select ALL layers
+            "nested.openInViewer();" +
+            "var nc = app.project.activeItem;" +
+            "if (nc && nc instanceof CompItem) {" +
+            "  for (var si = 1; si <= nc.layers.length; si++) nc.layers[si].selected = true;" +
+            "}" +
+
+            // Copy
+            "app.executeCommand(19);" +
+
+            // Switch to parent comp and paste
+            "parentComp.openInViewer();" +
+            "app.executeCommand(20);" +
+
+            // Pasted layers are now selected in parentComp
+            "var pastedLayers = parentComp.selectedLayers;" +
+            
+            // Get a FRESH reference to the target layer (because paste invalidates old layer references)
+            "var freshTarget = null;" +
+            "for (var i = 1; i <= parentComp.layers.length; i++) {" +
+            "  if (parentComp.layers[i].name === '__ff_target_precomp') {" +
+            "    freshTarget = parentComp.layers[i];" +
+            "    break;" +
+            "  }" +
+            "}" +
+
+            // Shift position so they sit exactly where the Precomp was
+            "for (var pl = 0; pl < pastedLayers.length; pl++) {" +
+            "  var layer = pastedLayers[pl];" +
+            "  if (!layer.parent) {" +
+            "    var posProp = layer.property('Position');" +
+            "    if (posProp) {" +
+            "      if (posProp.dimensionsSeparated) {" +
+            "        var xP = layer.property('X Position');" +
+            "        var yP = layer.property('Y Position');" +
+            "        if (xP) xP.setValue(xP.value + bX);" +
+            "        if (yP) yP.setValue(yP.value + bY);" +
+            "      } else {" +
+            "        var cp = posProp.value;" +
+            "        posProp.setValue([cp[0] + bX, cp[1] + bY]);" +
+            "      }" +
+            "    }" +
+            "  }" +
+            "}" +
+
+            // MOVE PASTED LAYERS BEFORE THE TARGET (Z-INDEX REORDER)
+            "if (freshTarget) {" +
+            "  for (var mpl = 0; mpl < pastedLayers.length; mpl++) {" +
+            "    pastedLayers[mpl].moveBefore(freshTarget);" +
+            "  }" +
+            "  freshTarget.remove();" + // Remove safely
+            "}" +
+            "if (nested.usedIn.length === 0) nested.remove();" +
+
+            "}" + 
+            "}" + 
+            "}" + 
+            "app.activate();" +
+            "} catch(eae) { alert('FlashFill Decomp: Error: ' + eae.toString() + ' L' + eae.line); }";
+        bt.body = aeScript;
+        bt.send();
+        return "true";
+    } catch(e) {
+        return "Erro Decomp: " + e.toString();
+    }
+}
+
+function runToggle() {
+    try {
+        var bt = new BridgeTalk();
+        bt.target = "aftereffects";
+        var aeScript =
+            "try {" +
+            "var comp = app.project.activeItem;" +
+            "if (!comp || !(comp instanceof CompItem)) { alert('Abra uma Composicao no AE.'); } else {" +
+            "  var targetState = null;" +
+            "  var guides = [];" +
+            "  for(var i=1; i<=comp.layers.length; i++) {" +
+            "    if(comp.layers[i].guideLayer) {" +
+            "      guides.push(comp.layers[i]);" +
+            "      if (targetState === null) targetState = !comp.layers[i].enabled;" +
+            "    }" +
+            "  }" +
+            "  if(guides.length > 0) {" +
+            "    app.beginUndoGroup('FlashFill: Toggle Groups');" +
+            "    for(var j=0; j<guides.length; j++) guides[j].enabled = targetState;" +
+            "    app.endUndoGroup();" +
+            "  }" +
+            "}" +
+            "} catch(eae) { alert('FlashFill Toggle: Error: ' + eae.toString() + ' L' + eae.line); }";
+        bt.body = aeScript;
+        bt.send();
+        return "true";
+    } catch(e) {
+        return "Erro Toggle: " + e.toString();
     }
 }

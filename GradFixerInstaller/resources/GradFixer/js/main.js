@@ -1,6 +1,15 @@
-var csInterface = new CSInterface();
+﻿var csInterface = new CSInterface();
 var appName = csInterface.hostEnvironment.appName;
 var statusNode = document.getElementById('status-console');
+
+// Groups section only makes sense in After Effects
+var groupsHeader = document.getElementById('groups-header');
+var groupsBody   = document.getElementById('groups-body');
+if (appName !== "AEFT") {
+    if (groupsHeader) groupsHeader.style.display = 'none';
+    if (groupsBody)   groupsBody.style.display   = 'none';
+}
+
 
 // Change the extension logo based on the host application
 var extLogo = document.getElementById('ext-logo');
@@ -44,7 +53,7 @@ function getResolvedExportPath() {
 document.getElementById('btn-split').addEventListener('click', function() {
     var rawPath = getResolvedExportPath();
     if (!rawPath) {
-        statusNode.innerText = 'ExportaÃ§Ã£o cancelada.';
+        statusNode.innerText = 'ExportaÃƒÂ§ÃƒÂ£o cancelada.';
         setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
         return;
     }
@@ -67,7 +76,7 @@ document.getElementById('btn-split').addEventListener('click', function() {
 document.getElementById('btn-group').addEventListener('click', function() {
     var rawPath = getResolvedExportPath();
     if (!rawPath) {
-        statusNode.innerText = 'ExportaÃ§Ã£o cancelada.';
+        statusNode.innerText = 'ExportaÃƒÂ§ÃƒÂ£o cancelada.';
         setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
         return;
     }
@@ -97,7 +106,7 @@ document.getElementById('btn-rasterize').addEventListener('click', function() {
             if (result === "true") {
                 statusNode.innerText = 'PNG enviado ao AE.';
             } else if (result === "Cancelado") {
-                statusNode.innerText = 'CÃ³pia cancelada.';
+                statusNode.innerText = 'CÃƒÂ³pia cancelada.';
             } else {
                 statusNode.innerText = result;
             }
@@ -106,7 +115,7 @@ document.getElementById('btn-rasterize').addEventListener('click', function() {
     } else if (appName === "AEFT") {
         csInterface.evalScript('aeTriggerIlstCommand("runRasterize(' + scaleVal + ')")', function(result) {
             if (result === "true") {
-                statusNode.innerText = 'Comando de RasterizaÃ§Ã£o enviado.';
+                statusNode.innerText = 'Comando de RasterizaÃƒÂ§ÃƒÂ£o enviado.';
             } else {
                 statusNode.innerText = result;
             }
@@ -123,7 +132,7 @@ document.getElementById('btn-ai').addEventListener('click', function() {
             if (result === "true") {
                 statusNode.innerText = 'Arquivo(s) .ai enviado(s) ao AE.';
             } else if (result === "Cancelado") {
-                statusNode.innerText = 'CÃ³pia cancelada.';
+                statusNode.innerText = 'CÃƒÂ³pia cancelada.';
             } else {
                 statusNode.innerText = result;
             }
@@ -186,7 +195,7 @@ function saveOnlineCheck() {
 }
 
 function validateLicense() {
-    // 1. Read local JSON — only to get p_key and stored hardware_id
+    // 1. Read local JSON â€” only to get p_key and stored hardware_id
     var fileResult = window.cep.fs.readFile("C:\\AEGP\\license.json");
     if (fileResult.err !== 0 || !fileResult.data) {
         showLockedUI(null);
@@ -204,29 +213,29 @@ function validateLicense() {
         return;
     }
 
-    // 2. Get REAL MAC from OS via ExtendScript — cannot be faked by editing files
+    // 2. Get REAL MAC from OS via ExtendScript â€” cannot be faked by editing files
     csInterface.evalScript('$.system("getmac /fo csv /nh")', function(raw) {
         var realMac = parseMacFromGetmac(raw);
 
         if (!realMac) {
-            // Very rare — ExtendScript unavailable. Allow but log.
+            // Very rare â€” ExtendScript unavailable. Allow but log.
             console.warn("FlashFill: getmac unavailable, skipping hardware check.");
             return;
         }
 
         // 3. LOCAL check (works fully OFFLINE)
         //    Real MAC of THIS machine must match what server stored at activation
-        //    Copying the JSON to another machine: realMac !== storedMac → BLOCKED
+        //    Copying the JSON to another machine: realMac !== storedMac â†’ BLOCKED
         if (realMac !== storedMac) {
             showLockedUI("Esta licen\u00e7a n\u00e3o pertence a este computador.");
             return;
         }
 
-        // LOCAL CHECK PASSED — extension is unlocked and works fully offline
+        // LOCAL CHECK PASSED â€” extension is unlocked and works fully offline
 
-        // 4. Periodic ONLINE recheck (every 7 days, background — non-blocking)
+        // 4. Periodic ONLINE recheck (every 7 days, background â€” non-blocking)
         //    Only locks if server EXPLICITLY says revoked
-        //    If offline/timeout/error → silently allow (local check already passed)
+        //    If offline/timeout/error â†’ silently allow (local check already passed)
         if (needsOnlineRecheck()) {
             var xhr = new XMLHttpRequest();
             xhr.open("POST", SUPABASE_URL, true);
@@ -242,14 +251,14 @@ function validateLicense() {
                         if (resp.valid === true) {
                             saveOnlineCheck(); // Reset 7-day timer
                         } else if (resp.valid === false) {
-                            // Server explicitly revoked (e.g. admin cancelled) → lock
+                            // Server explicitly revoked (e.g. admin cancelled) â†’ lock
                             showLockedUI("Licen\u00e7a revogada: " + (resp.reason || "Contate o suporte."));
                         }
-                    } catch(e) { /* parse error → ignore, local check passed */ }
+                    } catch(e) { /* parse error â†’ ignore, local check passed */ }
                 }
-                // Any other status (offline, 5xx) → silently allow
+                // Any other status (offline, 5xx) â†’ silently allow
             };
-            xhr.onerror = xhr.ontimeout = function() { /* offline → allow */ };
+            xhr.onerror = xhr.ontimeout = function() { /* offline â†’ allow */ };
             xhr.send(JSON.stringify({ p_key: cachedKey, p_hardware_id: realMac }));
         }
     });
@@ -257,3 +266,35 @@ function validateLicense() {
 
 // Run validation on panel load
 validateLicense();
+
+// â”€â”€ GROUPS: Precomp & Decomp â”€â”€
+// Both operations target After Effects regardless of host
+window._flashfill_precomp = function() {
+    var statusNode = document.getElementById('status-console');
+    statusNode.innerText = 'Precomping...';
+    csInterface.evalScript('runPrecomp()', function(result) {
+        statusNode.innerText = result === 'true' ? 'Precomp executado no AE.' : result;
+        setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+    });
+};
+
+window._flashfill_decomp = function() {
+    var statusNode = document.getElementById('status-console');
+    statusNode.innerText = 'Decompondo...';
+    csInterface.evalScript('runDecomp()', function(result) {
+        statusNode.innerText = result === 'true' ? 'Decomp executado no AE.' : result;
+        setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+    });
+};
+
+
+window._flashfill_toggle = function() {
+    console.log("[FlashFill] Triggering Toggle Groups via CSInterface...");
+    if (csInterface) {
+        csInterface.evalScript("runToggle()", function(res) {
+            console.log("Toggle returned:", res);
+        });
+    } else {
+        console.warn("CSInterface not found (Toggle)");
+    }
+};
