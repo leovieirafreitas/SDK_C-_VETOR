@@ -46,6 +46,9 @@ const i18n = {
     check_core: "Core Framework",
     check_ai: "Illustrator Extension",
     check_ae: "After Effects Plugin",
+    btn_check_update: "Verificar Atualizações",
+    update_uptodate: "Você já possui a versão mais recente.",
+    update_error: "Erro ao verificar atualizações.",
     
     // Dynamic texts
     t_core_ok: "Framework base verificado.",
@@ -110,6 +113,9 @@ const i18n = {
     check_core: "Core Framework",
     check_ai: "Illustrator Extension",
     check_ae: "After Effects Plugin",
+    btn_check_update: "Check for Updates",
+    update_uptodate: "You already have the latest version.",
+    update_error: "Error checking for updates.",
 
     t_core_ok: "Core framework verified.",
     t_not_inst: 'Not installed — click "Install All".',
@@ -483,13 +489,24 @@ showLicenseView();
 // ─── Auto-Update Check ───────────────────────────────────────────────────────
 const CURRENT_VERSION = "1.0.0"; // Versão atual do instalador
 
-async function checkForUpdates() {
+async function checkForUpdates(manual = false) {
+    const msgEl = document.getElementById('update-status-msg');
+    const btn = document.getElementById('btn-check-updates');
+    
+    if (manual) {
+        if (btn) btn.disabled = true;
+        if (msgEl) {
+            msgEl.style.color = '#94a3b8';
+            msgEl.innerText = currentLang === 'en' ? 'Checking server...' : 'Verificando servidor...';
+        }
+    }
+    
     try {
         const response = await fetch("https://raw.githubusercontent.com/leovieirafreitas/FlashFill_Dashboard/main/public/version.json", {
             cache: 'no-store' // Para não pegar versão antiga do cache
         });
         
-        if (!response.ok) return;
+        if (!response.ok) throw new Error("Network response was not ok");
         
         const data = await response.json();
         
@@ -498,8 +515,12 @@ async function checkForUpdates() {
             const banner = document.getElementById('update-banner');
             const bannerText = document.getElementById('update-banner-text');
             
+            if (manual && msgEl) {
+                msgEl.style.color = '#22c55e';
+                msgEl.innerText = currentLang === 'en' ? 'Update found!' : 'Atualização encontrada!';
+            }
+            
             if (banner && bannerText) {
-                // Aplica tradução se necessário, ou só mostra o banner
                 bannerText.innerText = currentLang === 'en' 
                     ? `A new version (${data.version}) is available! Click to download.` 
                     : `Nova versão (${data.version}) disponível! Clique para baixar.`;
@@ -509,19 +530,36 @@ async function checkForUpdates() {
                 banner.addEventListener('click', async () => {
                     const url = data.download_url || "https://github.com/leovieirafreitas/FlashFill_Dashboard/tree/main/public";
                     try {
-                        // Tenta abrir pelo plugin do Tauri
                         await invoke('plugin:opener|open', { path: url });
                     } catch(e) {
-                        // Fallback nativo
                         window.open(url, '_blank');
                     }
                 });
             }
+        } else {
+            if (manual && msgEl) {
+                msgEl.style.color = '#eab308';
+                msgEl.innerText = i18n[currentLang].update_uptodate;
+            }
         }
     } catch (e) {
         console.warn("Update check failed:", e);
+        if (manual && msgEl) {
+            msgEl.style.color = '#ef4444';
+            msgEl.innerText = i18n[currentLang].update_error;
+        }
+    } finally {
+        if (manual && btn) {
+            setTimeout(() => { btn.disabled = false; }, 500);
+        }
     }
 }
 
-// Verifica atualizações assim que o app carrega
-setTimeout(checkForUpdates, 1500);
+// Ligar o botão manual
+const btnCheckUpdate = document.getElementById('btn-check-updates');
+if (btnCheckUpdate) {
+    btnCheckUpdate.addEventListener('click', () => checkForUpdates(true));
+}
+
+// Verifica atualizações silenciosamente assim que o app carrega
+setTimeout(() => checkForUpdates(false), 1500);
