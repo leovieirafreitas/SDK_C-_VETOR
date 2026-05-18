@@ -1,4 +1,4 @@
-﻿var csInterface = new CSInterface();
+var csInterface = new CSInterface();
 var appName = csInterface.hostEnvironment.appName;
 var statusNode = document.getElementById('status-console');
 
@@ -10,6 +10,16 @@ if (appName !== "AEFT") {
     if (groupsBody)   groupsBody.style.display   = 'none';
 }
 
+var wrapSend = document.getElementById('wrap-send');
+var wrapPull = document.getElementById('wrap-pull');
+
+if (appName === "AEFT") {
+    if (wrapSend) wrapSend.style.display = 'flex';
+    if (wrapPull) wrapPull.style.display = 'none';
+} else {
+    if (wrapSend) wrapSend.style.display = 'none';
+    if (wrapPull) wrapPull.style.display = 'flex';
+}
 
 // Change the extension logo based on the host application
 var extLogo = document.getElementById('ext-logo');
@@ -142,6 +152,52 @@ document.getElementById('btn-ai').addEventListener('click', function() {
         csInterface.evalScript('aeTriggerIlstCommand("runExportAI()")', function(result) {
             if (result === "true") {
                 statusNode.innerText = 'Comando Import AI enviado.';
+            } else {
+                statusNode.innerText = result;
+            }
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+        });
+    }
+});
+
+document.getElementById('btn-send').addEventListener('click', function() {
+    statusNode.innerText = 'Sending vectors to Illustrator...';
+
+    if (appName === "AEFT") {
+        csInterface.evalScript('runSendToIllustrator()', function(result) {
+            if (result === "true") {
+                statusNode.innerText = 'Vectors sent to Illustrator.';
+            } else {
+                statusNode.innerText = result;
+            }
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+        });
+    } else {
+        statusNode.innerText = 'This button works in After Effects only.';
+        setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+    }
+});
+
+document.getElementById('btn-pull').addEventListener('click', function() {
+    if (appName === "ILST") {
+        var rawPath = getResolvedExportPath();
+        if (!rawPath) {
+            statusNode.innerText = 'ExportaÃƒÂ§ÃƒÂ£o cancelada.';
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+            return;
+        }
+        var exportPath = rawPath.replace(/\\/g, '\\\\');
+        
+        statusNode.innerText = 'Pulling vectors to After Effects...';
+        csInterface.evalScript('runExtrairGradiente("' + exportPath + '")', function(result) {
+            statusNode.innerText = result === "true" ? "Vectors pulled to After Effects." : result;
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+        });
+    } else if (appName === "AEFT") {
+        statusNode.innerText = 'Pulling vectors from Illustrator...';
+        csInterface.evalScript('runPullFromIllustrator()', function(result) {
+            if (result === "true") {
+                statusNode.innerText = 'Vectors pulled from Illustrator.';
             } else {
                 statusNode.innerText = result;
             }
@@ -298,3 +354,47 @@ window._flashfill_toggle = function() {
         console.warn("CSInterface not found (Toggle)");
     }
 };
+
+// --- DYNAMIC COLOR: SWATCHES SYNCHRONIZATION & APPLICATION ---
+document.getElementById('btn-sync-colors').addEventListener('click', function() {
+    var statusNode = document.getElementById('status-console');
+    var swatchesContainer = document.getElementById('swatches-container');
+    
+    statusNode.innerText = 'Sincronizando amostras do Illustrator...';
+    
+    csInterface.evalScript('runSyncIllustratorSwatches()', function(result) {
+        if (result.indexOf('Erro') === 0) {
+            statusNode.innerText = result;
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+            return;
+        }
+        
+        try {
+            var colors = JSON.parse(result);
+            swatchesContainer.innerHTML = '';
+            
+            if (!colors || colors.length === 0) {
+                swatchesContainer.innerHTML = '<span style="font-size: 9px; color: #666; font-style: italic; width: 100%; text-align: center;">Nenhuma amostra selecionada no Illustrator.</span>';
+                statusNode.innerText = 'Selecione amostras no Illustrator primeiro!';
+                setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+                return;
+            }
+            
+            colors.forEach(function(c) {
+                var chip = document.createElement('div');
+                chip.className = 'swatch-chip';
+                chip.style.backgroundColor = 'rgb(' + Math.round(c.r * 255) + ',' + Math.round(c.g * 255) + ',' + Math.round(c.b * 255) + ')';
+                chip.title = c.name;
+                
+                swatchesContainer.appendChild(chip);
+            });
+            
+            statusNode.innerText = colors.length + ' amostras sincronizadas!';
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+            
+        } catch(e) {
+            statusNode.innerText = 'Erro ao processar cores: ' + e.message;
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+        }
+    });
+});
