@@ -485,11 +485,11 @@ async fn download_and_install_update(app: tauri::AppHandle, url: String) -> Resu
 pub fn run() {
     #[cfg(windows)]
     {
-        // Força o diretório de dados do WebView2 para uma pasta na temp,
+        // Força o diretório de dados do WebView2 para uma pasta global no ProgramData,
         // evitando erros de permissão "O Microsoft Edge não pode ler e gravar"
-        // em perfis temporários ao executar como Administrador.
-        let mut data_dir = std::env::temp_dir();
-        data_dir.push("FlashFill_WebView2_Data");
+        // em perfis temporários corrompidos (como TEMP.CETAM) ao executar como Administrador.
+        let data_dir = std::path::PathBuf::from(r"C:\ProgramData\FlashFill_WebView2_Data");
+        let _ = std::fs::create_dir_all(&data_dir);
         std::env::set_var("WEBVIEW2_USER_DATA_FOLDER", data_dir.to_string_lossy().to_string());
     }
 
