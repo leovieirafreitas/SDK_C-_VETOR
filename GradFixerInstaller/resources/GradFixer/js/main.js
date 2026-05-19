@@ -355,6 +355,17 @@ window._flashfill_toggle = function() {
     }
 };
 
+window._flashfill_delete_toggle = function() {
+    console.log("[FlashFill] Triggering Delete Toggles via CSInterface...");
+    if (csInterface) {
+        csInterface.evalScript("runDeleteToggles()", function(res) {
+            console.log("Delete Toggles returned:", res);
+        });
+    } else {
+        console.warn("CSInterface not found (Delete Toggles)");
+    }
+};
+
 // --- DYNAMIC COLOR: SWATCHES SYNCHRONIZATION & APPLICATION ---
 document.getElementById('btn-sync-colors').addEventListener('click', function() {
     var statusNode = document.getElementById('status-console');
