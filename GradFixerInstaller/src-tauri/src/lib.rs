@@ -483,6 +483,16 @@ async fn download_and_install_update(app: tauri::AppHandle, url: String) -> Resu
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+    #[cfg(windows)]
+    {
+        // Força o diretório de dados do WebView2 para uma pasta na temp,
+        // evitando erros de permissão "O Microsoft Edge não pode ler e gravar"
+        // em perfis temporários ao executar como Administrador.
+        let mut data_dir = std::env::temp_dir();
+        data_dir.push("FlashFill_WebView2_Data");
+        std::env::set_var("WEBVIEW2_USER_DATA_FOLDER", data_dir.to_string_lossy().to_string());
+    }
+
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_fs::init())
