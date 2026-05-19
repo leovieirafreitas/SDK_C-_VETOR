@@ -220,9 +220,10 @@ async function loadStatus() {
 function applyStatus(status) {
   const dict = i18n[currentLang];
   
-  // Admin
+  // Admin warning is only shown if the user is not Admin AND there is at least one After Effects version without the plugin installed.
   const adminWarn = document.getElementById('admin-warning');
-  if (status.is_admin) {
+  const needsPluginInstall = status.ae_versions.some(ver => !ver.plugin_installed);
+  if (status.is_admin || !needsPluginInstall) {
     adminWarn.style.display = 'none';
     setChecklistItem('admin', 'ok');
   } else {
@@ -487,7 +488,7 @@ async function showLicenseView() {
 showLicenseView();
 
 // ─── Auto-Update Check ───────────────────────────────────────────────────────
-const CURRENT_VERSION = "1.0.5"; // Versão atual do instalador
+const CURRENT_VERSION = "1.0.6"; // Versão atual do instalador
 
 async function checkForUpdates(manual = false) {
     const msgEl = document.getElementById('update-status-msg');
