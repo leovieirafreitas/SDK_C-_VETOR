@@ -488,7 +488,7 @@ async function showLicenseView() {
 showLicenseView();
 
 // ─── Auto-Update Check ───────────────────────────────────────────────────────
-const CURRENT_VERSION = "1.0.6"; // Versão atual do instalador
+const CURRENT_VERSION = "1.0.7"; // Versão atual do instalador
 
 async function checkForUpdates(manual = false) {
     const msgEl = document.getElementById('update-status-msg');
