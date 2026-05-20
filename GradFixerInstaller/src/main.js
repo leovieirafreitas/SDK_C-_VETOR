@@ -599,8 +599,8 @@ async function checkForUpdates(manual = false) {
                     // Sem direito a atualizações!
                     modalTitle.innerText = currentLang === 'en' ? 'Buy Update' : 'Comprar Atualização';
                     modalDesc.innerText = currentLang === 'en'
-                        ? `You have already used the free update included in your lifetime license. Upgrade to version ${data.version} for only $5.00 USD / R$ 25,00.`
-                        : `Você já utilizou a atualização gratuita inclusa na sua licença vitalícia. Atualize para a versão ${data.version} por apenas R$ 25,00 ($5.00 USD).`;
+                        ? `You have already used the free update included in your lifetime license. You need to purchase an update to install version ${data.version}.`
+                        : `Você já utilizou a atualização gratuita inclusa na sua licença vitalícia. É necessário comprar uma atualização para instalar a versão ${data.version}.`;
 
                     if (btnNowText) {
                         btnNowText.innerText = currentLang === 'en' ? 'Buy Update' : 'Comprar Atualização';
