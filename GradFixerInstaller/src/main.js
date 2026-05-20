@@ -513,6 +513,18 @@ async function checkForUpdates(manual = false) {
         
         // Compara versão simples (ex: 1.0.0 vs 1.0.1)
         if (data.version && data.version !== CURRENT_VERSION) {
+            let hasUpdateRight = true;
+            let licenseKey = '';
+            try {
+                const updateStatus = await invoke('check_license_update_status');
+                if (updateStatus && updateStatus.valid) {
+                    hasUpdateRight = updateStatus.has_update_right;
+                    licenseKey = updateStatus.key;
+                }
+            } catch (e) {
+                console.warn("Could not retrieve update status:", e);
+            }
+
             const modal = document.getElementById('update-modal');
             const modalTitle = document.getElementById('update-modal-title');
             const modalDesc = document.getElementById('update-modal-desc');
@@ -526,60 +538,86 @@ async function checkForUpdates(manual = false) {
             }
             
             if (modal && modalTitle && modalDesc) {
-                modalTitle.innerText = currentLang === 'en' ? 'Update Available!' : 'Atualização Disponível!';
-                modalDesc.innerText = currentLang === 'en' 
-                    ? `FlashFill version ${data.version} is ready for you.` 
-                    : `A versão ${data.version} do FlashFill está pronta para você.`;
+                if (hasUpdateRight) {
+                    modalTitle.innerText = currentLang === 'en' ? 'Update Available!' : 'Atualização Disponível!';
+                    modalDesc.innerText = currentLang === 'en' 
+                        ? `FlashFill version ${data.version} is ready for you.` 
+                        : `A versão ${data.version} do FlashFill está pronta para você.`;
+                    
+                    if (btnNowText) {
+                        btnNowText.innerText = currentLang === 'en' ? 'Update Now' : 'Atualizar Agora';
+                    }
+                    
+                    if (btnNow) {
+                        // Limpa listeners antigos clonando o botão (caso rode várias vezes)
+                        const newBtnNow = btnNow.cloneNode(true);
+                        btnNow.parentNode.replaceChild(newBtnNow, btnNow);
+                        
+                        newBtnNow.addEventListener('click', async () => {
+                            const url = data.download_url;
+                            if (!url) return;
+                            
+                            const textSpan = newBtnNow.querySelector('#btn-update-now-text');
+                            if (textSpan) {
+                                textSpan.innerText = currentLang === 'en' 
+                                    ? `Downloading...` 
+                                    : `Baixando...`;
+                            }
+                            
+                            // Disable buttons
+                            newBtnNow.style.pointerEvents = 'none';
+                            newBtnNow.style.background = '#eab308'; // amarelo
+                            if (btnLater) {
+                                btnLater.style.pointerEvents = 'none';
+                                btnLater.style.opacity = '0.5';
+                            }
+                            
+                            try {
+                                await invoke('download_and_install_update', { url: url });
+                                // App fecha automático se der certo
+                            } catch(e) {
+                                console.error("Update failed:", e);
+                                if (textSpan) {
+                                    textSpan.innerText = currentLang === 'en' ? `Error!` : `Erro!`;
+                                }
+                                newBtnNow.style.background = '#ef4444'; // vermelho
+                                setTimeout(() => {
+                                    modal.style.display = 'none';
+                                }, 3000);
+                            }
+                        });
+                    }
+                } else {
+                    // Sem direito a atualizações!
+                    modalTitle.innerText = currentLang === 'en' ? 'Buy Update' : 'Comprar Atualização';
+                    modalDesc.innerText = currentLang === 'en'
+                        ? `You have already used the free update included in your lifetime license. Upgrade to version ${data.version} for only $5.00 USD / R$ 25,00.`
+                        : `Você já utilizou a atualização gratuita inclusa na sua licença vitalícia. Atualize para a versão ${data.version} por apenas R$ 25,00 ($5.00 USD).`;
+
+                    if (btnNowText) {
+                        btnNowText.innerText = currentLang === 'en' ? 'Buy Update' : 'Comprar Atualização';
+                    }
+
+                    if (btnNow) {
+                        const newBtnNow = btnNow.cloneNode(true);
+                        btnNow.parentNode.replaceChild(newBtnNow, btnNow);
+                        newBtnNow.addEventListener('click', () => {
+                            const url = data.download_url;
+                            let baseUrl = "https://flashfill-flashfill.rumjhv.easypanel.host"; 
+                            if (url && url.includes("/FlashFill_Installer.exe")) {
+                                baseUrl = url.split("/FlashFill_Installer.exe")[0];
+                            }
+                            const checkoutUrl = `${baseUrl}/?key=${encodeURIComponent(licenseKey)}#lookup`;
+                            window.__TAURI__.opener.open(checkoutUrl).catch(console.error);
+                        });
+                    }
+                }
                 
                 if (btnLater) {
                     btnLater.innerText = currentLang === 'en' ? 'Not Now' : 'Agora Não';
                     btnLater.onclick = () => {
                         modal.style.display = 'none';
                     };
-                }
-                
-                if (btnNowText) {
-                    btnNowText.innerText = currentLang === 'en' ? 'Update Now' : 'Atualizar Agora';
-                }
-                
-                if (btnNow) {
-                    // Limpa listeners antigos clonando o botão (caso rode várias vezes)
-                    const newBtnNow = btnNow.cloneNode(true);
-                    btnNow.parentNode.replaceChild(newBtnNow, btnNow);
-                    
-                    newBtnNow.addEventListener('click', async () => {
-                        const url = data.download_url;
-                        if (!url) return;
-                        
-                        const textSpan = newBtnNow.querySelector('#btn-update-now-text');
-                        if (textSpan) {
-                            textSpan.innerText = currentLang === 'en' 
-                                ? `Downloading...` 
-                                : `Baixando...`;
-                        }
-                        
-                        // Disable buttons
-                        newBtnNow.style.pointerEvents = 'none';
-                        newBtnNow.style.background = '#eab308'; // amarelo
-                        if (btnLater) {
-                            btnLater.style.pointerEvents = 'none';
-                            btnLater.style.opacity = '0.5';
-                        }
-                        
-                        try {
-                            await invoke('download_and_install_update', { url: url });
-                            // App fecha automático se der certo
-                        } catch(e) {
-                            console.error("Update failed:", e);
-                            if (textSpan) {
-                                textSpan.innerText = currentLang === 'en' ? `Error!` : `Erro!`;
-                            }
-                            newBtnNow.style.background = '#ef4444'; // vermelho
-                            setTimeout(() => {
-                                modal.style.display = 'none';
-                            }, 3000);
-                        }
-                    });
                 }
                 
                 modal.style.display = 'flex';

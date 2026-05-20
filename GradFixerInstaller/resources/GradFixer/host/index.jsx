@@ -1609,3 +1609,71 @@ function runApplyColorToSelectedProperties(r, g, b) {
         return "Erro: " + e.toString();
     }
 }
+
+function runTransferGuides() {
+    try {
+        if (app.documents.length === 0) return "Erro: Abra um documento no Illustrator.";
+        var doc = app.activeDocument;
+        
+        var ab = doc.artboards[doc.artboards.getActiveArtboardIndex()];
+        var abRect = ab.artboardRect;
+        var abLeft = abRect[0];
+        var abTop = abRect[1];
+        
+        var guidesList = [];
+        var allPaths = doc.pathItems;
+        for (var i = 0; i < allPaths.length; i++) {
+            var item = allPaths[i];
+            if (item.guides === true) {
+                try { if (item.hidden) continue; } catch(e){}
+                try { if (item.layer && !item.layer.visible) continue; } catch(e){}
+                
+                var bounds = item.geometricBounds; // [left, top, right, bottom]
+                var w = bounds[2] - bounds[0];
+                var h = bounds[1] - bounds[3];
+                if (w < 0.1) {
+                    var x = bounds[0] - abLeft;
+                    guidesList.push({ type: "v", pos: x });
+                } else if (h < 0.1) {
+                    var y = abTop - bounds[1];
+                    guidesList.push({ type: "h", pos: y });
+                }
+            }
+        }
+        
+        if (guidesList.length === 0) {
+            alert("Nenhuma regua/guia encontrada no Illustrator.");
+            return "Nenhuma regua encontrada.";
+        }
+        
+        if (!BridgeTalk.isRunning("aftereffects")) {
+            alert("O After Effects precisa estar aberto!");
+            return "AE nao aberto.";
+        }
+        
+        var aeScript = "try {\n";
+        aeScript += "var comp = app.project.activeItem;\n";
+        aeScript += "if (comp && comp instanceof CompItem) {\n";
+        aeScript += "  app.beginUndoGroup('Importar Reguas/Guias');\n";
+        for (var j = 0; j < guidesList.length; j++) {
+            var g = guidesList[j];
+            var dir = g.type === "h" ? 0 : 1;
+            aeScript += "  comp.addGuide(" + dir + ", " + Math.round(g.pos) + ");\n";
+        }
+        aeScript += "  app.endUndoGroup();\n";
+        aeScript += "} else {\n";
+        aeScript += "  alert('Por favor, selecione ou abra uma composicao no After Effects.');\n";
+        aeScript += "}\n";
+        aeScript += "} catch(e) { alert('Erro no AE ao importar guias: ' + e.toString()); }\n";
+        
+        var bt = new BridgeTalk();
+        bt.target = "aftereffects";
+        bt.body = aeScript;
+        bt.send();
+        
+        return "true";
+    } catch(e) {
+        alert("Erro ao transferir guias: " + e.toString() + " (linha " + e.line + ")");
+        return "false";
+    }
+}

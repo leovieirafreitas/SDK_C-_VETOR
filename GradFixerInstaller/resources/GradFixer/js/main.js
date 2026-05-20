@@ -206,6 +206,21 @@ document.getElementById('btn-pull').addEventListener('click', function() {
     }
 });
 
+document.getElementById('btn-guides').addEventListener('click', function() {
+    statusNode.innerText = 'Transferindo reguas...';
+    if (appName === "ILST") {
+        csInterface.evalScript('runTransferGuides()', function(result) {
+            statusNode.innerText = result === "true" ? "Reguas enviadas para o AE." : result;
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+        });
+    } else if (appName === "AEFT") {
+        csInterface.evalScript('aeTriggerIlstCommand("runTransferGuides()")', function(result) {
+            statusNode.innerText = result === "true" ? "Comando de reguas enviado ao Illustrator." : result;
+            setTimeout(function() { statusNode.innerText = 'Pronto.'; }, 4000);
+        });
+    }
+});
+
 // --- EXTENSION LICENSE CHECK (hybrid: offline local + periodic online) ---
 
 var SUPABASE_URL  = "https://rudhtwriohqmrwnkfkdq.supabase.co/rest/v1/rpc/validate_license_online";

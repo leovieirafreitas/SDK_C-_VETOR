@@ -418,7 +418,8 @@ async fn check_license_online() -> bool {
     let client = reqwest::Client::new();
     let req_body = serde_json::json!({
         "p_key": key,
-        "p_hardware_id": mac  // <-- real MAC from the OS, cannot be edited
+        "p_hardware_id": mac,
+        "p_version": "1.0.7"
     });
 
     let resp = match client.post(url)
@@ -440,6 +441,78 @@ async fn check_license_online() -> bool {
     result.get("valid").and_then(|v| v.as_bool()).unwrap_or(false)
 }
 
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct LicenseUpdateStatus {
+    pub key: String,
+    pub valid: bool,
+    pub plan_type: String,
+    pub updates_used: i32,
+    pub updates_allowed: i32,
+    pub has_update_right: bool,
+}
+
+#[tauri::command]
+async fn check_license_update_status() -> Result<LicenseUpdateStatus, String> {
+    let license_path = std::path::PathBuf::from(r"C:\AEGP\license.json");
+    let content = std::fs::read_to_string(&license_path).map_err(|_| "Licença não encontrada localmente.".to_string())?;
+    let json: serde_json::Value = serde_json::from_str(&content).map_err(|_| "Formato de licença inválido.".to_string())?;
+    let key = json.get("p_key").and_then(|k| k.as_str()).unwrap_or("").to_string();
+
+    let mac = mac_address::get_mac_address()
+        .ok().flatten()
+        .map(|m| m.to_string())
+        .unwrap_or_else(|| "00:00:00:00:00:00".to_string());
+
+    let url = "https://rudhtwriohqmrwnkfkdq.supabase.co/rest/v1/rpc/validate_license_online";
+    let anon_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ1ZGh0d3Jpb2hxbXJ3bmtma2RxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2OTUxODMsImV4cCI6MjA5NDI3MTE4M30.iPaY--LfmkR5KOWkTPWFFR1D2T2ZoZH49jRCQguGz_g";
+
+    let client = reqwest::Client::new();
+    let req_body = serde_json::json!({
+        "p_key": key,
+        "p_hardware_id": mac
+    });
+
+    let resp = client.post(url)
+        .header("apikey", anon_key)
+        .header("Authorization", format!("Bearer {}", anon_key))
+        .json(&req_body)
+        .send()
+        .await
+        .map_err(|e| format!("Erro de conexao: {}", e))?;
+
+    let result: serde_json::Value = resp.json().await.map_err(|e| e.to_string())?;
+    let valid = result.get("valid").and_then(|v| v.as_bool()).unwrap_or(false);
+    if !valid {
+        return Ok(LicenseUpdateStatus {
+            key,
+            valid: false,
+            plan_type: "".to_string(),
+            updates_used: 0,
+            updates_allowed: 0,
+            has_update_right: false,
+        });
+    }
+
+    let plan_type = result.get("plan_type").and_then(|p| p.as_str()).unwrap_or("").to_string();
+    let updates_used = result.get("updates_used").and_then(|u| u.as_i64()).unwrap_or(0) as i32;
+    let updates_allowed = result.get("updates_allowed").and_then(|u| u.as_i64()).unwrap_or(1) as i32;
+
+    let has_update_right = if plan_type == "annual" {
+        true
+    } else {
+        updates_used < updates_allowed
+    };
+
+    Ok(LicenseUpdateStatus {
+        key,
+        valid: true,
+        plan_type,
+        updates_used,
+        updates_allowed,
+        has_update_right,
+    })
+}
+
 // Kept for backward compat (just reads the cached key for display)
 #[tauri::command]
 fn check_license_local() -> bool {
@@ -455,8 +528,30 @@ async fn download_and_install_update(app: tauri::AppHandle, url: String) -> Resu
         .user_agent("FlashFill-Updater")
         .build()
         .map_err(|e| format!("Erro cliente: {}", e))?;
+
+    // Read key to attach if downloading from dashboard server
+    let license_path = std::path::PathBuf::from(r"C:\AEGP\license.json");
+    let download_url = if let Ok(content) = std::fs::read_to_string(&license_path) {
+        if let Ok(json) = serde_json::from_str::<serde_json::Value>(&content) {
+            if let Some(key) = json.get("p_key").and_then(|k| k.as_str()) {
+                // If it is the installer, rewrite the URL to hit our tracking download endpoint
+                if url.contains("FlashFill_Installer.exe") {
+                    let base = url.split("/FlashFill_Installer.exe").next().unwrap_or("");
+                    format!("{}/api/download-update?key={}", base, key)
+                } else {
+                    url.clone()
+                }
+            } else {
+                url.clone()
+            }
+        } else {
+            url.clone()
+        }
+    } else {
+        url.clone()
+    };
         
-    let resp = client.get(&url).send().await.map_err(|e| format!("Erro de download: {}", e))?;
+    let resp = client.get(&download_url).send().await.map_err(|e| format!("Erro de download: {}", e))?;
     
     if !resp.status().is_success() {
         return Err(format!("Falha ao baixar (Status {}).", resp.status()));
@@ -560,6 +655,7 @@ pub fn run() {
             get_license_info,
             check_license_online,
             download_and_install_update,
+            check_license_update_status,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

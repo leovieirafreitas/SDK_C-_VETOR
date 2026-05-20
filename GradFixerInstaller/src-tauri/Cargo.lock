@@ -1441,7 +1441,7 @@ dependencies = [
 
 [[package]]
 name = "gradfixerinstaller"
-version = "1.0.6"
+version = "1.0.7"
 dependencies = [
  "dirs 5.0.1",
  "mac_address",
