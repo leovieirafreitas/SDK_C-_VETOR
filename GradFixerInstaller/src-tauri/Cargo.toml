@@ -1,6 +1,6 @@
 [package]
 name = "gradfixerinstaller"
-version = "1.0.7"
+version = "1.0.8"
 description = "GradFixer Installer"
 authors = ["Felipe Barroso"]
 edition = "2021"

@@ -247,11 +247,14 @@ function parseMacFromGetmac(raw) {
     return match[0].replace(/-/g, ':').toUpperCase();
 }
 
+var EXTENSION_VERSION = "1.0.8";
+
 function needsOnlineRecheck() {
     var r = window.cep.fs.readFile("C:\\AEGP\\license_check.json");
     if (r.err !== 0 || !r.data) return true;
     try {
         var d = JSON.parse(r.data);
+        if (d.version !== EXTENSION_VERSION) return true; // Force online check on version upgrade
         var days = (Date.now() - (d.last_check || 0)) / 86400000;
         return days >= 7;
     } catch(e) { return true; }
@@ -260,13 +263,13 @@ function needsOnlineRecheck() {
 function saveOnlineCheck() {
     window.cep.fs.writeFile(
         "C:\\AEGP\\license_check.json",
-        JSON.stringify({ last_check: Date.now() }),
+        JSON.stringify({ last_check: Date.now(), version: EXTENSION_VERSION }),
         false
     );
 }
 
 function validateLicense() {
-    // 1. Read local JSON â€” only to get p_key and stored hardware_id
+    // 1. Read local JSON — only to get p_key and stored hardware_id
     var fileResult = window.cep.fs.readFile("C:\\AEGP\\license.json");
     if (fileResult.err !== 0 || !fileResult.data) {
         showLockedUI(null);
@@ -274,39 +277,39 @@ function validateLicense() {
     }
     var data;
     try { data = JSON.parse(fileResult.data); } catch(e) {
-        showLockedUI("Arquivo de licen\u00e7a inv\u00e1lido.");
+        showLockedUI("Arquivo de licença inválido.");
         return;
     }
     var cachedKey = data && data.p_key;
     var storedMac = data && data.p_hardware_id;
     if (!cachedKey || !storedMac) {
-        showLockedUI("Arquivo de licen\u00e7a incompleto. Reative no FlashFill Setup.");
+        showLockedUI("Arquivo de licença incompleto. Reative no FlashFill Setup.");
         return;
     }
 
-    // 2. Get REAL MAC from OS via ExtendScript â€” cannot be faked by editing files
+    // 2. Get REAL MAC from OS via ExtendScript — cannot be faked by editing files
     csInterface.evalScript('$.system("getmac /fo csv /nh")', function(raw) {
         var realMac = parseMacFromGetmac(raw);
 
         if (!realMac) {
-            // Very rare â€” ExtendScript unavailable. Allow but log.
+            // Very rare — ExtendScript unavailable. Allow but log.
             console.warn("FlashFill: getmac unavailable, skipping hardware check.");
             return;
         }
 
         // 3. LOCAL check (works fully OFFLINE)
         //    Real MAC of THIS machine must match what server stored at activation
-        //    Copying the JSON to another machine: realMac !== storedMac â†’ BLOCKED
+        //    Copying the JSON to another machine: realMac !== storedMac → BLOCKED
         if (realMac !== storedMac) {
-            showLockedUI("Esta licen\u00e7a n\u00e3o pertence a este computador.");
+            showLockedUI("Esta licença não pertence a este computador.");
             return;
         }
 
-        // LOCAL CHECK PASSED â€” extension is unlocked and works fully offline
+        // LOCAL CHECK PASSED — extension is unlocked and works fully offline
 
-        // 4. Periodic ONLINE recheck (every 7 days, background â€” non-blocking)
-        //    Only locks if server EXPLICITLY says revoked
-        //    If offline/timeout/error â†’ silently allow (local check already passed)
+        // 4. Periodic ONLINE recheck (every 7 days, background — non-blocking)
+        //    Only locks if server EXPLICITLY says revoked/unauthorized
+        //    If offline/timeout/error → silently allow (local check already passed)
         if (needsOnlineRecheck()) {
             var xhr = new XMLHttpRequest();
             xhr.open("POST", SUPABASE_URL, true);
@@ -322,15 +325,15 @@ function validateLicense() {
                         if (resp.valid === true) {
                             saveOnlineCheck(); // Reset 7-day timer
                         } else if (resp.valid === false) {
-                            // Server explicitly revoked (e.g. admin cancelled) â†’ lock
-                            showLockedUI("Licen\u00e7a revogada: " + (resp.reason || "Contate o suporte."));
+                            // Server explicitly revoked or version unauthorized → lock
+                            showLockedUI("Licença inválida: " + (resp.reason || "Contate o suporte."));
                         }
-                    } catch(e) { /* parse error â†’ ignore, local check passed */ }
+                    } catch(e) { /* parse error → ignore, local check passed */ }
                 }
-                // Any other status (offline, 5xx) â†’ silently allow
+                // Any other status (offline, 5xx) → silently allow
             };
-            xhr.onerror = xhr.ontimeout = function() { /* offline â†’ allow */ };
-            xhr.send(JSON.stringify({ p_key: cachedKey, p_hardware_id: realMac }));
+            xhr.onerror = xhr.ontimeout = function() { /* offline → allow */ };
+            xhr.send(JSON.stringify({ p_key: cachedKey, p_hardware_id: realMac, p_version: EXTENSION_VERSION }));
         }
     });
 }

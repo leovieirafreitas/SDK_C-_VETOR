@@ -374,9 +374,17 @@ async function verifyLocalLicense() {
         }
         // Second: real online validation against the server
         // Editing the local JSON is useless because the server checks the real MAC
-        const isValid = await invoke('check_license_online');
+        const res = await invoke('check_license_online');
+        const isValid = (typeof res === 'boolean') ? res : (res && res.valid);
         if (!isValid) {
             block.style.display = 'flex';
+            if (res && res.reason) {
+                const msg = document.getElementById('overlay-activation-msg');
+                if (msg) {
+                    msg.style.color = '#ef4444';
+                    msg.innerText = res.reason;
+                }
+            }
         } else {
             block.style.display = 'none';
         }
@@ -488,7 +496,7 @@ async function showLicenseView() {
 showLicenseView();
 
 // ─── Auto-Update Check ───────────────────────────────────────────────────────
-const CURRENT_VERSION = "1.0.7"; // Versão atual do instalador
+const CURRENT_VERSION = "1.0.8"; // Versão atual do instalador
 
 async function checkForUpdates(manual = false) {
     const msgEl = document.getElementById('update-status-msg');

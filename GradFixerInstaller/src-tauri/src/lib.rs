@@ -389,20 +389,20 @@ fn get_license_info() -> Option<serde_json::Value> {
 }
 
 #[tauri::command]
-async fn check_license_online() -> bool {
+async fn check_license_online() -> serde_json::Value {
     // Read the locally cached key (just the key, not trusted for validation)
     let license_path = std::path::PathBuf::from(r"C:\AEGP\license.json");
     let content = match std::fs::read_to_string(&license_path) {
         Ok(c) => c,
-        Err(_) => return false,
+        Err(_) => return serde_json::json!({ "valid": false, "reason": "Sem chave registrada localmente." }),
     };
     let json: serde_json::Value = match serde_json::from_str(&content) {
         Ok(j) => j,
-        Err(_) => return false,
+        Err(_) => return serde_json::json!({ "valid": false, "reason": "Formato de licença local inválido." }),
     };
     let key = match json.get("p_key").and_then(|k| k.as_str()) {
         Some(k) => k.to_string(),
-        None => return false,
+        None => return serde_json::json!({ "valid": false, "reason": "Chave não encontrada no arquivo local." }),
     };
 
     // Get real hardware ID from the machine (cannot be faked)
@@ -419,7 +419,7 @@ async fn check_license_online() -> bool {
     let req_body = serde_json::json!({
         "p_key": key,
         "p_hardware_id": mac,
-        "p_version": "1.0.7"
+        "p_version": "1.0.8"
     });
 
     let resp = match client.post(url)
@@ -430,15 +430,15 @@ async fn check_license_online() -> bool {
         .await
     {
         Ok(r) => r,
-        Err(_) => return false,
+        Err(e) => return serde_json::json!({ "valid": false, "reason": format!("Erro de conexão: {}", e) }),
     };
 
     let result: serde_json::Value = match resp.json().await {
         Ok(r) => r,
-        Err(_) => return false,
+        Err(_) => return serde_json::json!({ "valid": false, "reason": "Resposta inválida do servidor." }),
     };
 
-    result.get("valid").and_then(|v| v.as_bool()).unwrap_or(false)
+    result
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
